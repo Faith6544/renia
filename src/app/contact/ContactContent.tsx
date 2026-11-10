@@ -94,7 +94,7 @@ export default function ContactContent() {
   const whatsappHref = buildWhatsAppUrl(page.whatsappPrefill);
 
   return (
-    <main>
+    <main className="relative">
       <PageHero
         image="/images/hero.jpg.png"
         eyebrow={page.eyebrow}
@@ -129,11 +129,12 @@ export default function ContactContent() {
               <p className="mt-4 text-sm leading-relaxed text-stone">
                 {page.whatsappText}
               </p>
+              {/* Fixed Button: Removed w-full, added inline-flex */}
               <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-dark mt-6 w-full"
+                className="btn btn-dark mt-6 inline-flex items-center gap-2 relative z-50 pointer-events-auto"
               >
                 <WhatsAppIcon />
                 {page.whatsappButton}
@@ -230,7 +231,7 @@ export default function ContactContent() {
               </p>
               <a
                 href={`tel:${CONTACT_PHONE}`}
-                className="btn btn-dark mt-6 w-full"
+                className="btn btn-dark mt-6 inline-flex items-center gap-2 relative z-50 pointer-events-auto"
               >
                 {page.phoneValue}
               </a>
@@ -283,7 +284,7 @@ export default function ContactContent() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 text-sm text-forest transition-colors hover:text-gold"
+                className="mt-3 inline-flex items-center gap-2 text-sm text-forest transition-colors hover:text-gold relative z-50 pointer-events-auto"
               >
                 <WhatsAppIcon />
                 {page.whatsappButton}
@@ -291,24 +292,23 @@ export default function ContactContent() {
             </div>
           </div>
 
-          <div className="lg:col-span-8">
-            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10">
+          <div className="lg:col-span-8 relative z-50">
+            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10 relative z-50">
               <ContactForm />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Floating WhatsApp */}
+      {/* Floating WhatsApp Icon (Bottom Right) */}
       <a
         href={whatsappHref}
         target="_blank"
         rel="noreferrer"
-        aria-label={page.floatingWhatsapp}
-        className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-full bg-forest px-5 py-4 text-[10px] font-medium uppercase tracking-[0.18em] text-cream shadow-[0_16px_45px_rgba(15,58,32,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-gold hover:text-forest hover:shadow-2xl sm:bottom-8 sm:right-8"
+        aria-label={page.floatingWhatsapp || "WhatsApp"}
+        className="fixed bottom-6 right-6 z-[100] flex h-14 w-14 items-center justify-center rounded-full bg-forest text-cream shadow-[0_16px_45px_rgba(15,58,32,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-gold hover:text-forest hover:shadow-2xl pointer-events-auto"
       >
-        <WhatsAppIcon className="h-5 w-5" />
-        <span className="hidden sm:inline">{page.floatingWhatsapp}</span>
+        <WhatsAppIcon className="h-7 w-7" />
       </a>
     </main>
   );

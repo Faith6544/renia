@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -7,17 +7,19 @@ import { LanguageProvider } from "@/context/LanguageContext";
 
 import "./globals.css";
 
-const montserrat = Montserrat({
+// Load the premium fonts
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-serif",
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const jost = Jost({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600"],
   display: "swap",
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -38,12 +40,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="scroll-smooth"
+      className={`${jost.variable} ${cormorant.variable} scroll-smooth`}
       data-scroll-behavior="smooth"
     >
-      <body
-        className={`${montserrat.variable} ${playfair.variable} min-h-screen bg-cream font-sans text-ink antialiased`}
-      >
+      <body className="min-h-screen bg-cream font-sans text-ink antialiased">
         <LanguageProvider>
           <Navbar />
           {children}

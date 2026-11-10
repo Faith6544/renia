@@ -13,11 +13,12 @@
   --color-stone: #6e6b63;
   --color-line: #dcd9d2;
 
-  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", sans-serif;
-  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  /* UPDATED FONTS HERE */
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
 }
 
+/* ... (Keep the rest of your globals.css exactly the same) ... */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -140,5 +141,110 @@
 
   .animate-rise {
     animation: none;
+  }
+}
+/* MOBILE CLICK FIX */
+@media (max-width: 1024px) {
+  /* Ensure links and buttons are always clickable */
+  a, button, input, select, textarea {
+    position: relative;
+    z-index: 20;
+    cursor: pointer;
+  }
+  
+  /* Remove any weird mobile tap highlights */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+/* Ensure form buttons are clickable on mobile */
+form {
+  position: relative;
+  z-index: 50;
+}
+
+form button {
+  position: relative;
+  z-index: 50;
+  touch-action: manipulation; /* Fixes weird mobile tap delays */
+}
+/* FIX FOR MOBILE TAPPING ISSUES */
+@media (max-width: 1024px) {
+  /* Force links and buttons to be above any invisible layers */
+  a, button, input, select, textarea {
+    position: relative;
+    z-index: 50 !important;
+    cursor: pointer;
+    touch-action: manipulation; /* Removes the 300ms tap delay on mobile */
+  }
+
+  /* Remove the blue/grey highlight box when tapping on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+/* ==========================================
+   MOBILE TOUCH & CLICK FIXES
+   ========================================== */
+@media (max-width: 1024px) {
+  /* Removes the 300ms tap delay on mobile */
+  a, button, input, select, textarea {
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+
+  /* Removes the ugly grey highlight box when tapping on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Force overlays to NEVER block touches */
+.pointer-events-none {
+  pointer-events: none !important;
+}
+/* Force mobile taps to register instantly */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+/* =========================================
+   GLOBAL MOBILE FIX - DO NOT REMOVE
+   This ensures all links and buttons are 
+   always clickable on mobile phones.
+   ========================================= */
+
+@media (max-width: 1024px) {
+  /* 1. Remove the 300ms tap delay on mobile */
+  a, button, input, select, textarea {
+    touch-action: manipulation;
+  }
+
+  /* 2. Force links and buttons to sit on top of invisible layers */
+  a, button {
+    position: relative;
+    z-index: 999 !important; 
+    cursor: pointer;
+  }
+
+  /* 3. Ensure form inputs are clickable */
+  input, textarea, select {
+    position: relative;
+    z-index: 998 !important;
+  }
+
+  /* 4. Remove the ugly grey highlight box when tapping */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 5. Fix the mobile menu so it covers the screen properly */
+  .mobile-menu-panel {
+    position: fixed !important;
+    top: 80px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+    background-color: #0f3a20 !important;
   }
 }
