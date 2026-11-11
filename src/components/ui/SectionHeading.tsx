@@ -20,7 +20,7 @@ export default function SectionHeading({
 
       {intro ? (
         <div className="lg:col-span-5 lg:flex lg:items-end">
-          <p className="max-w-md text-sm leading-relaxed text-stone sm:text-base">
+          <p className="max-w-md text-base leading-relaxed text-stone sm:text-base">
             {intro}
           </p>
         </div>

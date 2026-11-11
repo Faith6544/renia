@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
 import { buildWhatsAppUrl } from "@/lib/site";
@@ -17,8 +17,26 @@ const initialForm = {
 type BookingField = keyof typeof initialForm;
 
 export default function BookingForm() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const page = t.booking;
+  const alerts =
+    language === "fr"
+      ? {
+          date: "Veuillez choisir une date.",
+          time: "Veuillez choisir un horaire.",
+          name: "Veuillez saisir votre nom.",
+          phone: "Veuillez saisir votre numéro de téléphone.",
+          email: "Veuillez saisir votre email.",
+          invalidEmail: "Veuillez saisir une adresse email valide.",
+        }
+      : {
+          date: "Please choose a date.",
+          time: "Please choose a time.",
+          name: "Please enter your name.",
+          phone: "Please enter your phone number.",
+          email: "Please enter your email.",
+          invalidEmail: "Please enter a valid email address.",
+        };
   const [form, setForm] = useState(initialForm);
   const [opened, setOpened] = useState(false);
 
@@ -27,8 +45,36 @@ export default function BookingForm() {
     setForm((current) => ({ ...current, [field]: value }));
   };
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function handleSend() {
+    if (!form.date) {
+      alert(alerts.date);
+      return;
+    }
+
+    if (!form.time) {
+      alert(alerts.time);
+      return;
+    }
+
+    if (!form.name.trim()) {
+      alert(alerts.name);
+      return;
+    }
+
+    if (!form.phone.trim()) {
+      alert(alerts.phone);
+      return;
+    }
+
+    if (!form.email.trim()) {
+      alert(alerts.email);
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      alert(alerts.invalidEmail);
+      return;
+    }
 
     const service =
       form.service === "pro" ? page.servicePro : page.serviceHome;
@@ -43,16 +89,12 @@ export default function BookingForm() {
       `${page.emailLabel}: ${form.email.trim()}`,
     ].join("\n");
 
-    window.open(
-      buildWhatsAppUrl(message),
-      "_blank",
-      "noopener,noreferrer",
-    );
     setOpened(true);
+    window.location.href = buildWhatsAppUrl(message);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="min-w-0">
+    <div className="relative z-10 min-w-0 pointer-events-auto">
       <div>
         <label htmlFor="booking-service" className="field-label">
           {page.serviceLabel} <span className="text-stone/50">*</span>
@@ -165,11 +207,15 @@ export default function BookingForm() {
       </div>
 
       <div className="mt-8 flex flex-col gap-6 rounded-2xl bg-cream p-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-sm text-[11px] leading-relaxed text-stone">
+        <p className="max-w-sm text-base leading-relaxed text-stone">
           {page.submitHint}
         </p>
 
-        <button type="submit" className="btn btn-dark group shrink-0">
+        <button
+          type="button"
+          onClick={handleSend}
+          className="btn btn-dark group shrink-0 pointer-events-auto"
+        >
           {page.submit}
           <span
             aria-hidden="true"
@@ -180,17 +226,17 @@ export default function BookingForm() {
         </button>
       </div>
 
-      <p className="mt-4 text-[10px] uppercase tracking-[0.18em] text-stone/70">
+      <p className="mt-4 text-xs uppercase tracking-[0.18em] text-stone/70">
         {page.required}
       </p>
 
       <div aria-live="polite">
         {opened ? (
-          <p className="mt-6 rounded-xl bg-gold/10 px-4 py-3 text-sm leading-relaxed text-forest">
+          <p className="mt-6 rounded-xl bg-gold/10 px-4 py-3 text-base leading-relaxed text-forest">
             {page.opened}
           </p>
         ) : null}
       </div>
-    </form>
+    </div>
   );
 }

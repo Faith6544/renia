@@ -37,7 +37,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
                 className="group flex w-full items-start justify-between gap-6 px-6 py-6 text-left transition-colors duration-300 hover:text-forest sm:px-7 sm:py-7"
               >
                 <span className="flex items-start gap-4 sm:gap-6">
-                  <span className="mt-1 font-serif text-sm leading-none text-gold">
+                  <span className="mt-1 font-serif text-base leading-none text-gold">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className="font-serif text-xl leading-snug tracking-[-0.01em] sm:text-2xl">
@@ -75,7 +75,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="max-w-2xl px-6 pb-7 text-sm leading-relaxed text-stone sm:pl-[4.25rem] sm:pr-10 sm:text-[15px]">
+                <p className="max-w-2xl px-6 pb-7 text-base leading-relaxed text-stone sm:pl-[4.25rem] sm:pr-10 sm:text-[17px]">
                   {item.answer}
                 </p>
               </div>

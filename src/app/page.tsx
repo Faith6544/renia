@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 import Image from "next/image";
@@ -90,14 +89,14 @@ function ServiceArea({
           sizes="(min-width: 768px) 50vw, 100vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
         />
-        <div className="absolute inset-0 bg-forest/10 transition-colors duration-500 group-hover:bg-forest/0" />
+        <div className="pointer-events-none absolute inset-0 bg-forest/10 transition-colors duration-500 group-hover:bg-forest/0" />
         <span className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-forest/35 text-cream shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-gold group-hover:text-forest">
           <span aria-hidden="true">→</span>
         </span>
       </Link>
       <div className="relative z-10 px-4 pb-5 pt-6 sm:px-5">
         <h3 className="font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-3xl">{title}</h3>
-        <p className="mt-3 max-w-md text-sm leading-relaxed text-stone">{text}</p>
+        <p className="mt-3 max-w-md text-base leading-relaxed text-stone">{text}</p>
         <Link href={href} className="pill-link mt-6">{button}</Link>
       </div>
     </article>
@@ -105,7 +104,7 @@ function ServiceArea({
 }
 
 export default function HomePage() {
-  const { t } = useLanguage() as { t: any };
+  const { t } = useLanguage();
 
   const faqPreview = t.faqPage?.items?.slice(0, 3) || [
     { question: "What is SAP?", answer: "Personal services at home." },
@@ -150,10 +149,10 @@ export default function HomePage() {
       {/* Hero */}
       <section className="hero-grain relative flex min-h-screen items-end overflow-hidden rounded-b-[2.5rem] bg-forest text-cream shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
         <Image src="/images/hero.jpg.png" alt="" fill priority unoptimized sizes="100vw" className="object-cover object-center" />
-        <div className="absolute inset-0 bg-forest/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/35 to-forest/10" />
+        <div className="pointer-events-none absolute inset-0 bg-forest/80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/35 to-forest/10" />
         <div className="shell relative z-20 pb-28 pt-40 sm:pb-32 lg:pb-36">
-          <p className="animate-rise text-[10px] uppercase tracking-[0.3em] text-gold sm:text-[11px]">RENIA · YVELINES 78</p>
+          <p className="animate-rise text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">RENIA · YVELINES 78</p>
           <h1 className="animate-rise mt-8 max-w-5xl text-balance font-serif text-[clamp(2.4rem,5.2vw,5.25rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
             {t.HeroTitle || "Your trusted partner."}
           </h1>
@@ -166,7 +165,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 z-10 bg-forest/30 backdrop-blur-sm">
-          <div className="shell flex items-center justify-between py-4 text-[9px] uppercase tracking-[0.22em] text-cream/60 sm:text-[10px]">
+          <div className="shell flex items-center justify-between py-4 text-xs uppercase tracking-[0.22em] text-cream/60 sm:text-sm">
             <span>RENIA HOME — Yvelines</span>
             <span className="hidden sm:inline">RENIA PRO — Yvelines</span>
             <span>{t.footer?.area || "Yvelines 78"}</span>
@@ -185,14 +184,14 @@ export default function HomePage() {
               <Link href="/renia-home" className="group relative z-20 flex min-h-[112px] items-center justify-between gap-6 rounded-2xl bg-white px-7 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:bg-forest hover:text-cream hover:shadow-xl sm:px-8">
                 <span className="flex items-start gap-5">
                   <span className="font-serif text-2xl leading-none text-gold">01</span>
-                  <span className="text-sm leading-relaxed">{t.Individual || "Individual"}</span>
+                  <span className="text-base leading-relaxed">{t.Individual || "Individual"}</span>
                 </span>
                 <span aria-hidden="true" className="shrink-0 text-lg text-gold transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
               <Link href="/renia-pro" className="group relative z-20 flex min-h-[112px] items-center justify-between gap-6 rounded-2xl bg-white px-7 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:bg-forest hover:text-cream hover:shadow-xl sm:px-8">
                 <span className="flex items-start gap-5">
                   <span className="font-serif text-2xl leading-none text-gold">02</span>
-                  <span className="text-sm leading-relaxed">{t.Professional || "Professional"}</span>
+                  <span className="text-base leading-relaxed">{t.Professional || "Professional"}</span>
                 </span>
                 <span aria-hidden="true" className="shrink-0 text-lg text-gold transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
@@ -209,7 +208,7 @@ export default function HomePage() {
               <h2 className="max-w-3xl text-balance font-serif text-[clamp(2.4rem,4.6vw,4.2rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.AreasTitle || "Our Expertise"}</h2>
             </div>
             <div className="lg:col-span-5 lg:flex lg:items-end">
-              <p className="max-w-md text-sm leading-relaxed text-stone sm:text-base">{t.AreasSubtitle || "Choose the right service."}</p>
+              <p className="max-w-md text-base leading-relaxed text-stone sm:text-base">{t.AreasSubtitle || "Choose the right service."}</p>
             </div>
           </div>
           <div className="mt-14 grid gap-10 md:grid-cols-2 lg:gap-14">
@@ -225,16 +224,16 @@ export default function HomePage() {
           <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">
               <p className="font-serif text-[clamp(5rem,9vw,8rem)] leading-[0.85] tracking-[-0.05em] text-forest">50<span className="align-top text-[0.3em] tracking-normal text-gold">%</span></p>
-              <p className="mt-4 text-[10px] uppercase tracking-[0.24em] text-stone">SAP</p>
+              <p className="mt-4 text-xs uppercase tracking-[0.24em] text-stone">SAP</p>
             </div>
             <div className="lg:col-span-8">
               <h2 className="max-w-2xl text-balance font-serif text-3xl leading-[1.08] tracking-[-0.01em] sm:text-4xl lg:text-[2.8rem]">{t.SAPTitle || "Tax Credit"}</h2>
               <ul className="mt-7 space-y-4 rounded-2xl bg-white/70 p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
-                <li className="flex items-start gap-3 text-sm leading-relaxed text-ink/80 sm:text-base"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-[10px] text-gold">✓</span>{t.SAPBullet1 || "50% tax credit"}</li>
-                <li className="flex items-start gap-3 text-sm leading-relaxed text-ink/80 sm:text-base"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-[10px] text-gold">✓</span>{t.SAPBullet2 || "Immediate advance"}</li>
+                <li className="flex items-start gap-3 text-base leading-relaxed text-ink/80 sm:text-base"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-xs text-gold">✓</span>{t.SAPBullet1 || "50% tax credit"}</li>
+                <li className="flex items-start gap-3 text-base leading-relaxed text-ink/80 sm:text-base"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-xs text-gold">✓</span>{t.SAPBullet2 || "Immediate advance"}</li>
               </ul>
               <Link href="/renia-home#tax-credit" className="pill-link mt-8">{t.SAPLink || "Learn more"}</Link>
-              <p className="mt-8 max-w-xl text-xs leading-relaxed text-stone">{t.SAPNote || "Subject to conditions."}</p>
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-stone">{t.SAPNote || "Subject to conditions."}</p>
             </div>
           </div>
         </div>
@@ -250,12 +249,12 @@ export default function HomePage() {
             </div>
             <div className="lg:col-span-8">
               <div className="grid gap-4 sm:grid-cols-2">
-                {whyPillars.map((pillar: any, index: number) => (
+                {whyPillars.map((pillar, index) => (
                   <div key={pillar.title} className={`flex gap-5 rounded-2xl bg-cream p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8 ${index === 4 ? "sm:col-span-2" : ""}`}>
                     <span className="mt-0.5 shrink-0 text-gold"><WhyIcon index={index} /></span>
                     <div>
                       <h3 className="font-serif text-xl leading-tight tracking-[-0.01em]">{pillar.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-stone">{pillar.body}</p>
+                      <p className="mt-2 text-base leading-relaxed text-stone">{pillar.body}</p>
                     </div>
                   </div>
                 ))}
@@ -272,19 +271,19 @@ export default function HomePage() {
             <div className="lg:col-span-4">
               <p className="eyebrow">{homeHow.eyebrow}</p>
               <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.4rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{homeHow.title}</h2>
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-stone sm:text-base">{homeHow.intro}</p>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-stone sm:text-base">{homeHow.intro}</p>
               <Link href="/how-it-works" className="pill-link mt-8">{homeHow.cta} →</Link>
             </div>
             <div className="lg:col-span-8">
               <ol className="grid gap-4 sm:grid-cols-2">
-                {homeHow.steps.map((step: any, index: number) => (
+                {homeHow.steps.map((step, index) => (
                   <li key={step.title} className="group rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <div className="flex items-center justify-between gap-4">
                       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 font-serif text-lg leading-none text-forest transition-colors duration-300 group-hover:bg-gold group-hover:text-forest">{String(index + 1).padStart(2, "0")}</span>
-                      <span className="text-[10px] uppercase tracking-[0.2em] text-stone/50">{String(index + 1).padStart(2, "0")} / 04</span>
+                      <span className="text-xs uppercase tracking-[0.2em] text-stone/50">{String(index + 1).padStart(2, "0")} / 04</span>
                     </div>
                     <h3 className="mt-6 font-serif text-2xl leading-tight tracking-[-0.01em]">{step.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-stone">{step.body}</p>
+                    <p className="mt-3 text-base leading-relaxed text-stone">{step.body}</p>
                   </li>
                 ))}
               </ol>
@@ -300,28 +299,28 @@ export default function HomePage() {
             <div className="max-w-2xl">
               <p className="eyebrow">{reviews.eyebrow}</p>
               <h2 className="mt-5 text-balance font-serif text-[clamp(2.4rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{reviews.title}</h2>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-stone sm:text-base">{reviews.intro}</p>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-stone sm:text-base">{reviews.intro}</p>
             </div>
             <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer" className="pill-link shrink-0">
               <span aria-hidden="true" className="text-gold">★</span>{reviews.googleLabel} · {reviews.googleValue}
             </a>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {reviews.items.map((review: any) => (
+            {reviews.items.map((review) => (
               <figure key={review.name} className="flex flex-col rounded-3xl bg-cream p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <Stars />
                 <blockquote className="mt-6 flex-1 font-serif text-lg leading-relaxed tracking-[-0.01em] text-ink/85">“{review.quote}”</blockquote>
                 <figcaption className="mt-7 flex items-center gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest font-serif text-lg text-cream">{review.name.charAt(0)}</span>
                   <span className="min-w-0">
-                    <span className="block text-sm leading-tight">{review.name}</span>
-                    <span className="mt-1 block text-[10px] uppercase tracking-[0.16em] text-stone">{review.meta}</span>
+                    <span className="block text-base leading-tight">{review.name}</span>
+                    <span className="mt-1 block text-xs uppercase tracking-[0.16em] text-stone">{review.meta}</span>
                   </span>
                 </figcaption>
               </figure>
             ))}
           </div>
-          <p className="mt-8 max-w-xl text-xs leading-relaxed text-stone">{reviews.googleNote}</p>
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-stone">{reviews.googleNote}</p>
         </div>
       </section>
 
@@ -331,7 +330,7 @@ export default function HomePage() {
           <div className="lg:col-span-4">
             <p className="eyebrow">{t.faqPage?.eyebrow || "FAQ"}</p>
             <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.4rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.faqPage?.title || "Questions"}</h2>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-stone sm:text-base">{t.faqPage?.intro || "Find answers."}</p>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-stone sm:text-base">{t.faqPage?.intro || "Find answers."}</p>
             <Link href="/faq" className="pill-link mt-8">{t.faqPage?.seeAll || "See all"} →</Link>
           </div>
           <div className="lg:col-span-8">
@@ -345,7 +344,7 @@ export default function HomePage() {
         <div className="shell">
           <div className="flex flex-col gap-12 rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 md:flex-row md:items-end md:justify-between lg:p-16">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-gold sm:text-[11px]">RENIA · YVELINES 78</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">RENIA · YVELINES 78</p>
               <h2 className="mt-6 max-w-2xl text-balance font-serif text-[clamp(2.5rem,4.6vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.footer?.tagline || "Let's work together."}</h2>
             </div>
             <div className="flex shrink-0 flex-col items-start gap-5 md:items-end">

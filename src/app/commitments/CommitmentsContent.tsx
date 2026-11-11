@@ -42,7 +42,7 @@ export default function CommitmentsContent() {
                   {item.title}
                 </h3>
 
-                <p className="max-w-2xl text-sm leading-relaxed text-stone sm:col-span-7 sm:text-[15px]">
+                <p className="max-w-2xl text-base leading-relaxed text-stone sm:col-span-7 sm:text-[17px]">
                   {item.body}
                 </p>
               </article>
@@ -56,7 +56,7 @@ export default function CommitmentsContent() {
         <div className="shell">
           <div className="grid gap-10 rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-gold sm:text-[11px]">
+              <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
                 {page.eyebrow}
               </p>
               <div
@@ -69,7 +69,7 @@ export default function CommitmentsContent() {
               <blockquote className="max-w-3xl text-balance font-serif text-[clamp(1.8rem,3.4vw,3rem)] font-normal italic leading-[1.2] tracking-[-0.01em] text-cream/90">
                 “{page.pledge}”
               </blockquote>
-              <p className="mt-8 text-[10px] uppercase tracking-[0.24em] text-gold">
+              <p className="mt-8 text-xs uppercase tracking-[0.24em] text-gold">
                 RENIA SERVICES · YVELINES 78
               </p>
             </div>

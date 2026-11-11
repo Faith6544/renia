@@ -34,11 +34,11 @@ export default function PageHero({
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-forest/80" />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-forest/10" />
+      <div className="pointer-events-none absolute inset-0 bg-forest/80" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-forest/10" />
 
       <div className="shell relative z-10 w-full pb-28 pt-40 sm:pb-32 lg:pb-36">
-        <p className="animate-rise text-[10px] uppercase tracking-[0.3em] text-gold sm:text-[11px]">
+        <p className="animate-rise text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
           {eyebrow}
         </p>
 
@@ -68,7 +68,7 @@ export default function PageHero({
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-10 bg-forest/30 backdrop-blur-sm">
-        <div className="shell flex items-center justify-between py-4 text-[9px] uppercase tracking-[0.22em] text-cream/60 sm:text-[10px]">
+        <div className="shell flex items-center justify-between py-4 text-xs uppercase tracking-[0.22em] text-cream/60 sm:text-sm">
           <span>RENIA HOME — Yvelines</span>
           <span className="hidden sm:inline">RENIA PRO — Yvelines</span>
           <span>Yvelines (78)</span>

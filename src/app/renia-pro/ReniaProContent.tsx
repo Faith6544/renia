@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import ProForm from "@/components/forms/ProForm";
 import CtaBand from "@/components/ui/CtaBand";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -62,7 +63,7 @@ function SectorIcon({ index }: { index: number }) {
 }
 
 export default function ReniaProContent() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const page = t.reniaPro;
 
   return (
@@ -72,7 +73,7 @@ export default function ReniaProContent() {
         eyebrow={page.eyebrow}
         title={page.title}
         intro={page.intro}
-        primary={{ label: page.heroPrimary, href: "/contact" }}
+        primary={{ label: page.heroPrimary, href: "#request-form" }}
         secondary={{ label: page.heroSecondary, href: "#sectors" }}
       />
 
@@ -95,7 +96,7 @@ export default function ReniaProContent() {
                   <span className="text-gold">
                     <SectorIcon index={index} />
                   </span>
-                  <span className="font-serif text-sm leading-none text-stone/50">
+                  <span className="font-serif text-base leading-none text-stone/50">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -103,7 +104,7 @@ export default function ReniaProContent() {
                 <h3 className="mt-8 font-serif text-2xl leading-tight tracking-[-0.01em]">
                   {sector.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-stone">
+                <p className="mt-3 text-base leading-relaxed text-stone">
                   {sector.body}
                 </p>
               </article>
@@ -120,7 +121,7 @@ export default function ReniaProContent() {
             <h2 className="mt-5 max-w-lg text-balance font-serif text-[clamp(2.2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.tailorTitle}
             </h2>
-            <p className="mt-7 max-w-md text-sm leading-relaxed text-stone sm:text-base">
+            <p className="mt-7 max-w-md text-base leading-relaxed text-stone sm:text-base">
               {page.tailorBody}
             </p>
           </div>
@@ -144,7 +145,7 @@ export default function ReniaProContent() {
               )}
             </ul>
 
-            <Link href="/contact" className="pill-link mt-9">
+            <Link href="#request-form" className="pill-link mt-9">
               {page.heroPrimary} →
             </Link>
           </div>
@@ -171,7 +172,7 @@ export default function ReniaProContent() {
                 <h3 className="mt-5 font-serif text-2xl leading-tight tracking-[-0.01em]">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-stone">
+                <p className="mt-3 text-base leading-relaxed text-stone">
                   {step.body}
                 </p>
               </li>
@@ -186,22 +187,22 @@ export default function ReniaProContent() {
           <div className="relative overflow-hidden rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(197,160,89,0.18),transparent_55%)]"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(197,160,89,0.18),transparent_55%)]"
             />
 
             <div className="relative z-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-7">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold sm:text-[11px]">
+                <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
                   {page.airbnbEyebrow}
                 </p>
                 <h2 className="mt-6 max-w-2xl text-balance font-serif text-[clamp(2.4rem,4.4vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">
                   {page.airbnbTitle}
                 </h2>
-                <p className="mt-7 max-w-xl text-sm leading-relaxed text-cream/70 sm:text-base">
+                <p className="mt-7 max-w-xl text-base leading-relaxed text-cream/70 sm:text-base">
                   {page.airbnbBody}
                 </p>
 
-                <Link href="/contact" className="btn btn-gold mt-9">
+                <Link href="#request-form" className="btn btn-gold mt-9">
                   {page.airbnbCta}
                 </Link>
               </div>
@@ -220,7 +221,7 @@ export default function ReniaProContent() {
                       <span className="font-serif text-2xl leading-none text-gold">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <p className="text-sm leading-relaxed text-cream/80">
+                      <p className="text-base leading-relaxed text-cream/80">
                         {bullet}
                       </p>
                     </li>
@@ -232,12 +233,42 @@ export default function ReniaProContent() {
         </div>
       </section>
 
+      {/* Dedicated pro quote request form */}
+      <section
+        id="request-form"
+        className="relative z-10 scroll-mt-20 bg-white py-24 lg:py-32"
+      >
+        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <p className="eyebrow">
+              {language === "fr" ? "Demander un devis" : "Request a quote"}
+            </p>
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+              {language === "fr"
+                ? "Demandez votre devis professionnel."
+                : "Request your pro quote."}
+            </h2>
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-stone">
+              {language === "fr"
+                ? "Indiquez votre secteur et la surface de vos locaux. Votre demande est enregistrée, puis WhatsApp s'ouvre avec votre message prêt à envoyer."
+                : "Tell us your sector and the size of your premises. Your request is saved, then WhatsApp opens with your message ready to send."}
+            </p>
+          </div>
+
+          <div className="lg:col-span-8">
+            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10">
+              <ProForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <CtaBand
         eyebrow={page.ctaEyebrow}
         title={page.ctaTitle}
         text={page.ctaText}
         primaryLabel={page.cta}
-        primaryHref="/contact"
+        primaryHref="#request-form"
         secondaryLabel={t.footer.contact}
         secondaryHref="/contact"
       />

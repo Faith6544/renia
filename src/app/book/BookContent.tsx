@@ -43,7 +43,7 @@ export default function BookContent() {
       />
 
       {/* Booking form */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="relative z-10 bg-cream py-24 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{page.formEyebrow}</p>
@@ -52,10 +52,10 @@ export default function BookContent() {
             </h2>
 
             <div className="mt-10 rounded-3xl bg-forest p-7 text-cream shadow-[0_16px_45px_rgba(15,58,32,0.18)] sm:p-8">
-              <p className="text-[10px] uppercase tracking-[0.26em] text-gold">
+              <p className="text-xs uppercase tracking-[0.26em] text-gold">
                 {page.asideTitle}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-cream/70">
+              <p className="mt-4 text-base leading-relaxed text-cream/70">
                 {page.asideText}
               </p>
 
@@ -71,13 +71,13 @@ export default function BookContent() {
 
               <a
                 href={`tel:${CONTACT_PHONE}`}
-                className="mt-4 inline-flex items-center gap-2 text-sm text-cream/70 transition-colors duration-300 hover:text-gold"
+                className="mt-4 inline-flex items-center gap-2 text-base text-cream/70 transition-colors duration-300 hover:text-gold"
               >
                 {CONTACT_PHONE_DISPLAY}
               </a>
             </div>
 
-            <p className="mt-6 text-xs leading-relaxed text-stone">
+            <p className="mt-6 text-sm leading-relaxed text-stone">
               {page.note}
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function BookContent() {
                 <h3 className="mt-6 font-serif text-2xl leading-tight tracking-[-0.01em]">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-stone">
+                <p className="mt-3 text-base leading-relaxed text-stone">
                   {step.body}
                 </p>
               </article>

@@ -118,15 +118,15 @@ export default function ContactContent() {
             <h2 className="mt-5 max-w-md text-balance font-serif text-[clamp(2.2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.detailsTitle}
             </h2>
-            <p className="mt-7 max-w-md text-sm leading-relaxed text-stone sm:text-base">
+            <p className="mt-7 max-w-md text-base leading-relaxed text-stone sm:text-base">
               {page.intro}
             </p>
 
             <div className="mt-10 rounded-3xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-9">
-              <p className="text-[10px] uppercase tracking-[0.24em] text-gold">
+              <p className="text-xs uppercase tracking-[0.24em] text-gold">
                 {page.whatsappTitle}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-stone">
+              <p className="mt-4 text-base leading-relaxed text-stone">
                 {page.whatsappText}
               </p>
               {/* Fixed Button: Removed w-full, added inline-flex */}
@@ -134,7 +134,7 @@ export default function ContactContent() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-dark mt-6 inline-flex items-center gap-2 relative z-50 pointer-events-auto"
+                className="btn btn-dark mt-6 inline-flex items-center gap-2 relative z-10 pointer-events-auto"
               >
                 <WhatsAppIcon />
                 {page.whatsappButton}
@@ -145,7 +145,7 @@ export default function ContactContent() {
           <div className="lg:col-span-7">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-stone">
+                <p className="text-xs uppercase tracking-[0.22em] text-stone">
                   {page.areaLabel}
                 </p>
                 <p className="mt-3 font-serif text-2xl leading-tight">
@@ -154,7 +154,7 @@ export default function ContactContent() {
               </div>
 
               <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-stone">
+                <p className="text-xs uppercase tracking-[0.22em] text-stone">
                   {page.phoneLabel}
                 </p>
                 <a
@@ -166,7 +166,7 @@ export default function ContactContent() {
               </div>
 
               <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-stone">
+                <p className="text-xs uppercase tracking-[0.22em] text-stone">
                   {page.emailLabel}
                 </p>
                 <a
@@ -178,7 +178,7 @@ export default function ContactContent() {
               </div>
 
               <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-stone">
+                <p className="text-xs uppercase tracking-[0.22em] text-stone">
                   {page.hoursLabel}
                 </p>
                 <p className="mt-3 font-serif text-2xl leading-tight">
@@ -187,7 +187,7 @@ export default function ContactContent() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-white/70 px-6 py-5 text-sm text-stone shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-white/70 px-6 py-5 text-base text-stone shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:flex-row sm:items-center sm:justify-between">
               <p>{t.footer.areaLabel} — {t.footer.area}</p>
               <Link href="/contact#contact-form" className="pill-link">
                 {page.formEyebrow} →
@@ -204,7 +204,7 @@ export default function ContactContent() {
             <div className="relative flex min-h-[360px] flex-col items-center justify-center overflow-hidden rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:min-h-[420px] sm:p-12">
               <div
                 aria-hidden="true"
-                className="absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(15,58,32,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,58,32,0.06)_1px,transparent_1px)] [background-size:44px_44px]"
+                className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(15,58,32,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,58,32,0.06)_1px,transparent_1px)] [background-size:44px_44px]"
               />
               <div className="relative flex flex-col items-center text-center">
                 <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-forest shadow-[0_10px_30px_rgba(15,58,32,0.12)]">
@@ -213,7 +213,7 @@ export default function ContactContent() {
                 <p className="mt-6 font-serif text-2xl leading-tight sm:text-3xl">
                   {page.mapPlaceholder}
                 </p>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-stone">
+                <p className="mt-3 max-w-md text-base leading-relaxed text-stone">
                   {page.mapText}
                 </p>
               </div>
@@ -226,12 +226,12 @@ export default function ContactContent() {
               <h2 className="mt-4 font-serif text-2xl leading-tight">
                 {page.mapTitle}
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-stone">
+              <p className="mt-4 text-base leading-relaxed text-stone">
                 {page.mapText}
               </p>
               <a
                 href={`tel:${CONTACT_PHONE}`}
-                className="btn btn-dark mt-6 inline-flex items-center gap-2 relative z-50 pointer-events-auto"
+                className="btn btn-dark mt-6 inline-flex items-center gap-2 relative z-10 pointer-events-auto"
               >
                 {page.phoneValue}
               </a>
@@ -239,7 +239,7 @@ export default function ContactContent() {
 
             <div className="rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <p className="eyebrow">{page.socialTitle}</p>
-              <p className="mt-4 text-sm leading-relaxed text-stone">
+              <p className="mt-4 text-base leading-relaxed text-stone">
                 {page.socialText}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -264,7 +264,7 @@ export default function ContactContent() {
       {/* Contact form */}
       <section
         id="contact-form"
-        className="scroll-mt-20 bg-white py-24 lg:py-32"
+        className="relative z-10 scroll-mt-20 bg-white py-24 lg:py-32"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
@@ -272,19 +272,19 @@ export default function ContactContent() {
             <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.formTitle}
             </h2>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-stone">
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-stone">
               {page.formIntro}
             </p>
 
             <div className="mt-10 rounded-2xl bg-cream p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
-              <p className="text-[10px] uppercase tracking-[0.24em] text-gold">
+              <p className="text-xs uppercase tracking-[0.24em] text-gold">
                 {page.whatsappTitle}
               </p>
               <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 text-sm text-forest transition-colors hover:text-gold relative z-50 pointer-events-auto"
+                className="mt-3 inline-flex items-center gap-2 text-base text-forest transition-colors hover:text-gold relative z-10 pointer-events-auto"
               >
                 <WhatsAppIcon />
                 {page.whatsappButton}
@@ -292,8 +292,8 @@ export default function ContactContent() {
             </div>
           </div>
 
-          <div className="lg:col-span-8 relative z-50">
-            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10 relative z-50">
+          <div className="relative z-10 lg:col-span-8">
+            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10">
               <ContactForm />
             </div>
           </div>
@@ -306,7 +306,7 @@ export default function ContactContent() {
         target="_blank"
         rel="noreferrer"
         aria-label={page.floatingWhatsapp || "WhatsApp"}
-        className="fixed bottom-6 right-6 z-[100] flex h-14 w-14 items-center justify-center rounded-full bg-forest text-cream shadow-[0_16px_45px_rgba(15,58,32,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-gold hover:text-forest hover:shadow-2xl pointer-events-auto"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-forest text-cream shadow-[0_16px_45px_rgba(15,58,32,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-gold hover:text-forest hover:shadow-2xl"
       >
         <WhatsAppIcon className="h-7 w-7" />
       </a>

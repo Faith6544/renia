@@ -38,7 +38,7 @@ export default function AboutContent() {
             <p className="max-w-3xl text-balance font-serif text-[clamp(2rem,3.8vw,3.4rem)] font-normal leading-[1.12] tracking-[-0.02em]">
               {about.mission}
             </p>
-            <p className="mt-8 max-w-xl rounded-2xl bg-white/60 p-6 text-sm leading-relaxed text-stone shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:p-7 sm:text-base">
+            <p className="mt-8 max-w-xl rounded-2xl bg-white/60 p-6 text-base leading-relaxed text-stone shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:p-7 sm:text-base">
               {about.intro}
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function AboutContent() {
                 <h3 className="mt-8 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
                   {value.title}
                 </h3>
-                <p className="mt-4 text-sm leading-relaxed text-stone">
+                <p className="mt-4 text-base leading-relaxed text-stone">
                   {value.body}
                 </p>
               </article>
@@ -93,14 +93,14 @@ export default function AboutContent() {
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-forest/15" />
+              <div className="pointer-events-none absolute inset-0 bg-forest/15" />
             </div>
           </div>
 
           <div className="lg:col-span-7 lg:flex lg:items-stretch">
             <div className="flex w-full flex-col justify-between rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.24em] text-gold">
+                <p className="text-xs uppercase tracking-[0.24em] text-gold">
                   {about.storyNote}
                 </p>
                 <p className="mt-8 max-w-xl font-serif text-2xl leading-relaxed tracking-[-0.01em] sm:text-[1.75rem]">

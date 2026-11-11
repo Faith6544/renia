@@ -50,10 +50,10 @@ export default function HowItWorksContent() {
                 <h3 className="relative mt-7 font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-3xl">
                   {step.title}
                 </h3>
-                <p className="relative mt-4 max-w-lg text-sm leading-relaxed text-stone sm:text-[15px]">
+                <p className="relative mt-4 max-w-lg text-base leading-relaxed text-stone sm:text-[17px]">
                   {step.body}
                 </p>
-                <p className="relative mt-6 inline-flex rounded-full bg-gold/10 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-forest">
+                <p className="relative mt-6 inline-flex rounded-full bg-gold/10 px-4 py-2 text-xs uppercase tracking-[0.18em] text-forest">
                   {step.detail}
                 </p>
               </li>
@@ -82,7 +82,7 @@ export default function HowItWorksContent() {
                 <h3 className="mt-6 font-serif text-2xl leading-tight tracking-[-0.01em]">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-stone">
+                <p className="mt-3 text-base leading-relaxed text-stone">
                   {item.body}
                 </p>
               </article>

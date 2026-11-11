@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import HomeForm from "@/components/forms/HomeForm";
 import Accordion from "@/components/ui/Accordion";
 import CtaBand from "@/components/ui/CtaBand";
 import PageHero from "@/components/ui/PageHero";
@@ -102,7 +103,7 @@ function IronIcon() {
 }
 
 export default function ReniaHomeContent() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const page = t.reniaHome;
 
   return (
@@ -112,7 +113,7 @@ export default function ReniaHomeContent() {
         eyebrow={page.eyebrow}
         title={page.title}
         intro={page.intro}
-        primary={{ label: page.heroPrimary, href: "/contact" }}
+        primary={{ label: page.heroPrimary, href: "#request-form" }}
         secondary={{ label: page.heroSecondary, href: "#included" }}
       />
 
@@ -135,7 +136,7 @@ export default function ReniaHomeContent() {
                   <span className="text-gold">
                     <RoomIcon index={index} />
                   </span>
-                  <span className="font-serif text-sm leading-none text-stone/50">
+                  <span className="font-serif text-base leading-none text-stone/50">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -143,7 +144,7 @@ export default function ReniaHomeContent() {
                 <h3 className="mt-7 font-serif text-2xl leading-tight tracking-[-0.01em]">
                   {room.title}
                 </h3>
-                <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone">
+                <p className="mt-3 max-w-sm text-base leading-relaxed text-stone">
                   {room.body}
                 </p>
               </article>
@@ -169,12 +170,12 @@ export default function ReniaHomeContent() {
                 <h3 className="mt-8 font-serif text-3xl leading-tight tracking-[-0.01em] sm:text-4xl">
                   {page.deepTitle}
                 </h3>
-                <p className="mt-5 max-w-md text-sm leading-relaxed text-cream/70 sm:text-[15px]">
+                <p className="mt-5 max-w-md text-base leading-relaxed text-cream/70 sm:text-base">
                   {page.deepBody}
                 </p>
               </div>
 
-              <Link href="/contact" className="pill-link-dark mt-10 self-start">
+              <Link href="#request-form" className="pill-link-dark mt-10 self-start">
                 {page.heroPrimary} →
               </Link>
             </article>
@@ -187,12 +188,12 @@ export default function ReniaHomeContent() {
                 <h3 className="mt-8 font-serif text-3xl leading-tight tracking-[-0.01em] text-forest sm:text-4xl">
                   {page.ironTitle}
                 </h3>
-                <p className="mt-5 max-w-md text-sm leading-relaxed text-stone sm:text-[15px]">
+                <p className="mt-5 max-w-md text-base leading-relaxed text-stone sm:text-base">
                   {page.ironBody}
                 </p>
               </div>
 
-              <p className="mt-10 rounded-xl bg-white/70 px-4 py-3 text-[10px] uppercase tracking-[0.18em] text-stone">
+              <p className="mt-10 rounded-xl bg-white/70 px-4 py-3 text-xs uppercase tracking-[0.18em] text-stone">
                 {page.ironNote}
               </p>
             </article>
@@ -211,7 +212,7 @@ export default function ReniaHomeContent() {
                   %
                 </span>
               </p>
-              <p className="mt-4 text-[10px] uppercase tracking-[0.24em] text-stone">
+              <p className="mt-4 text-xs uppercase tracking-[0.24em] text-stone">
                 {page.taxEyebrow}
               </p>
             </div>
@@ -221,7 +222,7 @@ export default function ReniaHomeContent() {
                 {page.taxTitle}
               </h2>
 
-              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink/75 sm:text-base">
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-base">
                 {page.taxBody}
               </p>
 
@@ -230,11 +231,11 @@ export default function ReniaHomeContent() {
                   (bullet) => (
                     <li
                       key={bullet}
-                      className="flex items-start gap-3 text-sm leading-relaxed text-ink/80"
+                      className="flex items-start gap-3 text-base leading-relaxed text-ink/80"
                     >
                       <span
                         aria-hidden="true"
-                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-[10px] text-gold"
+                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-xs text-gold"
                       >
                         ✓
                       </span>
@@ -244,11 +245,11 @@ export default function ReniaHomeContent() {
                 )}
               </ul>
 
-              <Link href="/contact" className="pill-link mt-8">
+              <Link href="#request-form" className="pill-link mt-8">
                 {page.taxCta} →
               </Link>
 
-              <p className="mt-8 max-w-xl text-xs leading-relaxed text-stone">
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-stone">
                 {page.taxNote}
               </p>
             </div>
@@ -264,7 +265,7 @@ export default function ReniaHomeContent() {
             <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.faqTitle}
             </h2>
-            <Link href="/contact" className="pill-link mt-8">
+            <Link href="#request-form" className="pill-link mt-8">
               {page.heroPrimary} →
             </Link>
           </div>
@@ -275,12 +276,42 @@ export default function ReniaHomeContent() {
         </div>
       </section>
 
+      {/* Dedicated home cleaning request form */}
+      <section
+        id="request-form"
+        className="relative z-10 scroll-mt-20 bg-cream py-24 lg:py-32"
+      >
+        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <p className="eyebrow">
+              {language === "fr" ? "Demander un devis" : "Request a quote"}
+            </p>
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+              {language === "fr"
+                ? "Demandez votre ménage à domicile."
+                : "Request your home clean."}
+            </h2>
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-stone">
+              {language === "fr"
+                ? "Indiquez la prestation et la fréquence souhaitées. Votre demande est enregistrée, puis WhatsApp s'ouvre avec votre message prêt à envoyer."
+                : "Choose the service and frequency you need. Your request is saved, then WhatsApp opens with your message ready to send."}
+            </p>
+          </div>
+
+          <div className="lg:col-span-8">
+            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10">
+              <HomeForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <CtaBand
         eyebrow={page.ctaEyebrow}
         title={page.ctaTitle}
         text={page.ctaText}
         primaryLabel={page.cta}
-        primaryHref="/contact"
+        primaryHref="#request-form"
         secondaryLabel={t.footer.contact}
         secondaryHref="/contact"
       />

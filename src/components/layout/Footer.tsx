@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-12">
           
           {/* Logo, Tagline & Contact (Always visible) */}
-          <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
             <Link href="/" aria-label="Renia — home" className="inline-flex">
               <Image
                 src="/images/logo.png.png"
@@ -41,12 +41,12 @@ export default function Footer() {
               {t.footer.tagline}
             </p>
 
-            <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-gold">
+            <p className="mt-6 text-xs uppercase tracking-[0.22em] text-gold">
               {t.footer.areaLabel} — {t.footer.area}
             </p>
 
             {/* Contact info moved here so it's visible on mobile */}
-            <div className="mt-6 space-y-2 text-sm">
+            <div className="mt-6 space-y-2 text-base">
               <a href={`tel:${CONTACT_PHONE}`} className="block transition-colors hover:text-gold">
                 {CONTACT_PHONE_DISPLAY}
               </a>
@@ -57,11 +57,11 @@ export default function Footer() {
           </div>
 
           {/* Services Links (HIDDEN ON MOBILE) */}
-          <div className="hidden md:block md:col-span-2">
-            <p className="text-[10px] uppercase tracking-[0.24em] text-cream/35">
+          <div className="hidden md:block md:col-span-3">
+            <p className="text-xs uppercase tracking-[0.24em] text-cream/35">
               {t.footer.servicesTitle}
             </p>
-            <ul className="mt-5 space-y-3 text-sm">
+            <ul className="mt-5 space-y-3 text-base">
               <li>
                 <Link href="/renia-home" className="transition-colors hover:text-gold">
                   {t.footer.home}
@@ -86,11 +86,11 @@ export default function Footer() {
           </div>
 
           {/* Company Links (HIDDEN ON MOBILE) */}
-          <div className="hidden md:block md:col-span-2">
-            <p className="text-[10px] uppercase tracking-[0.24em] text-cream/35">
+          <div className="hidden md:block md:col-span-3">
+            <p className="text-xs uppercase tracking-[0.24em] text-cream/35">
               {t.footer.companyTitle}
             </p>
-            <ul className="mt-5 space-y-3 text-sm">
+            <ul className="mt-5 space-y-3 text-base">
               <li>
                 <Link href="/about" className="transition-colors hover:text-gold">
                   {t.footer.about}
@@ -120,11 +120,11 @@ export default function Footer() {
           </div>
 
           {/* Contact Links (HIDDEN ON MOBILE - moved to top for mobile) */}
-          <div className="hidden md:block md:col-span-3">
-            <p className="text-[10px] uppercase tracking-[0.24em] text-cream/35">
+          <div className="hidden md:block md:col-span-2">
+            <p className="text-xs uppercase tracking-[0.24em] text-cream/35">
               {t.footer.contactTitle}
             </p>
-            <ul className="mt-5 space-y-3 text-sm">
+            <ul className="mt-5 space-y-3 text-base">
               <li className="text-cream/50">{t.footer.hours}</li>
               <li className="text-cream/50">{t.footer.area}</li>
             </ul>
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col gap-4 rounded-2xl bg-cream/5 px-6 py-5 text-[10px] uppercase tracking-[0.18em] text-cream/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 rounded-2xl bg-cream/5 px-6 py-5 text-xs uppercase tracking-[0.18em] text-cream/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} Renia. {t.footer.rights}
           </p>

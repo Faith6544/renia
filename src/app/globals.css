@@ -14,8 +14,8 @@
   --color-line: #dcd9d2;
 
   /* UPDATED FONTS HERE */
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
 }
 
 /* ... (Keep the rest of your globals.css exactly the same) ... */
@@ -24,12 +24,28 @@
     scroll-behavior: smooth;
   }
 
+  html,
+  body {
+    /* Prevent accidental horizontal scrolling on narrow screens. */
+    overflow-x: hidden;
+  }
+
   body {
     background-color: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Long emails / URLs must never push the layout sideways. */
+    overflow-wrap: break-word;
+  }
+
+  /* Comfortable minimum tap target for every button. */
+  button {
+    min-height: 2.5rem;
   }
 
   h1,
@@ -60,15 +76,15 @@
   }
 
   .eyebrow {
-    @apply text-[10px] font-medium uppercase tracking-[0.26em] text-stone sm:text-[11px];
+    @apply text-xs font-medium uppercase tracking-[0.26em] text-stone sm:text-sm;
   }
 
   .field-label {
-    @apply mb-2.5 block text-[10px] uppercase tracking-[0.22em] text-stone;
+    @apply mb-2.5 block text-xs uppercase tracking-[0.22em] text-stone sm:text-sm;
   }
 
   .field-input {
-    @apply w-full appearance-none rounded-xl border border-line/70 bg-white/80 px-4 py-3.5 text-[15px] text-ink shadow-[0_4px_16px_rgb(0,0,0,0.02)] transition-all duration-300 placeholder:text-stone/50 hover:border-line focus:border-forest/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold/15;
+    @apply w-full appearance-none rounded-xl border border-line/70 bg-white/80 px-4 py-3.5 text-base text-ink shadow-[0_4px_16px_rgb(0,0,0,0.02)] transition-all duration-300 placeholder:text-stone/50 hover:border-line focus:border-forest/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold/15;
   }
 
   .field-input:focus-visible {
@@ -76,7 +92,7 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-300 sm:text-[11px];
+    @apply inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 sm:text-sm;
   }
 
   .btn-gold {
@@ -92,11 +108,11 @@
   }
 
   .pill-link {
-    @apply inline-flex items-center gap-2 rounded-full border border-forest/10 bg-white/70 px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-forest shadow-[0_8px_24px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-lg sm:text-[11px];
+    @apply inline-flex items-center gap-2 rounded-full border border-forest/10 bg-white/70 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-forest shadow-[0_8px_24px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-lg sm:text-sm;
   }
 
   .pill-link-dark {
-    @apply inline-flex items-center gap-2 rounded-full border border-cream/15 bg-cream/5 px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/50 hover:bg-cream/10 hover:text-cream hover:shadow-lg sm:text-[11px];
+    @apply inline-flex items-center gap-2 rounded-full border border-cream/15 bg-cream/5 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-gold shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/50 hover:bg-cream/10 hover:text-cream hover:shadow-lg sm:text-sm;
   }
 
   .card-soft {
@@ -143,108 +159,24 @@
     animation: none;
   }
 }
-/* MOBILE CLICK FIX */
-@media (max-width: 1024px) {
-  /* Ensure links and buttons are always clickable */
-  a, button, input, select, textarea {
-    position: relative;
-    z-index: 20;
-    cursor: pointer;
-  }
-  
-  /* Remove any weird mobile tap highlights */
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-/* Ensure form buttons are clickable on mobile */
-form {
-  position: relative;
-  z-index: 50;
-}
-
-form button {
-  position: relative;
-  z-index: 50;
-  touch-action: manipulation; /* Fixes weird mobile tap delays */
-}
-/* FIX FOR MOBILE TAPPING ISSUES */
-@media (max-width: 1024px) {
-  /* Force links and buttons to be above any invisible layers */
-  a, button, input, select, textarea {
-    position: relative;
-    z-index: 50 !important;
-    cursor: pointer;
-    touch-action: manipulation; /* Removes the 300ms tap delay on mobile */
-  }
-
-  /* Remove the blue/grey highlight box when tapping on mobile */
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-}
 /* ==========================================
    MOBILE TOUCH & CLICK FIXES
    ========================================== */
 @media (max-width: 1024px) {
-  /* Removes the 300ms tap delay on mobile */
-  a, button, input, select, textarea {
+  a,
+  button,
+  input,
+  select,
+  textarea {
     touch-action: manipulation;
     cursor: pointer;
   }
 
-  /* Removes the ugly grey highlight box when tapping on mobile */
   * {
     -webkit-tap-highlight-color: transparent;
   }
 }
 
-/* Force overlays to NEVER block touches */
 .pointer-events-none {
   pointer-events: none !important;
-}
-/* Force mobile taps to register instantly */
-button, a, input, select, textarea {
-  touch-action: manipulation;
-}
-/* =========================================
-   GLOBAL MOBILE FIX - DO NOT REMOVE
-   This ensures all links and buttons are 
-   always clickable on mobile phones.
-   ========================================= */
-
-@media (max-width: 1024px) {
-  /* 1. Remove the 300ms tap delay on mobile */
-  a, button, input, select, textarea {
-    touch-action: manipulation;
-  }
-
-  /* 2. Force links and buttons to sit on top of invisible layers */
-  a, button {
-    position: relative;
-    z-index: 999 !important; 
-    cursor: pointer;
-  }
-
-  /* 3. Ensure form inputs are clickable */
-  input, textarea, select {
-    position: relative;
-    z-index: 998 !important;
-  }
-
-  /* 4. Remove the ugly grey highlight box when tapping */
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* 5. Fix the mobile menu so it covers the screen properly */
-  .mobile-menu-panel {
-    position: fixed !important;
-    top: 80px !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    z-index: 9999 !important;
-    background-color: #0f3a20 !important;
-  }
 }

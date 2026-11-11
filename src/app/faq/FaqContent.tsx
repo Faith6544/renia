@@ -26,13 +26,13 @@ export default function FaqContent() {
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <aside className="lg:col-span-4">
             <div className="rounded-3xl bg-forest p-8 text-cream shadow-[0_16px_45px_rgba(15,58,32,0.18)] sm:p-10">
-              <p className="text-[10px] uppercase tracking-[0.26em] text-gold">
+              <p className="text-xs uppercase tracking-[0.26em] text-gold">
                 {page.eyebrow}
               </p>
               <h2 className="mt-5 font-serif text-3xl leading-tight tracking-[-0.01em] sm:text-4xl">
                 {page.stillTitle}
               </h2>
-              <p className="mt-5 text-sm leading-relaxed text-cream/70">
+              <p className="mt-5 text-base leading-relaxed text-cream/70">
                 {page.stillText}
               </p>
               <Link href="/contact" className="btn btn-gold mt-8 w-full">
@@ -42,7 +42,7 @@ export default function FaqContent() {
 
             <div className="mt-6 rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <p className="eyebrow">{t.nav.book}</p>
-              <p className="mt-4 text-sm leading-relaxed text-stone">
+              <p className="mt-4 text-base leading-relaxed text-stone">
                 {t.booking.intro}
               </p>
               <Link href="/book" className="pill-link mt-6">

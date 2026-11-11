@@ -84,7 +84,7 @@ export default function QuoteForm() {
             {t.form.successTitle}
             {submittedName ? `, ${submittedName}` : ""}.
           </h3>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-stone">
+          <p className="mt-5 max-w-sm text-base leading-relaxed text-stone">
             {t.form.successBody}
           </p>
         </div>
@@ -215,7 +215,7 @@ export default function QuoteForm() {
           {errorMessage ? (
             <p
               role="alert"
-              className="rounded-xl bg-[#8a2f2a]/10 px-4 py-3 text-sm leading-relaxed text-[#8a2f2a]"
+              className="rounded-xl bg-[#8a2f2a]/10 px-4 py-3 text-base leading-relaxed text-[#8a2f2a]"
             >
               {errorMessage}
             </p>
@@ -224,13 +224,13 @@ export default function QuoteForm() {
 
         {process.env.NODE_ENV === "development" &&
         !isSupabaseConfigured() ? (
-          <p className="rounded-xl bg-gold/10 px-4 py-3 text-[11px] leading-relaxed text-stone">
+          <p className="rounded-xl bg-gold/10 px-4 py-3 text-base leading-relaxed text-stone">
             {t.form.setup}
           </p>
         ) : null}
 
         <div className="flex flex-col gap-6 pt-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-[260px] text-[11px] leading-relaxed text-stone">
+          <p className="max-w-[260px] text-base leading-relaxed text-stone">
             {t.form.consent}
           </p>
           <button

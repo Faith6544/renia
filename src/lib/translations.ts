@@ -386,7 +386,7 @@ const en = {
     formEyebrow: "Send a message",
     formTitle: "Tell us about your project.",
     formIntro:
-      "Fill in the form and send it directly to our WhatsApp. Nothing is sent until you confirm the message in WhatsApp.",
+      "Fill in the form and send us your message. We reply within one business day.",
     form: {
       name: "Name",
       namePlaceholder: "Your full name",
@@ -400,11 +400,11 @@ const en = {
       messagePlaceholder:
         "Tell us about your space, its size and how often you would like us to visit.",
       required: "Required fields",
-      submit: "Send via WhatsApp",
+      submit: "Send Message",
       submitHint:
-        "Your message opens in WhatsApp. You can review it before sending.",
+        "Your message is saved and sent to our team. We only use your details to reply to you.",
       opened:
-        "WhatsApp has been opened in a new tab. You can review and send your message there.",
+        "Thank you. We have received your message and will reply within one business day.",
     },
   },
 
@@ -972,7 +972,7 @@ const fr: typeof en = {
     formEyebrow: "Envoyer un message",
     formTitle: "Parlez-nous de votre projet.",
     formIntro:
-      "Remplissez le formulaire et envoyez-le directement sur notre WhatsApp. Rien n'est envoyé tant que vous n'avez pas confirmé le message dans WhatsApp.",
+      "Remplissez le formulaire et envoyez-nous votre message. Nous répondons sous un jour ouvré.",
     form: {
       name: "Nom",
       namePlaceholder: "Votre nom complet",
@@ -986,11 +986,11 @@ const fr: typeof en = {
       messagePlaceholder:
         "Parlez-nous de votre espace, de sa surface et de la fréquence de vos visites souhaitées.",
       required: "Champs obligatoires",
-      submit: "Envoyer sur WhatsApp",
+      submit: "Envoyer le message",
       submitHint:
-        "Votre message s'ouvre dans WhatsApp. Vous pouvez le relire avant de l'envoyer.",
+        "Votre message est enregistré et transmis à notre équipe. Vos coordonnées servent uniquement à vous répondre.",
       opened:
-        "WhatsApp a été ouvert dans un nouvel onglet. Vous pouvez y relire et envoyer votre message.",
+        "Merci. Nous avons bien reçu votre message et vous répondrons sous un jour ouvré.",
     },
   },
 
