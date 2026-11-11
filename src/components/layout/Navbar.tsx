@@ -186,13 +186,13 @@ export default function Navbar() {
           id="mobile-menu"
           className="fixed inset-x-0 top-20 z-[60] h-[calc(100dvh-5rem)] overflow-y-auto bg-forest xl:hidden"
         >
-          <nav className="flex min-h-full flex-col gap-2 px-6 pb-20 pt-8">
+          <nav className="flex min-h-full flex-col gap-1 px-6 pb-12 pt-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`rounded-xl px-4 py-4 text-base uppercase tracking-[0.22em] transition-colors duration-300 ${
+                className={`rounded-xl px-4 py-3 text-[13px] uppercase tracking-[0.22em] transition-colors duration-300 ${
                   isActive(link.href)
                     ? "bg-cream/10 text-gold"
                     : "text-cream/90 hover:bg-cream/5 hover:text-cream"
@@ -201,18 +201,18 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="mt-6 grid gap-4 border-t border-cream/10 pt-6">
+            <div className="mt-4 grid gap-3 border-t border-cream/10 pt-4">
               <Link
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
-                className="btn btn-outline w-full py-4 text-center"
+                className="btn btn-outline w-full py-3 text-center"
               >
                 {t.nav?.quote || "Get a quote"}
               </Link>
               <Link
                 href="/book"
                 onClick={() => setMenuOpen(false)}
-                className="btn btn-gold w-full py-4 text-center"
+                className="btn btn-gold w-full py-3 text-center"
               >
                 {t.nav?.book || "Book a service"}
               </Link>

@@ -95,7 +95,7 @@ function ServiceArea({
         </span>
       </Link>
       <div className="relative z-10 px-4 pb-5 pt-6 sm:px-5">
-        <h3 className="font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-3xl">{title}</h3>
+        <h3 className="font-serif text-xl leading-tight tracking-[-0.01em] sm:text-3xl">{title}</h3>
         <p className="mt-3 max-w-md text-base leading-relaxed text-stone">{text}</p>
         <Link href={href} className="pill-link mt-6">{button}</Link>
       </div>
@@ -151,15 +151,15 @@ export default function HomePage() {
         <Image src="/images/hero.jpg.png" alt="" fill priority unoptimized sizes="100vw" className="object-cover object-center" />
         <div className="pointer-events-none absolute inset-0 bg-forest/80" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/35 to-forest/10" />
-        <div className="shell relative z-20 pb-28 pt-40 sm:pb-32 lg:pb-36">
+        <div className="shell relative z-20 pb-16 pt-32 sm:pb-32 lg:pb-36">
           <p className="animate-rise text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">RENIA · YVELINES 78</p>
-          <h1 className="animate-rise mt-8 max-w-5xl text-balance font-serif text-[clamp(2.4rem,5.2vw,5.25rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
+          <h1 className="animate-rise mt-5 max-w-5xl text-balance font-serif text-[clamp(2rem,5.2vw,5.25rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
             {t.HeroTitle || "Your trusted partner."}
           </h1>
-          <p className="animate-rise mt-8 max-w-2xl text-base leading-relaxed text-cream/75 [animation-delay:180ms] sm:text-lg">
+          <p className="animate-rise mt-5 max-w-2xl text-base leading-relaxed text-cream/75 [animation-delay:180ms] sm:text-lg">
             {t.HeroText || "Professional cleaning services."}
           </p>
-          <div className="animate-rise mt-10 flex flex-col gap-4 [animation-delay:260ms] sm:flex-row sm:items-center sm:gap-5">
+          <div className="animate-rise mt-8 flex flex-col gap-4 [animation-delay:260ms] sm:flex-row sm:items-center sm:gap-5">
             <Link href="/contact" className="btn btn-gold z-30 relative">{t.HeroButtonPrimary || "Get a free quote"}</Link>
             <Link href="/book" className="btn btn-outline z-30 relative">{t.HeroButtonSecondary || "Book a service"}</Link>
           </div>
@@ -174,11 +174,11 @@ export default function HomePage() {
       </section>
 
       {/* You are */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-16 sm:py-24">
         <div className="shell">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
             <div className="lg:col-span-3">
-              <p className="font-serif text-3xl italic leading-tight text-forest sm:text-4xl">{t.YouAre || "You are:"}</p>
+              <p className="font-serif text-2xl italic leading-tight text-forest sm:text-4xl">{t.YouAre || "You are:"}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-9">
               <Link href="/renia-home" className="group relative z-20 flex min-h-[112px] items-center justify-between gap-6 rounded-2xl bg-white px-7 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:bg-forest hover:text-cream hover:shadow-xl sm:px-8">
@@ -201,11 +201,11 @@ export default function HomePage() {
       </section>
 
       {/* Two areas */}
-      <section id="areas" className="scroll-mt-20 bg-cream py-24 lg:py-32">
+      <section id="areas" className="scroll-mt-20 bg-cream py-16 lg:py-32">
         <div className="shell">
           <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <h2 className="max-w-3xl text-balance font-serif text-[clamp(2.4rem,4.6vw,4.2rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.AreasTitle || "Our Expertise"}</h2>
+              <h2 className="max-w-3xl text-balance font-serif text-[clamp(2rem,4.6vw,4.2rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.AreasTitle || "Our Expertise"}</h2>
             </div>
             <div className="lg:col-span-5 lg:flex lg:items-end">
               <p className="max-w-md text-base leading-relaxed text-stone sm:text-base">{t.AreasSubtitle || "Choose the right service."}</p>
@@ -219,7 +219,7 @@ export default function HomePage() {
       </section>
 
       {/* SAP */}
-      <section id="sap" className="bg-cream pb-24 lg:pb-32">
+      <section id="sap" className="bg-cream pb-16 lg:pb-32">
         <div className="shell">
           <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">
@@ -227,7 +227,7 @@ export default function HomePage() {
               <p className="mt-4 text-xs uppercase tracking-[0.24em] text-stone">SAP</p>
             </div>
             <div className="lg:col-span-8">
-              <h2 className="max-w-2xl text-balance font-serif text-3xl leading-[1.08] tracking-[-0.01em] sm:text-4xl lg:text-[2.8rem]">{t.SAPTitle || "Tax Credit"}</h2>
+              <h2 className="max-w-2xl text-balance font-serif text-2xl leading-[1.08] tracking-[-0.01em] sm:text-4xl lg:text-[2.8rem]">{t.SAPTitle || "Tax Credit"}</h2>
               <ul className="mt-7 space-y-4 rounded-2xl bg-white/70 p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                 <li className="flex items-start gap-3 text-base leading-relaxed text-ink/80 sm:text-base"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-xs text-gold">✓</span>{t.SAPBullet1 || "50% tax credit"}</li>
                 <li className="flex items-start gap-3 text-base leading-relaxed text-ink/80 sm:text-base"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-xs text-gold">✓</span>{t.SAPBullet2 || "Immediate advance"}</li>
@@ -240,12 +240,12 @@ export default function HomePage() {
       </section>
 
       {/* Why choose */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <p className="eyebrow">RENIA</p>
-              <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.4rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.WhyTitle || "Why choose us"}</h2>
+              <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.WhyTitle || "Why choose us"}</h2>
             </div>
             <div className="lg:col-span-8">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -265,12 +265,12 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <p className="eyebrow">{homeHow.eyebrow}</p>
-              <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.4rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{homeHow.title}</h2>
+              <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{homeHow.title}</h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-stone sm:text-base">{homeHow.intro}</p>
               <Link href="/how-it-works" className="pill-link mt-8">{homeHow.cta} →</Link>
             </div>
@@ -282,7 +282,7 @@ export default function HomePage() {
                       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 font-serif text-lg leading-none text-forest transition-colors duration-300 group-hover:bg-gold group-hover:text-forest">{String(index + 1).padStart(2, "0")}</span>
                       <span className="text-xs uppercase tracking-[0.2em] text-stone/50">{String(index + 1).padStart(2, "0")} / 04</span>
                     </div>
-                    <h3 className="mt-6 font-serif text-2xl leading-tight tracking-[-0.01em]">{step.title}</h3>
+                    <h3 className="mt-6 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">{step.title}</h3>
                     <p className="mt-3 text-base leading-relaxed text-stone">{step.body}</p>
                   </li>
                 ))}
@@ -293,12 +293,12 @@ export default function HomePage() {
       </section>
 
       {/* Reviews */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <p className="eyebrow">{reviews.eyebrow}</p>
-              <h2 className="mt-5 text-balance font-serif text-[clamp(2.4rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{reviews.title}</h2>
+              <h2 className="mt-5 text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{reviews.title}</h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-stone sm:text-base">{reviews.intro}</p>
             </div>
             <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer" className="pill-link shrink-0">
@@ -325,11 +325,11 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Preview */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{t.faqPage?.eyebrow || "FAQ"}</p>
-            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.4rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.faqPage?.title || "Questions"}</h2>
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.faqPage?.title || "Questions"}</h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-stone sm:text-base">{t.faqPage?.intro || "Find answers."}</p>
             <Link href="/faq" className="pill-link mt-8">{t.faqPage?.seeAll || "See all"} →</Link>
           </div>
@@ -340,12 +340,12 @@ export default function HomePage() {
       </section>
 
       {/* Footer CTA */}
-      <section id="quote" className="scroll-mt-20 bg-cream pb-24 lg:pb-32">
+      <section id="quote" className="scroll-mt-20 bg-cream pb-16 lg:pb-32">
         <div className="shell">
           <div className="flex flex-col gap-12 rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 md:flex-row md:items-end md:justify-between lg:p-16">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">RENIA · YVELINES 78</p>
-              <h2 className="mt-6 max-w-2xl text-balance font-serif text-[clamp(2.5rem,4.6vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.footer?.tagline || "Let's work together."}</h2>
+              <h2 className="mt-6 max-w-2xl text-balance font-serif text-[clamp(2rem,4.6vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.footer?.tagline || "Let's work together."}</h2>
             </div>
             <div className="flex shrink-0 flex-col items-start gap-5 md:items-end">
               <Link href="/contact" className="btn btn-gold z-20 relative">{t.nav?.quote || "Get a quote"}</Link>

@@ -111,11 +111,11 @@ export default function ContactContent() {
       />
 
       {/* Contact details */}
-      <section id="whatsapp" className="scroll-mt-20 bg-cream py-24 lg:py-32">
+      <section id="whatsapp" className="scroll-mt-20 bg-cream py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="eyebrow">{page.detailsEyebrow}</p>
-            <h2 className="mt-5 max-w-md text-balance font-serif text-[clamp(2.2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-md text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.detailsTitle}
             </h2>
             <p className="mt-7 max-w-md text-base leading-relaxed text-stone sm:text-base">
@@ -198,7 +198,7 @@ export default function ContactContent() {
       </section>
 
       {/* Map & social */}
-      <section className="bg-cream pb-24 lg:pb-32">
+      <section className="bg-cream pb-16 lg:pb-32">
         <div className="shell grid gap-6 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <div className="relative flex min-h-[360px] flex-col items-center justify-center overflow-hidden rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:min-h-[420px] sm:p-12">
@@ -264,12 +264,12 @@ export default function ContactContent() {
       {/* Contact form */}
       <section
         id="contact-form"
-        className="relative z-10 scroll-mt-20 bg-white py-24 lg:py-32"
+        className="relative z-10 scroll-mt-20 bg-white py-16 lg:py-32"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{page.formEyebrow}</p>
-            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.formTitle}
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-stone">

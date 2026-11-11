@@ -22,14 +22,14 @@ export default function FaqContent() {
         secondary={{ label: t.nav.book, href: "/book" }}
       />
 
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <aside className="lg:col-span-4">
             <div className="rounded-3xl bg-forest p-8 text-cream shadow-[0_16px_45px_rgba(15,58,32,0.18)] sm:p-10">
               <p className="text-xs uppercase tracking-[0.26em] text-gold">
                 {page.eyebrow}
               </p>
-              <h2 className="mt-5 font-serif text-3xl leading-tight tracking-[-0.01em] sm:text-4xl">
+              <h2 className="mt-5 font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-4xl">
                 {page.stillTitle}
               </h2>
               <p className="mt-5 text-base leading-relaxed text-cream/70">

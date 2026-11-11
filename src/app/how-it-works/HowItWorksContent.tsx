@@ -23,7 +23,7 @@ export default function HowItWorksContent() {
       />
 
       {/* Step by step */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.processEyebrow}
@@ -47,7 +47,7 @@ export default function HowItWorksContent() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <h3 className="relative mt-7 font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-3xl">
+                <h3 className="relative mt-7 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-3xl">
                   {step.title}
                 </h3>
                 <p className="relative mt-4 max-w-lg text-base leading-relaxed text-stone sm:text-[17px]">
@@ -63,7 +63,7 @@ export default function HowItWorksContent() {
       </section>
 
       {/* What happens next */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.includedEyebrow}
@@ -79,7 +79,7 @@ export default function HowItWorksContent() {
                 <span className="font-serif text-3xl leading-none text-gold">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-6 font-serif text-2xl leading-tight tracking-[-0.01em]">
+                <h3 className="mt-6 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-stone">

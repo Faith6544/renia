@@ -27,7 +27,7 @@ export default function AboutContent() {
       />
 
       {/* Mission */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{about.missionEyebrow}</p>
@@ -46,7 +46,7 @@ export default function AboutContent() {
       </section>
 
       {/* Values */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={about.valuesEyebrow}
@@ -76,11 +76,11 @@ export default function AboutContent() {
       </section>
 
       {/* Our story */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="eyebrow">{about.storyEyebrow}</p>
-            <h2 className="mt-5 max-w-md text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-md text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {about.storyTitle}
             </h2>
 

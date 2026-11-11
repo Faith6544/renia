@@ -118,7 +118,7 @@ export default function ReniaHomeContent() {
       />
 
       {/* Room by room */}
-      <section id="included" className="scroll-mt-20 bg-cream py-24 lg:py-32">
+      <section id="included" className="scroll-mt-20 bg-cream py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.includedEyebrow}
@@ -141,7 +141,7 @@ export default function ReniaHomeContent() {
                   </span>
                 </div>
 
-                <h3 className="mt-7 font-serif text-2xl leading-tight tracking-[-0.01em]">
+                <h3 className="mt-7 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
                   {room.title}
                 </h3>
                 <p className="mt-3 max-w-sm text-base leading-relaxed text-stone">
@@ -154,7 +154,7 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* Deep clean & ironing */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.extrasEyebrow}
@@ -167,7 +167,7 @@ export default function ReniaHomeContent() {
                 <span className="text-gold">
                   <SparkleIcon />
                 </span>
-                <h3 className="mt-8 font-serif text-3xl leading-tight tracking-[-0.01em] sm:text-4xl">
+                <h3 className="mt-8 font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-4xl">
                   {page.deepTitle}
                 </h3>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-cream/70 sm:text-base">
@@ -185,7 +185,7 @@ export default function ReniaHomeContent() {
                 <span className="text-forest">
                   <IronIcon />
                 </span>
-                <h3 className="mt-8 font-serif text-3xl leading-tight tracking-[-0.01em] text-forest sm:text-4xl">
+                <h3 className="mt-8 font-serif text-2xl leading-tight tracking-[-0.01em] text-forest sm:text-4xl">
                   {page.ironTitle}
                 </h3>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-stone sm:text-base">
@@ -202,7 +202,7 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* Tax credit */}
-      <section id="tax-credit" className="scroll-mt-20 bg-cream py-24 lg:py-32">
+      <section id="tax-credit" className="scroll-mt-20 bg-cream py-16 lg:py-32">
         <div className="shell">
           <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">
@@ -218,7 +218,7 @@ export default function ReniaHomeContent() {
             </div>
 
             <div className="lg:col-span-8">
-              <h2 className="max-w-2xl text-balance font-serif text-3xl leading-[1.08] tracking-[-0.01em] sm:text-4xl lg:text-[2.8rem]">
+              <h2 className="max-w-2xl text-balance font-serif text-2xl leading-[1.08] tracking-[-0.01em] sm:text-4xl lg:text-[2.8rem]">
                 {page.taxTitle}
               </h2>
 
@@ -258,11 +258,11 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{page.faqEyebrow}</p>
-            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.faqTitle}
             </h2>
             <Link href="#request-form" className="pill-link mt-8">
@@ -279,14 +279,14 @@ export default function ReniaHomeContent() {
       {/* Dedicated home cleaning request form */}
       <section
         id="request-form"
-        className="relative z-10 scroll-mt-20 bg-cream py-24 lg:py-32"
+        className="relative z-10 scroll-mt-20 bg-cream py-16 lg:py-32"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">
               {language === "fr" ? "Demander un devis" : "Request a quote"}
             </p>
-            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {language === "fr"
                 ? "Demandez votre ménage à domicile."
                 : "Request your home clean."}

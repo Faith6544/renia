@@ -13,7 +13,7 @@ export default function SectionHeading({
     <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
       <div className="lg:col-span-7">
         <p className="eyebrow">{eyebrow}</p>
-        <h2 className="mt-5 max-w-3xl text-balance font-serif text-[clamp(2.2rem,4.4vw,4rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+        <h2 className="mt-5 max-w-3xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-normal leading-[1.04] tracking-[-0.02em]">
           {title}
         </h2>
       </div>

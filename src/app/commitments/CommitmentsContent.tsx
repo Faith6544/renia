@@ -21,7 +21,7 @@ export default function CommitmentsContent() {
       />
 
       {/* Commitments list */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.itemsEyebrow}
@@ -38,7 +38,7 @@ export default function CommitmentsContent() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <h3 className="font-serif text-2xl leading-tight tracking-[-0.01em] sm:col-span-4">
+                <h3 className="font-serif text-xl leading-tight tracking-[-0.01em] sm:col-span-4 sm:text-2xl">
                   {item.title}
                 </h3>
 
@@ -52,7 +52,7 @@ export default function CommitmentsContent() {
       </section>
 
       {/* Pledge */}
-      <section className="bg-cream pb-24 lg:pb-32">
+      <section className="bg-cream pb-16 lg:pb-32">
         <div className="shell">
           <div className="grid gap-10 rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">

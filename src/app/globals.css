@@ -34,13 +34,21 @@
     background-color: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 1.05rem;
-    line-height: 1.7;
+    /* Mobile-first density: ~1px smaller base text on phones. */
+    font-size: 0.95rem;
+    line-height: 1.6;
     letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     /* Long emails / URLs must never push the layout sideways. */
     overflow-wrap: break-word;
+  }
+
+  /* Desktop keeps the comfortable 16px base size. */
+  @media (min-width: 1024px) {
+    body {
+      font-size: 1rem;
+    }
   }
 
   /* Comfortable minimum tap target for every button. */

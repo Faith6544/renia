@@ -43,11 +43,11 @@ export default function BookContent() {
       />
 
       {/* Booking form */}
-      <section className="relative z-10 bg-cream py-24 lg:py-32">
+      <section className="relative z-10 bg-cream py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{page.formEyebrow}</p>
-            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.formTitle}
             </h2>
 
@@ -91,7 +91,7 @@ export default function BookContent() {
       </section>
 
       {/* What happens after */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.eyebrow}
@@ -108,7 +108,7 @@ export default function BookContent() {
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 font-serif text-lg leading-none text-forest">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-6 font-serif text-2xl leading-tight tracking-[-0.01em]">
+                <h3 className="mt-6 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-stone">

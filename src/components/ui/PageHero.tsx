@@ -37,21 +37,21 @@ export default function PageHero({
       <div className="pointer-events-none absolute inset-0 bg-forest/80" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-forest/10" />
 
-      <div className="shell relative z-10 w-full pb-28 pt-40 sm:pb-32 lg:pb-36">
+      <div className="shell relative z-10 w-full pb-16 pt-32 sm:pb-32 lg:pb-36">
         <p className="animate-rise text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
           {eyebrow}
         </p>
 
-        <h1 className="animate-rise mt-8 max-w-5xl text-balance font-serif text-[clamp(2.4rem,5.2vw,5.25rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
+        <h1 className="animate-rise mt-5 max-w-5xl text-balance font-serif text-[clamp(2rem,5.2vw,5.25rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
           {title}
         </h1>
 
-        <p className="animate-rise mt-8 max-w-2xl text-base leading-relaxed text-cream/75 [animation-delay:180ms] sm:text-lg">
+        <p className="animate-rise mt-5 max-w-2xl text-base leading-relaxed text-cream/75 [animation-delay:180ms] sm:text-lg">
           {intro}
         </p>
 
         {primary || secondary ? (
-          <div className="animate-rise mt-10 flex flex-col gap-4 [animation-delay:260ms] sm:flex-row sm:items-center sm:gap-5">
+          <div className="animate-rise mt-8 flex flex-col gap-4 [animation-delay:260ms] sm:flex-row sm:items-center sm:gap-5">
             {primary ? (
               <Link href={primary.href} className="btn btn-gold">
                 {primary.label}

@@ -78,7 +78,7 @@ export default function ReniaProContent() {
       />
 
       {/* Sectors */}
-      <section id="sectors" className="scroll-mt-20 bg-cream py-24 lg:py-32">
+      <section id="sectors" className="scroll-mt-20 bg-cream py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.sectorsEyebrow}
@@ -101,7 +101,7 @@ export default function ReniaProContent() {
                   </span>
                 </div>
 
-                <h3 className="mt-8 font-serif text-2xl leading-tight tracking-[-0.01em]">
+                <h3 className="mt-8 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
                   {sector.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-stone">
@@ -114,11 +114,11 @@ export default function ReniaProContent() {
       </section>
 
       {/* Tailor-made solution */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-16 lg:py-32">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="eyebrow">{page.tailorEyebrow}</p>
-            <h2 className="mt-5 max-w-lg text-balance font-serif text-[clamp(2.2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-lg text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {page.tailorTitle}
             </h2>
             <p className="mt-7 max-w-md text-base leading-relaxed text-stone sm:text-base">
@@ -153,7 +153,7 @@ export default function ReniaProContent() {
       </section>
 
       {/* Method */}
-      <section className="bg-cream py-24 lg:py-32">
+      <section className="bg-cream py-16 lg:py-32">
         <div className="shell">
           <SectionHeading
             eyebrow={page.methodEyebrow}
@@ -169,7 +169,7 @@ export default function ReniaProContent() {
                 <span className="font-serif text-4xl leading-none text-gold">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-5 font-serif text-2xl leading-tight tracking-[-0.01em]">
+                <h3 className="mt-5 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-stone">
@@ -182,7 +182,7 @@ export default function ReniaProContent() {
       </section>
 
       {/* Airbnb */}
-      <section className="bg-cream pb-24 lg:pb-32">
+      <section className="bg-cream pb-16 lg:pb-32">
         <div className="shell">
           <div className="relative overflow-hidden rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
             <div
@@ -195,7 +195,7 @@ export default function ReniaProContent() {
                 <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
                   {page.airbnbEyebrow}
                 </p>
-                <h2 className="mt-6 max-w-2xl text-balance font-serif text-[clamp(2.4rem,4.4vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">
+                <h2 className="mt-6 max-w-2xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">
                   {page.airbnbTitle}
                 </h2>
                 <p className="mt-7 max-w-xl text-base leading-relaxed text-cream/70 sm:text-base">
@@ -236,14 +236,14 @@ export default function ReniaProContent() {
       {/* Dedicated pro quote request form */}
       <section
         id="request-form"
-        className="relative z-10 scroll-mt-20 bg-white py-24 lg:py-32"
+        className="relative z-10 scroll-mt-20 bg-white py-16 lg:py-32"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">
               {language === "fr" ? "Demander un devis" : "Request a quote"}
             </p>
-            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
               {language === "fr"
                 ? "Demandez votre devis professionnel."
                 : "Request your pro quote."}
