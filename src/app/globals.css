@@ -170,19 +170,17 @@
 /* ==========================================
    MOBILE TOUCH & CLICK FIXES
    ========================================== */
-@media (max-width: 1024px) {
-  a,
-  button,
-  input,
-  select,
-  textarea {
-    touch-action: manipulation;
-    cursor: pointer;
-  }
+a,
+button,
+input,
+select,
+textarea {
+  touch-action: manipulation !important;
+  cursor: pointer !important;
+}
 
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .pointer-events-none {

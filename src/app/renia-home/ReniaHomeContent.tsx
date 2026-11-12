@@ -279,7 +279,7 @@ export default function ReniaHomeContent() {
       {/* Dedicated home cleaning request form */}
       <section
         id="request-form"
-        className="relative z-10 scroll-mt-20 bg-cream py-16 lg:py-32"
+        className="relative z-50 scroll-mt-20 bg-cream py-16 lg:py-32"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
@@ -299,7 +299,7 @@ export default function ReniaHomeContent() {
           </div>
 
           <div className="lg:col-span-8">
-            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10">
+            <div className="relative z-50 rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] pointer-events-auto sm:p-10">
               <HomeForm />
             </div>
           </div>

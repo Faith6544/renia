@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
 import {
@@ -39,8 +39,7 @@ export default function QuoteForm() {
     setForm((current) => ({ ...current, [field]: value }));
   };
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function handleSubmit() {
     setErrorKind(null);
 
     if (!isSupabaseConfigured()) {
@@ -104,7 +103,7 @@ export default function QuoteForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="min-w-0">
+    <div className="relative z-50 min-w-0 pointer-events-auto">
       <fieldset
         disabled={status === "loading"}
         className="min-w-0 space-y-7 disabled:opacity-60"
@@ -234,7 +233,8 @@ export default function QuoteForm() {
             {t.form.consent}
           </p>
           <button
-            type="submit"
+            type="button"
+            onClick={handleSubmit}
             className="btn btn-dark group disabled:cursor-not-allowed disabled:opacity-70"
           >
             {status === "loading" ? t.form.sending : t.form.submit}
@@ -247,6 +247,6 @@ export default function QuoteForm() {
           </button>
         </div>
       </fieldset>
-    </form>
+    </div>
   );
 }

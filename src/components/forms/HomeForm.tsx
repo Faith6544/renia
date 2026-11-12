@@ -181,7 +181,7 @@ export default function HomeForm() {
   };
 
   return (
-    <div className="relative z-10 min-w-0 pointer-events-auto">
+    <div className="relative z-50 min-w-0 pointer-events-auto">
       <div className="grid gap-7 sm:grid-cols-2 sm:gap-8">
         <div>
           <label htmlFor="home-name" className="field-label">

@@ -163,7 +163,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="relative z-10 rounded-2xl bg-white/70 p-8 text-center sm:p-12">
+      <div className="relative z-50 rounded-2xl bg-white/70 p-8 text-center pointer-events-auto sm:p-12">
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-forest text-cream">
           <svg
             viewBox="0 0 24 24"
@@ -196,7 +196,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="relative z-10 min-w-0">
+    <div className="relative z-50 min-w-0 pointer-events-auto">
       <div className="grid gap-7 sm:grid-cols-2 sm:gap-8">
         <div>
           <label htmlFor="contact-name" className="field-label">

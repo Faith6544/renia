@@ -9,7 +9,10 @@ import {
   buildWhatsAppUrl,
   CONTACT_EMAIL,
   CONTACT_PHONE,
+  CONTACT_PHONE_DISPLAY,
   SOCIAL_LINKS,
+  WEBSITE_DISPLAY,
+  WEBSITE_URL,
 } from "@/lib/site";
 
 function WhatsAppIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -88,9 +91,65 @@ function MapPinIcon() {
   );
 }
 
+function QrPlaceholder({ label, note }: { label: string; note: string }) {
+  const modules: Array<[number, number]> = [
+    [36, 10], [44, 10], [52, 10], [60, 10],
+    [36, 18], [52, 18], [44, 26], [60, 26],
+    [36, 34], [52, 34], [68, 36], [76, 36], [84, 36],
+    [68, 44], [84, 44], [68, 52], [76, 52], [84, 52],
+    [10, 36], [18, 36], [26, 36], [10, 44], [26, 44],
+    [10, 52], [18, 52], [26, 52], [36, 60], [44, 60],
+    [52, 60], [68, 60], [76, 60], [84, 60], [36, 68],
+    [52, 68], [36, 76], [44, 76], [60, 76], [68, 76],
+    [76, 76], [84, 76], [68, 84], [84, 84], [52, 84], [36, 84],
+  ];
+
+  return (
+    <div className="inline-flex flex-col items-center rounded-2xl bg-cream p-4 text-center shadow-[0_16px_45px_rgba(0,0,0,0.22)]">
+      <svg
+        viewBox="0 0 100 100"
+        role="img"
+        aria-label={note}
+        className="h-28 w-28 sm:h-32 sm:w-32"
+      >
+        <rect width="100" height="100" rx="8" fill="#ffffff" />
+        {[
+          [8, 8],
+          [72, 8],
+          [8, 72],
+        ].map(([x, y]) => (
+          <g key={`${x}-${y}`}>
+            <rect x={x} y={y} width="20" height="20" rx="3" fill="#0f3a20" />
+            <rect x={x + 4} y={y + 4} width="12" height="12" rx="2" fill="#ffffff" />
+            <rect x={x + 7} y={y + 7} width="6" height="6" rx="1" fill="#0f3a20" />
+          </g>
+        ))}
+        {modules.map(([x, y]) => (
+          <rect
+            key={`${x}-${y}`}
+            x={x}
+            y={y}
+            width="6"
+            height="6"
+            rx="1"
+            fill="#0f3a20"
+          />
+        ))}
+      </svg>
+      <p className="mt-3 max-w-[11rem] text-[10px] uppercase leading-relaxed tracking-[0.14em] text-forest/60">
+        {note}
+      </p>
+      <p className="mt-1 max-w-[11rem] text-[10px] leading-snug text-stone">
+        {label}
+      </p>
+    </div>
+  );
+}
+
 export default function ContactContent() {
   const { t } = useLanguage();
   const page = t.contact;
+  const card = t.contactCard;
   const whatsappHref = buildWhatsAppUrl(page.whatsappPrefill);
 
   return (
@@ -197,6 +256,95 @@ export default function ContactContent() {
         </div>
       </section>
 
+      {/* Flyer 2 — Let's stay in touch */}
+      <section className="bg-cream pb-16 lg:pb-32">
+        <div className="shell">
+          <div className="relative overflow-hidden rounded-3xl bg-forest-deep p-8 text-cream shadow-[0_24px_70px_rgba(8,35,20,0.28)] sm:p-12 lg:p-16">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_15%,rgba(197,160,89,0.16),transparent_55%)]"
+            />
+
+            <div className="relative grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+              <div className="lg:col-span-7">
+                <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
+                  {card.eyebrow}
+                </p>
+                <h2 className="mt-5 max-w-xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">
+                  {card.title}
+                </h2>
+
+                <dl className="mt-10 space-y-6">
+                  <div>
+                    <dt className="text-[11px] uppercase tracking-[0.24em] text-cream/45">
+                      {card.phoneLabel}
+                    </dt>
+                    <dd className="mt-2">
+                      <a
+                        href={`tel:${CONTACT_PHONE}`}
+                        className="inline-flex items-center gap-3 font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
+                      >
+                        {CONTACT_PHONE_DISPLAY}
+                      </a>
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="text-[11px] uppercase tracking-[0.24em] text-cream/45">
+                      {card.emailLabel}
+                    </dt>
+                    <dd className="mt-2">
+                      <a
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        className="inline-flex items-center gap-3 break-all font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
+                      >
+                        {CONTACT_EMAIL}
+                      </a>
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="text-[11px] uppercase tracking-[0.24em] text-cream/45">
+                      {card.websiteLabel}
+                    </dt>
+                    <dd className="mt-2">
+                      <a
+                        href={WEBSITE_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-3 font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
+                      >
+                        {WEBSITE_DISPLAY}
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+
+                <p className="mt-10 text-xs uppercase tracking-[0.24em] text-cream/35">
+                  {card.signature}
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center gap-6 lg:col-span-5 lg:items-end">
+                <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] text-gold">
+                  <span
+                    aria-hidden="true"
+                    className="h-2 w-2 animate-pulse rounded-full bg-gold"
+                  />
+                  {card.badge}
+                </span>
+
+                <QrPlaceholder label={card.qrLabel} note={card.qrPlaceholder} />
+
+                <p className="max-w-xs text-center font-serif text-2xl italic leading-snug text-cream/85 lg:text-right">
+                  {card.tagline}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Map & social */}
       <section className="bg-cream pb-16 lg:pb-32">
         <div className="shell grid gap-6 lg:grid-cols-12">
@@ -264,7 +412,7 @@ export default function ContactContent() {
       {/* Contact form */}
       <section
         id="contact-form"
-        className="relative z-10 scroll-mt-20 bg-white py-16 lg:py-32"
+        className="relative z-50 scroll-mt-20 bg-white py-16 lg:py-32"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
@@ -292,8 +440,8 @@ export default function ContactContent() {
             </div>
           </div>
 
-          <div className="relative z-10 lg:col-span-8">
-            <div className="rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-10">
+          <div className="relative z-50 lg:col-span-8 pointer-events-auto">
+            <div className="relative z-50 rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] pointer-events-auto sm:p-10">
               <ContactForm />
             </div>
           </div>

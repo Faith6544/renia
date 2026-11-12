@@ -45,6 +45,31 @@ export default function AboutContent() {
         </div>
       </section>
 
+      {/* Vision */}
+      <section className="bg-cream pb-16 lg:pb-32">
+        <div className="shell">
+          <div className="relative overflow-hidden rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_15%,rgba(197,160,89,0.18),transparent_55%)]"
+            />
+            <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-16">
+              <div className="lg:col-span-4">
+                <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
+                  {about.visionEyebrow}
+                </p>
+                <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em]">
+                  {about.visionTitle}
+                </h2>
+              </div>
+              <p className="max-w-2xl text-base leading-relaxed text-cream/75 sm:text-lg lg:col-span-8">
+                {about.visionBody}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="bg-white py-16 lg:py-32">
         <div className="shell">
@@ -104,7 +129,7 @@ export default function AboutContent() {
                   {about.storyNote}
                 </p>
                 <p className="mt-8 max-w-xl font-serif text-2xl leading-relaxed tracking-[-0.01em] sm:text-[1.75rem]">
-                  {about.storyPlaceholder}
+                  {about.storyBody}
                 </p>
               </div>
 

@@ -43,24 +43,24 @@ const en = {
 
   whyPillars: [
     {
-      title: "Professional Team",
-      body: "Trained, declared and insured professionals who take pride in every detail.",
+      title: "Eco-friendly products",
+      body: "Eco-friendly products available as an option on request, with measured use of water and products.",
     },
     {
-      title: "Transparent Pricing",
-      body: "Clear, itemised quotes with no surprises, agreed before the first visit.",
+      title: "Professionalism and reliability",
+      body: "Organised, supervised teams and the same standard on every visit.",
     },
     {
-      title: "Reliable Service",
-      body: "Organised teams, dependable schedules and the same standard on every visit.",
+      title: "Personalised service",
+      body: "Services adapted to your needs, your space and your priorities.",
     },
     {
-      title: "Customer Satisfaction",
-      body: "A named contact, careful follow-up and a service adjusted to your feedback.",
+      title: "Flexibility",
+      body: "Solutions adapted to your pace and your constraints.",
     },
     {
-      title: "Eco-conscious Practices",
-      body: "Measured use of water and products, with eco-friendly options on request.",
+      title: "Proximity",
+      body: "A local company, close to its customers across the Yvelines.",
     },
   ],
   homeHow: {
@@ -96,7 +96,7 @@ const en = {
     googleLabel: "Google Reviews",
     googleValue: "5.0",
     googleNote:
-      "Placeholder reviews. Connect your Google Business profile to display live reviews.",
+      "Read our latest reviews and share your experience on Google.",
     items: [
       {
         name: "Claire M.",
@@ -303,11 +303,15 @@ const en = {
         body: "Measured use of water and products, with eco-friendly options available on request.",
       },
     ],
+    visionEyebrow: "Our vision",
+    visionTitle: "Healthy, serene spaces for everyone.",
+    visionBody:
+      "We imagine a service where quality, respect and proximity go hand in hand: carefully maintained homes and workplaces, teams who are proud of their work, and clients who can focus on what matters to them. A local, human-scale company that grows without ever losing its standards.",
     storyEyebrow: "Our story",
     storyTitle: "A story written with care.",
-    storyPlaceholder:
-      "Our story is currently being written. This space is reserved for the journey, the people and the moments that shaped RENIA SERVICES. In the meantime, we would be delighted to meet you.",
-    storyNote: "Notre histoire — coming soon.",
+    storyBody:
+      "RENIA SERVICES was born from a simple observation: a well-cared-for space changes the way we live and work. We created RENIA HOME for families who want to come home to calm, and RENIA PRO for businesses that need reliable, discreet upkeep. From the first visit to the regular follow-ups, we build a relationship based on trust, precision and respect for your space.",
+    storyNote: "RENIA SERVICES · Yvelines 78",
     ctaEyebrow: "Let's meet",
     ctaTitle: "Let's talk about your space.",
     ctaText:
@@ -379,7 +383,7 @@ const en = {
     mapTitle: "Serving the Yvelines (78)",
     mapText:
       "We work close to home, across the Yvelines and surrounding areas. Share your postcode and we will confirm your address is within our service area.",
-    mapPlaceholder: "Google Maps Integration",
+    mapPlaceholder: "Yvelines & surrounding areas",
     socialTitle: "Follow RENIA",
     socialText:
       "News, before-and-after photos and practical advice for a calmer, cleaner space.",
@@ -523,7 +527,7 @@ const en = {
         body: "Daily, weekly or occasional upkeep of workspaces, meeting rooms, kitchens and communal areas.",
       },
       {
-        title: "Medical and legal practices",
+        title: "Medical practices",
         body: "Careful, discreet cleaning adapted to the standards and confidentiality of your practice.",
       },
       {
@@ -535,7 +539,7 @@ const en = {
         body: "Reliable support for common areas, end-of-tenancy cleaning and the properties you manage.",
       },
       {
-        title: "Airbnb & short-term rentals",
+        title: "Airbnb",
         body: "Fast, meticulous turnarounds between guests, with linen, amenities and presentation checked.",
       },
       {
@@ -584,6 +588,76 @@ const en = {
       "Tell us about your activity, surface area and frequency. We will come back to you with a tailored proposal.",
     cta: "Request a quote",
   },
+
+  showcase: {
+    eyebrow: "Two houses, one standard",
+    title: "Care for your home and your business.",
+    intro:
+      "RENIA HOME looks after private homes, RENIA PRO supports businesses. The same attention to detail, whatever the space.",
+    homeTitle: "RENIA HOME",
+    homeSubtitle: "Personal services",
+    homeImageAlt: "A bright, clean living room",
+    homeServicesTitle: "Home services",
+    homeServices: [
+      "Regular cleaning",
+      "Deep clean",
+      "Ironing",
+      "50% tax credit",
+    ],
+    homeCta: "Discover RENIA HOME",
+    centerEyebrow: "Our promise",
+    centerTitle: "Care, in every detail.",
+    centerText:
+      "A trained, supervised team that treats your space as if it were their own.",
+    centerImageAlt: "The Renia team",
+    centerCta: "Meet the team",
+    engagements: [
+      {
+        title: "Eco-friendly",
+        body: "Measured products and water use.",
+      },
+      {
+        title: "Quality",
+        body: "A clear checklist on every visit.",
+      },
+      {
+        title: "Trained team",
+        body: "Declared, insured professionals.",
+      },
+      {
+        title: "Flexibility",
+        body: "Schedules built around you.",
+      },
+    ],
+    proTitle: "RENIA PRO",
+    proSubtitle: "Commercial cleaning",
+    proImageAlt: "A clean, professional office",
+    proSectorsTitle: "Pro sectors",
+    proSectors: [
+      "Offices",
+      "Medical practices",
+      "Shops",
+      "Property managers",
+      "Airbnb",
+      "Other",
+    ],
+    proCta: "Discover RENIA PRO",
+  },
+
+  contactCard: {
+    eyebrow: "Renia Services",
+    title: "Let's stay in touch",
+    phoneLabel: "Phone",
+    emailLabel: "Email",
+    websiteLabel: "Website",
+    website: "reniaservices.fr",
+    qrLabel: "Scan the QR code to save our details.",
+    qrPlaceholder: "QR code coming soon",
+    badge: "Launching in January 2027",
+    tagline: "Healthy, serene spaces…",
+    signature: "RENIA · Yvelines 78",
+    cta: "Contact us",
+  },
 };
 
 const fr: typeof en = {
@@ -629,24 +703,24 @@ const fr: typeof en = {
 
   whyPillars: [
     {
-      title: "Équipe professionnelle",
-      body: "Des professionnels formés, déclarés et assurés, attentifs au moindre détail.",
+      title: "Produits écologiques",
+      body: "Des produits écologiques disponibles en option sur demande, avec un usage mesuré de l'eau et des produits.",
     },
     {
-      title: "Tarifs transparents",
-      body: "Des devis clairs et détaillés, sans surprise, validés avant la première visite.",
+      title: "Professionnalisme et fiabilité",
+      body: "Des équipes organisées et encadrées, avec la même exigence à chaque visite.",
     },
     {
-      title: "Service fiable",
-      body: "Des équipes organisées, des horaires tenus et la même exigence à chaque visite.",
+      title: "Service personnalisé",
+      body: "Des prestations adaptées à vos besoins, à votre espace et à vos priorités.",
     },
     {
-      title: "Satisfaction client",
-      body: "Un interlocuteur dédié, un suivi attentif et une prestation ajustée à vos retours.",
+      title: "Flexibilité",
+      body: "Des solutions adaptées à votre rythme et à vos contraintes.",
     },
     {
-      title: "Démarche écologique",
-      body: "Un usage mesuré de l'eau et des produits, avec des options écologiques sur demande.",
+      title: "Proximité",
+      body: "Une entreprise locale, proche de ses clients dans les Yvelines.",
     },
   ],
   homeHow: {
@@ -682,7 +756,7 @@ const fr: typeof en = {
     googleLabel: "Avis Google",
     googleValue: "5,0",
     googleNote:
-      "Avis de démonstration. Connectez votre fiche Google Business pour afficher les avis en direct.",
+      "Retrouvez nos derniers avis et partagez votre expérience sur Google.",
     items: [
       {
         name: "Claire M.",
@@ -889,11 +963,15 @@ const fr: typeof en = {
         body: "Un usage mesuré de l'eau et des produits, avec des solutions écologiques disponibles sur demande.",
       },
     ],
+    visionEyebrow: "Notre vision",
+    visionTitle: "Des espaces sains et sereins pour tous.",
+    visionBody:
+      "Nous imaginons un service où la qualité, le respect et la proximité vont de pair : des maisons et des locaux entretenus avec soin, des équipes fières de leur travail et des clients libres de se concentrer sur l'essentiel. Une entreprise locale et à taille humaine, qui grandit sans jamais perdre son exigence.",
     storyEyebrow: "Notre histoire",
     storyTitle: "Une histoire écrite avec soin.",
-    storyPlaceholder:
-      "Notre histoire s'écrit actuellement. Cet espace est réservé au parcours, aux personnes et aux moments qui ont façonné RENIA SERVICES. En attendant, nous serions ravis de vous rencontrer.",
-    storyNote: "Notre histoire — bientôt disponible.",
+    storyBody:
+      "RENIA SERVICES est née d'un constat simple : un espace bien entretenu change la façon dont on vit et dont on travaille. Nous avons créé RENIA HOME pour les familles qui souhaitent rentrer dans un intérieur serein, et RENIA PRO pour les professionnels qui ont besoin d'un entretien fiable et discret. De la première visite aux suivis réguliers, nous construisons une relation fondée sur la confiance, la précision et le respect de votre espace.",
+    storyNote: "RENIA SERVICES · Yvelines 78",
     ctaEyebrow: "Faisons connaissance",
     ctaTitle: "Parlons de votre espace.",
     ctaText:
@@ -914,7 +992,7 @@ const fr: typeof en = {
         body: "Nous privilégions un usage mesuré de l'eau et des produits de nettoyage, et proposons des produits écologiques sur demande. Notre objectif : un espace propre sans impact inutile.",
       },
       {
-        title: "Humain",
+        title: "Personnes",
         body: "Nos équipes sont formées, accompagnées et respectées. Nous construisons des relations durables avec les personnes qui travaillent avec nous et pour nous.",
       },
       {
@@ -965,7 +1043,7 @@ const fr: typeof en = {
     mapTitle: "Au service des Yvelines (78)",
     mapText:
       "Nous travaillons près de chez vous, dans les Yvelines et les environs. Indiquez votre code postal et nous confirmerons que votre adresse fait partie de notre zone d'intervention.",
-    mapPlaceholder: "Intégration Google Maps",
+    mapPlaceholder: "Yvelines et alentours",
     socialTitle: "Suivez RENIA",
     socialText:
       "Actualités, photos avant/après et conseils pratiques pour un espace plus serein et plus propre.",
@@ -1023,8 +1101,8 @@ const fr: typeof en = {
         body: "Dépoussiérage, mobilier, appareils électroniques essuyés avec soin, sols aspirés et lavés.",
       },
       {
-        title: "Entrée",
-        body: "Portes, poignées, interrupteurs, sol du hall, miroirs et zones les plus touchées.",
+        title: "Entrée et couloirs",
+        body: "Portes, poignées, interrupteurs, sols du hall et des couloirs, miroirs et zones les plus touchées.",
       },
       {
         title: "Poubelles",
@@ -1109,7 +1187,7 @@ const fr: typeof en = {
         body: "Entretien quotidien, hebdomadaire ou ponctuel des espaces de travail, salles de réunion, cuisines et parties communes.",
       },
       {
-        title: "Cabinets médicaux et juridiques",
+        title: "Cabinets médicaux",
         body: "Un nettoyage soigné et discret, adapté aux exigences et à la confidentialité de votre cabinet.",
       },
       {
@@ -1121,7 +1199,7 @@ const fr: typeof en = {
         body: "Un accompagnement fiable pour les parties communes, les états des lieux de sortie et les biens que vous gérez.",
       },
       {
-        title: "Airbnb & locations courte durée",
+        title: "Airbnb",
         body: "Des remises en état rapides et minutieuses entre deux voyageurs, avec vérification du linge, des équipements et de la présentation.",
       },
       {
@@ -1169,6 +1247,76 @@ const fr: typeof en = {
     ctaText:
       "Parlez-nous de votre activité, de vos surfaces et de votre fréquence. Nous reviendrons vers vous avec une proposition sur mesure.",
     cta: "Demander un devis",
+  },
+
+  showcase: {
+    eyebrow: "Deux maisons, une même exigence",
+    title: "Le soin de votre maison et de votre entreprise.",
+    intro:
+      "RENIA HOME s'occupe des particuliers, RENIA PRO accompagne les professionnels. La même attention au détail, quel que soit l'espace.",
+    homeTitle: "RENIA HOME",
+    homeSubtitle: "Services à la personne",
+    homeImageAlt: "Un séjour lumineux et propre",
+    homeServicesTitle: "Prestations maison",
+    homeServices: [
+      "Ménage régulier",
+      "Grand nettoyage",
+      "Repassage",
+      "Crédit d'impôt 50 %",
+    ],
+    homeCta: "Découvrir RENIA HOME",
+    centerEyebrow: "Notre promesse",
+    centerTitle: "Le soin, dans chaque détail.",
+    centerText:
+      "Une équipe formée et encadrée qui prend soin de votre espace comme du sien.",
+    centerImageAlt: "L'équipe Renia",
+    centerCta: "Rencontrer l'équipe",
+    engagements: [
+      {
+        title: "Éco-responsable",
+        body: "Produits et eau utilisés avec mesure.",
+      },
+      {
+        title: "Qualité",
+        body: "Une checklist claire à chaque visite.",
+      },
+      {
+        title: "Équipe formée",
+        body: "Des professionnels déclarés et assurés.",
+      },
+      {
+        title: "Flexibilité",
+        body: "Des horaires adaptés à votre rythme.",
+      },
+    ],
+    proTitle: "RENIA PRO",
+    proSubtitle: "Nettoyage professionnel",
+    proImageAlt: "Un bureau propre et professionnel",
+    proSectorsTitle: "Secteurs pro",
+    proSectors: [
+      "Bureaux",
+      "Cabinets médicaux",
+      "Commerces",
+      "Syndics",
+      "Airbnb",
+      "Autres",
+    ],
+    proCta: "Découvrir RENIA PRO",
+  },
+
+  contactCard: {
+    eyebrow: "Renia Services",
+    title: "Restons en contact",
+    phoneLabel: "Téléphone",
+    emailLabel: "Email",
+    websiteLabel: "Site web",
+    website: "reniaservices.fr",
+    qrLabel: "Scannez le QR code pour enregistrer nos coordonnées.",
+    qrPlaceholder: "QR code bientôt disponible",
+    badge: "Lancement en janvier 2027",
+    tagline: "Des espaces sains, sereins…",
+    signature: "RENIA · Yvelines 78",
+    cta: "Nous contacter",
   },
 };
 

@@ -85,7 +85,7 @@ const en = {
       "Your request is with us. We will review the details and reply within one business day.",
     successAgain: "Send another request",
     errorGeneric:
-      "Something went wrong while sending your request. Please try again or email hello@renia.co.",
+      "Something went wrong while sending your request. Please try again or email contact@reniaservices.fr.",
     setup:
       "The quote form is not connected yet. Add your Supabase credentials to .env.local and restart the server.",
   },
@@ -108,6 +108,10 @@ const en = {
     hours: "Monday – Saturday · 8am – 6pm",
     rights: "All rights reserved.",
     signature: "Residential & Commercial Cleaning",
+    legalTitle: "Legal",
+    legalNotice: "Legal notice",
+    privacy: "Privacy policy",
+    terms: "Terms of sale",
   },
 };
 
@@ -196,7 +200,7 @@ const fr: typeof en = {
       "Votre demande nous est bien parvenue. Nous en étudierons les détails et vous répondrons sous un jour ouvré.",
     successAgain: "Envoyer une autre demande",
     errorGeneric:
-      "Une erreur est survenue lors de l'envoi de votre demande. Veuillez réessayer ou écrire à hello@renia.co.",
+      "Une erreur est survenue lors de l'envoi de votre demande. Veuillez réessayer ou écrire à contact@reniaservices.fr.",
     setup:
       "Le formulaire de devis n'est pas encore connecté. Ajoutez vos identifiants Supabase dans .env.local puis redémarrez le serveur.",
   },
@@ -219,6 +223,10 @@ const fr: typeof en = {
     hours: "Lundi – Samedi · 8h – 18h",
     rights: "Tous droits réservés.",
     signature: "Nettoyage résidentiel & commercial",
+    legalTitle: "Informations légales",
+    legalNotice: "Mentions légales",
+    privacy: "Politique de confidentialité",
+    terms: "CGV",
   },
 };
 

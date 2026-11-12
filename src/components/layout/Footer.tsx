@@ -132,11 +132,37 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col gap-4 rounded-2xl bg-cream/5 px-6 py-5 text-xs uppercase tracking-[0.18em] text-cream/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} Renia. {t.footer.rights}
-          </p>
-          <p>{t.footer.signature}</p>
+        <div className="mt-12 rounded-2xl bg-cream/5 px-6 py-5 text-xs uppercase tracking-[0.18em] text-cream/40">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {year} Renia. {t.footer.rights}
+            </p>
+            <p>{t.footer.signature}</p>
+          </div>
+
+          <nav
+            aria-label={t.footer.legalTitle}
+            className="mt-4 flex flex-wrap gap-x-6 gap-y-2 border-t border-cream/10 pt-4"
+          >
+            <Link
+              href="/mentions-legales"
+              className="transition-colors hover:text-gold"
+            >
+              {t.footer.legalNotice}
+            </Link>
+            <Link
+              href="/politique-de-confidentialite"
+              className="transition-colors hover:text-gold"
+            >
+              {t.footer.privacy}
+            </Link>
+            <Link
+              href="/cgv"
+              className="transition-colors hover:text-gold"
+            >
+              {t.footer.terms}
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

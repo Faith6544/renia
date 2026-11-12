@@ -94,7 +94,7 @@ export default function BookingForm() {
   }
 
   return (
-    <div className="relative z-10 min-w-0 pointer-events-auto">
+    <div className="relative z-50 min-w-0 pointer-events-auto">
       <div>
         <label htmlFor="booking-service" className="field-label">
           {page.serviceLabel} <span className="text-stone/50">*</span>

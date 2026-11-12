@@ -58,6 +58,73 @@ function WhyIcon({ index }: { index: number }) {
   }
 }
 
+function EngagementIcon({ index }: { index: number }) {
+  const common = {
+    className: "h-4 w-4",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.6,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+
+  switch (index) {
+    case 0:
+      return (
+        <svg {...common}>
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+        </svg>
+      );
+    case 1:
+      return (
+        <svg {...common}>
+          <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z" />
+        </svg>
+      );
+    case 2:
+      return (
+        <svg {...common}>
+          <circle cx="9" cy="8" r="3.2" />
+          <path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5.5a3 3 0 0 1 0 5.8M18 14.5a5.5 5.5 0 0 1 3.5 5" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </svg>
+      );
+  }
+}
+
+function EngagementBadge({
+  index,
+  title,
+  body,
+}: {
+  index: number;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="flex max-w-[6.5rem] flex-col items-center text-center sm:max-w-[7.5rem]">
+      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/15 text-gold ring-1 ring-gold/30">
+        <EngagementIcon index={index} />
+      </span>
+      <span className="mt-2 block text-[10px] font-medium uppercase leading-tight tracking-[0.1em] text-cream/90 sm:text-[11px] sm:tracking-[0.12em]">
+        {title}
+      </span>
+      <span className="mt-1 hidden text-[10px] leading-snug text-cream/50 sm:block">
+        {body}
+      </span>
+    </div>
+  );
+}
+
 function ServiceArea({
   href,
   image,
@@ -105,6 +172,7 @@ function ServiceArea({
 
 export default function HomePage() {
   const { t } = useLanguage();
+  const showcase = t.showcase;
 
   const faqPreview = t.faqPage?.items?.slice(0, 3) || [
     { question: "What is SAP?", answer: "Personal services at home." },
@@ -214,6 +282,165 @@ export default function HomePage() {
           <div className="mt-14 grid gap-10 md:grid-cols-2 lg:gap-14">
             <ServiceArea href="/renia-home" image="/images/home-cleaning.jpg.png" title={t.HomeTitle || "RENIA HOME"} text={t.HomeText || "Home cleaning"} button={t.HomeButton || "Discover"} />
             <ServiceArea href="/renia-pro" image="/images/pro-cleaning.jpg.png" title={t.ProTitle || "RENIA PRO"} text={t.ProText || "Commercial cleaning"} button={t.ProButton || "Discover"} />
+          </div>
+        </div>
+      </section>
+
+      {/* Flyer 1 — RENIA HOME / team / RENIA PRO */}
+      <section id="showcase" className="scroll-mt-20 bg-white py-16 lg:py-32">
+        <div className="shell">
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
+            <div className="lg:col-span-7">
+              <p className="eyebrow">{showcase.eyebrow}</p>
+              <h2 className="mt-5 max-w-2xl text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">
+                {showcase.title}
+              </h2>
+            </div>
+            <p className="max-w-md text-base leading-relaxed text-stone lg:col-span-5">
+              {showcase.intro}
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-3 lg:items-stretch lg:gap-8">
+            {/* Left — RENIA HOME */}
+            <article className="flex h-full flex-col rounded-3xl bg-cream p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8">
+              <p className="text-xs uppercase tracking-[0.26em] text-gold">
+                {showcase.homeSubtitle}
+              </p>
+              <h3 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.01em]">
+                {showcase.homeTitle}
+              </h3>
+
+              <div className="relative mt-6 aspect-[4/3] overflow-hidden rounded-2xl bg-forest">
+                <Image
+                  src="/images/home-cleaning.jpg.png"
+                  alt={showcase.homeImageAlt}
+                  fill
+                  unoptimized
+                  sizes="(min-width: 1024px) 30vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-forest/10" />
+              </div>
+
+              <p className="mt-7 text-xs uppercase tracking-[0.22em] text-stone">
+                {showcase.homeServicesTitle}
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                {showcase.homeServices.map((service) => (
+                  <li
+                    key={service}
+                    className="flex items-center gap-3 text-base leading-relaxed text-ink/80"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gold/50 text-[10px] text-gold"
+                    >
+                      ✓
+                    </span>
+                    {service}
+                  </li>
+                ))}
+              </ul>
+
+              <Link href="/renia-home" className="pill-link mt-8 self-start">
+                {showcase.homeCta} →
+              </Link>
+            </article>
+
+            {/* Center — team & engagements */}
+            <article className="flex h-full flex-col items-center justify-between rounded-3xl bg-forest p-6 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-8">
+              <div className="text-center">
+                <p className="text-xs uppercase tracking-[0.26em] text-gold">
+                  {showcase.centerEyebrow}
+                </p>
+                <h3 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.01em]">
+                  {showcase.centerTitle}
+                </h3>
+                <p className="mx-auto mt-3 max-w-xs text-base leading-relaxed text-cream/70">
+                  {showcase.centerText}
+                </p>
+              </div>
+
+              <div className="my-8 grid w-full max-w-sm grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4">
+                <div className="justify-self-start">
+                  <EngagementBadge index={0} {...showcase.engagements[0]} />
+                </div>
+                <div aria-hidden="true" />
+                <div className="justify-self-end">
+                  <EngagementBadge index={1} {...showcase.engagements[1]} />
+                </div>
+
+                <div aria-hidden="true" />
+                <div className="relative aspect-square w-32 overflow-hidden rounded-full border-4 border-gold/30 shadow-[0_16px_45px_rgba(0,0,0,0.28)] sm:w-40 lg:w-36 xl:w-44">
+                  <Image
+                    src="/images/hero.jpg.png"
+                    alt={showcase.centerImageAlt}
+                    fill
+                    unoptimized
+                    sizes="(min-width: 1024px) 20vw, 40vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div aria-hidden="true" />
+
+                <div className="justify-self-start">
+                  <EngagementBadge index={2} {...showcase.engagements[2]} />
+                </div>
+                <div aria-hidden="true" />
+                <div className="justify-self-end">
+                  <EngagementBadge index={3} {...showcase.engagements[3]} />
+                </div>
+              </div>
+
+              <Link href="/about" className="pill-link-dark self-center">
+                {showcase.centerCta} →
+              </Link>
+            </article>
+
+            {/* Right — RENIA PRO */}
+            <article className="flex h-full flex-col rounded-3xl bg-cream p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8">
+              <p className="text-xs uppercase tracking-[0.26em] text-gold">
+                {showcase.proSubtitle}
+              </p>
+              <h3 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.01em]">
+                {showcase.proTitle}
+              </h3>
+
+              <div className="relative mt-6 aspect-[4/3] overflow-hidden rounded-2xl bg-forest">
+                <Image
+                  src="/images/pro-cleaning.jpg.png"
+                  alt={showcase.proImageAlt}
+                  fill
+                  unoptimized
+                  sizes="(min-width: 1024px) 30vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-forest/10" />
+              </div>
+
+              <p className="mt-7 text-xs uppercase tracking-[0.22em] text-stone">
+                {showcase.proSectorsTitle}
+              </p>
+              <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5">
+                {showcase.proSectors.map((sector) => (
+                  <li
+                    key={sector}
+                    className="flex items-center gap-2 text-sm leading-relaxed text-ink/80"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
+                    />
+                    {sector}
+                  </li>
+                ))}
+              </ul>
+
+              <Link href="/renia-pro" className="pill-link mt-8 self-start">
+                {showcase.proCta} →
+              </Link>
+            </article>
           </div>
         </div>
       </section>
