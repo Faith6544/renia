@@ -101,51 +101,6 @@ function EngagementIcon({ index }: { index: number }) {
   }
 }
 
-function ServiceArea({
-  href,
-  image,
-  title,
-  text,
-  button,
-  priority = false,
-}: {
-  href: string;
-  image: string;
-  title: string;
-  text: string;
-  button: string;
-  priority?: boolean;
-}) {
-  return (
-    <article className="card-soft card-lift group overflow-hidden rounded-3xl bg-white p-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <Link
-        href={href}
-        aria-label={title}
-        className="relative z-20 block aspect-[4/3] overflow-hidden rounded-[1.35rem] bg-forest shadow-[0_10px_30px_rgba(15,58,32,0.12)]"
-      >
-        <Image
-          src={image}
-          alt=""
-          fill
-          priority={priority}
-          unoptimized
-          sizes="(min-width: 768px) 50vw, 100vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-forest/10 transition-colors duration-500 group-hover:bg-forest/0" />
-        <span className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-forest/35 text-cream shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-gold group-hover:text-forest">
-          <span aria-hidden="true">→</span>
-        </span>
-      </Link>
-      <div className="relative z-10 px-4 pb-5 pt-6 sm:px-5">
-        <h3 className="font-serif text-xl leading-tight tracking-[-0.01em] sm:text-3xl">{title}</h3>
-        <p className="mt-3 max-w-md text-base leading-relaxed text-stone">{text}</p>
-        <Link href={href} className="pill-link mt-6">{button}</Link>
-      </div>
-    </article>
-  );
-}
-
 export default function HomePage() {
   const { t } = useLanguage();
   const showcase = t.showcase;
@@ -195,9 +150,9 @@ export default function HomePage() {
         <Image src="/images/hero.jpg.png" alt="" fill priority unoptimized sizes="100vw" className="object-cover object-center" />
         <div className="pointer-events-none absolute inset-0 bg-forest/80" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/35 to-forest/10" />
-        <div className="shell relative z-20 pb-16 pt-32 sm:pb-32 lg:pb-36">
+        <div className="shell relative z-20 pb-10 pt-24 sm:pb-24 lg:pb-28">
           <p className="animate-rise text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">RENIA · YVELINES 78</p>
-          <h1 className="animate-rise mt-5 max-w-5xl text-balance font-serif text-[clamp(2rem,5.2vw,5.25rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
+          <h1 className="animate-rise mt-5 max-w-5xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
             {t.HeroTitle || "Your trusted partner."}
           </h1>
           <p className="animate-rise mt-5 max-w-2xl text-base leading-relaxed text-cream/75 [animation-delay:180ms] sm:text-lg">
@@ -218,7 +173,7 @@ export default function HomePage() {
       </section>
 
       {/* You are */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white py-12 sm:py-16">
         <div className="shell">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
             <div className="lg:col-span-3">
@@ -244,31 +199,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Two areas */}
-      <section id="areas" className="scroll-mt-20 bg-cream py-16 lg:py-32">
-        <div className="shell">
-          <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-7">
-              <h2 className="max-w-3xl text-balance font-serif text-[clamp(2rem,4.6vw,4.2rem)] font-normal leading-[1.03] tracking-[-0.02em]">{t.AreasTitle || "Our Expertise"}</h2>
-            </div>
-            <div className="lg:col-span-5 lg:flex lg:items-end">
-              <p className="max-w-md text-base leading-relaxed text-stone sm:text-base">{t.AreasSubtitle || "Choose the right service."}</p>
-            </div>
-          </div>
-          <div className="mt-14 grid gap-10 md:grid-cols-2 lg:gap-14">
-            <ServiceArea href="/renia-home" image="/images/home-cleaning.jpg.png" title={t.HomeTitle || "RENIA HOME"} text={t.HomeText || "Home cleaning"} button={t.HomeButton || "Discover"} />
-            <ServiceArea href="/renia-pro" image="/images/pro-cleaning.jpg.png" title={t.ProTitle || "RENIA PRO"} text={t.ProText || "Commercial cleaning"} button={t.ProButton || "Discover"} />
-          </div>
-        </div>
-      </section>
-
       {/* Flyer 1 — RENIA HOME / team / RENIA PRO */}
-      <section id="showcase" className="scroll-mt-20 bg-white py-16 lg:py-32">
+      <section id="showcase" className="scroll-mt-20 bg-white py-12 lg:py-20">
         <div className="shell">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
             <div className="lg:col-span-7">
               <p className="eyebrow">{showcase.eyebrow}</p>
-              <h2 className="mt-5 max-w-2xl text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.03] tracking-[-0.02em]">
+              <h2 className="mt-5 max-w-2xl text-balance font-serif text-[clamp(2rem,3.6vw,3.2rem)] font-normal leading-[1.03] tracking-[-0.02em]">
                 {showcase.title}
               </h2>
             </div>
@@ -372,26 +309,24 @@ export default function HomePage() {
       </section>
 
       {/* Our Promise */}
-      <section id="promise" className="scroll-mt-20 bg-cream py-16 lg:py-32">
+      <section id="promise" className="scroll-mt-20 bg-cream py-12 lg:py-20">
         <div className="shell">
-          <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
+          <div className="grid gap-8 rounded-3xl bg-bone p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-12">
             <div className="lg:col-span-4">
               <p className="eyebrow">{showcase.centerEyebrow}</p>
               <div className="mt-6 h-px w-16 bg-gold" aria-hidden="true" />
             </div>
 
             <div className="lg:col-span-8">
-              <h2 className="max-w-3xl text-balance font-serif text-[clamp(2.2rem,4.4vw,3.6rem)] font-normal leading-[1.06] tracking-[-0.02em]">
+              <h2 className="max-w-3xl text-balance font-serif text-[clamp(2rem,3.8vw,3rem)] font-normal leading-[1.06] tracking-[-0.02em]">
                 {showcase.centerPromise}
               </h2>
-              <div className="mt-8 max-w-xl rounded-2xl bg-white/60 p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:p-7">
-                <p className="text-base leading-relaxed text-stone sm:text-base">
-                  {showcase.centerText}
-                </p>
-              </div>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-stone">
+                {showcase.centerText}
+              </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line/10 pt-12 lg:col-span-12 lg:mt-16 lg:grid-cols-4 lg:gap-8">
+            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line/10 pt-10 lg:col-span-12 lg:mt-12 lg:grid-cols-4 lg:gap-8">
               {showcase.engagements.map((engagement, index) => (
                 <div
                   key={engagement.title}
@@ -410,7 +345,7 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="mt-8 flex lg:col-span-12">
+            <div className="mt-6 flex lg:col-span-12">
               <Link href="/team" className="btn btn-gold self-start">
                 {showcase.centerCta}
                 <span aria-hidden="true">→</span>
@@ -421,11 +356,11 @@ export default function HomePage() {
       </section>
 
       {/* SAP */}
-      <section id="sap" className="bg-cream pb-16 lg:pb-32">
+      <section id="sap" className="bg-cream pb-12 lg:pb-20">
         <div className="shell">
           <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">
-              <p className="font-serif text-[clamp(5rem,9vw,8rem)] leading-[0.85] tracking-[-0.05em] text-forest">50<span className="align-top text-[0.3em] tracking-normal text-gold">%</span></p>
+              <p className="font-serif text-[clamp(4rem,8vw,6rem)] leading-[0.85] tracking-[-0.05em] text-forest">50<span className="align-top text-[0.3em] tracking-normal text-gold">%</span></p>
               <p className="mt-4 text-xs uppercase tracking-[0.24em] text-stone">SAP</p>
             </div>
             <div className="lg:col-span-8">
@@ -442,7 +377,7 @@ export default function HomePage() {
       </section>
 
       {/* Why choose */}
-      <section className="bg-white py-16 lg:py-32">
+      <section className="bg-white py-12 lg:py-20">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -467,7 +402,7 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="bg-cream py-16 lg:py-32">
+      <section className="bg-cream py-12 lg:py-20">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -495,7 +430,7 @@ export default function HomePage() {
       </section>
 
       {/* Reviews */}
-      <section className="bg-white py-16 lg:py-32">
+      <section className="bg-white py-12 lg:py-20">
         <div className="shell">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -527,7 +462,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Preview */}
-      <section className="bg-cream py-16 lg:py-32">
+      <section className="bg-cream py-12 lg:py-20">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{t.faqPage?.eyebrow || "FAQ"}</p>
@@ -542,7 +477,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer CTA */}
-      <section id="quote" className="scroll-mt-20 bg-cream pb-16 lg:pb-32">
+      <section id="quote" className="scroll-mt-20 bg-cream pb-12 lg:pb-20">
         <div className="shell">
           <div className="flex flex-col gap-12 rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 md:flex-row md:items-end md:justify-between lg:p-16">
             <div>

@@ -27,7 +27,7 @@ export default function AboutContent() {
       />
 
       {/* Mission */}
-      <section className="bg-cream py-16 lg:py-32">
+      <section className="bg-cream py-12 lg:py-20">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{about.missionEyebrow}</p>
@@ -46,7 +46,7 @@ export default function AboutContent() {
       </section>
 
       {/* Vision */}
-      <section className="bg-cream pb-16 lg:pb-32">
+      <section className="bg-cream pb-12 lg:pb-20">
         <div className="shell">
           <div className="relative overflow-hidden rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
             <div
@@ -71,7 +71,7 @@ export default function AboutContent() {
       </section>
 
       {/* Values */}
-      <section className="bg-white py-16 lg:py-32">
+      <section className="bg-white py-12 lg:py-20">
         <div className="shell">
           <SectionHeading
             eyebrow={about.valuesEyebrow}
@@ -101,7 +101,7 @@ export default function AboutContent() {
       </section>
 
       {/* Our story */}
-      <section className="bg-cream py-16 lg:py-32">
+      <section className="bg-cream py-12 lg:py-20">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="eyebrow">{about.storyEyebrow}</p>

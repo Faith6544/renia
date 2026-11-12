@@ -37,12 +37,12 @@ export default function PageHero({
       <div className="pointer-events-none absolute inset-0 bg-forest/80" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-forest/10" />
 
-      <div className="shell relative z-10 w-full pb-16 pt-32 sm:pb-32 lg:pb-36">
+      <div className="shell relative z-10 w-full pb-10 pt-24 sm:pb-24 lg:pb-28">
         <p className="animate-rise text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
           {eyebrow}
         </p>
 
-        <h1 className="animate-rise mt-5 max-w-5xl text-balance font-serif text-[clamp(2rem,5.2vw,5.25rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
+        <h1 className="animate-rise mt-5 max-w-5xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
           {title}
         </h1>
 

@@ -118,7 +118,7 @@ export default function ReniaHomeContent() {
       />
 
       {/* Room by room */}
-      <section id="included" className="scroll-mt-20 bg-cream py-16 lg:py-32">
+      <section id="included" className="scroll-mt-20 bg-cream py-12 lg:py-20">
         <div className="shell">
           <SectionHeading
             eyebrow={page.includedEyebrow}
@@ -154,7 +154,7 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* Deep clean & ironing */}
-      <section className="bg-white py-16 lg:py-32">
+      <section className="bg-white py-12 lg:py-20">
         <div className="shell">
           <SectionHeading
             eyebrow={page.extrasEyebrow}
@@ -202,7 +202,7 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* Tax credit */}
-      <section id="tax-credit" className="scroll-mt-20 bg-cream py-16 lg:py-32">
+      <section id="tax-credit" className="scroll-mt-20 bg-cream py-12 lg:py-20">
         <div className="shell">
           <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">
@@ -258,7 +258,7 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-16 lg:py-32">
+      <section className="bg-white py-12 lg:py-20">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{page.faqEyebrow}</p>
@@ -279,7 +279,7 @@ export default function ReniaHomeContent() {
       {/* Dedicated home cleaning request form */}
       <section
         id="request-form"
-        className="relative z-50 scroll-mt-20 bg-cream py-16 lg:py-32"
+        className="relative z-50 scroll-mt-20 bg-cream py-12 lg:py-20"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">

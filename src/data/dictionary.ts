@@ -121,6 +121,7 @@ const en = {
     galleryTitle: "Recent work",
     galleryIntro: "A glimpse of the spaces we care for.",
     galleryCta: "View gallery",
+    gallery: "Our Gallery",
   },
 };
 
@@ -245,6 +246,7 @@ const fr: typeof en = {
     galleryTitle: "Nos réalisations",
     galleryIntro: "Un aperçu des espaces dont nous prenons soin.",
     galleryCta: "Voir la galerie",
+    gallery: "Notre galerie",
   },
 };
 

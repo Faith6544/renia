@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
-import RecentMediaStrip from "@/components/gallery/RecentMediaStrip";
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from "@/lib/site";
 
 const subscribeToNothing = () => () => {};
@@ -74,6 +73,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/gallery" className="transition-colors hover:text-gold">
+                  {t.footer.gallery}
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="transition-colors hover:text-gold">
                   {t.footer.quote}
                 </Link>
@@ -131,28 +135,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
-        {/* Recent work gallery */}
-        <section className="mt-12 border-t border-cream/10 pt-10 lg:mt-16 lg:pt-14">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-gold">
-                {t.footer.galleryTitle}
-              </p>
-              <p className="mt-3 max-w-sm text-base leading-relaxed text-cream/60">
-                {t.footer.galleryIntro}
-              </p>
-            </div>
-            <Link
-              href="/gallery"
-              className="pill-link-dark shrink-0 self-start sm:self-auto"
-            >
-              {t.footer.galleryCta} →
-            </Link>
-          </div>
-
-          <RecentMediaStrip limit={4} className="mt-8" />
-        </section>
 
         {/* Bottom Bar */}
         <div className="mt-12 rounded-2xl bg-cream/5 px-6 py-5 text-xs uppercase tracking-[0.18em] text-cream/40">

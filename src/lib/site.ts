@@ -1,6 +1,6 @@
 export const CONTACT_EMAIL = "contact@reniaservices.fr";
 export const CONTACT_PHONE = "+33614383656";
-export const CONTACT_PHONE_DISPLAY = "06 14 38 36 56";
+export const CONTACT_PHONE_DISPLAY = "+336 14 38 36 56";
 export const WHATSAPP_NUMBER = "33614383656";
 export const WEBSITE_URL = "https://reniaservices.fr";
 export const WEBSITE_DISPLAY = "reniaservices.fr";

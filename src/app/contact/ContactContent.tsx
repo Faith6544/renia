@@ -326,14 +326,6 @@ export default function ContactContent() {
               </div>
 
               <div className="flex flex-col items-center gap-6 lg:col-span-5 lg:items-end">
-                <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] text-gold">
-                  <span
-                    aria-hidden="true"
-                    className="h-2 w-2 animate-pulse rounded-full bg-gold"
-                  />
-                  {card.badge}
-                </span>
-
                 <QrPlaceholder label={card.qrLabel} note={card.qrPlaceholder} />
 
                 <p className="max-w-xs text-center font-serif text-2xl italic leading-snug text-cream/85 lg:text-right">

@@ -78,7 +78,7 @@ export default function ReniaProContent() {
       />
 
       {/* Sectors */}
-      <section id="sectors" className="scroll-mt-20 bg-cream py-16 lg:py-32">
+      <section id="sectors" className="scroll-mt-20 bg-cream py-12 lg:py-20">
         <div className="shell">
           <SectionHeading
             eyebrow={page.sectorsEyebrow}
@@ -114,7 +114,7 @@ export default function ReniaProContent() {
       </section>
 
       {/* Tailor-made solution */}
-      <section className="bg-white py-16 lg:py-32">
+      <section className="bg-white py-12 lg:py-20">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="eyebrow">{page.tailorEyebrow}</p>
@@ -153,7 +153,7 @@ export default function ReniaProContent() {
       </section>
 
       {/* Method */}
-      <section className="bg-cream py-16 lg:py-32">
+      <section className="bg-cream py-12 lg:py-20">
         <div className="shell">
           <SectionHeading
             eyebrow={page.methodEyebrow}
@@ -182,7 +182,7 @@ export default function ReniaProContent() {
       </section>
 
       {/* Airbnb */}
-      <section className="bg-cream pb-16 lg:pb-32">
+      <section className="bg-cream pb-12 lg:pb-20">
         <div className="shell">
           <div className="relative overflow-hidden rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
             <div
@@ -236,7 +236,7 @@ export default function ReniaProContent() {
       {/* Dedicated pro quote request form */}
       <section
         id="request-form"
-        className="relative z-50 scroll-mt-20 bg-white py-16 lg:py-32"
+        className="relative z-50 scroll-mt-20 bg-white py-12 lg:py-20"
       >
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
