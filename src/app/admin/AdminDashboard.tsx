@@ -283,13 +283,26 @@ export default function AdminDashboard() {
 
     try {
       const supabase = getSupabaseBrowserClient();
-      const { error } = await supabase.storage
+
+      // 1) Remove file from Supabase Storage bucket
+      const { error: storageError } = await supabase.storage
         .from(GALLERY_BUCKET)
         .remove([item.path]);
 
-      if (error) throw error;
+      if (storageError) throw storageError;
 
+      // 2) Best-effort: delete record from database media table if present
+      try {
+        await supabase.from("media").delete().eq("path", item.path);
+        await supabase.from("media").delete().eq("storage_path", item.path);
+        await supabase.from("gallery").delete().eq("path", item.path);
+      } catch {
+        // No media table configured; storage deletion is the source of truth.
+      }
+
+      // 3) Refresh list instantly
       setMedia((current) => current.filter((entry) => entry.path !== item.path));
+      await loadMedia();
     } catch (error) {
       console.error("Gallery delete failed:", error);
       setMediaError(true);
@@ -676,9 +689,84 @@ export default function AdminDashboard() {
               <span aria-hidden="true">↑</span>
             </button>
 
-            <p className="mt-5 rounded-xl bg-cream px-4 py-3 text-xs leading-relaxed text-stone/80">
-              {admin.storageSetup}
-            </p>
+            <div className="mt-8 border-t border-line/60 pt-8">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.22em] text-gold">
+                    Manage Gallery
+                  </p>
+                  <h3 className="mt-2 font-serif text-xl leading-tight tracking-[-0.01em]">
+                    {admin.mediaTitle}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => void loadMedia()}
+                  disabled={mediaLoading}
+                  className="pill-link text-xs disabled:opacity-60"
+                >
+                  {admin.refresh}
+                </button>
+              </div>
+
+              {mediaError ? (
+                <p className="mt-4 rounded-xl bg-[#8a2f2a]/10 px-4 py-3 text-sm leading-relaxed text-[#8a2f2a]">
+                  {admin.mediaError}
+                </p>
+              ) : null}
+
+              {!mediaLoading && !mediaError && media.length === 0 ? (
+                <p className="mt-4 text-sm text-stone">{admin.mediaEmpty}</p>
+              ) : null}
+
+              {media.length > 0 ? (
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {media.map((item) => (
+                    <article
+                      key={item.path}
+                      className="overflow-hidden rounded-2xl bg-cream shadow-[0_4px_20px_rgb(0,0,0,0.04)]"
+                    >
+                      <div className="relative aspect-[4/3] bg-forest">
+                        {item.kind === "video" ? (
+                          <video
+                            src={item.url}
+                            muted
+                            playsInline
+                            preload="metadata"
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          /* eslint-disable-next-line @next/next/no-img-element */
+                          <img
+                            src={item.url}
+                            alt={item.name}
+                            loading="lazy"
+                            className="h-full w-full object-cover"
+                          />
+                        )}
+                      </div>
+                      <div className="p-3">
+                        <p className="truncate text-xs text-stone">{item.name}</p>
+                        <button
+                          type="button"
+                          onClick={() => handleDelete(item)}
+                          disabled={deletingPath === item.path}
+                          className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#8a2f2a] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#b03a33] disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M3 6h18" />
+                            <path d="M8 6V4h8v2" />
+                            <path d="M19 6l-1 14H6L5 6" />
+                            <path d="M10 11v6M14 11v6" />
+                          </svg>
+                          {deletingPath === item.path ? admin.deleting : admin.delete}
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </section>
           </div>
         ) : (
@@ -808,7 +896,7 @@ export default function AdminDashboard() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-gold">
-                {admin.mediaEyebrow}
+                Manage Gallery
               </p>
               <h2 className="mt-3 font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-3xl">
                 {admin.mediaTitle}
@@ -881,8 +969,14 @@ export default function AdminDashboard() {
                         type="button"
                         onClick={() => handleDelete(item)}
                         disabled={deletingPath === item.path}
-                        className="text-[10px] uppercase tracking-[0.14em] text-[#8a2f2a] transition-colors hover:text-[#b03a33] disabled:opacity-50"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-[#8a2f2a] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#b03a33] disabled:opacity-50"
                       >
+                        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-none stroke-current" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M3 6h18" />
+                          <path d="M8 6V4h8v2" />
+                          <path d="M19 6l-1 14H6L5 6" />
+                          <path d="M10 11v6M14 11v6" />
+                        </svg>
                         {deletingPath === item.path
                           ? admin.deleting
                           : admin.delete}

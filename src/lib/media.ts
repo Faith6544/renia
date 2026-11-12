@@ -1,7 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export const GALLERY_BUCKET =
-  process.env.NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET?.trim() || "renia-gallery";
+export const GALLERY_BUCKET = "renia-gallery";
 
 export const GALLERY_FOLDER = "gallery";
 export const GALLERY_TEAM_FOLDER = "team";
