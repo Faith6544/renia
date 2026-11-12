@@ -21,22 +21,35 @@ function readRole(metadata: Record<string, unknown> | undefined): string {
   return typeof role === "string" ? role.trim().toLowerCase() : "";
 }
 
+/**
+ * Returns true when the given email is on the admin allowlist.
+ */
+export function isAdminEmail(email: string | null | undefined): boolean {
+  const normalized = email?.trim().toLowerCase();
+  if (!normalized) {
+    return false;
+  }
+
+  return readAdminEmails().includes(normalized);
+}
+
+/**
+ * Returns true for admin accounts: either the Supabase user carries an admin
+ * role in their metadata or their email is on the admin allowlist.
+ */
 export function isAdminUser(user: User | null | undefined): boolean {
   if (!user) {
     return false;
   }
 
-  if (
+  const hasAdminRole =
     ADMIN_ROLES.has(readRole(user.app_metadata)) ||
-    ADMIN_ROLES.has(readRole(user.user_metadata))
-  ) {
+    ADMIN_ROLES.has(readRole(user.user_metadata)) ||
+    user.user_metadata?.is_admin === true;
+
+  if (hasAdminRole) {
     return true;
   }
 
-  if (user.user_metadata?.is_admin === true) {
-    return true;
-  }
-
-  const email = user.email?.trim().toLowerCase();
-  return Boolean(email && readAdminEmails().includes(email));
+  return isAdminEmail(user.email);
 }

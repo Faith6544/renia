@@ -12,7 +12,7 @@ import {
 } from "@/lib/supabase/client";
 
 type AuthMode = "signin" | "signup";
-type OAuthProvider = "google" | "azure" | "apple";
+type OAuthProvider = "google";
 
 function GoogleIcon() {
   return (
@@ -33,6 +33,17 @@ function GoogleIcon() {
         fill="#EA4335"
         d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.63l3.98 3.08C6.22 6.86 8.87 4.75 12 4.75Z"
       />
+    </svg>
+  );
+}
+
+function MicrosoftIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
+      <path fill="#F25022" d="M1 1h10v10H1z" />
+      <path fill="#7FBA00" d="M13 1h10v10H13z" />
+      <path fill="#00A4EF" d="M1 13h10v10H1z" />
+      <path fill="#FFB900" d="M13 13h10v10H13z" />
     </svg>
   );
 }

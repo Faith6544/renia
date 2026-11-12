@@ -348,48 +348,36 @@ export default function HomePage() {
               </Link>
             </article>
 
-            {/* Center — our promise */}
-            <article className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-forest p-6 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-8">
+            {/* Center — team */}
+            <article className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-forest p-6 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-8">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(197,160,89,0.22),transparent_55%)]"
               />
 
-              <div className="relative">
-                <p className="text-xs uppercase tracking-[0.26em] text-gold">
-                  {showcase.centerEyebrow}
-                </p>
-                <h3 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.01em]">
-                  {showcase.centerTitle}
-                </h3>
-                <p className="mt-3 max-w-xs text-base leading-relaxed text-cream/70">
-                  {showcase.centerText}
-                </p>
+              <div className="relative flex h-full w-full flex-col justify-between gap-8">
+                <div className="relative aspect-square w-32 overflow-hidden rounded-full border-4 border-gold/30 shadow-[0_16px_45px_rgba(0,0,0,0.28)] sm:w-40 lg:w-36 xl:w-44">
+                  <Image
+                    src="/images/hero.jpg.png"
+                    alt={showcase.centerImageAlt}
+                    fill
+                    unoptimized
+                    sizes="(min-width: 1024px) 20vw, 40vw"
+                    className="object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-forest/10" />
+                </div>
 
-                <div className="mt-8 border-y border-cream/15 py-7">
-                  <p className="font-serif text-[clamp(1.35rem,1.7vw,1.65rem)] leading-[1.35] tracking-[-0.01em] text-cream/90">
-                    “{showcase.centerPromise}”
-                  </p>
-                  <p className="mt-5 text-[11px] uppercase tracking-[0.24em] text-gold">
-                    RENIA · Yvelines 78
-                  </p>
+                <div className="grid w-full max-w-sm grid-cols-2 gap-x-4 gap-y-6">
+                  {showcase.engagements.map((engagement, index) => (
+                    <EngagementBadge
+                      key={engagement.title}
+                      index={index}
+                      {...engagement}
+                    />
+                  ))}
                 </div>
               </div>
-
-              <div className="relative my-8 grid w-full grid-cols-2 gap-x-4 gap-y-6">
-                {showcase.engagements.map((engagement, index) => (
-                  <EngagementBadge
-                    key={engagement.title}
-                    index={index}
-                    {...engagement}
-                  />
-                ))}
-              </div>
-
-              <Link href="/team" className="pill-link-dark relative self-start">
-                {showcase.centerCta}
-                <span aria-hidden="true">→</span>
-              </Link>
             </article>
 
             {/* Right — RENIA PRO */}
@@ -435,6 +423,36 @@ export default function HomePage() {
                 {showcase.proCta} →
               </Link>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Promise */}
+      <section id="promise" className="scroll-mt-20 bg-cream py-16 lg:py-32">
+        <div className="shell">
+          <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
+            <div className="lg:col-span-4">
+              <p className="eyebrow">{showcase.centerEyebrow}</p>
+              <div className="mt-6 h-px w-16 bg-gold" aria-hidden="true" />
+            </div>
+
+            <div className="lg:col-span-8">
+              <h2 className="max-w-3xl text-balance font-serif text-[clamp(2.2rem,4.4vw,3.6rem)] font-normal leading-[1.06] tracking-[-0.02em]">
+                {showcase.centerPromise}
+              </h2>
+              <div className="mt-8 max-w-xl rounded-2xl bg-white/60 p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:p-7">
+                <p className="text-base leading-relaxed text-stone sm:text-base">
+                  {showcase.centerText}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex lg:col-span-12">
+              <Link href="/team" className="btn btn-gold self-start">
+                {showcase.centerCta}
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
