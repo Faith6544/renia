@@ -852,6 +852,20 @@ const en = {
     deleteError: "Unable to delete this file.",
     storageSetup:
       "Create a public Supabase Storage bucket named renia-gallery (or set NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET) with a gallery folder.",
+    tabInbox: "Inbox",
+    tabTeam: "Manage Team",
+    teamEyebrow: "Team",
+    teamTitle: "Manage team",
+    teamIntro:
+      "Add a new team member. They will appear on the /team page immediately.",
+    teamNameLabel: "Name",
+    teamRoleLabel: "Role",
+    teamPhotoLabel: "Photo",
+    teamSave: "Add member",
+    teamSaving: "Saving…",
+    teamSaved: "Team member added.",
+    teamNameRequired: "Please enter a name.",
+    teamError: "Could not save the team member.",
   },
 };
 
@@ -1708,6 +1722,20 @@ const fr: typeof en = {
     deleteError: "Impossible de supprimer ce fichier.",
     storageSetup:
       "Créez un bucket Supabase Storage public nommé renia-gallery (ou définissez NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET) avec un dossier gallery.",
+    tabInbox: "Boîte de réception",
+    tabTeam: "Gérer l'équipe",
+    teamEyebrow: "Équipe",
+    teamTitle: "Gérer l'équipe",
+    teamIntro:
+      "Ajoutez un nouveau membre. Il apparaîtra sur la page /team immédiatement.",
+    teamNameLabel: "Nom",
+    teamRoleLabel: "Rôle",
+    teamPhotoLabel: "Photo",
+    teamSave: "Ajouter le membre",
+    teamSaving: "Enregistrement…",
+    teamSaved: "Membre ajouté.",
+    teamNameRequired: "Veuillez saisir un nom.",
+    teamError: "Impossible d'enregistrer le membre de l'équipe.",
   },
 };
 

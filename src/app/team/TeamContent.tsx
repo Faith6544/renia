@@ -1,15 +1,79 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import CtaBand from "@/components/ui/CtaBand";
 import PageHero from "@/components/ui/PageHero";
 import { useLanguage } from "@/context/LanguageContext";
+import { isSupabaseConfigured } from "@/lib/supabase/client";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import type { TeamMember } from "@/types";
 
 export default function TeamContent() {
   const { t } = useLanguage();
   const team = t.team;
+  const [members, setMembers] = useState<TeamMember[]>([]);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadTeam() {
+      const fallbackMembers: TeamMember[] = (team.members ?? []).map(
+        (member) => ({
+          id: member.name,
+          name: member.name,
+          role: member.role,
+          photo: member.image,
+          bio: member.bio ?? null,
+          created_at: null,
+        }),
+      );
+
+      if (!isSupabaseConfigured()) {
+        if (active) {
+          setMembers(fallbackMembers);
+        }
+        return;
+      }
+
+      try {
+        const supabase = getSupabaseBrowserClient();
+        const { data, error } = await supabase.from("team_members").select("*");
+
+        if (error) {
+          throw error;
+        }
+
+        const nextMembers = (data ?? []) as TeamMember[];
+
+        if (active) {
+          setMembers(nextMembers.length > 0 ? nextMembers : fallbackMembers);
+        }
+      } catch (error) {
+        console.error("Team members load failed:", error);
+        if (active) {
+          setMembers(fallbackMembers);
+        }
+      }
+    }
+
+    void loadTeam();
+
+    return () => {
+      active = false;
+    };
+  }, [team]);
+
+  const teamMembers =
+    members.length > 0 ? members : (team.members ?? []).map((member) => ({
+      id: member.name,
+      name: member.name,
+      role: member.role,
+      photo: member.image,
+      bio: member.bio ?? null,
+      created_at: null,
+    }));
 
   return (
     <main>
@@ -76,19 +140,18 @@ export default function TeamContent() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 xl:grid-cols-4">
-            {team.members.map((member) => (
+            {teamMembers.map((member) => (
               <article
-                key={member.name}
+                key={member.id}
                 className="group overflow-hidden rounded-3xl bg-cream shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-forest">
-                  <Image
-                    src={member.image}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={member.photo ?? member.name}
                     alt={member.name}
-                    fill
-                    unoptimized
-                    sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest/70 via-forest/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6">
@@ -103,7 +166,7 @@ export default function TeamContent() {
 
                 <div className="p-6">
                   <p className="text-base leading-relaxed text-stone">
-                    {member.bio}
+                    {member.bio ?? team.philosophyBody}
                   </p>
                 </div>
               </article>

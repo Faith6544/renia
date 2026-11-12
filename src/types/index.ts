@@ -12,3 +12,12 @@ export interface QuoteRequest {
 
 /** Shape used when creating a quote request from the form. */
 export type NewQuoteRequest = Omit<QuoteRequest, "id" | "created_at">;
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  photo: string | null;
+  bio: string | null;
+  created_at: string | null;
+}

@@ -37,40 +37,6 @@ function GoogleIcon() {
   );
 }
 
-function MicrosoftIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
-      <path fill="#F25022" d="M1 1h10v10H1z" />
-      <path fill="#7FBA00" d="M13 1h10v10H13z" />
-      <path fill="#00A4EF" d="M1 13h10v10H1z" />
-      <path fill="#FFB900" d="M13 13h10v10H13z" />
-    </svg>
-  );
-}
-
-function MicrosoftIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
-      <path fill="#F25022" d="M1 1h10v10H1z" />
-      <path fill="#7FBA00" d="M13 1h10v10H13z" />
-      <path fill="#00A4EF" d="M1 13h10v10H1z" />
-      <path fill="#FFB900" d="M13 13h10v10H13z" />
-    </svg>
-  );
-}
-
-function AppleIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-5 w-5 fill-current"
-    >
-      <path d="M16.37 12.6c-.02-2.09 1.7-3.1 1.78-3.15-.97-1.42-2.48-1.61-3.02-1.63-1.28-.13-2.5.75-3.15.75-.65 0-1.65-.73-2.72-.71-1.4.02-2.69.81-3.41 2.06-1.45 2.51-.37 6.22 1.04 8.26.69.99 1.51 2.1 2.59 2.06 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.6.67 2.7.65 1.11-.02 1.82-1.01 2.5-2.01.79-1.15 1.12-2.27 1.14-2.33-.02-.01-2.18-.84-2.2-3.28ZM14.27 6.4c.57-.69.96-1.65.85-2.61-.82.03-1.81.55-2.4 1.24-.53.61-1 1.59-.87 2.53.92.07 1.85-.46 2.42-1.16Z" />
-    </svg>
-  );
-}
-
 export default function AuthForm({ mode }: { mode: AuthMode }) {
   const { t } = useLanguage();
   const router = useRouter();
@@ -173,7 +139,7 @@ export default function AuthForm({ mode }: { mode: AuthMode }) {
     }
   }
 
-  async function handleOAuth(provider: OAuthProvider) {
+  async function handleOAuth() {
     clearMessages();
 
     if (!isSupabaseConfigured()) {
@@ -181,12 +147,12 @@ export default function AuthForm({ mode }: { mode: AuthMode }) {
       return;
     }
 
-    setOauthLoading(provider);
+    setOauthLoading("google");
 
     try {
       const supabase = getSupabaseBrowserClient();
       const { error: oauthError } = await supabase.auth.signInWithOAuth({
-        provider,
+        provider: "google",
         options: {
           redirectTo: `${window.location.origin}/auth/callback`,
         },
@@ -389,37 +355,13 @@ export default function AuthForm({ mode }: { mode: AuthMode }) {
           <div className="space-y-3">
             <button
               type="button"
-              onClick={() => handleOAuth("google")}
+              onClick={() => handleOAuth()}
               disabled={busy}
               className="flex w-full items-center justify-center gap-3 rounded-full border border-line bg-white px-5 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-forest/30 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
             >
               <GoogleIcon />
               <span>
                 {oauthLoading === "google" ? auth.loading : auth.google}
-              </span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleOAuth("azure")}
-              disabled={busy}
-              className="flex w-full items-center justify-center gap-3 rounded-full border border-line bg-white px-5 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-forest/30 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              <MicrosoftIcon />
-              <span>
-                {oauthLoading === "azure" ? auth.loading : auth.microsoft}
-              </span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleOAuth("apple")}
-              disabled={busy}
-              className="flex w-full items-center justify-center gap-3 rounded-full border border-line bg-white px-5 py-3.5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-forest/30 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              <AppleIcon />
-              <span>
-                {oauthLoading === "apple" ? auth.loading : auth.apple}
               </span>
             </button>
           </div>

@@ -9,6 +9,7 @@ import { isAdminUser } from "@/lib/auth";
 import {
   buildStoragePath,
   GALLERY_BUCKET,
+  GALLERY_TEAM_FOLDER,
   getMediaKind,
   listRecentMedia,
   MAX_MEDIA_BYTES,
@@ -19,6 +20,7 @@ import {
   getSupabaseBrowserClient,
   isSupabaseConfigured,
 } from "@/lib/supabase/client";
+import type { TeamMember } from "@/types";
 
 type AccessState = "checking" | "ready" | "signed-out" | "denied" | "no-config";
 
@@ -90,6 +92,17 @@ export default function AdminDashboard() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [deletingPath, setDeletingPath] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const teamFileRef = useRef<HTMLInputElement>(null);
+  const [adminTab, setAdminTab] = useState<"messages" | "team">("messages");
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [teamLoading, setTeamLoading] = useState(false);
+  const [teamError, setTeamError] = useState(false);
+  const [teamName, setTeamName] = useState("");
+  const [teamRole, setTeamRole] = useState("");
+  const [teamPhoto, setTeamPhoto] = useState<File | null>(null);
+  const [teamSaving, setTeamSaving] = useState(false);
+  const [teamNotice, setTeamNotice] = useState<string | null>(null);
+  const [teamErrorMessage, setTeamErrorMessage] = useState<string | null>(null);
 
   const loadMessages = useCallback(async () => {
     setMessagesLoading(true);
@@ -129,10 +142,29 @@ export default function AdminDashboard() {
     }
   }, []);
 
+  const loadTeam = useCallback(async () => {
+    setTeamLoading(true);
+    setTeamError(false);
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const { data, error } = await supabase.from("team_members").select("*");
+
+      if (error) throw error;
+      setTeamMembers((data ?? []) as TeamMember[]);
+    } catch (error) {
+      console.error("Team members load failed:", error);
+      setTeamError(true);
+    } finally {
+      setTeamLoading(false);
+    }
+  }, []);
+
   const loadData = useCallback(async () => {
     void loadMessages();
     void loadMedia();
-  }, [loadMessages, loadMedia]);
+    void loadTeam();
+  }, [loadMessages, loadMedia, loadTeam]);
 
   useEffect(() => {
     if (!isSupabaseConfigured()) {
@@ -255,6 +287,66 @@ export default function AdminDashboard() {
       setMediaError(true);
     } finally {
       setDeletingPath(null);
+    }
+  }
+
+  async function handleTeamSave() {
+    setTeamNotice(null);
+    setTeamErrorMessage(null);
+
+    if (!teamName.trim()) {
+      setTeamErrorMessage(admin.teamNameRequired);
+      return;
+    }
+
+    setTeamSaving(true);
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+      let photoUrl: string | null = null;
+
+      if (teamPhoto) {
+        const path = buildStoragePath(teamPhoto.name, GALLERY_TEAM_FOLDER);
+        const { error: uploadError } = await supabase.storage
+          .from(GALLERY_BUCKET)
+          .upload(path, teamPhoto, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: teamPhoto.type || undefined,
+          });
+
+        if (uploadError) throw uploadError;
+
+        const { data: publicData } = supabase.storage
+          .from(GALLERY_BUCKET)
+          .getPublicUrl(path);
+        photoUrl = publicData.publicUrl;
+      }
+
+      const { error: insertError } = await supabase
+        .from("team_members")
+        .insert({
+          name: teamName.trim(),
+          role: teamRole.trim() || "Team",
+          photo: photoUrl,
+        });
+
+      if (insertError) throw insertError;
+
+      setTeamName("");
+      setTeamRole("");
+      setTeamPhoto(null);
+      if (teamFileRef.current) {
+        teamFileRef.current.value = "";
+      }
+
+      setTeamNotice(admin.teamSaved);
+      await loadTeam();
+    } catch (error) {
+      console.error("Team member save failed:", error);
+      setTeamErrorMessage(admin.teamError);
+    } finally {
+      setTeamSaving(false);
     }
   }
 
@@ -407,7 +499,25 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-12">
+        <div className="mt-8 flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={() => setAdminTab("messages")}
+            className={`pill-link text-xs ${adminTab === "messages" ? "bg-forest text-cream" : "bg-white text-forest"}`}
+          >
+            {admin.tabInbox}
+          </button>
+          <button
+            type="button"
+            onClick={() => setAdminTab("team")}
+            className={`pill-link text-xs ${adminTab === "team" ? "bg-forest text-cream" : "bg-white text-forest"}`}
+          >
+            {admin.tabTeam}
+          </button>
+        </div>
+
+        {adminTab === "messages" ? (
+          <div className="mt-8 grid gap-8 lg:grid-cols-12">
           <section className="rounded-3xl bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8 lg:col-span-7">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
@@ -562,7 +672,129 @@ export default function AdminDashboard() {
               {admin.storageSetup}
             </p>
           </section>
-        </div>
+          </div>
+        ) : (
+          <section className="mt-8 rounded-3xl bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8">
+            <p className="text-xs uppercase tracking-[0.22em] text-gold">
+              {admin.teamEyebrow}
+            </p>
+            <h2 className="mt-3 font-serif text-2xl leading-tight tracking-[-0.01em] sm:text-3xl">
+              {admin.teamTitle}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-stone">
+              {admin.teamIntro}
+            </p>
+
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div>
+                <label htmlFor="admin-team-name" className="field-label">
+                  {admin.teamNameLabel}
+                </label>
+                <input
+                  id="admin-team-name"
+                  type="text"
+                  value={teamName}
+                  onChange={(event) => setTeamName(event.target.value)}
+                  className="field-input"
+                  placeholder={admin.teamNameLabel}
+                />
+              </div>
+              <div>
+                <label htmlFor="admin-team-role" className="field-label">
+                  {admin.teamRoleLabel}
+                </label>
+                <input
+                  id="admin-team-role"
+                  type="text"
+                  value={teamRole}
+                  onChange={(event) => setTeamRole(event.target.value)}
+                  className="field-input"
+                  placeholder={admin.teamRoleLabel}
+                />
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <label htmlFor="admin-team-photo" className="field-label">
+                {admin.teamPhotoLabel}
+              </label>
+              <input
+                ref={teamFileRef}
+                id="admin-team-photo"
+                type="file"
+                accept={MEDIA_ACCEPT}
+                onChange={(event) => {
+                  setTeamPhoto(event.target.files?.[0] ?? null);
+                  setTeamErrorMessage(null);
+                  setTeamNotice(null);
+                }}
+                className="block w-full cursor-pointer rounded-xl border border-dashed border-line bg-cream px-4 py-4 text-sm text-stone transition-colors file:mr-4 file:rounded-full file:border-0 file:bg-forest file:px-4 file:py-2 file:text-[10px] file:font-medium file:uppercase file:tracking-[0.16em] file:text-cream hover:border-gold/50"
+              />
+            </div>
+
+            <div aria-live="polite" className="mt-4 space-y-3">
+              {teamErrorMessage ? (
+                <p
+                  role="alert"
+                  className="rounded-xl bg-[#8a2f2a]/10 px-4 py-3 text-sm leading-relaxed text-[#8a2f2a]"
+                >
+                  {teamErrorMessage}
+                </p>
+              ) : null}
+              {teamNotice ? (
+                <p
+                  role="status"
+                  className="rounded-xl bg-gold/10 px-4 py-3 text-sm leading-relaxed text-stone"
+                >
+                  {teamNotice}
+                </p>
+              ) : null}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleTeamSave}
+              disabled={!teamName.trim() || teamSaving}
+              className="btn btn-dark mt-5 w-full disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {teamSaving ? admin.teamSaving : admin.teamSave}
+              <span aria-hidden="true">+</span>
+            </button>
+
+            <div className="mt-8">
+              <p className="text-xs uppercase tracking-[0.22em] text-stone">
+                {admin.teamTitle} · {teamMembers.length}
+              </p>
+              {teamLoading ? (
+                <p className="mt-4 text-sm text-stone">{admin.teamSaving}</p>
+              ) : null}
+              {teamError ? (
+                <p className="mt-4 rounded-xl bg-[#8a2f2a]/10 px-4 py-3 text-sm text-[#8a2f2a]">
+                  {admin.teamError}
+                </p>
+              ) : null}
+              {teamMembers.length === 0 ? (
+                <p className="mt-4 text-sm text-stone">{admin.teamIntro}</p>
+              ) : (
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {teamMembers.map((member) => (
+                    <li
+                      key={member.id}
+                      className="rounded-2xl bg-cream p-4"
+                    >
+                      <p className="font-serif text-lg leading-tight">
+                        {member.name}
+                      </p>
+                      <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-stone">
+                        {member.role}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </section>
+        )}
 
         <section className="mt-8 rounded-3xl bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8">
           <div className="flex flex-wrap items-end justify-between gap-4">

@@ -4,6 +4,7 @@ export const GALLERY_BUCKET =
   process.env.NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET?.trim() || "renia-gallery";
 
 export const GALLERY_FOLDER = "gallery";
+export const GALLERY_TEAM_FOLDER = "team";
 
 export const MAX_MEDIA_BYTES = 50 * 1024 * 1024;
 
@@ -51,9 +52,9 @@ export function sanitizeFileName(name: string): string {
   return cleaned || "media";
 }
 
-export function buildStoragePath(fileName: string): string {
+export function buildStoragePath(fileName: string, folder = GALLERY_FOLDER): string {
   const unique = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  return `${GALLERY_FOLDER}/${unique}-${sanitizeFileName(fileName)}`;
+  return `${folder}/${unique}-${sanitizeFileName(fileName)}`;
 }
 
 export async function listRecentMedia(
