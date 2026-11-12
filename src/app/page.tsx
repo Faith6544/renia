@@ -101,30 +101,6 @@ function EngagementIcon({ index }: { index: number }) {
   }
 }
 
-function EngagementBadge({
-  index,
-  title,
-  body,
-}: {
-  index: number;
-  title: string;
-  body: string;
-}) {
-  return (
-    <div className="flex max-w-[6.5rem] flex-col items-center text-center sm:max-w-[7.5rem]">
-      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/15 text-gold ring-1 ring-gold/30">
-        <EngagementIcon index={index} />
-      </span>
-      <span className="mt-2 block text-[10px] font-medium uppercase leading-tight tracking-[0.1em] text-cream/90 sm:text-[11px] sm:tracking-[0.12em]">
-        {title}
-      </span>
-      <span className="mt-1 hidden text-[10px] leading-snug text-cream/50 sm:block">
-        {body}
-      </span>
-    </div>
-  );
-}
-
 function ServiceArea({
   href,
   image,
@@ -301,7 +277,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-3 lg:items-stretch lg:gap-8">
+          <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-2 lg:items-stretch lg:gap-8">
             {/* Left — RENIA HOME */}
             <article className="flex h-full flex-col rounded-3xl bg-cream p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8">
               <p className="text-xs uppercase tracking-[0.26em] text-gold">
@@ -346,38 +322,6 @@ export default function HomePage() {
               <Link href="/renia-home" className="pill-link mt-8 self-start">
                 {showcase.homeCta} →
               </Link>
-            </article>
-
-            {/* Center — team */}
-            <article className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-forest p-6 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-8">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(197,160,89,0.22),transparent_55%)]"
-              />
-
-              <div className="relative flex h-full w-full flex-col justify-between gap-8">
-                <div className="relative aspect-square w-32 overflow-hidden rounded-full border-4 border-gold/30 shadow-[0_16px_45px_rgba(0,0,0,0.28)] sm:w-40 lg:w-36 xl:w-44">
-                  <Image
-                    src="/images/hero.jpg.png"
-                    alt={showcase.centerImageAlt}
-                    fill
-                    unoptimized
-                    sizes="(min-width: 1024px) 20vw, 40vw"
-                    className="object-cover"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-forest/10" />
-                </div>
-
-                <div className="grid w-full max-w-sm grid-cols-2 gap-x-4 gap-y-6">
-                  {showcase.engagements.map((engagement, index) => (
-                    <EngagementBadge
-                      key={engagement.title}
-                      index={index}
-                      {...engagement}
-                    />
-                  ))}
-                </div>
-              </div>
             </article>
 
             {/* Right — RENIA PRO */}
@@ -447,7 +391,26 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="flex lg:col-span-12">
+            <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line/10 pt-12 lg:col-span-12 lg:mt-16 lg:grid-cols-4 lg:gap-8">
+              {showcase.engagements.map((engagement, index) => (
+                <div
+                  key={engagement.title}
+                  className="flex flex-col items-center text-center"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-gold shadow-[0_10px_30px_rgb(15,58,32,0.08)] ring-1 ring-line">
+                    <EngagementIcon index={index} />
+                  </span>
+                  <p className="mt-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-forest">
+                    {engagement.title}
+                  </p>
+                  <p className="mt-1 max-w-[18rem] text-center text-sm leading-relaxed text-stone">
+                    {engagement.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex lg:col-span-12">
               <Link href="/team" className="btn btn-gold self-start">
                 {showcase.centerCta}
                 <span aria-hidden="true">→</span>
