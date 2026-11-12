@@ -118,7 +118,7 @@ export default function ReniaHomeContent() {
       />
 
       {/* Room by room */}
-      <section id="included" className="scroll-mt-20 bg-cream py-12 lg:py-20">
+      <section id="included" className="scroll-mt-20 bg-cream py-16 md:py-24">
         <div className="shell">
           <SectionHeading
             eyebrow={page.includedEyebrow}
@@ -126,7 +126,7 @@ export default function ReniaHomeContent() {
             intro={page.includedIntro}
           />
 
-          <div className="mt-14 grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12">
+          <div className="mt-14 grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {page.rooms.map((room, index) => (
               <article
                 key={room.title}
@@ -154,14 +154,14 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* Deep clean & ironing */}
-      <section className="bg-white py-12 lg:py-20">
+      <section className="bg-white py-16 md:py-24">
         <div className="shell">
           <SectionHeading
             eyebrow={page.extrasEyebrow}
             title={page.extrasTitle}
           />
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <div className="mt-14 grid gap-6 md:gap-8 lg:grid-cols-2">
             <article className="flex flex-col justify-between rounded-3xl bg-forest p-8 text-cream shadow-[0_16px_45px_rgba(15,58,32,0.18)] sm:p-12">
               <div>
                 <span className="text-gold">
@@ -202,9 +202,9 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* Tax credit */}
-      <section id="tax-credit" className="scroll-mt-20 bg-cream py-12 lg:py-20">
+      <section id="tax-credit" className="scroll-mt-20 bg-cream py-16 md:py-24">
         <div className="shell">
-          <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
+          <div className="grid gap-6 md:gap-8 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:p-16">
             <div className="lg:col-span-4">
               <p className="font-serif text-[clamp(5rem,9vw,8rem)] leading-[0.85] tracking-[-0.05em] text-forest">
                 50
@@ -258,8 +258,8 @@ export default function ReniaHomeContent() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-12 lg:py-20">
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <section className="bg-white py-16 md:py-24">
+        <div className="shell grid gap-6 md:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">{page.faqEyebrow}</p>
             <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
@@ -279,9 +279,9 @@ export default function ReniaHomeContent() {
       {/* Dedicated home cleaning request form */}
       <section
         id="request-form"
-        className="relative z-50 scroll-mt-20 bg-cream py-12 lg:py-20"
+        className="relative z-50 scroll-mt-20 bg-cream py-16 md:py-24"
       >
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="shell grid gap-6 md:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">
               {language === "fr" ? "Demander un devis" : "Request a quote"}

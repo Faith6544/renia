@@ -78,7 +78,7 @@ export default function ReniaProContent() {
       />
 
       {/* Sectors */}
-      <section id="sectors" className="scroll-mt-20 bg-cream py-12 lg:py-20">
+      <section id="sectors" className="scroll-mt-20 bg-cream py-16 md:py-24">
         <div className="shell">
           <SectionHeading
             eyebrow={page.sectorsEyebrow}
@@ -86,7 +86,7 @@ export default function ReniaProContent() {
             intro={page.sectorsIntro}
           />
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {page.sectors.map((sector, index) => (
               <article
                 key={sector.title}
@@ -114,8 +114,8 @@ export default function ReniaProContent() {
       </section>
 
       {/* Tailor-made solution */}
-      <section className="bg-white py-12 lg:py-20">
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <section className="bg-white py-16 md:py-24">
+        <div className="shell grid gap-6 md:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="eyebrow">{page.tailorEyebrow}</p>
             <h2 className="mt-5 max-w-lg text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
@@ -153,14 +153,14 @@ export default function ReniaProContent() {
       </section>
 
       {/* Method */}
-      <section className="bg-cream py-12 lg:py-20">
+      <section className="bg-cream py-16 md:py-24">
         <div className="shell">
           <SectionHeading
             eyebrow={page.methodEyebrow}
             title={page.methodTitle}
           />
 
-          <ol className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-10">
+          <ol className="mt-14 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {page.methodSteps.map((step, index) => (
               <li
                 key={step.title}
@@ -182,7 +182,7 @@ export default function ReniaProContent() {
       </section>
 
       {/* Airbnb */}
-      <section className="bg-cream pb-12 lg:pb-20">
+      <section className="bg-cream pb-16 md:pb-24">
         <div className="shell">
           <div className="relative overflow-hidden rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
             <div
@@ -236,9 +236,9 @@ export default function ReniaProContent() {
       {/* Dedicated pro quote request form */}
       <section
         id="request-form"
-        className="relative z-50 scroll-mt-20 bg-white py-12 lg:py-20"
+        className="relative z-50 scroll-mt-20 bg-white py-16 md:py-24"
       >
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="shell grid gap-6 md:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">
               {language === "fr" ? "Demander un devis" : "Request a quote"}

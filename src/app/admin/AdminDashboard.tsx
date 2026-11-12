@@ -8,6 +8,7 @@ import type { User } from "@supabase/supabase-js";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   buildStoragePath,
+  extractStoragePathFromUrl,
   GALLERY_BUCKET,
   GALLERY_TEAM_FOLDER,
   getMediaKind,
@@ -91,6 +92,8 @@ export default function AdminDashboard() {
   const [uploadNotice, setUploadNotice] = useState<string | null>(null);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [deletingPath, setDeletingPath] = useState<string | null>(null);
+  const [deletingAll, setDeletingAll] = useState(false);
+  const [deletingTeamId, setDeletingTeamId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const teamFileRef = useRef<HTMLInputElement>(null);
   const [adminTab, setAdminTab] = useState<"messages" | "team">("messages");
@@ -267,7 +270,7 @@ export default function AdminDashboard() {
       setUploadNotice(admin.uploadSuccess);
       await loadMedia();
     } catch (error) {
-      console.error("Gallery upload failed:", error);
+      console.error("Gallery upload failed (bucket:", GALLERY_BUCKET, "):", error);
       setUploadError(admin.uploadError);
     } finally {
       setUploading(false);
@@ -304,10 +307,88 @@ export default function AdminDashboard() {
       setMedia((current) => current.filter((entry) => entry.path !== item.path));
       await loadMedia();
     } catch (error) {
-      console.error("Gallery delete failed:", error);
+      console.error("Gallery delete failed (bucket:", GALLERY_BUCKET, "):", error);
       setMediaError(true);
     } finally {
       setDeletingPath(null);
+    }
+  }
+
+  async function handleDeleteAllGallery() {
+    if (media.length === 0) return;
+    if (
+      !window.confirm(
+        "Delete ALL gallery items? This will permanently remove every file in the renia-gallery bucket.",
+      )
+    ) {
+      return;
+    }
+
+    setDeletingAll(true);
+    setMediaError(false);
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const paths = media.map((item) => item.path);
+      const { error: storageError } = await supabase.storage
+        .from(GALLERY_BUCKET)
+        .remove(paths);
+
+      if (storageError) throw storageError;
+
+      try {
+        await supabase.from("media").delete().in("path", paths);
+        await supabase.from("media").delete().in("storage_path", paths);
+        await supabase.from("gallery").delete().in("path", paths);
+      } catch {
+        // ignore if no media table
+      }
+
+      setMedia([]);
+      await loadMedia();
+    } catch (error) {
+      console.error("Delete all gallery failed (bucket:", GALLERY_BUCKET, "):", error);
+      setMediaError(true);
+    } finally {
+      setDeletingAll(false);
+    }
+  }
+
+  async function handleDeleteTeamMember(member: TeamMember) {
+    if (!window.confirm(`Delete ${member.name}?`)) {
+      return;
+    }
+
+    setDeletingTeamId(member.id);
+    setTeamError(false);
+    try {
+      const supabase = getSupabaseBrowserClient();
+
+      // Remove record from team_members table
+      const { error: deleteError } = await supabase
+        .from("team_members")
+        .delete()
+        .eq("id", member.id);
+
+      if (deleteError) throw deleteError;
+
+      // Remove image from storage if applicable
+      const photoPath = extractStoragePathFromUrl(member.photo);
+      if (photoPath) {
+        const { error: storageError } = await supabase.storage
+          .from(GALLERY_BUCKET)
+          .remove([photoPath]);
+        if (storageError) {
+          console.error("Team member image delete failed:", storageError);
+        }
+      }
+
+      setTeamMembers((current) => current.filter((m) => m.id !== member.id));
+      await loadTeam();
+    } catch (error) {
+      console.error("Team member delete failed:", error);
+      setTeamError(true);
+    } finally {
+      setDeletingTeamId(null);
     }
   }
 
@@ -364,7 +445,7 @@ export default function AdminDashboard() {
       setTeamNotice(admin.teamSaved);
       await loadTeam();
     } catch (error) {
-      console.error("Team member save failed:", error);
+      console.error("Team member save failed (bucket:", GALLERY_BUCKET, "):", error);
       setTeamErrorMessage(admin.teamError);
     } finally {
       setTeamSaving(false);
@@ -689,8 +770,8 @@ export default function AdminDashboard() {
               <span aria-hidden="true">↑</span>
             </button>
 
-            <div className="mt-8 border-t border-line/60 pt-8">
-              <div className="flex items-center justify-between gap-4">
+              <div className="mt-8 border-t border-line/60 pt-8">
+              <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.22em] text-gold">
                     Manage Gallery
@@ -699,14 +780,24 @@ export default function AdminDashboard() {
                     {admin.mediaTitle}
                   </h3>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => void loadMedia()}
-                  disabled={mediaLoading}
-                  className="pill-link text-xs disabled:opacity-60"
-                >
-                  {admin.refresh}
-                </button>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => void handleDeleteAllGallery()}
+                    disabled={mediaLoading || deletingAll || media.length === 0}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#8a2f2a] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#b03a33] disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {deletingAll ? admin.deleting : "Delete All Gallery Items"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => void loadMedia()}
+                    disabled={mediaLoading}
+                    className="pill-link text-xs disabled:opacity-60"
+                  >
+                    {admin.refresh}
+                  </button>
+                </div>
               </div>
 
               {mediaError ? (
@@ -872,18 +963,49 @@ export default function AdminDashboard() {
               {teamMembers.length === 0 ? (
                 <p className="mt-4 text-sm text-stone">{admin.teamIntro}</p>
               ) : (
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {teamMembers.map((member) => (
                     <li
                       key={member.id}
-                      className="rounded-2xl bg-cream p-4"
+                      className="overflow-hidden rounded-2xl bg-cream shadow-[0_4px_20px_rgb(0,0,0,0.04)]"
                     >
-                      <p className="font-serif text-lg leading-tight">
-                        {member.name}
-                      </p>
-                      <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-stone">
-                        {member.role}
-                      </p>
+                      <div className="relative aspect-[4/3] bg-forest">
+                        {member.photo ? (
+                          /* eslint-disable-next-line @next/next/no-img-element */
+                          <img
+                            src={member.photo}
+                            alt={member.name}
+                            loading="lazy"
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-cream/60 text-sm">
+                            No photo
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-4">
+                        <p className="font-serif text-lg leading-tight">
+                          {member.name}
+                        </p>
+                        <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-stone">
+                          {member.role}
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteTeamMember(member)}
+                          disabled={deletingTeamId === member.id}
+                          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#8a2f2a] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#b03a33] disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M3 6h18" />
+                            <path d="M8 6V4h8v2" />
+                            <path d="M19 6l-1 14H6L5 6" />
+                            <path d="M10 11v6M14 11v6" />
+                          </svg>
+                          {deletingTeamId === member.id ? admin.deleting : admin.delete}
+                        </button>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -902,14 +1024,24 @@ export default function AdminDashboard() {
                 {admin.mediaTitle}
               </h2>
             </div>
-            <button
-              type="button"
-              onClick={() => void loadMedia()}
-              disabled={mediaLoading}
-              className="pill-link text-xs disabled:opacity-60"
-            >
-              {admin.refresh}
-            </button>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => void handleDeleteAllGallery()}
+                disabled={mediaLoading || deletingAll || media.length === 0}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#8a2f2a] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#b03a33] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {deletingAll ? admin.deleting : "Delete All Gallery Items"}
+              </button>
+              <button
+                type="button"
+                onClick={() => void loadMedia()}
+                disabled={mediaLoading}
+                className="pill-link text-xs disabled:opacity-60"
+              >
+                {admin.refresh}
+              </button>
+            </div>
           </div>
 
           {mediaError ? (

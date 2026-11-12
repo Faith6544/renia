@@ -27,18 +27,18 @@ export default function AboutContent() {
       />
 
       {/* Mission */}
-      <section className="bg-cream py-12 lg:py-20">
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <section className="bg-cream py-16 md:py-24">
+        <div className="shell grid gap-6 md:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">{about.missionEyebrow}</p>
-            <div className="mt-6 h-px w-16 bg-gold" aria-hidden="true" />
+            <div className="mt-4 h-px w-16 bg-gold" aria-hidden="true" />
           </div>
 
           <div className="lg:col-span-8">
             <p className="max-w-3xl text-balance font-serif text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl">
               {about.mission}
             </p>
-            <p className="mt-8 max-w-xl rounded-2xl bg-white/60 p-6 text-base leading-relaxed text-stone shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:p-7 sm:text-base">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">
               {about.intro}
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function AboutContent() {
       </section>
 
       {/* Vision */}
-      <section className="bg-cream pb-12 lg:pb-20">
+      <section className="bg-cream pb-16 md:pb-24">
         <div className="shell">
           <div className="relative overflow-hidden rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
             <div
@@ -71,7 +71,7 @@ export default function AboutContent() {
       </section>
 
       {/* Values */}
-      <section className="bg-white py-12 lg:py-20">
+      <section className="bg-white py-16 md:py-24">
         <div className="shell">
           <SectionHeading
             eyebrow={about.valuesEyebrow}
@@ -79,7 +79,7 @@ export default function AboutContent() {
             intro={about.valuesIntro}
           />
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-14 grid gap-6 md:gap-8 sm:grid-cols-2 xl:grid-cols-5">
             {about.values.map((value, index) => (
               <article
                 key={value.title}
@@ -101,8 +101,8 @@ export default function AboutContent() {
       </section>
 
       {/* Our story */}
-      <section className="bg-cream py-12 lg:py-20">
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <section className="bg-cream py-16 md:py-24">
+        <div className="shell grid gap-6 md:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="eyebrow">{about.storyEyebrow}</p>
             <h2 className="mt-5 max-w-md text-balance font-serif text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl">

@@ -173,13 +173,13 @@ export default function HomePage() {
       </section>
 
       {/* You are */}
-      <section className="bg-white py-12 sm:py-16">
+      <section className="bg-white py-16 md:py-24">
         <div className="shell">
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-3">
               <p className="font-serif text-2xl italic leading-tight text-forest sm:text-4xl">{t.YouAre || "You are:"}</p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-9">
+            <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:col-span-9">
               <Link href="/renia-home" className="group relative z-20 flex min-h-[112px] items-center justify-between gap-6 rounded-2xl bg-white px-7 py-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:bg-forest hover:text-cream hover:shadow-xl sm:px-8">
                 <span className="flex items-start gap-5">
                   <span className="font-serif text-2xl leading-none text-gold">01</span>
@@ -200,9 +200,9 @@ export default function HomePage() {
       </section>
 
       {/* Flyer 1 — RENIA HOME / team / RENIA PRO */}
-      <section id="showcase" className="scroll-mt-20 bg-white py-12 lg:py-20">
+      <section id="showcase" className="scroll-mt-20 bg-white py-16 md:py-24">
         <div className="shell">
-          <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <p className="eyebrow">{showcase.eyebrow}</p>
               <h2 className="mt-5 max-w-2xl text-balance font-serif text-[clamp(2rem,3.6vw,3.2rem)] font-normal leading-[1.03] tracking-[-0.02em]">
@@ -214,7 +214,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-2 lg:items-stretch lg:gap-8">
+          <div className="mt-12 grid grid-cols-1 gap-6 md:gap-8 lg:mt-16 lg:grid-cols-2 lg:items-stretch">
             {/* Left — RENIA HOME */}
             <article className="flex h-full flex-col rounded-3xl bg-cream p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8">
               <p className="text-xs uppercase tracking-[0.26em] text-gold">
@@ -309,24 +309,24 @@ export default function HomePage() {
       </section>
 
       {/* Our Promise */}
-      <section id="promise" className="scroll-mt-20 bg-cream py-12 lg:py-20">
+      <section id="promise" className="scroll-mt-20 bg-cream py-16 md:py-24">
         <div className="shell">
-          <div className="grid gap-8 rounded-3xl bg-bone p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-12">
+          <div className="grid gap-6 md:gap-8 rounded-3xl bg-bone p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8 lg:grid-cols-12 lg:p-10">
             <div className="lg:col-span-4">
               <p className="eyebrow">{showcase.centerEyebrow}</p>
-              <div className="mt-6 h-px w-16 bg-gold" aria-hidden="true" />
+              <div className="mt-4 h-px w-16 bg-gold" aria-hidden="true" />
             </div>
 
             <div className="lg:col-span-8">
               <h2 className="max-w-3xl text-balance font-serif text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl">
                 {showcase.centerPromise}
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-stone">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">
                 {showcase.centerText}
               </p>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line/10 pt-10 lg:col-span-12 lg:mt-12 lg:grid-cols-4 lg:gap-8">
+            <div className="mt-8 grid grid-cols-2 gap-6 md:gap-8 border-t border-line/10 pt-8 lg:col-span-12 lg:grid-cols-4">
               {showcase.engagements.map((engagement, index) => (
                 <div
                   key={engagement.title}
@@ -356,7 +356,7 @@ export default function HomePage() {
       </section>
 
       {/* SAP */}
-      <section id="sap" className="bg-cream pb-12 lg:pb-20">
+      <section id="sap" className="bg-cream pb-16 md:pb-24">
         <div className="shell">
           <div className="grid gap-10 rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
             <div className="lg:col-span-4">
@@ -377,7 +377,7 @@ export default function HomePage() {
       </section>
 
       {/* Why choose */}
-      <section className="bg-white py-12 lg:py-20">
+      <section className="bg-white py-16 md:py-24">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -402,7 +402,7 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="bg-cream py-12 lg:py-20">
+      <section className="bg-cream py-16 md:py-24">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -430,7 +430,7 @@ export default function HomePage() {
       </section>
 
       {/* Reviews */}
-      <section className="bg-white py-12 lg:py-20">
+      <section className="bg-white py-16 md:py-24">
         <div className="shell">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -462,7 +462,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Preview */}
-      <section className="bg-cream py-12 lg:py-20">
+      <section className="bg-cream py-16 md:py-24">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">{t.faqPage?.eyebrow || "FAQ"}</p>
@@ -477,7 +477,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer CTA */}
-      <section id="quote" className="scroll-mt-20 bg-cream pb-12 lg:pb-20">
+      <section id="quote" className="scroll-mt-20 bg-cream pb-16 md:pb-24">
         <div className="shell">
           <div className="flex flex-col gap-12 rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 md:flex-row md:items-end md:justify-between lg:p-16">
             <div>

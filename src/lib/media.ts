@@ -104,11 +104,19 @@ export async function listRecentMedia(
     .filter((item): item is MediaItem => item !== null);
 }
 
-/**
- * Curated local images used while the Storage gallery is empty or when
- * Supabase has not been configured yet. This keeps the footer and gallery
- * page looking intentional from day one.
- */
+export function extractStoragePathFromUrl(
+  url: string | null | undefined,
+): string | null {
+  if (!url) return null;
+  try {
+    const marker = `/storage/v1/object/public/${GALLERY_BUCKET}/`;
+    const idx = url.indexOf(marker);
+    if (idx === -1) return null;
+    return decodeURIComponent(url.slice(idx + marker.length));
+  } catch {
+    return null;
+  }
+}
 export const FALLBACK_MEDIA: MediaItem[] = [
   {
     name: "hero",
