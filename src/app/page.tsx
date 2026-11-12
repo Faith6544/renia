@@ -318,7 +318,7 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-8">
-              <h2 className="max-w-3xl text-balance font-serif text-[clamp(2rem,3.8vw,3rem)] font-normal leading-[1.06] tracking-[-0.02em]">
+              <h2 className="max-w-3xl text-balance font-serif text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl">
                 {showcase.centerPromise}
               </h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-stone">

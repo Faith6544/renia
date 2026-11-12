@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lora, Nunito_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -7,17 +7,17 @@ import { LanguageProvider } from "@/context/LanguageContext";
 
 import "./globals.css";
 
-// Load the premium fonts
-const lora = Lora({
+// Premium font pairing: soft, elegant editorial headings + rounded readable body
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-lora",
+  variable: "--font-serif",
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const nunito = Nunito_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-nunito",
+  variable: "--font-sans",
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${nunito.variable} ${lora.variable} scroll-smooth`}
+      className={`${dmSans.variable} ${cormorant.variable} scroll-smooth`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-screen bg-cream font-sans text-ink antialiased">

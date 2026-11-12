@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+
 import type { User } from "@supabase/supabase-js";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { isAdminUser } from "@/lib/auth";
 import {
   buildStoragePath,
   GALLERY_BUCKET,
@@ -182,9 +182,17 @@ export default function AdminDashboard() {
 
         setUser(nextUser);
 
+        const roleFromUser = (nextUser as { role?: string } | null)?.role;
+        const isAdmin =
+          nextUser?.email === "atigahfaith44@gmail.com" ||
+          nextUser?.email === process.env.NEXT_PUBLIC_ADMIN_EMAILS ||
+          roleFromUser === "admin" ||
+          nextUser?.user_metadata?.role === "admin" ||
+          nextUser?.app_metadata?.role === "admin";
+
         const nextAccess = !nextUser
           ? "signed-out"
-          : isAdminUser(nextUser)
+          : isAdmin
             ? "ready"
             : "denied";
 

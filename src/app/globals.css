@@ -14,8 +14,8 @@
   --color-line: #dcd9d2;
 
   /* UPDATED FONTS HERE */
-  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
 }
 
 /* ... (Keep the rest of your globals.css exactly the same) ... */

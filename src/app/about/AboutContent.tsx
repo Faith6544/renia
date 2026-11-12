@@ -35,7 +35,7 @@ export default function AboutContent() {
           </div>
 
           <div className="lg:col-span-8">
-            <p className="max-w-3xl text-balance font-serif text-[clamp(2rem,3.8vw,3.4rem)] font-normal leading-[1.12] tracking-[-0.02em]">
+            <p className="max-w-3xl text-balance font-serif text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl">
               {about.mission}
             </p>
             <p className="mt-8 max-w-xl rounded-2xl bg-white/60 p-6 text-base leading-relaxed text-stone shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:p-7 sm:text-base">
@@ -58,7 +58,7 @@ export default function AboutContent() {
                 <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
                   {about.visionEyebrow}
                 </p>
-                <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,3.6vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.02em]">
+                <h2 className="mt-5 max-w-sm text-balance font-serif text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl">
                   {about.visionTitle}
                 </h2>
               </div>
@@ -105,7 +105,7 @@ export default function AboutContent() {
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="eyebrow">{about.storyEyebrow}</p>
-            <h2 className="mt-5 max-w-md text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
+            <h2 className="mt-5 max-w-md text-balance font-serif text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl">
               {about.storyTitle}
             </h2>
 
@@ -128,7 +128,7 @@ export default function AboutContent() {
                 <p className="text-xs uppercase tracking-[0.24em] text-gold">
                   {about.storyNote}
                 </p>
-                <p className="mt-8 max-w-xl font-serif text-2xl leading-relaxed tracking-[-0.01em] sm:text-[1.75rem]">
+                <p className="mt-8 max-w-xl font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
                   {about.storyBody}
                 </p>
               </div>
