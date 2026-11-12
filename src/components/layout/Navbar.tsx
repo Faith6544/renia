@@ -3,15 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { User } from "@supabase/supabase-js";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { isAdminUser } from "@/lib/auth";
+import {
+  getSupabaseBrowserClient,
+  isSupabaseConfigured,
+} from "@/lib/supabase/client";
 
 export default function Navbar() {
   const pathname = usePathname();
   const { t, language, setLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const accountRef = useRef<HTMLDivElement>(null);
 
   const isHome = pathname === "/";
   const solid = !isHome || scrolled || menuOpen;
@@ -68,6 +77,84 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
+  // Keep the account menu in sync with Supabase Auth.
+  useEffect(() => {
+    if (!isSupabaseConfigured()) {
+      return;
+    }
+
+    let active = true;
+    let unsubscribe: (() => void) | undefined;
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+
+      supabase.auth.getSession().then(({ data }) => {
+        if (active) setUser(data.session?.user ?? null);
+      });
+
+      const { data: listener } = supabase.auth.onAuthStateChange(
+        (_event, session) => {
+          if (active) setUser(session?.user ?? null);
+        },
+      );
+
+      unsubscribe = () => listener.subscription.unsubscribe();
+    } catch (error) {
+      console.error("Auth session failed:", error);
+    }
+
+    return () => {
+      active = false;
+      unsubscribe?.();
+    };
+  }, []);
+
+  // Close the account dropdown when clicking outside of it.
+  useEffect(() => {
+    if (!accountOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (
+        accountRef.current &&
+        !accountRef.current.contains(event.target as Node)
+      ) {
+        setAccountOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [accountOpen]);
+
+  // Allow closing the account dropdown with the keyboard.
+  useEffect(() => {
+    if (!accountOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setAccountOpen(false);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [accountOpen]);
+
+  const handleSignOut = async () => {
+    setAccountOpen(false);
+
+    if (!isSupabaseConfigured()) {
+      return;
+    }
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+      await supabase.auth.signOut();
+      setUser(null);
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -120,7 +207,7 @@ export default function Navbar() {
           </nav>
 
           <div className="relative z-[60] flex items-center gap-3 xl:gap-5">
-            <div className="relative z-[60] flex items-center gap-2 rounded-full bg-black/20 px-3 py-2 text-xs font-medium uppercase tracking-[0.2em]">
+            <div className="relative z-[60] hidden items-center gap-2 rounded-full bg-black/20 px-3 py-2 text-xs font-medium uppercase tracking-[0.2em] sm:flex">
               <button
                 type="button"
                 onClick={() => setLanguage("en")}
@@ -160,7 +247,10 @@ export default function Navbar() {
 
             <button
               type="button"
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+                setAccountOpen(false);
+              }}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
@@ -177,6 +267,109 @@ export default function Navbar() {
                 }`}
               />
             </button>
+
+            <div ref={accountRef} className="relative z-[70]">
+              <button
+                type="button"
+                onClick={() => {
+                  setAccountOpen((open) => !open);
+                  setMenuOpen(false);
+                }}
+                aria-label={t.nav?.account || "Account"}
+                aria-haspopup="menu"
+                aria-expanded={accountOpen}
+                aria-controls="account-menu"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 bg-forest/45 text-cream shadow-[0_8px_24px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
+              >
+                {user ? (
+                  <span className="font-serif text-lg leading-none text-gold">
+                    {(user.email?.charAt(0) || "R").toUpperCase()}
+                  </span>
+                ) : (
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                  >
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21a8 8 0 0 1 16 0" />
+                  </svg>
+                )}
+              </button>
+
+              {accountOpen ? (
+                <div
+                  id="account-menu"
+                  role="menu"
+                  aria-label={t.nav?.account || "Account"}
+                  className="absolute right-0 top-[calc(100%+0.75rem)] w-64 overflow-hidden rounded-2xl border border-line/70 bg-cream text-ink shadow-[0_24px_60px_rgba(8,35,20,0.28)]"
+                >
+                  {user ? (
+                    <div className="border-b border-line/70 px-5 py-4">
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-stone">
+                        {t.admin?.welcome || "Signed in as"}
+                      </p>
+                      <p className="mt-1 truncate text-sm text-ink">
+                        {user.email}
+                      </p>
+                    </div>
+                  ) : null}
+
+                  <div className="p-2">
+                    {user ? (
+                      <>
+                        {isAdminUser(user) ? (
+                          <Link
+                            href="/admin"
+                            role="menuitem"
+                            onClick={() => setAccountOpen(false)}
+                            className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-forest hover:text-cream"
+                          >
+                            {t.nav?.admin || "Admin dashboard"}
+                            <span aria-hidden="true">→</span>
+                          </Link>
+                        ) : null}
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={handleSignOut}
+                          className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium text-ink transition-colors hover:bg-forest hover:text-cream"
+                        >
+                          {t.nav?.signOut || "Sign out"}
+                          <span aria-hidden="true">↗</span>
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <Link
+                          href="/login"
+                          role="menuitem"
+                          onClick={() => setAccountOpen(false)}
+                          className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-forest hover:text-cream"
+                        >
+                          {t.nav?.signIn || "Sign In"}
+                          <span aria-hidden="true">→</span>
+                        </Link>
+                        <Link
+                          href="/signup"
+                          role="menuitem"
+                          onClick={() => setAccountOpen(false)}
+                          className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-forest hover:text-cream"
+                        >
+                          {t.nav?.signUp || "Sign Up"}
+                          <span aria-hidden="true">→</span>
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </header>
@@ -201,6 +394,34 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <div className="mt-4 flex items-center justify-between gap-4 rounded-xl bg-cream/5 px-4 py-3">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-cream/50">
+                {t.nav?.language || "Language"}
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLanguage("en")}
+                  aria-pressed={language === "en"}
+                  className={`inline-flex min-h-10 items-center justify-center px-2 py-2 text-xs font-medium uppercase tracking-[0.2em] transition-colors ${
+                    language === "en" ? "text-gold" : "text-cream/70 hover:text-cream"
+                  }`}
+                >
+                  EN
+                </button>
+                <span className="text-cream/25">|</span>
+                <button
+                  type="button"
+                  onClick={() => setLanguage("fr")}
+                  aria-pressed={language === "fr"}
+                  className={`inline-flex min-h-10 items-center justify-center px-2 py-2 text-xs font-medium uppercase tracking-[0.2em] transition-colors ${
+                    language === "fr" ? "text-gold" : "text-cream/70 hover:text-cream"
+                  }`}
+                >
+                  FR
+                </button>
+              </div>
+            </div>
             <div className="mt-4 grid gap-3 border-t border-cream/10 pt-4">
               <Link
                 href="/contact"

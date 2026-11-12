@@ -12,6 +12,12 @@ const en = {
     quote: "Request a Quote",
     book: "Book a Service",
     commitments: "Our commitments",
+    signIn: "Sign In",
+    signUp: "Sign Up",
+    admin: "Admin dashboard",
+    signOut: "Sign out",
+    account: "Account",
+    language: "Language",
   },
   hero: {
     eyebrow: "Cleaning services · Yvelines 78",
@@ -112,6 +118,9 @@ const en = {
     legalNotice: "Legal notice",
     privacy: "Privacy policy",
     terms: "Terms of sale",
+    galleryTitle: "Recent work",
+    galleryIntro: "A glimpse of the spaces we care for.",
+    galleryCta: "View gallery",
   },
 };
 
@@ -127,6 +136,12 @@ const fr: typeof en = {
     quote: "Demander un devis",
     book: "Réserver un service",
     commitments: "Nos engagements",
+    signIn: "Se connecter",
+    signUp: "S'inscrire",
+    admin: "Tableau de bord",
+    signOut: "Se déconnecter",
+    account: "Compte",
+    language: "Langue",
   },
   hero: {
     eyebrow: "Services de nettoyage · Yvelines 78",
@@ -227,6 +242,9 @@ const fr: typeof en = {
     legalNotice: "Mentions légales",
     privacy: "Politique de confidentialité",
     terms: "CGV",
+    galleryTitle: "Nos réalisations",
+    galleryIntro: "Un aperçu des espaces dont nous prenons soin.",
+    galleryCta: "Voir la galerie",
   },
 };
 

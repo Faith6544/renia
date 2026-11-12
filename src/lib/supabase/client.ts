@@ -75,8 +75,10 @@ export function getSupabaseBrowserClient(): SupabaseClient {
   try {
     browserClient = createClient(config.url, config.anonKey, {
       auth: {
-        persistSession: false,
-        autoRefreshToken: false,
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+        storageKey: "renia-auth",
       },
     });
   } catch (error) {

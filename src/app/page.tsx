@@ -348,53 +348,47 @@ export default function HomePage() {
               </Link>
             </article>
 
-            {/* Center — team & engagements */}
-            <article className="flex h-full flex-col items-center justify-between rounded-3xl bg-forest p-6 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-8">
-              <div className="text-center">
+            {/* Center — our promise */}
+            <article className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-forest p-6 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-8">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(197,160,89,0.22),transparent_55%)]"
+              />
+
+              <div className="relative">
                 <p className="text-xs uppercase tracking-[0.26em] text-gold">
                   {showcase.centerEyebrow}
                 </p>
                 <h3 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.01em]">
                   {showcase.centerTitle}
                 </h3>
-                <p className="mx-auto mt-3 max-w-xs text-base leading-relaxed text-cream/70">
+                <p className="mt-3 max-w-xs text-base leading-relaxed text-cream/70">
                   {showcase.centerText}
                 </p>
+
+                <div className="mt-8 border-y border-cream/15 py-7">
+                  <p className="font-serif text-[clamp(1.35rem,1.7vw,1.65rem)] leading-[1.35] tracking-[-0.01em] text-cream/90">
+                    “{showcase.centerPromise}”
+                  </p>
+                  <p className="mt-5 text-[11px] uppercase tracking-[0.24em] text-gold">
+                    RENIA · Yvelines 78
+                  </p>
+                </div>
               </div>
 
-              <div className="my-8 grid w-full max-w-sm grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4">
-                <div className="justify-self-start">
-                  <EngagementBadge index={0} {...showcase.engagements[0]} />
-                </div>
-                <div aria-hidden="true" />
-                <div className="justify-self-end">
-                  <EngagementBadge index={1} {...showcase.engagements[1]} />
-                </div>
-
-                <div aria-hidden="true" />
-                <div className="relative aspect-square w-32 overflow-hidden rounded-full border-4 border-gold/30 shadow-[0_16px_45px_rgba(0,0,0,0.28)] sm:w-40 lg:w-36 xl:w-44">
-                  <Image
-                    src="/images/hero.jpg.png"
-                    alt={showcase.centerImageAlt}
-                    fill
-                    unoptimized
-                    sizes="(min-width: 1024px) 20vw, 40vw"
-                    className="object-cover"
+              <div className="relative my-8 grid w-full grid-cols-2 gap-x-4 gap-y-6">
+                {showcase.engagements.map((engagement, index) => (
+                  <EngagementBadge
+                    key={engagement.title}
+                    index={index}
+                    {...engagement}
                   />
-                </div>
-                <div aria-hidden="true" />
-
-                <div className="justify-self-start">
-                  <EngagementBadge index={2} {...showcase.engagements[2]} />
-                </div>
-                <div aria-hidden="true" />
-                <div className="justify-self-end">
-                  <EngagementBadge index={3} {...showcase.engagements[3]} />
-                </div>
+                ))}
               </div>
 
-              <Link href="/about" className="pill-link-dark self-center">
-                {showcase.centerCta} →
+              <Link href="/team" className="pill-link-dark relative self-start">
+                {showcase.centerCta}
+                <span aria-hidden="true">→</span>
               </Link>
             </article>
 
