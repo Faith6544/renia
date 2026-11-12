@@ -21,8 +21,8 @@ export default function Footer() {
 
   return (
     <footer className="rounded-t-[2.5rem] bg-forest-deep text-cream/75 shadow-[0_-20px_60px_rgba(8,35,20,0.12)]">
-      <div className="shell py-12 lg:py-24">
-        <div className="grid gap-10 md:grid-cols-12">
+      <div className="shell py-10 lg:py-16">
+        <div className="grid gap-8 md:gap-8 md:grid-cols-12">
           
           {/* Logo, Tagline & Contact (Always visible) */}
           <div className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
@@ -137,7 +137,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 rounded-2xl bg-cream/5 px-6 py-5 text-xs uppercase tracking-[0.18em] text-cream/40">
+        <div className="mt-10 rounded-2xl bg-cream/5 px-6 py-4 text-xs uppercase tracking-[0.18em] text-cream/40">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p>
               © {year} Renia. {t.footer.rights}

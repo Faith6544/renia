@@ -7,10 +7,8 @@ import type { User } from "@supabase/supabase-js";
 
 import { useLanguage } from "@/context/LanguageContext";
 import {
-  buildStoragePath,
   extractStoragePathFromUrl,
   GALLERY_BUCKET,
-  GALLERY_TEAM_FOLDER,
   getMediaKind,
   listRecentMedia,
   MAX_MEDIA_BYTES,
@@ -251,7 +249,8 @@ export default function AdminDashboard() {
 
     try {
       const supabase = getSupabaseBrowserClient();
-      const path = buildStoragePath(selectedFile.name);
+      const safeFileName = `${Date.now()}-${selectedFile.name.replace(/[^a-zA-Z0-9.]/g, "")}`;
+      const path = `gallery/${safeFileName}`;
 
       const { error } = await supabase.storage
         .from(GALLERY_BUCKET)
@@ -270,6 +269,7 @@ export default function AdminDashboard() {
       setUploadNotice(admin.uploadSuccess);
       await loadMedia();
     } catch (error) {
+      console.error("Supabase Error:", error);
       console.error("Gallery upload failed (bucket:", GALLERY_BUCKET, "):", error);
       setUploadError(admin.uploadError);
     } finally {
@@ -307,6 +307,7 @@ export default function AdminDashboard() {
       setMedia((current) => current.filter((entry) => entry.path !== item.path));
       await loadMedia();
     } catch (error) {
+      console.error("Supabase Error:", error);
       console.error("Gallery delete failed (bucket:", GALLERY_BUCKET, "):", error);
       setMediaError(true);
     } finally {
@@ -346,6 +347,7 @@ export default function AdminDashboard() {
       setMedia([]);
       await loadMedia();
     } catch (error) {
+      console.error("Supabase Error:", error);
       console.error("Delete all gallery failed (bucket:", GALLERY_BUCKET, "):", error);
       setMediaError(true);
     } finally {
@@ -378,6 +380,7 @@ export default function AdminDashboard() {
           .from(GALLERY_BUCKET)
           .remove([photoPath]);
         if (storageError) {
+          console.error("Supabase Error:", storageError);
           console.error("Team member image delete failed:", storageError);
         }
       }
@@ -385,6 +388,7 @@ export default function AdminDashboard() {
       setTeamMembers((current) => current.filter((m) => m.id !== member.id));
       await loadTeam();
     } catch (error) {
+      console.error("Supabase Error:", error);
       console.error("Team member delete failed:", error);
       setTeamError(true);
     } finally {
@@ -408,10 +412,11 @@ export default function AdminDashboard() {
       let photoUrl: string | null = null;
 
       if (teamPhoto) {
-        const path = buildStoragePath(teamPhoto.name, GALLERY_TEAM_FOLDER);
+        const safeFileName = `${Date.now()}-${teamPhoto.name.replace(/[^a-zA-Z0-9.]/g, "")}`;
+        const filePath = `team/${safeFileName}`;
         const { error: uploadError } = await supabase.storage
           .from(GALLERY_BUCKET)
-          .upload(path, teamPhoto, {
+          .upload(filePath, teamPhoto, {
             cacheControl: "3600",
             upsert: false,
             contentType: teamPhoto.type || undefined,
@@ -419,10 +424,10 @@ export default function AdminDashboard() {
 
         if (uploadError) throw uploadError;
 
-        const { data: publicData } = supabase.storage
-          .from(GALLERY_BUCKET)
-          .getPublicUrl(path);
-        photoUrl = publicData.publicUrl;
+        const {
+          data: { publicUrl },
+        } = supabase.storage.from(GALLERY_BUCKET).getPublicUrl(filePath);
+        photoUrl = publicUrl;
       }
 
       const { error: insertError } = await supabase
@@ -431,6 +436,8 @@ export default function AdminDashboard() {
           name: teamName.trim(),
           role: teamRole.trim() || "Team",
           photo: photoUrl,
+          photo_url: photoUrl,
+          image_url: photoUrl,
         });
 
       if (insertError) throw insertError;
@@ -445,6 +452,7 @@ export default function AdminDashboard() {
       setTeamNotice(admin.teamSaved);
       await loadTeam();
     } catch (error) {
+      console.error("Supabase Error:", error);
       console.error("Team member save failed (bucket:", GALLERY_BUCKET, "):", error);
       setTeamErrorMessage(admin.teamError);
     } finally {
@@ -594,9 +602,11 @@ export default function AdminDashboard() {
             <p className="text-xs uppercase tracking-[0.2em] text-gold">
               Supabase Storage
             </p>
-            <p className="mt-4 truncate font-serif text-2xl">{GALLERY_BUCKET}</p>
-            <p className="mt-2 text-xs leading-relaxed text-cream/60">
-              gallery/
+            <p className="mt-4 text-sm text-cream/80">
+              Bucket: <span className="font-serif text-lg text-cream">{GALLERY_BUCKET}</span>
+            </p>
+            <p className="mt-2 text-xs leading-relaxed text-cream/70">
+              Folders: gallery, team
             </p>
           </div>
         </div>
