@@ -711,6 +711,20 @@ const en = {
     legal:
       "By continuing, you agree to our terms of sale and privacy policy.",
     secure: "Secure sign-in powered by Supabase",
+    chooseUsernameEyebrow: "One last step",
+    chooseUsernameTitle: "Choose your username.",
+    chooseUsernameIntro:
+      "Welcome to Renia! Pick the username that will appear on your account.",
+    usernameLabel: "Username",
+    usernamePlaceholder: "yourname",
+    usernameHint: "3–20 characters. Letters, numbers and underscores only.",
+    usernameCta: "Save username",
+    usernameSaving: "Saving…",
+    usernameTaken: "That username is already taken. Try another one.",
+    usernameInvalid: "Use 3–20 characters: letters, numbers or underscores.",
+    usernameError: "We could not save your username. Please try again.",
+    usernameNoSession: "Your session has expired. Please sign in again.",
+    usernameSkip: "Skip for now",
   },
 
   team: {
@@ -1579,6 +1593,23 @@ const fr: typeof en = {
     legal:
       "En continuant, vous acceptez nos conditions de vente et notre politique de confidentialité.",
     secure: "Connexion sécurisée avec Supabase",
+    chooseUsernameEyebrow: "Dernière étape",
+    chooseUsernameTitle: "Choisissez votre nom d'utilisateur.",
+    chooseUsernameIntro:
+      "Bienvenue chez Renia ! Choisissez le nom d'utilisateur qui apparaîtra sur votre compte.",
+    usernameLabel: "Nom d'utilisateur",
+    usernamePlaceholder: "votrenom",
+    usernameHint:
+      "3 à 20 caractères. Lettres, chiffres et tirets bas uniquement.",
+    usernameCta: "Enregistrer",
+    usernameSaving: "Enregistrement…",
+    usernameTaken: "Ce nom d'utilisateur est déjà pris. Essayez-en un autre.",
+    usernameInvalid:
+      "Utilisez 3 à 20 caractères : lettres, chiffres ou tirets bas.",
+    usernameError:
+      "Impossible d'enregistrer votre nom d'utilisateur. Veuillez réessayer.",
+    usernameNoSession: "Votre session a expiré. Veuillez vous reconnecter.",
+    usernameSkip: "Passer pour le moment",
   },
 
   team: {

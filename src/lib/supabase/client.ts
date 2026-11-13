@@ -41,8 +41,12 @@ function readSupabaseConfig(): SupabaseConfig | null {
     return null;
   }
 
+  // Supabase's project URL is the bare origin. The dashboard also exposes the
+  // REST endpoint (https://<ref>.supabase.co/rest/v1), which is a common
+  // copy/paste mistake. Keeping any path here would send OAuth and auth calls
+  // to /rest/v1/auth/v1/... and break the Google sign-in redirect.
   return {
-    url: parsedUrl.toString().replace(/\/$/, ""),
+    url: parsedUrl.origin,
     anonKey,
   };
 }

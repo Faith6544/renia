@@ -154,7 +154,10 @@ export default function AuthForm({ mode }: { mode: AuthMode }) {
       const { error: oauthError } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${window.location.origin}/auth/callback?next=/choose-username`,
+          queryParams: {
+            prompt: "select_account",
+          },
         },
       });
 
