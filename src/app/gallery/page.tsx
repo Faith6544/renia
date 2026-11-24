@@ -5,7 +5,7 @@ import GalleryContent from "./GalleryContent";
 export const metadata: Metadata = {
   title: "Gallery — Renia",
   description:
-    "A look at the homes, offices and rentals Renia cares for across the Yvelines.",
+    "A look at the homes, offices and rentals Renia cares for.",
 };
 
 export default function GalleryPage() {

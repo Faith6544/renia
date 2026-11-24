@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import ReniaProContent from "./ReniaProContent";
 
 export const metadata: Metadata = {
-  title: "RENIA PRO — Commercial cleaning | Renia",
+  title: "RENIA PRO — Professional cleaning | Renia Services",
   description:
-    "Reliable cleaning for offices, practices, shops, managed properties and short-term rentals across the Yvelines.",
+    "Cleaning for offices, practices, shops, property managers, short-term rentals and business premises.",
 };
 
 export default function ReniaProPage() {

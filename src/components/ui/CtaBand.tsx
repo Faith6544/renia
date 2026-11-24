@@ -20,31 +20,33 @@ export default function CtaBand({
   secondaryHref,
 }: CtaBandProps) {
   return (
-    <section className="bg-cream pb-16 lg:pb-32">
+    <section className="bg-white pb-16 lg:pb-24">
       <div className="shell">
-        <div className="flex flex-col gap-12 rounded-3xl bg-forest p-8 text-cream shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 md:flex-row md:items-end md:justify-between lg:p-16">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
-              {eyebrow}
-            </p>
-            <h2 className="mt-6 max-w-2xl text-balance font-serif text-[clamp(2rem,4.6vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">
-              {title}
-            </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/65 sm:text-base">
-              {text}
-            </p>
-          </div>
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-deep via-brand to-aqua p-8 text-white shadow-[0_24px_60px_rgba(22,82,240,0.24)] sm:p-12 lg:p-16">
+          <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-aqua-soft">
+                {eyebrow}
+              </p>
+              <h2 className="mt-5 max-w-2xl text-balance text-[clamp(2rem,4.6vw,3.8rem)] font-extrabold leading-[1.04]">
+                {title}
+              </h2>
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
+                {text}
+              </p>
+            </div>
 
-          <div className="flex shrink-0 flex-col items-start gap-4 md:items-end">
-            <Link href={primaryHref} className="btn btn-gold">
-              {primaryLabel}
-            </Link>
-
-            {secondaryLabel && secondaryHref ? (
-              <Link href={secondaryHref} className="pill-link-dark">
-                {secondaryLabel}
+            <div className="flex shrink-0 flex-col items-start gap-4 md:items-end">
+              <Link href={primaryHref} className="btn btn-gold">
+                {primaryLabel}
               </Link>
-            ) : null}
+
+              {secondaryLabel && secondaryHref ? (
+                <Link href={secondaryHref} className="pill-link-dark">
+                  {secondaryLabel}
+                </Link>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

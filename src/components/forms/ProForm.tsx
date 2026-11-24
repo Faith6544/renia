@@ -9,99 +9,49 @@ import {
   isSupabaseConfigured,
 } from "@/lib/supabase/client";
 
-const SECTOR_OPTIONS = {
-  en: [
-    { value: "Bureaux", label: "Offices" },
-    { value: "Airbnb", label: "Airbnb" },
-    { value: "Commerce", label: "Retail" },
-    { value: "Syndic", label: "Property management" },
-  ],
-  fr: [
-    { value: "Bureaux", label: "Bureaux" },
-    { value: "Airbnb", label: "Airbnb" },
-    { value: "Commerce", label: "Commerce" },
-    { value: "Syndic", label: "Syndic" },
-  ],
-} as const;
-
-const COPY = {
-  en: {
-    contactName: "Contact Name",
-    companyName: "Company Name",
-    businessEmail: "Business Email",
-    phone: "Phone",
-    sector: "Sector",
-    propertySize: "Property Size (m²)",
-    contactNamePlaceholder: "Your full name",
-    companyNamePlaceholder: "Your company",
-    emailPlaceholder: "you@company.com",
-    phonePlaceholder: "+33 6 12 34 56 78",
-    sizePlaceholder: "e.g. 250",
-    hint: "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
-    whatsappButton: "Send via WhatsApp",
-    emailButton: "Send via Email",
-    alerts: {
-      contactName: "Please enter the contact name.",
-      companyName: "Please enter the company name.",
-      email: "Please enter the business email.",
-      invalidEmail: "Please enter a valid business email address.",
-      phone: "Please enter the phone number.",
-      size: "Please enter the property size in m².",
-    },
-  },
-  fr: {
-    contactName: "Nom du contact",
-    companyName: "Nom de l'entreprise",
-    businessEmail: "Email professionnel",
-    phone: "Téléphone",
-    sector: "Secteur",
-    propertySize: "Surface (m²)",
-    contactNamePlaceholder: "Votre nom complet",
-    companyNamePlaceholder: "Votre entreprise",
-    emailPlaceholder: "vous@entreprise.com",
-    phonePlaceholder: "+33 6 12 34 56 78",
-    sizePlaceholder: "ex. 250",
-    hint: "Votre demande est enregistrée, puis WhatsApp s'ouvre avec votre message prêt à envoyer. Rien n'est envoyé tant que vous ne confirmez pas dans WhatsApp.",
-    whatsappButton: "Envoyer via WhatsApp",
-    emailButton: "Envoyer par email",
-    alerts: {
-      contactName: "Veuillez saisir le nom du contact.",
-      companyName: "Veuillez saisir le nom de l'entreprise.",
-      email: "Veuillez saisir l'email professionnel.",
-      invalidEmail: "Veuillez saisir une adresse email professionnelle valide.",
-      phone: "Veuillez saisir le numéro de téléphone.",
-      size: "Veuillez saisir la surface en m².",
-    },
-  },
-} as const;
-
-type SectorValue = (typeof SECTOR_OPTIONS)["en"][number]["value"];
+const INTERACTIVE = "relative z-50 pointer-events-auto";
+const PHONE_REGEX = /^(?:\+33|0)[1-9](?:[ .-]?\d{2}){4}$/;
+const POSTAL_CODE_REGEX = /^\d{5}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type ProFormState = {
+  organisationName: string;
+  sectorIndex: number;
   contactName: string;
-  companyName: string;
-  businessEmail: string;
+  role: string;
   phone: string;
-  sector: SectorValue;
-  propertySize: string;
+  email: string;
+  address: string;
+  postalCode: string;
+  city: string;
+  surfaceArea: string;
+  serviceIndex: number;
+  frequencyIndex: number;
+  comments: string;
+  consent: boolean;
 };
 
 const initialForm: ProFormState = {
+  organisationName: "",
+  sectorIndex: 0,
   contactName: "",
-  companyName: "",
-  businessEmail: "",
+  role: "",
   phone: "",
-  sector: SECTOR_OPTIONS.en[0].value,
-  propertySize: "",
+  email: "",
+  address: "",
+  postalCode: "",
+  city: "",
+  surfaceArea: "",
+  serviceIndex: 0,
+  frequencyIndex: 0,
+  comments: "",
+  consent: false,
 };
 
 export default function ProForm() {
-  const { language } = useLanguage();
-  const copy = COPY[language];
-  const sectorOptions = SECTOR_OPTIONS[language];
-
+  const { t } = useLanguage();
   const [form, setForm] = useState<ProFormState>(initialForm);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
   const updateField = <K extends keyof ProFormState>(
     field: K,
@@ -111,11 +61,27 @@ export default function ProForm() {
   };
 
   const buildMessage = () => {
-    const sectorLabel =
-      sectorOptions.find((option) => option.value === form.sector)?.label ??
-      form.sector;
-
-    return `Hello RENIA PRO, My name is ${form.contactName.trim()} from ${form.companyName.trim()} (Sector: ${sectorLabel}). We are looking for cleaning services for approx ${form.propertySize.trim()} m². My contact is ${form.phone.trim()} / ${form.businessEmail.trim()}. Thank you.`;
+    return [
+      `${t.forms.formTitle} — RENIA PRO`,
+      `${t.forms.youAre}: ${t.forms.professional}`,
+      "",
+      t.forms.contactDetails,
+      `${t.forms.organisationName}: ${form.organisationName.trim()}`,
+      `${t.forms.sector}: ${t.forms.sectors[form.sectorIndex]}`,
+      `${t.forms.fullName}: ${form.contactName.trim()}`,
+      `${t.forms.role}: ${form.role.trim()}`,
+      `${t.forms.phone}: ${form.phone.trim()}`,
+      `${t.forms.email}: ${form.email.trim()}`,
+      `${t.forms.address}: ${form.address.trim()}`,
+      `${t.forms.postalCode}: ${form.postalCode.trim()}`,
+      `${t.forms.city}: ${form.city.trim()}`,
+      "",
+      t.forms.yourNeeds,
+      `${t.forms.surfaceArea}: ${form.surfaceArea.trim()} m²`,
+      `${t.forms.serviceType}: ${t.forms.services[form.serviceIndex]}`,
+      `${t.forms.frequency}: ${t.forms.frequencies[form.frequencyIndex]}`,
+      `${t.forms.comments}: ${form.comments.trim() || "-"}`,
+    ].join("\n");
   };
 
   const saveToDatabase = async (message: string) => {
@@ -125,7 +91,7 @@ export default function ProForm() {
       const supabase = getSupabaseBrowserClient();
       const { error } = await supabase.from("quote_requests").insert({
         full_name: form.contactName.trim(),
-        email: form.businessEmail.trim().toLowerCase(),
+        email: form.email.trim().toLowerCase(),
         phone: form.phone.trim(),
         service_type: "renia_pro",
         message,
@@ -139,203 +105,359 @@ export default function ProForm() {
     }
   };
 
-  const handleSend = async (method: "whatsapp" | "email") => {
-    if (!form.contactName.trim()) {
-      alert(copy.alerts.contactName);
+  const handleSend = async () => {
+    const requiredFieldsComplete =
+      form.organisationName.trim() &&
+      form.contactName.trim() &&
+      form.role.trim() &&
+      form.phone.trim() &&
+      form.email.trim() &&
+      form.address.trim() &&
+      form.postalCode.trim() &&
+      form.city.trim() &&
+      form.surfaceArea.trim();
+
+    if (!requiredFieldsComplete) {
+      alert(t.forms.requiredError);
       return;
     }
 
-    if (!form.companyName.trim()) {
-      alert(copy.alerts.companyName);
+    if (!PHONE_REGEX.test(form.phone.trim())) {
+      alert(t.forms.phoneError);
       return;
     }
 
-    if (!form.businessEmail.trim()) {
-      alert(copy.alerts.email);
+    if (!POSTAL_CODE_REGEX.test(form.postalCode.trim())) {
+      alert(t.forms.postalCodeError);
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.businessEmail.trim())) {
-      alert(copy.alerts.invalidEmail);
+    if (!EMAIL_REGEX.test(form.email.trim())) {
+      alert(t.forms.emailError);
       return;
     }
 
-    if (!form.phone.trim()) {
-      alert(copy.alerts.phone);
+    if (Number(form.surfaceArea) <= 0) {
+      alert(t.forms.surfaceError);
       return;
     }
 
-    const propertySize = Number(form.propertySize);
-
-    if (
-      !form.propertySize.trim() ||
-      !Number.isFinite(propertySize) ||
-      propertySize <= 0
-    ) {
-      alert(copy.alerts.size);
+    if (!form.consent) {
+      alert(t.forms.consentError);
       return;
     }
 
-    setIsSubmitting(true);
+    setStatus("sending");
 
     const message = buildMessage();
     await saveToDatabase(message);
 
-    if (method === "whatsapp") {
-      window.location.href = buildWhatsAppUrl(message);
-    } else {
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-        `RENIA PRO request — ${form.companyName.trim()}`,
-      )}&body=${encodeURIComponent(message)}`;
-    }
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      t.forms.formTitle,
+    )}&body=${encodeURIComponent(message)}`;
 
-    setIsSubmitting(false);
+    window.location.href = mailtoUrl;
+    window.setTimeout(() => {
+      window.location.href = buildWhatsAppUrl(message);
+    }, 120);
+
+    setStatus("sent");
   };
 
   return (
-    <div className="relative z-50 min-w-0 pointer-events-auto">
-      <div className="grid gap-7 sm:grid-cols-2 sm:gap-8">
-        <div>
-          <label htmlFor="pro-contact-name" className="field-label">
-            {copy.contactName} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="pro-contact-name"
-            type="text"
-            autoComplete="name"
-            value={form.contactName}
-            onChange={(event) => updateField("contactName", event.target.value)}
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.contactNamePlaceholder}
-          />
-        </div>
+    <form
+      noValidate
+      onSubmit={(event) => event.preventDefault()}
+      className={`min-w-0 ${INTERACTIVE}`}
+    >
+      <fieldset className={`border-0 p-0 ${INTERACTIVE}`}>
+        <legend className="eyebrow mb-5">{t.forms.contactDetails}</legend>
 
-        <div>
-          <label htmlFor="pro-company-name" className="field-label">
-            {copy.companyName} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="pro-company-name"
-            type="text"
-            autoComplete="organization"
-            value={form.companyName}
-            onChange={(event) => updateField("companyName", event.target.value)}
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.companyNamePlaceholder}
-          />
-        </div>
-      </div>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label htmlFor="pro-organisation" className="field-label">
+              {t.forms.organisationName} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-organisation"
+              name="organisationName"
+              type="text"
+              autoComplete="organization"
+              required
+              value={form.organisationName}
+              onChange={(event) =>
+                updateField("organisationName", event.target.value)
+              }
+              className={`field-input ${INTERACTIVE}`}
+              placeholder={t.forms.organisationName}
+            />
+          </div>
 
-      <div className="mt-7 grid gap-7 sm:grid-cols-2 sm:gap-8">
-        <div>
-          <label htmlFor="pro-email" className="field-label">
-            {copy.businessEmail} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="pro-email"
-            type="email"
-            autoComplete="email"
-            value={form.businessEmail}
-            onChange={(event) =>
-              updateField("businessEmail", event.target.value)
-            }
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.emailPlaceholder}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="pro-phone" className="field-label">
-            {copy.phone} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="pro-phone"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            value={form.phone}
-            onChange={(event) => updateField("phone", event.target.value)}
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.phonePlaceholder}
-          />
-        </div>
-      </div>
-
-      <div className="mt-7 grid gap-7 sm:grid-cols-2 sm:gap-8">
-        <div>
-          <label htmlFor="pro-sector" className="field-label">
-            {copy.sector}
-          </label>
-          <div className="relative">
+          <div>
+            <label htmlFor="pro-sector" className="field-label">
+              {t.forms.sector} <span className="text-stone/50">*</span>
+            </label>
             <select
               id="pro-sector"
-              value={form.sector}
+              name="sector"
+              required
+              value={form.sectorIndex}
               onChange={(event) =>
-                updateField("sector", event.target.value as SectorValue)
+                updateField("sectorIndex", Number(event.target.value))
               }
-              className="field-input relative z-10 w-full cursor-pointer appearance-none pr-11 pointer-events-auto"
+              className={`field-input cursor-pointer ${INTERACTIVE}`}
             >
-              {sectorOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
+              {t.forms.sectors.map((sector, index) => (
+                <option key={sector} value={index}>
+                  {sector}
                 </option>
               ))}
             </select>
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 12 8"
-              className="pointer-events-none absolute right-4 top-1/2 h-2 w-3 -translate-y-1/2 fill-none stroke-forest stroke-[1.25]"
-            >
-              <path d="M1 1.5 6 6.5l5-5" />
-            </svg>
+          </div>
+
+          <div>
+            <label htmlFor="pro-contact-name" className="field-label">
+              {t.forms.fullName} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-contact-name"
+              name="contactName"
+              type="text"
+              autoComplete="name"
+              required
+              value={form.contactName}
+              onChange={(event) => updateField("contactName", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder={t.forms.fullName}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="pro-role" className="field-label">
+              {t.forms.role} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-role"
+              name="role"
+              type="text"
+              required
+              value={form.role}
+              onChange={(event) => updateField("role", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder={t.forms.role}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="pro-phone" className="field-label">
+              {t.forms.phone} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-phone"
+              name="phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              required
+              value={form.phone}
+              onChange={(event) => updateField("phone", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="06 14 38 36 56"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="pro-email" className="field-label">
+              {t.forms.email} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={form.email}
+              onChange={(event) => updateField("email", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="vous@entreprise.com"
+            />
+          </div>
+
+          <div className="sm:col-span-2">
+            <label htmlFor="pro-address" className="field-label">
+              {t.forms.address} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-address"
+              name="address"
+              type="text"
+              autoComplete="street-address"
+              required
+              value={form.address}
+              onChange={(event) => updateField("address", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder={t.forms.address}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="pro-postal-code" className="field-label">
+              {t.forms.postalCode} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-postal-code"
+              name="postalCode"
+              type="text"
+              inputMode="numeric"
+              autoComplete="postal-code"
+              maxLength={5}
+              required
+              value={form.postalCode}
+              onChange={(event) =>
+                updateField("postalCode", event.target.value.replace(/\D/g, ""))
+              }
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="78370"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="pro-city" className="field-label">
+              {t.forms.city} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-city"
+              name="city"
+              type="text"
+              autoComplete="address-level2"
+              required
+              value={form.city}
+              onChange={(event) => updateField("city", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder={t.forms.city}
+            />
           </div>
         </div>
+      </fieldset>
 
-        <div>
-          <label htmlFor="pro-size" className="field-label">
-            {copy.propertySize} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="pro-size"
-            type="number"
-            inputMode="numeric"
-            min="1"
-            step="1"
-            value={form.propertySize}
-            onChange={(event) =>
-              updateField("propertySize", event.target.value)
-            }
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.sizePlaceholder}
-          />
+      <fieldset className={`mt-10 border-0 p-0 ${INTERACTIVE}`}>
+        <legend className="eyebrow mb-5">{t.forms.yourNeeds}</legend>
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label htmlFor="pro-surface" className="field-label">
+              {t.forms.surfaceArea} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="pro-surface"
+              name="surfaceArea"
+              type="number"
+              inputMode="numeric"
+              min="1"
+              step="1"
+              required
+              value={form.surfaceArea}
+              onChange={(event) => updateField("surfaceArea", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="250"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="pro-service" className="field-label">
+              {t.forms.serviceType} <span className="text-stone/50">*</span>
+            </label>
+            <select
+              id="pro-service"
+              name="serviceType"
+              required
+              value={form.serviceIndex}
+              onChange={(event) =>
+                updateField("serviceIndex", Number(event.target.value))
+              }
+              className={`field-input cursor-pointer ${INTERACTIVE}`}
+            >
+              {t.forms.services.map((service, index) => (
+                <option key={service} value={index}>
+                  {service}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="pro-frequency" className="field-label">
+              {t.forms.frequency} <span className="text-stone/50">*</span>
+            </label>
+            <select
+              id="pro-frequency"
+              name="frequency"
+              required
+              value={form.frequencyIndex}
+              onChange={(event) =>
+                updateField("frequencyIndex", Number(event.target.value))
+              }
+              className={`field-input cursor-pointer ${INTERACTIVE}`}
+            >
+              {t.forms.frequencies.map((frequency, index) => (
+                <option key={frequency} value={index}>
+                  {frequency}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="sm:col-span-2">
+            <label htmlFor="pro-comments" className="field-label">
+              {t.forms.comments}
+            </label>
+            <textarea
+              id="pro-comments"
+              name="comments"
+              rows={5}
+              value={form.comments}
+              onChange={(event) => updateField("comments", event.target.value)}
+              className={`field-input resize-none ${INTERACTIVE}`}
+              placeholder={t.forms.commentsPlaceholder}
+            />
+          </div>
         </div>
-      </div>
+      </fieldset>
 
-      <div className="relative z-10 mt-8 rounded-2xl bg-white/60 p-6 pointer-events-auto">
-        <p className="mb-6 text-base leading-relaxed text-stone">
-          {copy.hint}
+      <div className={`mt-10 rounded-2xl bg-brand-soft/70 p-6 ${INTERACTIVE}`}>
+        <h3 className="text-lg font-extrabold">{t.forms.ackTitle}</h3>
+        <label className={`mt-4 flex cursor-pointer items-start gap-4 ${INTERACTIVE}`}>
+          <input
+            type="checkbox"
+            name="consent"
+            checked={form.consent}
+            onChange={(event) => updateField("consent", event.target.checked)}
+            className={`mt-1 h-5 w-5 shrink-0 accent-brand ${INTERACTIVE}`}
+          />
+          <span className="text-base font-medium leading-relaxed text-stone">
+            {t.forms.ackText}
+          </span>
+        </label>
+
+        <p className="mt-5 text-base font-medium leading-relaxed text-stone">
+          {t.forms.note}
         </p>
 
-        <div className="relative z-10 flex flex-col gap-4 pointer-events-auto sm:flex-row sm:items-center">
-          <button
-            type="button"
-            onClick={() => handleSend("whatsapp")}
-            disabled={isSubmitting}
-            className="btn btn-gold relative z-10 flex-1 cursor-pointer justify-center text-center pointer-events-auto disabled:opacity-50"
-          >
-            {copy.whatsappButton}
-          </button>
+        <button
+          type="button"
+          onClick={handleSend}
+          disabled={status === "sending"}
+          className={`btn btn-primary mt-6 w-full cursor-pointer justify-center text-center disabled:opacity-50 sm:w-auto ${INTERACTIVE}`}
+        >
+          {status === "sending" ? t.forms.sending : t.forms.submitBtn}
+        </button>
 
-          <button
-            type="button"
-            onClick={() => handleSend("email")}
-            disabled={isSubmitting}
-            className="btn btn-dark relative z-10 flex-1 cursor-pointer justify-center text-center pointer-events-auto disabled:opacity-50"
-          >
-            {copy.emailButton}
-          </button>
-        </div>
+        {status === "sent" ? (
+          <p role="status" className={`mt-5 text-base font-semibold text-brand ${INTERACTIVE}`}>
+            {t.forms.confirmation}
+          </p>
+        ) : null}
       </div>
-    </div>
+    </form>
   );
 }

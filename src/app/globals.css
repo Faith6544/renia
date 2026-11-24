@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #f9f6f0;
-  --color-foreground: #1a1a1a;
-  --color-forest: #0f3a20;
-  --color-forest-deep: #082314;
-  --color-gold: #c5a059;
-  --color-gold-soft: #d9c08c;
-  --color-cream: #f9f6f0;
-  --color-bone: #f1ede4;
-  --color-ink: #1a1a1a;
-  --color-stone: #6e6b63;
-  --color-line: #dcd9d2;
+  --color-background: #ffffff;
+  --color-foreground: #0b1a33;
 
-  /* UPDATED FONTS HERE */
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
+  /* Bright, bold Renia palette (O2-inspired: blue, aqua, coral, white). */
+  --color-brand: #1652f0;
+  --color-brand-deep: #0a32b3;
+  --color-brand-soft: #eaf1ff;
+  --color-aqua: #00c2b2;
+  --color-aqua-soft: #d9fbf7;
+  --color-coral: #ff6b4a;
+  --color-coral-soft: #ffe3dc;
+
+  /* Legacy token names kept so every existing component stays consistent. */
+  --color-forest: #1652f0;
+  --color-forest-deep: #0a32b3;
+  --color-gold: #ff6b4a;
+  --color-gold-soft: #ffe3dc;
+  --color-cream: #f5f8ff;
+  --color-bone: #eaf1ff;
+  --color-ink: #0b1a33;
+  --color-stone: #4d5f7a;
+  --color-line: #d7e2f5;
+
+  --font-sans: var(--font-brand), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-brand), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* ... (Keep the rest of your globals.css exactly the same) ... */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -26,41 +35,50 @@
 
   html,
   body {
-    /* Prevent accidental horizontal scrolling on narrow screens. */
     overflow-x: hidden;
   }
 
   body {
-    background-color: var(--color-cream);
+    background-color: var(--color-background);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    /* Mobile-first density: ~1px smaller base text on phones. */
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-weight: 500;
     line-height: 1.6;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* Long emails / URLs must never push the layout sideways. */
     overflow-wrap: break-word;
   }
 
-  /* Desktop keeps the comfortable 16px base size. */
-  @media (min-width: 1024px) {
+  @media (max-width: 640px) {
     body {
-      font-size: 1rem;
+      font-size: 0.98rem;
     }
   }
 
-  /* Comfortable minimum tap target for every button. */
-  button {
-    min-height: 2.5rem;
+  button,
+  a {
+    min-height: 2.75rem;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-serif leading-tight;
+    @apply font-sans font-extrabold leading-[1.06] tracking-tight text-ink;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl;
   }
 
   p {
@@ -68,31 +86,31 @@
   }
 
   ::selection {
-    background-color: var(--color-forest);
-    color: var(--color-cream);
+    background-color: var(--color-brand);
+    color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 4px;
+    outline: 3px solid var(--color-aqua);
+    outline-offset: 3px;
   }
 }
 
 @layer components {
   .shell {
-    @apply mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-12 xl:px-16;
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12 xl:px-16;
   }
 
   .eyebrow {
-    @apply text-xs font-medium uppercase tracking-[0.26em] text-stone sm:text-sm;
+    @apply text-xs font-extrabold uppercase tracking-[0.2em] text-brand sm:text-sm;
   }
 
   .field-label {
-    @apply mb-2.5 block text-xs uppercase tracking-[0.22em] text-stone sm:text-sm;
+    @apply mb-2 block text-sm font-bold text-ink;
   }
 
   .field-input {
-    @apply w-full appearance-none rounded-xl border border-line/70 bg-white/80 px-4 py-3.5 text-base text-ink shadow-[0_4px_16px_rgb(0,0,0,0.02)] transition-all duration-300 placeholder:text-stone/50 hover:border-line focus:border-forest/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-gold/15;
+    @apply w-full appearance-none rounded-2xl border-2 border-line bg-white px-4 py-3.5 text-base font-medium text-ink shadow-sm transition-all duration-200 placeholder:text-stone/60 hover:border-brand/40 focus:border-brand focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand/15;
   }
 
   .field-input:focus-visible {
@@ -100,53 +118,206 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 sm:text-sm;
+    @apply inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-2xl px-7 py-4 text-base font-extrabold transition-all duration-200 active:scale-[0.98];
   }
 
   .btn-gold {
-    @apply bg-gold text-forest shadow-[0_10px_30px_rgba(197,160,89,0.28)] hover:-translate-y-0.5 hover:bg-cream hover:shadow-lg;
+    @apply bg-coral text-white shadow-[0_12px_28px_rgba(255,107,74,0.3)] hover:-translate-y-0.5 hover:bg-[#f25534] hover:shadow-lg;
   }
 
   .btn-dark {
-    @apply bg-forest text-cream shadow-[0_10px_30px_rgba(15,58,32,0.18)] hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-lg;
+    @apply bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
   }
 
   .btn-outline {
-    @apply border border-cream/30 text-cream shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 hover:border-gold hover:bg-cream/5 hover:text-gold hover:shadow-lg;
+    @apply border-2 border-white/70 bg-white/10 text-white shadow-sm backdrop-blur hover:-translate-y-0.5 hover:bg-white hover:text-brand;
   }
 
   .pill-link {
-    @apply inline-flex items-center gap-2 rounded-full border border-forest/10 bg-white/70 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-forest shadow-[0_8px_24px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-lg sm:text-sm;
+    @apply inline-flex items-center gap-2 rounded-2xl border-2 border-brand/15 bg-white px-6 py-3.5 text-sm font-extrabold text-brand shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft;
   }
 
   .pill-link-dark {
-    @apply inline-flex items-center gap-2 rounded-full border border-cream/15 bg-cream/5 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-gold shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/50 hover:bg-cream/10 hover:text-cream hover:shadow-lg sm:text-sm;
+    @apply inline-flex items-center gap-2 rounded-2xl border-2 border-white/40 bg-white/10 px-6 py-3.5 text-sm font-extrabold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-brand;
   }
 
   .card-soft {
-    @apply rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300;
+    @apply rounded-[28px] border border-line/70 bg-white shadow-[0_10px_40px_rgba(11,26,51,0.06)] transition-all duration-300;
   }
 
   .card-lift {
-    @apply hover:-translate-y-1 hover:shadow-xl;
+    @apply hover:-translate-y-1 hover:border-brand/30 hover:shadow-[0_20px_50px_rgba(22,82,240,0.14)];
   }
-}
 
-/* Fine film grain used over photographic sections. */
-.hero-grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.14;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  .photo-frame {
+    @apply relative overflow-hidden rounded-[28px] bg-brand-soft;
+  }
+
+  .photo-frame img {
+    @apply object-cover;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-soft px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand;
+  }
+
+  .btn-primary {
+    @apply bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
+  }
+
+  .btn-sm {
+    @apply min-h-[2.75rem] rounded-xl px-5 py-2.5 text-sm;
+  }
+
+  .site-header {
+    @apply sticky top-0 z-50 border-b border-line/60 bg-white/95 backdrop-blur-xl;
+  }
+
+  .site-header-inner {
+    @apply flex min-h-[4.5rem] items-center justify-between gap-4;
+  }
+
+  .brand {
+    @apply flex shrink-0 items-center gap-3;
+  }
+
+  .brand-mark {
+    @apply relative block h-10 w-10 overflow-hidden rounded-xl bg-white ring-1 ring-line;
+  }
+
+  .brand-mark img {
+    @apply object-contain p-1;
+  }
+
+  .brand-name {
+    @apply text-lg font-extrabold leading-none tracking-tight text-brand sm:text-xl;
+  }
+
+  .brand-name span {
+    @apply ml-1 text-ink;
+  }
+
+  .site-nav {
+    @apply hidden items-center gap-1 lg:flex;
+  }
+
+  .site-nav-open {
+    @apply absolute inset-x-4 top-[4.25rem] flex flex-col items-stretch gap-2 rounded-2xl border border-line bg-white p-4 shadow-xl lg:static lg:flex-row lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none;
+  }
+
+  .nav-link {
+    @apply rounded-xl px-4 py-3 text-sm font-bold text-ink/70 transition-colors hover:bg-brand-soft hover:text-brand;
+  }
+
+  .nav-link-active {
+    @apply bg-brand-soft text-brand;
+  }
+
+  .nav-quote {
+    @apply ml-2;
+  }
+
+  .header-actions {
+    @apply flex items-center gap-3;
+  }
+
+  .language-switch {
+    @apply flex items-center gap-1 rounded-full bg-brand-soft px-3 py-1.5 text-xs font-extrabold text-brand;
+  }
+
+  .language-switch button {
+    @apply min-h-0 rounded-full px-1.5 py-0.5 transition-opacity;
+  }
+
+  .language-switch button:not(.active) {
+    @apply opacity-45;
+  }
+
+  .menu-button {
+    @apply flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-line bg-white lg:hidden;
+  }
+
+  .menu-button span {
+    @apply block h-0.5 w-5 rounded-full bg-brand;
+  }
+
+  .site-footer {
+    @apply mt-10 bg-brand-deep text-white;
+  }
+
+  .footer-grid {
+    @apply grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:py-20;
+  }
+
+  .footer-logo {
+    @apply relative block h-14 w-44;
+  }
+
+  .footer-logo img {
+    @apply object-contain object-left brightness-0 invert;
+  }
+
+  .footer-tagline {
+    @apply mt-6 max-w-sm text-lg font-semibold leading-relaxed text-white/80;
+  }
+
+  .footer-contact {
+    @apply mt-6 flex flex-col gap-2 text-base font-semibold text-white/90;
+  }
+
+  .footer-contact a:hover {
+    @apply text-aqua-soft;
+  }
+
+  .footer-area {
+    @apply mt-6 flex flex-col gap-1 rounded-2xl bg-white/10 p-4;
+  }
+
+  .footer-area span {
+    @apply text-xs font-extrabold uppercase tracking-wider text-aqua-soft;
+  }
+
+  .footer-area strong {
+    @apply text-lg font-extrabold;
+  }
+
+  .footer-column {
+    @apply flex flex-col gap-3 text-base font-semibold text-white/80;
+  }
+
+  .footer-column h3 {
+    @apply mb-2 text-sm font-extrabold uppercase tracking-[0.18em] text-aqua-soft;
+  }
+
+  .footer-column a:hover {
+    @apply text-white;
+  }
+
+  .footer-column .btn {
+    @apply mt-3 self-start;
+  }
+
+  .footer-bottom {
+    @apply flex flex-col gap-4 border-t border-white/15 py-7 text-sm text-white/65 md:flex-row md:items-center md:justify-between;
+  }
+
+  .footer-legal {
+    @apply flex flex-wrap gap-x-6 gap-y-2;
+  }
+
+  .footer-legal a:hover {
+    @apply text-white;
+  }
+
+  .footer-signature {
+    @apply font-extrabold tracking-wider text-white;
+  }
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -155,7 +326,7 @@
 }
 
 .animate-rise {
-  animation: rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -167,22 +338,16 @@
     animation: none;
   }
 }
-/* ==========================================
-   MOBILE TOUCH & CLICK FIXES
-   ========================================== */
+
+/* Reliable touch/click behaviour on mobile devices. */
 a,
 button,
 input,
 select,
 textarea {
-  touch-action: manipulation !important;
-  cursor: pointer !important;
+  touch-action: manipulation;
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
-}
-
-.pointer-events-none {
-  pointer-events: none !important;
 }

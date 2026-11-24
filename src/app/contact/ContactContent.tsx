@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
-import ContactForm from "@/components/forms/ContactForm";
+import HomeForm from "@/components/forms/HomeForm";
+import ProForm from "@/components/forms/ProForm";
 import PageHero from "@/components/ui/PageHero";
 import { useLanguage } from "@/context/LanguageContext";
 import {
@@ -151,6 +153,7 @@ export default function ContactContent() {
   const page = t.contact;
   const card = t.contactCard;
   const whatsappHref = buildWhatsAppUrl(page.whatsappPrefill);
+  const [audience, setAudience] = useState<"home" | "pro">("home");
 
   return (
     <main className="relative">
@@ -410,10 +413,10 @@ export default function ContactContent() {
           <div className="lg:col-span-4">
             <p className="eyebrow">{page.formEyebrow}</p>
             <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
-              {page.formTitle}
+              {t.forms.formTitle}
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-stone">
-              {page.formIntro}
+              {t.forms.formIntro}
             </p>
 
             <div className="mt-10 rounded-2xl bg-cream p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
@@ -434,7 +437,45 @@ export default function ContactContent() {
 
           <div className="relative z-50 lg:col-span-8 pointer-events-auto">
             <div className="relative z-50 rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] pointer-events-auto sm:p-10">
-              <ContactForm />
+              <div className="mb-10 relative z-50 pointer-events-auto">
+                <p className="field-label">{t.forms.youAre}</p>
+                <div
+                  role="group"
+                  aria-label={t.forms.youAre}
+                  className="grid gap-3 relative z-50 pointer-events-auto sm:grid-cols-2"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setAudience("home")}
+                    aria-pressed={audience === "home"}
+                    className={`min-h-[3.5rem] w-full rounded-2xl border-2 px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
+                      audience === "home"
+                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)]"
+                        : "border-brand/20 bg-white text-brand hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft"
+                    }`}
+                  >
+                    {t.forms.individual}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setAudience("pro")}
+                    aria-pressed={audience === "pro"}
+                    className={`min-h-[3.5rem] w-full rounded-2xl border-2 px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
+                      audience === "pro"
+                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)]"
+                        : "border-brand/20 bg-white text-brand hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft"
+                    }`}
+                  >
+                    {t.forms.professional}
+                  </button>
+                </div>
+              </div>
+
+              {audience === "home" ? (
+                <HomeForm key="home" />
+              ) : (
+                <ProForm key="pro" />
+              )}
             </div>
           </div>
         </div>

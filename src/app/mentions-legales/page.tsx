@@ -19,7 +19,7 @@ export default function MentionsLegalesPage() {
         {
           title: "Éditeur du site",
           paragraphs: [
-            "Le site reniaservices.fr est édité par RENIA SERVICES, entreprise de nettoyage résidentiel et professionnel établie dans les Yvelines (78).",
+            "Le site reniaservices.fr est édité par RENIA SERVICES, entreprise de nettoyage résidentiel et professionnel.",
             "Contact : 06 14 38 36 56 — contact@reniaservices.fr.",
           ],
         },

@@ -5,7 +5,7 @@ import LegalPage from "@/components/legal/LegalPage";
 export const metadata: Metadata = {
   title: "Conditions générales de vente — Renia Services",
   description:
-    "Conditions générales de vente des prestations de nettoyage Renia Home et Renia Pro dans les Yvelines.",
+    "Conditions générales de vente des prestations de nettoyage Renia Home et Renia Pro.",
 };
 
 export default function CgvPage() {
@@ -42,13 +42,6 @@ export default function CgvPage() {
           paragraphs: [
             "Les tarifs sont indiqués en euros, toutes taxes comprises, et peuvent évoluer selon la surface, la fréquence et les contraintes particulières du site.",
             "Les modalités et échéances de paiement sont précisées sur la facture. Tout retard de paiement peut entraîner des pénalités conformément à la réglementation applicable.",
-          ],
-        },
-        {
-          title: "Crédit d'impôt et avance immédiate",
-          paragraphs: [
-            "Pour les prestations éligibles aux services à la personne, les particuliers peuvent bénéficier d'un crédit d'impôt de 50 % dans les conditions et limites prévues par la réglementation en vigueur.",
-            "L'éligibilité dépend de la situation du client. RENIA SERVICES peut accompagner le client dans la vérification de ses droits, sans se substituer à l'administration fiscale.",
           ],
         },
         {

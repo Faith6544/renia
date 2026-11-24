@@ -9,100 +9,47 @@ import {
   isSupabaseConfigured,
 } from "@/lib/supabase/client";
 
-const SERVICE_OPTIONS = {
-  en: [
-    { value: "Ménage régulier", label: "Regular cleaning" },
-    { value: "Grand nettoyage", label: "Deep cleaning" },
-    { value: "Repassage", label: "Ironing" },
-  ],
-  fr: [
-    { value: "Ménage régulier", label: "Ménage régulier" },
-    { value: "Grand nettoyage", label: "Grand nettoyage" },
-    { value: "Repassage", label: "Repassage" },
-  ],
-} as const;
+const INTERACTIVE = "relative z-50 pointer-events-auto";
+const PHONE_REGEX = /^(?:\+33|0)[1-9](?:[ .-]?\d{2}){4}$/;
+const POSTAL_CODE_REGEX = /^\d{5}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const FREQUENCY_OPTIONS = {
-  en: [
-    { value: "Weekly", label: "Weekly" },
-    { value: "Bi-weekly", label: "Bi-weekly" },
-    { value: "Once", label: "Once" },
-  ],
-  fr: [
-    { value: "Weekly", label: "Hebdomadaire" },
-    { value: "Bi-weekly", label: "Toutes les deux semaines" },
-    { value: "Once", label: "Une fois" },
-  ],
-} as const;
-
-const COPY = {
-  en: {
-    name: "Name",
-    email: "Email",
-    phone: "Phone",
-    serviceType: "Service Type",
-    frequency: "Frequency",
-    namePlaceholder: "Your full name",
-    emailPlaceholder: "you@example.com",
-    phonePlaceholder: "+33 6 12 34 56 78",
-    hint: "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
-    whatsappButton: "Send via WhatsApp",
-    emailButton: "Send via Email",
-    alerts: {
-      name: "Please enter your name.",
-      email: "Please enter your email.",
-      invalidEmail: "Please enter a valid email address.",
-      phone: "Please enter your phone number.",
-    },
-  },
-  fr: {
-    name: "Nom",
-    email: "Email",
-    phone: "Téléphone",
-    serviceType: "Type de service",
-    frequency: "Fréquence",
-    namePlaceholder: "Votre nom complet",
-    emailPlaceholder: "vous@exemple.com",
-    phonePlaceholder: "+33 6 12 34 56 78",
-    hint: "Votre demande est enregistrée, puis WhatsApp s'ouvre avec votre message prêt à envoyer. Rien n'est envoyé tant que vous ne confirmez pas dans WhatsApp.",
-    whatsappButton: "Envoyer via WhatsApp",
-    emailButton: "Envoyer par email",
-    alerts: {
-      name: "Veuillez saisir votre nom.",
-      email: "Veuillez saisir votre email.",
-      invalidEmail: "Veuillez saisir une adresse email valide.",
-      phone: "Veuillez saisir votre numéro de téléphone.",
-    },
-  },
-} as const;
-
-type ServiceValue = (typeof SERVICE_OPTIONS)["en"][number]["value"];
-type FrequencyValue = (typeof FREQUENCY_OPTIONS)["en"][number]["value"];
+type PropertyType = "apartment" | "house" | "";
 
 type HomeFormState = {
-  name: string;
-  email: string;
+  fullName: string;
   phone: string;
-  serviceType: ServiceValue;
-  frequency: FrequencyValue;
+  email: string;
+  postalCode: string;
+  city: string;
+  propertyType: PropertyType;
+  surfaceArea: string;
+  bathrooms: string;
+  serviceIndex: number;
+  frequencyIndex: number;
+  comments: string;
+  consent: boolean;
 };
 
 const initialForm: HomeFormState = {
-  name: "",
-  email: "",
+  fullName: "",
   phone: "",
-  serviceType: SERVICE_OPTIONS.en[0].value,
-  frequency: FREQUENCY_OPTIONS.en[0].value,
+  email: "",
+  postalCode: "",
+  city: "",
+  propertyType: "",
+  surfaceArea: "",
+  bathrooms: "",
+  serviceIndex: 0,
+  frequencyIndex: 0,
+  comments: "",
+  consent: false,
 };
 
 export default function HomeForm() {
-  const { language } = useLanguage();
-  const copy = COPY[language];
-  const serviceOptions = SERVICE_OPTIONS[language];
-  const frequencyOptions = FREQUENCY_OPTIONS[language];
-
+  const { t } = useLanguage();
   const [form, setForm] = useState<HomeFormState>(initialForm);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
   const updateField = <K extends keyof HomeFormState>(
     field: K,
@@ -112,14 +59,29 @@ export default function HomeForm() {
   };
 
   const buildMessage = () => {
-    const serviceLabel =
-      serviceOptions.find((option) => option.value === form.serviceType)
-        ?.label ?? form.serviceType;
-    const frequencyLabel =
-      frequencyOptions.find((option) => option.value === form.frequency)
-        ?.label ?? form.frequency;
+    const propertyType =
+      form.propertyType === "apartment" ? t.forms.apartment : t.forms.house;
 
-    return `Hello RENIA HOME, My name is ${form.name.trim()}. I am interested in ${serviceLabel} with a frequency of ${frequencyLabel}. My contact is ${form.phone.trim()} / ${form.email.trim()}. Thank you.`;
+    return [
+      `${t.forms.formTitle} — RENIA HOME`,
+      `${t.forms.youAre}: ${t.forms.individual}`,
+      "",
+      t.forms.contactDetails,
+      `${t.forms.fullName}: ${form.fullName.trim()}`,
+      `${t.forms.phone}: ${form.phone.trim()}`,
+      `${t.forms.email}: ${form.email.trim()}`,
+      `${t.forms.postalCode}: ${form.postalCode.trim()}`,
+      `${t.forms.city}: ${form.city.trim()}`,
+      "",
+      `${t.forms.propertyDetails}: ${propertyType}`,
+      `${t.forms.surfaceArea}: ${form.surfaceArea.trim()} m²`,
+      `${t.forms.bathrooms}: ${form.bathrooms.trim()}`,
+      "",
+      t.forms.yourNeeds,
+      `${t.forms.serviceType}: ${t.forms.services[form.serviceIndex]}`,
+      `${t.forms.frequency}: ${t.forms.frequencies[form.frequencyIndex]}`,
+      `${t.forms.comments}: ${form.comments.trim() || "-"}`,
+    ].join("\n");
   };
 
   const saveToDatabase = async (message: string) => {
@@ -128,7 +90,7 @@ export default function HomeForm() {
     try {
       const supabase = getSupabaseBrowserClient();
       const { error } = await supabase.from("quote_requests").insert({
-        full_name: form.name.trim(),
+        full_name: form.fullName.trim(),
         email: form.email.trim().toLowerCase(),
         phone: form.phone.trim(),
         service_type: "renia_home",
@@ -143,178 +105,337 @@ export default function HomeForm() {
     }
   };
 
-  const handleSend = async (method: "whatsapp" | "email") => {
-    if (!form.name.trim()) {
-      alert(copy.alerts.name);
+  const handleSend = async () => {
+    const requiredFieldsComplete =
+      form.fullName.trim() &&
+      form.phone.trim() &&
+      form.email.trim() &&
+      form.postalCode.trim() &&
+      form.city.trim() &&
+      form.propertyType &&
+      form.surfaceArea.trim() &&
+      form.bathrooms.trim();
+
+    if (!requiredFieldsComplete) {
+      alert(t.forms.requiredError);
       return;
     }
 
-    if (!form.email.trim()) {
-      alert(copy.alerts.email);
+    if (!PHONE_REGEX.test(form.phone.trim())) {
+      alert(t.forms.phoneError);
       return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
-      alert(copy.alerts.invalidEmail);
+    if (!POSTAL_CODE_REGEX.test(form.postalCode.trim())) {
+      alert(t.forms.postalCodeError);
       return;
     }
 
-    if (!form.phone.trim()) {
-      alert(copy.alerts.phone);
+    if (!EMAIL_REGEX.test(form.email.trim())) {
+      alert(t.forms.emailError);
       return;
     }
 
-    setIsSubmitting(true);
+    if (Number(form.surfaceArea) <= 0) {
+      alert(t.forms.surfaceError);
+      return;
+    }
+
+    if (Number(form.bathrooms) <= 0) {
+      alert(t.forms.bathroomsError);
+      return;
+    }
+
+    if (!form.consent) {
+      alert(t.forms.consentError);
+      return;
+    }
+
+    setStatus("sending");
 
     const message = buildMessage();
     await saveToDatabase(message);
 
-    if (method === "whatsapp") {
-      window.location.href = buildWhatsAppUrl(message);
-    } else {
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-        `RENIA HOME request — ${form.serviceType}`,
-      )}&body=${encodeURIComponent(message)}`;
-    }
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      t.forms.formTitle,
+    )}&body=${encodeURIComponent(message)}`;
 
-    setIsSubmitting(false);
+    window.location.href = mailtoUrl;
+    window.setTimeout(() => {
+      window.location.href = buildWhatsAppUrl(message);
+    }, 120);
+
+    setStatus("sent");
   };
 
   return (
-    <div className="relative z-50 min-w-0 pointer-events-auto">
-      <div className="grid gap-7 sm:grid-cols-2 sm:gap-8">
-        <div>
-          <label htmlFor="home-name" className="field-label">
-            {copy.name} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="home-name"
-            type="text"
-            autoComplete="name"
-            value={form.name}
-            onChange={(event) => updateField("name", event.target.value)}
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.namePlaceholder}
-          />
+    <form
+      noValidate
+      onSubmit={(event) => event.preventDefault()}
+      className={`min-w-0 ${INTERACTIVE}`}
+    >
+      <fieldset className={`border-0 p-0 ${INTERACTIVE}`}>
+        <legend className="eyebrow mb-5">{t.forms.contactDetails}</legend>
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label htmlFor="home-full-name" className="field-label">
+              {t.forms.fullName} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="home-full-name"
+              name="fullName"
+              type="text"
+              autoComplete="name"
+              required
+              value={form.fullName}
+              onChange={(event) => updateField("fullName", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder={t.forms.fullName}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="home-phone" className="field-label">
+              {t.forms.phone} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="home-phone"
+              name="phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              required
+              value={form.phone}
+              onChange={(event) => updateField("phone", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="06 14 38 36 56"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="home-email" className="field-label">
+              {t.forms.email} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="home-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={form.email}
+              onChange={(event) => updateField("email", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="vous@exemple.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="home-postal-code" className="field-label">
+              {t.forms.postalCode} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="home-postal-code"
+              name="postalCode"
+              type="text"
+              inputMode="numeric"
+              autoComplete="postal-code"
+              maxLength={5}
+              required
+              value={form.postalCode}
+              onChange={(event) =>
+                updateField("postalCode", event.target.value.replace(/\D/g, ""))
+              }
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="78370"
+            />
+          </div>
+
+          <div className="sm:col-span-2">
+            <label htmlFor="home-city" className="field-label">
+              {t.forms.city} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="home-city"
+              name="city"
+              type="text"
+              autoComplete="address-level2"
+              required
+              value={form.city}
+              onChange={(event) => updateField("city", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder={t.forms.city}
+            />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset className={`mt-10 border-0 p-0 ${INTERACTIVE}`}>
+        <legend className="eyebrow mb-5">{t.forms.propertyDetails}</legend>
+
+        <div className={`grid gap-4 sm:grid-cols-2 ${INTERACTIVE}`}>
+          {(["apartment", "house"] as const).map((value) => (
+            <label
+              key={value}
+              className={`card-soft card-lift flex cursor-pointer items-center gap-4 p-5 ${INTERACTIVE} ${
+                form.propertyType === value ? "ring-2 ring-brand" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="propertyType"
+                value={value}
+                checked={form.propertyType === value}
+                onChange={() => updateField("propertyType", value)}
+                className={`h-5 w-5 accent-brand ${INTERACTIVE}`}
+              />
+              <span className="text-base font-bold text-ink">
+                {value === "apartment" ? t.forms.apartment : t.forms.house}
+              </span>
+            </label>
+          ))}
         </div>
 
-        <div>
-          <label htmlFor="home-email" className="field-label">
-            {copy.email} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="home-email"
-            type="email"
-            autoComplete="email"
-            value={form.email}
-            onChange={(event) => updateField("email", event.target.value)}
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.emailPlaceholder}
-          />
-        </div>
-      </div>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div>
+            <label htmlFor="home-surface" className="field-label">
+              {t.forms.surfaceArea} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="home-surface"
+              name="surfaceArea"
+              type="number"
+              inputMode="numeric"
+              min="1"
+              step="1"
+              required
+              value={form.surfaceArea}
+              onChange={(event) => updateField("surfaceArea", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="75"
+            />
+          </div>
 
-      <div className="mt-7 grid gap-7 sm:grid-cols-2 sm:gap-8">
-        <div>
-          <label htmlFor="home-phone" className="field-label">
-            {copy.phone} <span className="text-stone/50">*</span>
-          </label>
-          <input
-            id="home-phone"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            value={form.phone}
-            onChange={(event) => updateField("phone", event.target.value)}
-            className="field-input relative z-10 pointer-events-auto"
-            placeholder={copy.phonePlaceholder}
-          />
+          <div>
+            <label htmlFor="home-bathrooms" className="field-label">
+              {t.forms.bathrooms} <span className="text-stone/50">*</span>
+            </label>
+            <input
+              id="home-bathrooms"
+              name="bathrooms"
+              type="number"
+              inputMode="numeric"
+              min="1"
+              step="1"
+              required
+              value={form.bathrooms}
+              onChange={(event) => updateField("bathrooms", event.target.value)}
+              className={`field-input ${INTERACTIVE}`}
+              placeholder="1"
+            />
+          </div>
         </div>
+      </fieldset>
 
-        <div>
-          <label htmlFor="home-service" className="field-label">
-            {copy.serviceType}
-          </label>
-          <div className="relative">
+      <fieldset className={`mt-10 border-0 p-0 ${INTERACTIVE}`}>
+        <legend className="eyebrow mb-5">{t.forms.yourNeeds}</legend>
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label htmlFor="home-service" className="field-label">
+              {t.forms.serviceType} <span className="text-stone/50">*</span>
+            </label>
             <select
               id="home-service"
-              value={form.serviceType}
+              name="serviceType"
+              required
+              value={form.serviceIndex}
               onChange={(event) =>
-                updateField("serviceType", event.target.value as ServiceValue)
+                updateField("serviceIndex", Number(event.target.value))
               }
-              className="field-input relative z-10 w-full cursor-pointer appearance-none pr-11 pointer-events-auto"
+              className={`field-input cursor-pointer ${INTERACTIVE}`}
             >
-              {serviceOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
+              {t.forms.services.map((service, index) => (
+                <option key={service} value={index}>
+                  {service}
                 </option>
               ))}
             </select>
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 12 8"
-              className="pointer-events-none absolute right-4 top-1/2 h-2 w-3 -translate-y-1/2 fill-none stroke-forest stroke-[1.25]"
+          </div>
+
+          <div>
+            <label htmlFor="home-frequency" className="field-label">
+              {t.forms.frequency} <span className="text-stone/50">*</span>
+            </label>
+            <select
+              id="home-frequency"
+              name="frequency"
+              required
+              value={form.frequencyIndex}
+              onChange={(event) =>
+                updateField("frequencyIndex", Number(event.target.value))
+              }
+              className={`field-input cursor-pointer ${INTERACTIVE}`}
             >
-              <path d="M1 1.5 6 6.5l5-5" />
-            </svg>
+              {t.forms.frequencies.map((frequency, index) => (
+                <option key={frequency} value={index}>
+                  {frequency}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="sm:col-span-2">
+            <label htmlFor="home-comments" className="field-label">
+              {t.forms.comments}
+            </label>
+            <textarea
+              id="home-comments"
+              name="comments"
+              rows={5}
+              value={form.comments}
+              onChange={(event) => updateField("comments", event.target.value)}
+              className={`field-input resize-none ${INTERACTIVE}`}
+              placeholder={t.forms.commentsPlaceholder}
+            />
           </div>
         </div>
-      </div>
+      </fieldset>
 
-      <div className="mt-7">
-        <label htmlFor="home-frequency" className="field-label">
-          {copy.frequency}
+      <div className={`mt-10 rounded-2xl bg-brand-soft/70 p-6 ${INTERACTIVE}`}>
+        <h3 className="text-lg font-extrabold">{t.forms.ackTitle}</h3>
+        <label className={`mt-4 flex cursor-pointer items-start gap-4 ${INTERACTIVE}`}>
+          <input
+            type="checkbox"
+            name="consent"
+            checked={form.consent}
+            onChange={(event) => updateField("consent", event.target.checked)}
+            className={`mt-1 h-5 w-5 shrink-0 accent-brand ${INTERACTIVE}`}
+          />
+          <span className="text-base font-medium leading-relaxed text-stone">
+            {t.forms.ackText}
+          </span>
         </label>
-        <div className="relative">
-          <select
-            id="home-frequency"
-            value={form.frequency}
-            onChange={(event) =>
-              updateField("frequency", event.target.value as FrequencyValue)
-            }
-            className="field-input relative z-10 w-full cursor-pointer appearance-none pr-11 pointer-events-auto"
-          >
-            {frequencyOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 12 8"
-            className="pointer-events-none absolute right-4 top-1/2 h-2 w-3 -translate-y-1/2 fill-none stroke-forest stroke-[1.25]"
-          >
-            <path d="M1 1.5 6 6.5l5-5" />
-          </svg>
-        </div>
-      </div>
 
-      <div className="relative z-10 mt-8 rounded-2xl bg-white/60 p-6 pointer-events-auto">
-        <p className="mb-6 text-base leading-relaxed text-stone">
-          {copy.hint}
+        <p className="mt-5 text-base font-medium leading-relaxed text-stone">
+          {t.forms.note}
         </p>
 
-        <div className="relative z-10 flex flex-col gap-4 pointer-events-auto sm:flex-row sm:items-center">
-          <button
-            type="button"
-            onClick={() => handleSend("whatsapp")}
-            disabled={isSubmitting}
-            className="btn btn-gold relative z-10 flex-1 cursor-pointer justify-center text-center pointer-events-auto disabled:opacity-50"
-          >
-            {copy.whatsappButton}
-          </button>
+        <button
+          type="button"
+          onClick={handleSend}
+          disabled={status === "sending"}
+          className={`btn btn-primary mt-6 w-full cursor-pointer justify-center text-center disabled:opacity-50 sm:w-auto ${INTERACTIVE}`}
+        >
+          {status === "sending" ? t.forms.sending : t.forms.submitBtn}
+        </button>
 
-          <button
-            type="button"
-            onClick={() => handleSend("email")}
-            disabled={isSubmitting}
-            className="btn btn-dark relative z-10 flex-1 cursor-pointer justify-center text-center pointer-events-auto disabled:opacity-50"
-          >
-            {copy.emailButton}
-          </button>
-        </div>
+        {status === "sent" ? (
+          <p role="status" className={`mt-5 text-base font-semibold text-brand ${INTERACTIVE}`}>
+            {t.forms.confirmation}
+          </p>
+        ) : null}
       </div>
-    </div>
+    </form>
   );
 }

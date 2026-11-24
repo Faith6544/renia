@@ -1,4 +1,9 @@
-export type ServiceType = "home" | "pro";
+export type ServiceType =
+  | "home"
+  | "pro"
+  | "renia_home"
+  | "renia_pro"
+  | "contact";
 
 export interface QuoteRequest {
   id: string;

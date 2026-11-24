@@ -1,34 +1,55 @@
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from "@/lib/site";
 
+/**
+ * Approved site copy — single source of truth.
+ * All UI overrides are applied here; FR is the default language.
+ */
 const en = {
+  // Common
+  slogan: "Healthy, serene and naturally welcoming spaces.",
+  mainQuote: "Get a quote",
+  menuHome: "Home",
+  menuReniaHome: "RENIA HOME",
+  menuReniaPro: "RENIA PRO",
+  menuAbout: "About",
+  menuCommitments: "Our commitments",
+  menuContact: "Contact",
+  footerDescription: `RENIA SERVICES, residential and professional cleaning. Service area: Yvelines (78). ${CONTACT_PHONE_DISPLAY} · ${CONTACT_EMAIL}.`,
+  footerLinks: [
+    "RENIA HOME",
+    "RENIA PRO",
+    "About",
+    "Our commitments",
+    "Contact",
+    "Legal notice",
+    "Privacy policy",
+    "Cookie policy",
+    "Terms of sale",
+  ],
+
+  // Homepage
   HeroTitle:
     "Your trusted partner for the upkeep of your living and working spaces.",
   HeroText:
-    "Professional cleaning services tailored to your needs, for individuals and businesses across the Yvelines.",
-  HeroButtonPrimary: "Request a Quote",
-  HeroButtonSecondary: "Book a Service",
+    "Professional cleaning services tailored to your needs, for individuals and businesses.",
+  HeroButtonPrimary: "Get a free quote",
+  HeroButtonSecondary: "Discover our services →",
   YouAre: "You are:",
   Individual: "Individual: RENIA HOME · Home cleaning",
   Professional: "Professional: RENIA PRO · Premises and offices",
-  SAPTitle: "Personal services",
-  SAPBullet1: "50% tax credit* subject to eligibility conditions",
-  SAPBullet2: "Avance immédiate for eligible customers",
-  SAPLink: "Learn more →",
-  SAPNote:
-    "*Applies to eligible personal-service work, under current regulations.",
-  AreasTitle: "Choose your solution.",
-  AreasSubtitle:
-    "Two houses, one standard of care. Choose the service that fits your situation.",
-  HomeTitle: "RENIA HOME – Personal services",
+  AreasTitle: "One contact, two areas of expertise",
+  AreasSubtitle: "Choose the service that fits your situation.",
+  HomeTitle: "RENIA HOME",
   HomeText:
     "home cleaning · regular upkeep · one-off cleaning · deep cleaning · ironing.",
   HomeButton: "Discover RENIA HOME →",
-  ProTitle: "RENIA PRO – Professional cleaning",
+  ProTitle: "RENIA PRO",
   ProText:
     "offices · shops and practices · property managers (syndics) · Airbnb and short-term rentals · business premises · tailor-made solutions.",
   ProButton: "Discover RENIA PRO →",
+  QuoteCard: "Request a Quote",
   WhyTitle: "Why choose RENIA",
-  Why1: "Eco-friendly products available as an option, on request.",
+  Why1: "Eco-friendly products: eco-friendly products available as an option, on request.",
   Why2: "Professionalism and reliability: organised, supervised teams.",
   Why3: "Personalised service: services adapted to your needs.",
   Why4: "Flexibility: solutions adapted to your pace and constraints.",
@@ -44,25 +65,26 @@ const en = {
   whyPillars: [
     {
       title: "Eco-friendly products",
-      body: "Eco-friendly products available as an option on request, with measured use of water and products.",
+      body: "Eco-friendly products available as an option, on request.",
     },
     {
       title: "Professionalism and reliability",
-      body: "Organised, supervised teams and the same standard on every visit.",
+      body: "Organised, supervised teams.",
     },
     {
       title: "Personalised service",
-      body: "Services adapted to your needs, your space and your priorities.",
+      body: "Services adapted to your needs.",
     },
     {
       title: "Flexibility",
-      body: "Solutions adapted to your pace and your constraints.",
+      body: "Solutions adapted to your pace and constraints.",
     },
     {
       title: "Proximity",
-      body: "A local company, close to its customers across the Yvelines.",
+      body: "A local company, close to its customers.",
     },
   ],
+
   homeHow: {
     eyebrow: "How it works",
     title: "From first message to a space that feels cared for.",
@@ -88,11 +110,11 @@ const en = {
     ],
     cta: "See the full process",
   },
+
   reviews: {
     eyebrow: "Customer reviews",
     title: "Cared-for spaces, happy clients.",
-    intro:
-      "A selection of feedback from homes and businesses across the Yvelines.",
+    intro: "A selection of feedback from homes and businesses we look after.",
     googleLabel: "Google Reviews",
     googleValue: "5.0",
     googleNote:
@@ -100,77 +122,69 @@ const en = {
     items: [
       {
         name: "Claire M.",
-        meta: "RENIA HOME · Yvelines",
+        meta: "RENIA HOME",
         quote:
           "The team is punctual, discreet and incredibly thorough. My home has never felt so calm and cared for.",
       },
       {
         name: "Thomas L.",
-        meta: "RENIA PRO · Versailles",
+        meta: "RENIA PRO",
         quote:
           "Clear quote, reliable schedule and a spotless office every week. Exactly what a growing team needs.",
       },
       {
         name: "Sophie R.",
-        meta: "Airbnb turnaround · Saint-Germain",
+        meta: "Short-term rentals",
         quote:
           "Fast, meticulous turnarounds between guests. The photo report gives me complete peace of mind.",
       },
     ],
   },
+
   faqPage: {
     eyebrow: "Good to know",
     title: "Frequently asked questions.",
     intro:
-      "Everything you need to know about our services, booking, tax credit and the way we work. If your question is not here, we are one message away.",
+      "Everything you need to know about our services and the way we work. If your question is not here, we are one message away.",
     items: [
       {
-        question: "What services does RENIA offer?",
+        question: "How do I ask for a quote?",
         answer:
-          "RENIA HOME looks after private homes: regular cleaning, one-off cleaning, deep cleaning and ironing. RENIA PRO supports businesses: offices, practices, shops, managed properties and Airbnb or short-term rentals. Every service is adapted to your space and your schedule.",
+          "Fill in our form in a few minutes. The quote is free. In the comments you can add anything that helps us: size of the home, preferred days, pets, access…",
       },
       {
-        question: "How does the 50% tax credit work?",
+        question: "Which services do you offer at home?",
         answer:
-          "Eligible households can recover 50% of the cost of qualifying personal services, within the annual limits set by current regulations. With the avance immédiate, the reduction can be applied directly to your invoice, so you only pay the remaining share.",
+          "Home cleaning, regular or one-off cleaning, deep cleaning and ironing. If your need is different, say so in the form: we look at every request.",
       },
       {
-        question: "Do you use eco-friendly products?",
+        question: "Do you offer eco-friendly products?",
         answer:
-          "Yes. Eco-friendly products are available as an option on request. We are careful about dosage and water use, and we can adapt to products you prefer to use in your home.",
+          "Yes, we offer eco-friendly cleaning products as an option. Mention it in your quote request.",
       },
       {
-        question: "Do I need to provide cleaning products?",
+        question: "Do I need to be present during the visit?",
         answer:
-          "Not necessarily. We can bring our own equipment and products, or use yours if you prefer. We agree on this before the first visit so that everything is ready.",
+          "[To complete: client presence, key handover, access to the home.]",
       },
       {
-        question: "Can I book a one-off clean?",
+        question: "What if I need to cancel or postpone a visit?",
         answer:
-          "Yes. We offer regular upkeep, one-off cleaning and deep cleaning. A one-off visit can be a good way to try our service before setting up a regular schedule.",
+          "[To complete according to the terms of sale: notice period, cancellation conditions.]",
       },
       {
-        question: "How do I get a quote?",
+        question: "Which towns do you cover?",
         answer:
-          "Contact us through the form, by WhatsApp or by phone. Tell us about your space, its size and the frequency you have in mind. We will come back to you with a clear, no-obligation proposal, usually within one business day.",
-      },
-      {
-        question: "How does booking work?",
-        answer:
-          "Use the booking form to choose your service, preferred date and time. We check availability and confirm the details with you by message. The booking is only confirmed once we have replied.",
-      },
-      {
-        question: "Which areas do you cover?",
-        answer:
-          "We work across the Yvelines (78) and surrounding areas. Tell us your postcode in your message and we will confirm whether your address is within our service area.",
+          "We work in Ablis, Rambouillet, Versailles and Saint-Quentin. Your town is not named? Ask us, we look at every situation.",
       },
     ],
     seeAll: "See all FAQs",
-    stillTitle: "Still have a question?",
+    stillTitle: "Another question?",
     stillText:
-      "Write to us and we will answer clearly, without obligation. We usually reply within one business day.",
-    stillCta: "Contact us",
+      "Write it in the “comments” field of your quote request.",
+    stillCta: "Get a quote",
   },
+
   howItWorksPage: {
     eyebrow: "How it works",
     title: "A simple, transparent process.",
@@ -181,22 +195,22 @@ const en = {
     steps: [
       {
         title: "Request your quote",
-        body: "Contact us through the form, WhatsApp or phone. Tell us about your space, the service you need and the frequency you have in mind.",
+        body: "Describe your need. RENIA reviews your request.",
         detail: "Takes a few minutes. No commitment.",
       },
       {
         title: "Receive a tailored proposal",
-        body: "We review your request and come back with a clear proposal: scope of work, frequency, duration and price.",
+        body: "You receive a tailored proposal.",
         detail: "Usually within one business day.",
       },
       {
-        title: "Book your service",
-        body: "Choose the date and time that suit you. We confirm availability and the practical details by message.",
+        title: "Schedule the service",
+        body: "The service is scheduled.",
         detail: "One named contact from start to finish.",
       },
       {
-        title: "Your cleaning day",
-        body: "Our team arrives on time, follows the agreed checklist and leaves your space ready to enjoy.",
+        title: "The RENIA team comes to you",
+        body: "The RENIA team comes to you, then quality and your satisfaction are followed up.",
         detail: "Careful follow-up after the visit.",
       },
     ],
@@ -205,11 +219,11 @@ const en = {
     included: [
       {
         title: "A named contact",
-        body: "You speak to the same person before, during and after your service. No call centres, no passing you around.",
+        body: "You speak to the same person before, during and after your service.",
       },
       {
         title: "A clear scope",
-        body: "Every visit follows an agreed checklist. You know exactly what is included, and so does our team.",
+        body: "Every visit follows an agreed checklist. You know exactly what is included.",
       },
       {
         title: "Careful follow-up",
@@ -217,18 +231,19 @@ const en = {
       },
     ],
     ctaEyebrow: "Ready when you are",
-    ctaTitle: "Let's get started.",
+    ctaTitle: "Let’s get started.",
     ctaText:
       "Tell us about your space and we will guide you through the next step, clearly and without obligation.",
     cta: "Request a quote",
-    ctaSecondary: "Book a service",
+    ctaSecondary: "Discover our services",
   },
+
   booking: {
-    eyebrow: "Book a service",
+    eyebrow: "Request a service",
     title: "Choose a date. We take care of the rest.",
     intro:
-      "Send us your preferred date and time. We will check availability and confirm your booking by message.",
-    formEyebrow: "Your booking request",
+      "Send us your preferred date and time. We will check availability and confirm your request by message.",
+    formEyebrow: "Your request",
     formTitle: "Tell us when you need us.",
     serviceLabel: "Service",
     serviceHome: "RENIA HOME — Home cleaning",
@@ -241,18 +256,18 @@ const en = {
     phonePlaceholder: "+33 6 00 00 00 00",
     emailLabel: "Email",
     emailPlaceholder: "you@example.com",
-    submit: "Request this booking",
+    submit: "Send",
     submitHint:
-      "Your request opens in WhatsApp so you can review it before sending.",
+      "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
     required: "Required fields",
     opened:
-      "WhatsApp has been opened in a new tab. Review and send your booking request there.",
+      "Your request has been saved. WhatsApp and your email app have been opened with your message ready to send.",
     asideTitle: "Prefer to talk?",
     asideText:
-      "Send us a message or call us. We will confirm availability and answer any question about your booking.",
+      "Send us a message or call us. We will confirm availability and answer any question about your request.",
     whatsappButton: "Message us on WhatsApp",
     note: "This is a request, not a confirmed booking. We will confirm availability by message.",
-    stepsTitle: "What happens after you book",
+    stepsTitle: "What happens after your request",
     steps: [
       {
         title: "We confirm availability",
@@ -272,8 +287,7 @@ const en = {
   about: {
     eyebrow: "About us",
     title: "About RENIA SERVICES",
-    intro:
-      "A local cleaning company serving individuals and businesses in the Yvelines.",
+    intro: "A local cleaning company serving individuals and businesses.",
     missionEyebrow: "Our mission",
     mission:
       "To look after your living and working spaces with care, so that you find healthy, serene and naturally welcoming places.",
@@ -284,72 +298,82 @@ const en = {
     values: [
       {
         title: "Reliability",
-        body: "We keep our commitments and arrive when we say we will, with the same standard on every visit.",
+        body: "We keep our commitments and our schedules.",
       },
       {
         title: "Professionalism",
-        body: "Trained, declared and insured teams, meticulous methods and careful attention to detail.",
+        body: "Organised, supervised teams.",
       },
       {
         title: "Proximity",
-        body: "A local company rooted in the Yvelines, available and close to the people we serve.",
+        body: "A local company.",
       },
       {
         title: "Respect",
-        body: "Respect for your home, your business, your belongings and your privacy.",
+        body: "Respect for the customer, their home and our team.",
       },
       {
         title: "Environment",
-        body: "Measured use of water and products, with eco-friendly options available on request.",
+        body: "Eco-friendly products offered as an option.",
       },
     ],
     visionEyebrow: "Our vision",
-    visionTitle: "Healthy, serene spaces for everyone.",
+    visionTitle: "A recognised local cleaning company.",
     visionBody:
-      "We imagine a service where quality, respect and proximity go hand in hand: carefully maintained homes and workplaces, teams who are proud of their work, and clients who can focus on what matters to them. A local, human-scale company that grows without ever losing its standards.",
+      "In the medium term, RENIA SERVICES aims to become a recognised player in the cleaning sector in its local area, thanks to the quality of its services, customer loyalty and gradual growth in its activity.",
     storyEyebrow: "Our story",
-    storyTitle: "A story written with care.",
+    storyTitle: "Our story",
     storyBody:
-      "RENIA SERVICES was born from a simple observation: a well-cared-for space changes the way we live and work. We created RENIA HOME for families who want to come home to calm, and RENIA PRO for businesses that need reliable, discreet upkeep. From the first visit to the regular follow-ups, we build a relationship based on trust, precision and respect for your space.",
-    storyNote: "RENIA SERVICES · Yvelines 78",
-    ctaEyebrow: "Let's meet",
-    ctaTitle: "Let's talk about your space.",
-    ctaText:
-      "Tell us what you need and we will suggest the right service, clearly and without obligation.",
-    cta: "Contact us",
+      "[To be written by RENIA: why RENIA was created, in a few sincere, personal sentences.]",
+    storyNote: "RENIA SERVICES",
+    brandsEyebrow: "One brand, two areas of expertise",
+    brandsTitle: "One brand, two areas of expertise",
+    brands: [
+      {
+        title: "RENIA HOME",
+        body: "home cleaning and services for individuals.",
+      },
+      {
+        title: "RENIA PRO",
+        body: "cleaning of offices, practices, shops, property managers and short-term rentals.",
+      },
+    ],
+    ctaEyebrow: "Let’s work together",
+    ctaTitle: "Let’s work together.",
+    ctaText: "Get a quote.",
+    cta: "Get a quote",
   },
 
   commitments: {
     eyebrow: "Our commitments",
     title: "Our commitments",
-    intro:
-      "More than a promise, a way of working. These commitments guide every visit, every team and every relationship.",
+    intro: "Our commitments",
     itemsEyebrow: "What you can expect",
     itemsTitle: "Five commitments, one standard.",
     items: [
       {
         title: "Environment",
-        body: "We favour a measured use of water and cleaning products, and offer eco-friendly products on request. Our aim is a clean space without unnecessary impact.",
+        body: "eco-friendly cleaning products offered as an option.",
       },
       {
         title: "People",
-        body: "Our teams are trained, supported and treated with respect. We build long-term relationships with the people who work with us and for us.",
+        body: "respect for our customers and our team. [Training and development: to specify if applicable.]",
       },
       {
         title: "Quality",
-        body: "Each service follows a clear checklist and is checked against the same standard, whether it is a first visit or a regular appointment.",
+        body: "services adapted to each need and follow-up after the visit.",
       },
       {
         title: "Reliability",
-        body: "We arrive when we say we will, with the same care and the same attention. If something changes, we tell you in advance.",
+        body: "a regular service, with organised, supervised teams.",
       },
       {
         title: "Local commitment",
-        body: "Based in the Yvelines, we work close to home and support a local, human-scale economy. Proximity is part of our service.",
+        body: "a company rooted in its local area.",
       },
     ],
     pledge:
-      "A healthy, serene and naturally welcoming space is not a luxury. It is the result of consistent care, attention to detail and respect for the people who live and work there.",
+      "A healthy, serene and naturally welcoming space is the result of consistent care, attention to detail and respect for the people who live and work there.",
     ctaEyebrow: "Work with us",
     ctaTitle: "Ready to experience the difference?",
     ctaText:
@@ -382,8 +406,8 @@ const en = {
     mapEyebrow: "Our area",
     mapTitle: "Serving the Yvelines (78)",
     mapText:
-      "We work close to home, across the Yvelines and surrounding areas. Share your postcode and we will confirm your address is within our service area.",
-    mapPlaceholder: "Yvelines & surrounding areas",
+      "Share your postcode and we will confirm your address is within our service area.",
+    mapPlaceholder: "Yvelines (78)",
     socialTitle: "Follow RENIA",
     socialText:
       "News, before-and-after photos and practical advice for a calmer, cleaner space.",
@@ -404,259 +428,352 @@ const en = {
       messagePlaceholder:
         "Tell us about your space, its size and how often you would like us to visit.",
       required: "Required fields",
-      submit: "Send Message",
+      submit: "Send",
       submitHint:
-        "Your message is saved and sent to our team. We only use your details to reply to you.",
+        "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
       opened:
-        "Thank you. We have received your message and will reply within one business day.",
+        "Thank you, your request has been received. The RENIA team is looking at your need and will come back with a tailored proposal.",
     },
   },
 
-  reniaHome: {
-    eyebrow: "Residential cleaning · Yvelines",
-    title: "RENIA HOME – Personal services",
+  recruitment: {
+    eyebrow: "Recruitment",
+    title: "Join the RENIA team.",
     intro:
-      "Regular cleaning, one-off cleaning and deep cleaning for your home, with the option to benefit from the 50% tax credit.",
-    heroPrimary: "Request a quote",
+      "We are recruiting cleaning staff, for work in private homes (RENIA HOME) and business premises (RENIA PRO).",
+    lookingTitle: "What we are looking for",
+    looking:
+      "a taste for careful work and attention to detail; punctuality and reliability; good relations with customers; respect for instructions and the equipment entrusted to you.",
+    cta: "Apply",
+  },
+
+  forms: {
+    formTitle: "Get a free quote with no commitment",
+    formIntro:
+      "Tell us what you need. We review your request and get back to you with a tailored proposal.",
+    youAre: "You are",
+    individual: "Individual – RENIA HOME",
+    professional: "Professional – RENIA PRO",
+    contactDetails: "Your contact details",
+    fullName: "Full name",
+    phone: "Phone number",
+    phoneError: "Please enter a valid French phone number",
+    email: "Email",
+    postalCode: "Postal code",
+    postalCodeError: "Please enter a valid 5-digit French postal code",
+    city: "City",
+    propertyDetails: "What is your property type?",
+    apartment: "Apartment",
+    house: "House",
+    surfaceArea: "What is the surface area?",
+    bathrooms: "How many bathrooms/shower rooms?",
+    yourNeeds: "Your needs",
+    serviceType: "Service type",
+    services: [
+      "Regular cleaning",
+      "One-off cleaning",
+      "Ironing",
+      "Deep cleaning",
+      "Other",
+    ],
+    frequency: "Frequency",
+    frequencies: [
+      "Once",
+      "Every week",
+      "Every two weeks",
+      "Every three weeks",
+      "Once a month",
+      "I don't know yet",
+    ],
+    comments: "Comments or additional information",
+    commentsPlaceholder:
+      "Size of the home, preferred days, pets, access, eco-friendly products...",
+    ackTitle: "Acknowledgement",
+    ackText: "I have read and agree to the privacy policy.",
+    submitBtn: "Submit my request",
+    organisationName: "Organisation name",
+    sector: "Sector",
+    sectors: [
+      "Offices",
+      "Shops",
+      "Practices",
+      "Property managers",
+      "Airbnb and short-term rentals",
+      "Other",
+    ],
+    role: "Role",
+    address: "Address",
+    requiredError: "Please complete all required fields.",
+    emailError: "Please enter a valid email address.",
+    consentError: "Please acknowledge the privacy policy.",
+    surfaceError: "Please enter a valid surface area.",
+    bathroomsError: "Please enter a valid number of bathrooms.",
+    choiceTitle: "You are:",
+    choiceHome: "Individual (RENIA HOME)",
+    choicePro: "Professional (RENIA PRO)",
+    free: "The quote is free and with no commitment.",
+    confirmation:
+      "Thank you, your request has been received. The RENIA team is looking at your need and will come back with a tailored proposal.",
+    note:
+      "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
+    send: "Send",
+    sending: "Sending…",
+    error:
+      "We could not save your request. Please try again or contact us directly.",
+  },
+
+  reniaHome: {
+    eyebrow: "RENIA HOME",
+    title: "What our home cleaning includes",
+    intro: "A clear room-by-room list, so you know exactly what to expect.",
+    heroPrimary: "Get a quote",
     heroSecondary: "See what is included",
     includedEyebrow: "Room by room",
     includedTitle: "What our home cleaning includes",
     includedIntro:
-      "Every visit follows a detailed checklist, adapted to your home and your priorities. The result is a home that feels cared for, from the first room to the last.",
+      "A clear room-by-room list, so you know exactly what to expect.",
     rooms: [
       {
         title: "Kitchen",
-        body: "Worktops, sink, hob, splashback, cupboard fronts, appliances and the bin area.",
+        body: "worktop, sink, outside of cabinets and appliances, hob, floors.",
+        image: "/images/home-cleaning.jpg.png",
       },
       {
         title: "Bathroom and toilet",
-        body: "Shower, bath, sink, toilet, tiles, mirrors and chrome fittings.",
+        body: "basin, shower or bath, mirrors, sanitary ware, tiles, floors.",
+        image: "/images/home-cleaning.jpg.png",
       },
       {
         title: "Bedrooms",
-        body: "Dusting, surfaces, mirrors, skirting boards, vacuuming and bed making on request.",
+        body: "dusting, surfaces and furniture, floors, airing the bed if agreed.",
+        image: "/images/hero.jpg.png",
       },
       {
-        title: "Living room",
-        body: "Dusting, furniture, carefully wiped electronics, vacuumed and mopped floors.",
+        title: "Living room and living areas",
+        body: "dusting, surfaces, accessible sofas and furniture, floors.",
+        image: "/images/hero.jpg.png",
       },
       {
-        title: "Entrance",
-        body: "Doors, handles, switches, hall floors, mirrors and the areas you touch most.",
+        title: "Entrance and corridors",
+        body: "floors, accessible skirting boards, handles and switches.",
+        image: "/images/home-cleaning.jpg.png",
       },
       {
         title: "Bins",
-        body: "Emptying, cleaning and disinfecting bins, and replacing the liners.",
+        body: "emptying the bins and putting in a clean bag.",
+        image: "/images/home-cleaning.jpg.png",
       },
     ],
     extrasEyebrow: "Beyond the routine",
     extrasTitle: "Deep clean & ironing",
-    deepTitle: "Deep clean",
+    deepTitle: "For a deep clean",
     deepBody:
-      "An intensive, top-to-bottom clean for a move, a seasonal refresh, a special occasion or a home that needs a fresh start. We go further: inside appliances, behind furniture, skirting boards, window frames and hard-to-reach corners.",
+      "a more thorough clean adapted to your home; areas that are hard to reach during routine cleaning; a priced service, quoted separately after a conversation with you.",
+    deepImage: "/images/hero.jpg.png",
+    extrasTitleAddition: "What you can ask for in addition",
+    extrasBody:
+      "ironing; eco-friendly cleaning products, offered as an option; a special request, to be specified in your quote.",
     ironTitle: "Ironing",
     ironBody:
-      "Washed and dried laundry ironed, folded and put away. A simple, regular service that gives you back precious time.",
-    ironNote: "Available on its own or alongside your cleaning visit.",
-    taxEyebrow: "Tax credit & avance immédiate",
-    taxTitle: "50% of your home cleaning can come back to you.",
-    taxBody:
-      "As a personal services provider, RENIA HOME allows eligible households to benefit from a 50% tax credit on eligible cleaning services. With the avance immédiate, you only pay the remaining share at the time of the service, rather than waiting for the following year.",
-    taxBullet1:
-      "50% tax credit on eligible services, under current regulations.",
-    taxBullet2: "Avance immédiate available for eligible customers.",
-    taxBullet3: "A clear invoice and an annual tax certificate.",
-    taxNote:
-      "Eligibility depends on your situation and current regulations. We will be happy to explain the process and help you check.",
-    taxCta: "Check my eligibility",
-    faqEyebrow: "Good to know",
-    faqTitle: "Frequently asked questions",
+      "Your laundry ironed with care, at your home. Add ironing to your cleaning by ticking the box in your quote request, and give the approximate amount in the comments.",
+    ironImage: "/images/home-cleaning.jpg.png",
+    faqEyebrow: "RENIA HOME FAQ",
+    faqTitle: "RENIA HOME FAQ",
     faqs: [
       {
-        question: "What are personal services (SAP)?",
+        question: "How do I ask for a quote?",
         answer:
-          "Personal services (services à la personne) are services provided to individuals in their own home. They include housekeeping, cleaning and ironing. Using a declared provider gives you access to specific tax benefits when you are eligible.",
+          "Fill in our form in a few minutes. The quote is free. In the comments you can add anything that helps us: size of the home, preferred days, pets, access…",
       },
       {
-        question: "How does the 50% tax credit work?",
+        question: "Which services do you offer at home?",
         answer:
-          "Eligible households can recover 50% of the cost of qualifying cleaning services, within the annual limits set by current regulations. With the avance immédiate, the reduction can be applied directly to your invoice, so you only pay the remaining share.",
+          "Home cleaning, regular or one-off cleaning, deep cleaning and ironing. If your need is different, say so in the form: we look at every request.",
       },
       {
-        question: "How do I get a quote?",
+        question: "Do you offer eco-friendly products?",
         answer:
-          "Contact us through the form, by WhatsApp or by phone. Tell us about your home, its size and the frequency you have in mind. We will come back to you with a clear, no-obligation proposal, usually within one business day.",
+          "Yes, we offer eco-friendly cleaning products as an option. Mention it in your quote request.",
       },
       {
-        question: "Do you use eco-friendly products?",
+        question: "Do I need to be present during the visit?",
         answer:
-          "Yes, eco-friendly products are available as an option on request. We are also careful about dosage and water use, and we can adapt to products you prefer to use in your home.",
+          "[To complete: client presence, key handover, access to the home.]",
       },
       {
-        question: "Do I need to provide cleaning products?",
+        question: "What if I need to cancel or postpone a visit?",
         answer:
-          "Not necessarily. We can bring our own equipment and products, or use yours if you prefer. We will agree on this before the first visit so that everything is ready.",
+          "[To complete according to the terms of sale: notice period, cancellation conditions.]",
       },
       {
-        question: "Can I book a one-off clean?",
+        question: "Which towns do you cover?",
         answer:
-          "Yes. We offer regular upkeep, one-off cleaning and deep cleaning. A one-off visit can be a good way to try our service before setting up a regular schedule.",
+          "We work in Ablis, Rambouillet, Versailles and Saint-Quentin. Your town is not named? Ask us, we look at every situation.",
       },
     ],
-    ctaEyebrow: "A calmer home starts here",
-    ctaTitle: "Ready for a home that feels cared for?",
-    ctaText:
-      "Tell us about your home and how often you would like us to visit. We will send you a clear, no-obligation quote.",
-    cta: "Request my quote",
+    ctaEyebrow: "Ready when you are",
+    ctaTitle: "Ready to ask for your quote?",
+    ctaText: "Get a quote.",
+    cta: "Get a quote",
   },
 
   reniaPro: {
-    eyebrow: "Commercial cleaning · Yvelines",
+    eyebrow: "RENIA PRO",
     title: "RENIA PRO: cleaning for your business premises.",
     intro:
-      "A reliable, discreet cleaning service for offices, practices, shops, managed properties and short-term rentals across the Yvelines.",
-    heroPrimary: "Request a quote",
-    heroSecondary: "Our sectors",
-    sectorsEyebrow: "Our sectors",
+      "Offices, practices, shops, property managers, short-term rentals: a service adapted to each place.",
+    heroPrimary: "Request a professional quote",
+    heroSecondary: "Professional services",
+    sectorsEyebrow: "Professional services",
     sectorsTitle: "A team that understands your environment.",
     sectorsIntro:
-      "Each activity has its own rhythm, standards and constraints. We adapt our methods and our schedule to the way you work.",
+      "Offices, practices, shops, property managers, short-term rentals: a service adapted to each place.",
     sectors: [
       {
         title: "Offices",
-        body: "Daily, weekly or occasional upkeep of workspaces, meeting rooms, kitchens and communal areas.",
+        body: "regular cleaning of your workspaces, according to your hours.",
       },
       {
-        title: "Medical practices",
-        body: "Careful, discreet cleaning adapted to the standards and confidentiality of your practice.",
+        title: "Medical, legal and accounting practices",
+        body: "a discreet service adapted to the constraints of your activity.",
       },
       {
         title: "Shops",
-        body: "Sales floors, windows, fitting rooms, back offices and customer areas, before opening or after closing.",
+        body: "clean premises to welcome your customers.",
       },
       {
-        title: "Property managers",
-        body: "Reliable support for common areas, end-of-tenancy cleaning and the properties you manage.",
+        title: "Property managers (syndics) and co-ownerships",
+        body: "cleaning of common areas, at a rhythm agreed with you.",
       },
       {
-        title: "Airbnb",
-        body: "Fast, meticulous turnarounds between guests, with linen, amenities and presentation checked.",
+        title: "Airbnb and short-term rentals",
+        body: "preparing properties between stays (link to the dedicated page).",
       },
       {
-        title: "Other",
-        body: "Restaurants, showrooms, warehouses, associations… tell us about your premises and we will adapt.",
+        title: "Other business premises",
+        body: "a tailor-made solution according to your need.",
       },
     ],
+    teamImages: [
+      "/images/pro-cleaning.jpg.png",
+      "/images/pro-cleaning.jpg.png",
+      "/images/pro-cleaning.jpg.png",
+    ],
     tailorEyebrow: "A tailor-made solution",
-    tailorTitle: "Your constraints set the brief.",
+    tailorTitle: "A tailor-made solution",
     tailorBody:
-      "No two premises are the same. We build the service around your opening hours, traffic, surfaces, materials and the level of finish you expect. A single visit or a regular schedule, one team or several: the solution fits you, not the other way round.",
-    tailorBullet1: "Flexible frequencies and time slots",
-    tailorBullet2: "A named contact and a clear scope of work",
-    tailorBullet3: "Discreet teams, respectful of your activity",
+      "adapted frequency (one-off, weekly, several times a week); adapted hours (before opening, during the day or after closing); a site visit to prepare a precise quote; an identified contact for follow-up.",
+    tailorBullet1: "adapted frequency (one-off, weekly, several times a week)",
+    tailorBullet2:
+      "adapted hours (before opening, during the day or after closing)",
+    tailorBullet3: "a site visit to prepare a precise quote",
+    tailorBullet4: "an identified contact for follow-up",
     methodEyebrow: "Our method",
-    methodTitle: "Simple, transparent, consistent.",
+    methodTitle: "Our method",
     methodSteps: [
-      {
-        title: "Visit",
-        body: "We visit your premises to understand the space, its uses and your requirements.",
-      },
+      { title: "Visit and assessment", body: "Visit and assessment." },
       {
         title: "Proposal",
-        body: "You receive a clear, tailored proposal: scope, frequency, duration and price.",
+        body: "a tailored quote, with no commitment.",
       },
       {
         title: "Service",
-        body: "Our team takes over, following the agreed checklist and your access arrangements.",
+        body: "Service according to the agreed schedule.",
       },
       {
         title: "Follow-up",
-        body: "We check quality with you regularly and adjust the service as your needs change.",
+        body: "we stay available to adjust the service.",
       },
     ],
-    airbnbEyebrow: "Airbnb & short-term rentals",
-    airbnbTitle: "Turnovers that protect your rating.",
+    airbnbEyebrow: "Airbnb and short-term rentals",
+    airbnbTitle:
+      "Airbnb and short-term rentals: properties ready for your next guests.",
     airbnbBody:
-      "Between two guests, every detail counts. We handle cleaning, linen changes, amenities, presentation and a final photo check, so your property is ready for the next arrival. We can also coordinate with your concierge or cleaning schedule.",
-    airbnbBullet1: "Same-day turnarounds",
-    airbnbBullet2: "Linen and amenity management on request",
-    airbnbBullet3: "Photo report after each service",
-    airbnbCta: "Book a turnover",
-    ctaEyebrow: "Let's visit your premises",
-    ctaTitle: "A cleaner workplace, without the worry.",
-    ctaText:
-      "Tell us about your activity, surface area and frequency. We will come back to you with a tailored proposal.",
-    cta: "Request a quote",
+      "RENIA PRO prepares your property between stays, so every arrival goes well.",
+    airbnbBullet1:
+      "A spotless property: careful preparation between each departure and arrival.",
+    airbnbBullet2:
+      "Suitable time slots: we organise around your departure and arrival times.",
+    airbnbBullet3:
+      "A single contact: a local team that you can easily reach.",
+    airbnbServicesTitle: "Our services",
+    airbnbServices: [
+      "preparing the property between stays",
+      "restoring it before a first rental",
+      "regular cleaning according to your booking rhythm",
+      "a tailor-made solution for your property",
+    ],
+    airbnbHowTitle: "How it works",
+    airbnbHow: [
+      "You describe your property.",
+      "We study your need (a visit may be offered).",
+      "You receive a proposal.",
+      "We come between each stay.",
+    ],
+    airbnbCta: "Request a quote",
+    ctaEyebrow: "Let’s talk",
+    ctaTitle: "Let’s talk about your premises.",
+    ctaText: "Request a professional quote.",
+    cta: "Request a professional quote",
   },
 
   showcase: {
-    eyebrow: "Two houses, one standard",
+    eyebrow: "Two services, one standard",
     title: "Care for your home and your business.",
     intro:
       "RENIA HOME looks after private homes, RENIA PRO supports businesses. The same attention to detail, whatever the space.",
     homeTitle: "RENIA HOME",
-    homeSubtitle: "Personal services",
+    homeSubtitle: "Home cleaning",
     homeImageAlt: "A bright, clean living room",
     homeServicesTitle: "Home services",
     homeServices: [
-      "Regular cleaning",
-      "Deep clean",
+      "Home cleaning",
+      "Regular upkeep",
+      "One-off cleaning",
+      "Deep cleaning",
       "Ironing",
-      "50% tax credit",
     ],
     homeCta: "Discover RENIA HOME",
-    centerEyebrow: "Our promise",
-    centerTitle: "Care, in every detail.",
+    centerEyebrow: "Why Renia",
+    centerTitle: "Why choose RENIA",
     centerText:
       "A trained, supervised team that treats your space as if it were their own.",
     centerPromise:
-      "A well-cared-for space changes the way you live and work. That is the promise behind every visit.",
-    centerImageAlt: "The Renia team",
-    centerCta: "Meet the team",
+      "A well-cared-for space changes the way you live and work.",
+    centerImageAlt: "A clean, bright interior",
+    centerCta: "Discover our services",
     engagements: [
-      {
-        title: "Eco-friendly",
-        body: "Measured products and water use.",
-      },
-      {
-        title: "Quality",
-        body: "A clear checklist on every visit.",
-      },
-      {
-        title: "Trained team",
-        body: "Declared, insured professionals.",
-      },
-      {
-        title: "Flexibility",
-        body: "Schedules built around you.",
-      },
+      { title: "Eco-friendly", body: "Products offered as an option." },
+      { title: "Quality", body: "A clear checklist on every visit." },
+      { title: "Trained team", body: "Organised, supervised teams." },
+      { title: "Flexibility", body: "Schedules built around you." },
     ],
     proTitle: "RENIA PRO",
-    proSubtitle: "Commercial cleaning",
-    proImageAlt: "A clean, professional office",
-    proSectorsTitle: "Pro sectors",
+    proSubtitle: "Professional cleaning",
+    proImageAlt: "A bright, clean professional office",
+    proSectorsTitle: "Professional services",
     proSectors: [
       "Offices",
-      "Medical practices",
+      "Practices",
       "Shops",
       "Property managers",
-      "Airbnb",
-      "Other",
+      "Airbnb and short-term rentals",
+      "Business premises",
     ],
     proCta: "Discover RENIA PRO",
   },
 
   contactCard: {
     eyebrow: "Renia Services",
-    title: "Let's stay in touch",
+    title: "Let’s stay in touch",
     phoneLabel: "Phone",
     emailLabel: "Email",
     websiteLabel: "Website",
     website: "reniaservices.fr",
     qrLabel: "Scan the QR code to save our details.",
     qrPlaceholder: "QR code coming soon",
-    tagline: "Healthy, serene spaces…",
-    signature: "RENIA · Yvelines 78",
+    tagline: "Healthy, serene and naturally welcoming spaces.",
+    signature: "RENIA SERVICES",
     cta: "Contact us",
   },
 
@@ -739,7 +856,7 @@ const en = {
     values: [
       {
         title: "Trained",
-        body: "Declared, insured professionals who are trained for every type of space.",
+        body: "Organised, supervised teams who are trained for every type of space.",
       },
       {
         title: "Supervised",
@@ -786,7 +903,7 @@ const en = {
       "We are always happy to meet people who care about doing things well. Tell us about your experience and we will get back to you.",
     joinCta: "Contact us",
     ctaEyebrow: "Ready to meet?",
-    ctaTitle: "Let's talk about your space.",
+    ctaTitle: "Let’s talk about your space.",
     ctaText:
       "Tell us what you need and we will suggest the right service, clearly and without obligation.",
     cta: "Request a quote",
@@ -795,8 +912,7 @@ const en = {
   gallery: {
     eyebrow: "Recent work",
     title: "Our gallery.",
-    intro:
-      "A look at the homes, offices and rentals we care for across the Yvelines.",
+    intro: "A look at the homes, offices and rentals we care for.",
     recentTitle: "Recent work",
     recentIntro: "A glimpse of the spaces we look after.",
     viewAll: "View full gallery",
@@ -807,7 +923,7 @@ const en = {
     videoLabel: "Video",
     imageLabel: "Photo",
     ctaEyebrow: "Your space next",
-    ctaTitle: "Let's make your space feel cared for.",
+    ctaTitle: "Let’s make your space feel cared for.",
     ctaText:
       "Tell us about your space and we will suggest the right service, clearly and without obligation.",
     cta: "Request a quote",
@@ -864,7 +980,7 @@ const en = {
     deleting: "Deleting…",
     deleteError: "Unable to delete this file.",
     storageSetup:
-      "Create a public Supabase Storage bucket named renia-gallery (or set NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET) with a gallery folder.",
+      "Create a public Supabase Storage bucket named renia-gallery with a gallery folder.",
     tabInbox: "Inbox",
     tabTeam: "Manage Team",
     teamEyebrow: "Team",
@@ -883,35 +999,54 @@ const en = {
 };
 
 const fr: typeof en = {
+  // Common
+  slogan: "Des espaces sains, sereins et naturellement accueillants.",
+  mainQuote: "Obtenir un devis",
+  menuHome: "Accueil",
+  menuReniaHome: "RENIA HOME",
+  menuReniaPro: "RENIA PRO",
+  menuAbout: "À propos",
+  menuCommitments: "Nos engagements",
+  menuContact: "Contact",
+  footerDescription: `RENIA SERVICES, nettoyage résidentiel et professionnel. Zone d’intervention : Yvelines (78). ${CONTACT_PHONE_DISPLAY} · ${CONTACT_EMAIL}.`,
+  footerLinks: [
+    "RENIA HOME",
+    "RENIA PRO",
+    "À propos",
+    "Nos engagements",
+    "Contact",
+    "Mentions légales",
+    "Politique de confidentialité",
+    "Politique de cookies",
+    "CGV",
+  ],
+
+  // Homepage
   HeroTitle:
-    "Votre partenaire de confiance pour l'entretien de vos espaces de vie et de travail.",
+    "Votre partenaire de confiance pour l’entretien de vos espaces de vie et de travail.",
   HeroText:
-    "Des prestations de nettoyage professionnelles, adaptées à vos besoins, pour les particuliers comme pour les professionnels des Yvelines.",
-  HeroButtonPrimary: "Demander un devis",
-  HeroButtonSecondary: "Réserver une prestation",
+    "Des prestations de nettoyage professionnelles, adaptées à vos besoins, pour les particuliers comme pour les professionnels.",
+  HeroButtonPrimary: "Obtenir un devis gratuit",
+  HeroButtonSecondary: "Découvrir nos services →",
   YouAre: "Vous êtes :",
   Individual: "Particulier : RENIA HOME · Ménage à domicile",
   Professional: "Professionnel : RENIA PRO · Locaux et bureaux",
-  SAPTitle: "Services à la personne",
-  SAPBullet1: "50 % de crédit d'impôt* sous conditions d'éligibilité",
-  SAPBullet2: "Avance immédiate pour les clients éligibles",
-  SAPLink: "En savoir plus →",
-  SAPNote:
-    "*Applicable aux prestations de services à la personne éligibles, selon la réglementation en vigueur.",
-  AreasTitle: "Choisissez votre solution.",
-  AreasSubtitle:
-    "Deux maisons, une même exigence. Choisissez la prestation qui correspond à votre situation.",
-  HomeTitle: "RENIA HOME – Services à la personne",
+  AreasTitle: "Un seul interlocuteur, deux savoir-faire",
+  AreasSubtitle: "Choisissez le service qui correspond à votre situation.",
+  HomeTitle: "RENIA HOME",
   HomeText:
     "Ménage à domicile · Entretien régulier · Entretien ponctuel · Grand nettoyage · Repassage.",
   HomeButton: "Découvrir RENIA HOME →",
-  ProTitle: "RENIA PRO – Nettoyage professionnel",
+  ProTitle: "RENIA PRO",
   ProText:
     "Bureaux · Commerces et cabinets · Syndics · Airbnb et locations courte durée · Locaux professionnels · Solutions sur mesure.",
   ProButton: "Découvrir RENIA PRO →",
+  QuoteCard: "Demander un devis",
   WhyTitle: "Pourquoi choisir RENIA",
-  Why1: "Produits écologiques disponibles en option, sur demande.",
-  Why2: "Professionnalisme et fiabilité : des équipes organisées et encadrées.",
+  Why1:
+    "Produits écologiques : des produits écologiques disponibles en option, sur demande.",
+  Why2:
+    "Professionnalisme et fiabilité : des équipes organisées et encadrées.",
   Why3: "Service personnalisé : des prestations adaptées à vos besoins.",
   Why4: "Flexibilité : des solutions adaptées à votre rythme et à vos contraintes.",
   Why5: "Proximité : une entreprise locale, proche de ses clients.",
@@ -920,21 +1055,21 @@ const fr: typeof en = {
   How2: "Évaluation : RENIA analyse votre demande.",
   How3: "Proposition : vous recevez une proposition adaptée.",
   How4: "Planification : la prestation est programmée.",
-  How5: "Intervention : l'équipe RENIA intervient.",
+  How5: "Intervention : l’équipe RENIA intervient.",
   How6: "Suivi : la qualité et votre satisfaction sont suivies.",
 
   whyPillars: [
     {
       title: "Produits écologiques",
-      body: "Des produits écologiques disponibles en option sur demande, avec un usage mesuré de l'eau et des produits.",
+      body: "Des produits écologiques disponibles en option, sur demande.",
     },
     {
       title: "Professionnalisme et fiabilité",
-      body: "Des équipes organisées et encadrées, avec la même exigence à chaque visite.",
+      body: "Des équipes organisées et encadrées.",
     },
     {
       title: "Service personnalisé",
-      body: "Des prestations adaptées à vos besoins, à votre espace et à vos priorités.",
+      body: "Des prestations adaptées à vos besoins.",
     },
     {
       title: "Flexibilité",
@@ -942,9 +1077,10 @@ const fr: typeof en = {
     },
     {
       title: "Proximité",
-      body: "Une entreprise locale, proche de ses clients dans les Yvelines.",
+      body: "Une entreprise locale, proche de ses clients.",
     },
   ],
+
   homeHow: {
     eyebrow: "Comment ça marche",
     title: "Du premier message à un espace qui se sent entretenu.",
@@ -965,16 +1101,16 @@ const fr: typeof en = {
       },
       {
         title: "Profitez de votre espace",
-        body: "Notre équipe s'occupe de tout, puis nous faisons un suivi qualité.",
+        body: "Notre équipe s’occupe de tout, puis nous faisons un suivi qualité.",
       },
     ],
     cta: "Voir le processus complet",
   },
+
   reviews: {
     eyebrow: "Avis clients",
     title: "Des espaces entretenus, des clients sereins.",
-    intro:
-      "Une sélection de retours de particuliers et de professionnels des Yvelines.",
+    intro: "Une sélection de retours de particuliers et de professionnels.",
     googleLabel: "Avis Google",
     googleValue: "5,0",
     googleNote:
@@ -982,77 +1118,69 @@ const fr: typeof en = {
     items: [
       {
         name: "Claire M.",
-        meta: "RENIA HOME · Yvelines",
+        meta: "RENIA HOME",
         quote:
-          "L'équipe est ponctuelle, discrète et extrêmement minutieuse. Ma maison n'a jamais été aussi sereine et soignée.",
+          "L’équipe est ponctuelle, discrète et extrêmement minutieuse. Ma maison n’a jamais été aussi sereine et soignée.",
       },
       {
         name: "Thomas L.",
-        meta: "RENIA PRO · Versailles",
+        meta: "RENIA PRO",
         quote:
           "Devis clair, planning fiable et bureaux impeccables chaque semaine. Exactement ce dont une équipe qui grandit a besoin.",
       },
       {
         name: "Sophie R.",
-        meta: "Remise en état Airbnb · Saint-Germain",
+        meta: "Locations courte durée",
         quote:
           "Des remises en état rapides et minutieuses entre deux voyageurs. Le reportage photo me donne une tranquillité totale.",
       },
     ],
   },
+
   faqPage: {
     eyebrow: "Bon à savoir",
     title: "Questions fréquentes.",
     intro:
-      "Tout ce qu'il faut savoir sur nos prestations, la réservation, le crédit d'impôt et notre façon de travailler. Si votre question n'est pas ici, nous sommes à un message de vous.",
+      "Tout ce qu’il faut savoir sur nos prestations et notre façon de travailler. Si votre question n’est pas ici, nous sommes à un message de vous.",
     items: [
       {
-        question: "Quelles prestations propose RENIA ?",
+        question: "Comment demander un devis ?",
         answer:
-          "RENIA HOME s'occupe des maisons particulières : ménage régulier, entretien ponctuel, grand nettoyage et repassage. RENIA PRO accompagne les professionnels : bureaux, cabinets, commerces, biens gérés et locations Airbnb ou courte durée. Chaque prestation est adaptée à votre espace et à vos horaires.",
+          "Remplissez notre formulaire en quelques minutes. Le devis est gratuit. Vous pouvez ajouter dans les commentaires tout ce qui peut nous aider : taille du logement, jours souhaités, animaux, accès…",
       },
       {
-        question: "Comment fonctionne le crédit d'impôt de 50 % ?",
+        question: "Quels services proposez-vous à domicile ?",
         answer:
-          "Les foyers éligibles peuvent récupérer 50 % du coût des services à la personne éligibles, dans la limite des plafonds annuels fixés par la réglementation en vigueur. Avec l'avance immédiate, la réduction peut être appliquée directement sur votre facture : vous ne payez que la part restante.",
+          "Ménage à domicile, entretien régulier ou ponctuel, grand nettoyage et repassage. Si votre besoin est différent, indiquez-le dans le formulaire : nous étudions chaque demande.",
       },
       {
-        question: "Utilisez-vous des produits écologiques ?",
+        question: "Proposez-vous des produits écologiques ?",
         answer:
-          "Oui. Des produits écologiques sont disponibles en option sur demande. Nous faisons attention aux dosages et à la consommation d'eau, et nous pouvons nous adapter aux produits que vous préférez utiliser chez vous.",
+          "Oui, nous proposons des produits d’entretien écologiques en option. Précisez-le dans votre demande de devis.",
       },
       {
-        question: "Dois-je fournir les produits de nettoyage ?",
+        question: "Dois-je être présent pendant l’intervention ?",
         answer:
-          "Pas nécessairement. Nous pouvons apporter notre propre matériel et nos produits, ou utiliser les vôtres si vous le préférez. Nous en convenons avant la première visite pour que tout soit prêt.",
+          "[À compléter : présence du client, remise des clés, accès au logement.]",
       },
       {
-        question: "Puis-je réserver un ménage ponctuel ?",
+        question: "Que se passe-t-il si je dois annuler ou reporter une intervention ?",
         answer:
-          "Oui. Nous proposons l'entretien régulier, le ménage ponctuel et le grand nettoyage. Une visite ponctuelle peut être une bonne façon de tester notre service avant de mettre en place un rythme régulier.",
+          "[À compléter selon les CGV : délai de prévenance, conditions d’annulation.]",
       },
       {
-        question: "Comment obtenir un devis ?",
+        question: "Dans quelles communes intervenez-vous ?",
         answer:
-          "Contactez-nous via le formulaire, WhatsApp ou par téléphone. Parlez-nous de votre logement, de sa surface et de la fréquence souhaitée. Nous vous répondrons avec une proposition claire et sans engagement, généralement sous un jour ouvré.",
-      },
-      {
-        question: "Comment se passe la réservation ?",
-        answer:
-          "Utilisez le formulaire de réservation pour choisir votre prestation, la date et l'horaire souhaités. Nous vérifions la disponibilité et confirmons les détails par message. La réservation n'est confirmée qu'après notre réponse.",
-      },
-      {
-        question: "Quelles zones couvrez-vous ?",
-        answer:
-          "Nous intervenons dans les Yvelines (78) et les alentours. Indiquez votre code postal dans votre message et nous vous confirmerons si votre adresse fait partie de notre zone d'intervention.",
+          "Nous intervenons à Ablis, Rambouillet, Versailles et Saint-Quentin. Votre commune n’est pas citée ? Demandez-nous, nous étudions chaque situation.",
       },
     ],
     seeAll: "Voir toutes les questions",
     stillTitle: "Une autre question ?",
     stillText:
-      "Écrivez-nous et nous vous répondrons clairement, sans engagement. Nous répondons généralement sous un jour ouvré.",
-    stillCta: "Nous contacter",
+      "Écrivez-la dans le champ « commentaires » de votre demande de devis.",
+    stillCta: "Obtenir un devis",
   },
+
   howItWorksPage: {
     eyebrow: "Comment ça marche",
     title: "Un processus simple et transparent.",
@@ -1063,22 +1191,22 @@ const fr: typeof en = {
     steps: [
       {
         title: "Demandez votre devis",
-        body: "Contactez-nous via le formulaire, WhatsApp ou par téléphone. Parlez-nous de votre espace, de la prestation souhaitée et de la fréquence envisagée.",
+        body: "Présentez votre besoin. RENIA analyse votre demande.",
         detail: "Quelques minutes suffisent. Sans engagement.",
       },
       {
         title: "Recevez une proposition adaptée",
-        body: "Nous étudions votre demande et revenons vers vous avec une proposition claire : périmètre, fréquence, durée et tarif.",
+        body: "Vous recevez une proposition adaptée.",
         detail: "Généralement sous un jour ouvré.",
       },
       {
-        title: "Réservez votre prestation",
-        body: "Choisissez la date et l'horaire qui vous conviennent. Nous confirmons la disponibilité et les détails pratiques par message.",
+        title: "Planifiez la prestation",
+        body: "La prestation est programmée.",
         detail: "Un interlocuteur dédié du début à la fin.",
       },
       {
-        title: "Le jour du ménage",
-        body: "Notre équipe arrive à l'heure, suit la checklist convenue et laisse votre espace prêt à être profité.",
+        title: "L’équipe RENIA intervient",
+        body: "L’équipe RENIA intervient, puis la qualité et votre satisfaction sont suivies.",
         detail: "Un suivi attentif après la visite.",
       },
     ],
@@ -1087,30 +1215,31 @@ const fr: typeof en = {
     included: [
       {
         title: "Un interlocuteur dédié",
-        body: "Vous parlez à la même personne avant, pendant et après votre prestation. Pas de centre d'appel, pas de transfert.",
+        body: "Vous parlez à la même personne avant, pendant et après votre prestation.",
       },
       {
         title: "Un périmètre clair",
-        body: "Chaque visite suit une checklist convenue. Vous savez exactement ce qui est inclus, et notre équipe aussi.",
+        body: "Chaque visite suit une checklist convenue. Vous savez exactement ce qui est inclus.",
       },
       {
         title: "Un suivi attentif",
         body: "Nous vérifions que le résultat correspond à vos attentes et ajustons la prestation selon vos besoins.",
       },
     ],
-    ctaEyebrow: "Prêts quand vous l'êtes",
+    ctaEyebrow: "Prêts quand vous l’êtes",
     ctaTitle: "Commençons.",
     ctaText:
       "Parlez-nous de votre espace et nous vous guiderons vers la prochaine étape, clairement et sans engagement.",
     cta: "Demander un devis",
-    ctaSecondary: "Réserver une prestation",
+    ctaSecondary: "Découvrir nos services",
   },
+
   booking: {
-    eyebrow: "Réserver une prestation",
+    eyebrow: "Demander une prestation",
     title: "Choisissez une date. Nous nous occupons du reste.",
     intro:
-      "Envoyez-nous la date et l'horaire souhaités. Nous vérifierons la disponibilité et confirmerons votre réservation par message.",
-    formEyebrow: "Votre demande de réservation",
+      "Envoyez-nous la date et l’horaire souhaités. Nous vérifierons la disponibilité et confirmerons votre demande par message.",
+    formEyebrow: "Votre demande",
     formTitle: "Dites-nous quand vous avez besoin de nous.",
     serviceLabel: "Prestation",
     serviceHome: "RENIA HOME — Ménage à domicile",
@@ -1123,30 +1252,30 @@ const fr: typeof en = {
     phonePlaceholder: "+33 6 00 00 00 00",
     emailLabel: "Email",
     emailPlaceholder: "vous@exemple.com",
-    submit: "Demander cette réservation",
+    submit: "Envoyer",
     submitHint:
-      "Votre demande s'ouvre dans WhatsApp. Vous pouvez la relire avant de l'envoyer.",
+      "Votre demande est enregistrée, puis WhatsApp s’ouvre avec votre message prêt à être envoyé. Rien n’est envoyé tant que vous ne confirmez pas dans WhatsApp.",
     required: "Champs obligatoires",
     opened:
-      "WhatsApp a été ouvert dans un nouvel onglet. Vous pouvez y relire et envoyer votre demande de réservation.",
+      "Votre demande a été enregistrée. WhatsApp et votre application email se sont ouverts avec votre message prêt à être envoyé.",
     asideTitle: "Vous préférez échanger ?",
     asideText:
       "Envoyez-nous un message ou appelez-nous. Nous confirmerons la disponibilité et répondrons à toutes vos questions.",
     whatsappButton: "Nous écrire sur WhatsApp",
-    note: "Il s'agit d'une demande, pas d'une réservation confirmée. Nous confirmerons la disponibilité par message.",
+    note: "Il s’agit d’une demande, pas d’une réservation confirmée. Nous confirmerons la disponibilité par message.",
     stepsTitle: "Ce qui se passe après votre demande",
     steps: [
       {
         title: "Nous confirmons la disponibilité",
-        body: "Nous vérifions la date et l'horaire demandés et vous répondons avec une confirmation.",
+        body: "Nous vérifions la date et l’horaire demandés et vous répondons avec une confirmation.",
       },
       {
         title: "Vous recevez les détails",
-        body: "Nous confirmons le périmètre, les modalités d'accès et ce que vous devez préparer.",
+        body: "Nous confirmons le périmètre, les modalités d’accès et ce que vous devez préparer.",
       },
       {
         title: "Nous nous occupons du reste",
-        body: "Notre équipe arrive à l'heure et suit la checklist convenue.",
+        body: "Notre équipe arrive à l’heure et suit la checklist convenue.",
       },
     ],
   },
@@ -1155,7 +1284,7 @@ const fr: typeof en = {
     eyebrow: "À propos",
     title: "À propos de RENIA SERVICES",
     intro:
-      "Une entreprise de nettoyage locale, au service des particuliers et des professionnels des Yvelines.",
+      "Une entreprise de nettoyage locale, au service des particuliers et des professionnels.",
     missionEyebrow: "Notre mission",
     mission:
       "Entretenir vos espaces de vie et de travail avec sérieux, pour que vous retrouviez des lieux sains, sereins et naturellement accueillants.",
@@ -1166,72 +1295,82 @@ const fr: typeof en = {
     values: [
       {
         title: "Fiabilité",
-        body: "Nous tenons nos engagements et arrivons aux horaires annoncés, avec la même exigence à chaque visite.",
+        body: "Nous tenons nos engagements et nos horaires.",
       },
       {
         title: "Professionnalisme",
-        body: "Des équipes formées, déclarées et assurées, des méthodes rigoureuses et un grand souci du détail.",
+        body: "Des équipes organisées et encadrées.",
       },
       {
         title: "Proximité",
-        body: "Une entreprise locale ancrée dans les Yvelines, disponible et proche de celles et ceux que nous servons.",
+        body: "Une entreprise locale.",
       },
       {
         title: "Respect",
-        body: "Le respect de votre maison, de votre entreprise, de vos biens et de votre intimité.",
+        body: "Le respect du client, de son lieu de vie et de notre équipe.",
       },
       {
         title: "Environnement",
-        body: "Un usage mesuré de l'eau et des produits, avec des solutions écologiques disponibles sur demande.",
+        body: "Des produits écologiques proposés en option.",
       },
     ],
     visionEyebrow: "Notre vision",
-    visionTitle: "Des espaces sains et sereins pour tous.",
+    visionTitle: "Un acteur reconnu du nettoyage.",
     visionBody:
-      "Nous imaginons un service où la qualité, le respect et la proximité vont de pair : des maisons et des locaux entretenus avec soin, des équipes fières de leur travail et des clients libres de se concentrer sur l'essentiel. Une entreprise locale et à taille humaine, qui grandit sans jamais perdre son exigence.",
+      "À moyen terme, RENIA SERVICES ambitionne de devenir un acteur reconnu du secteur du nettoyage sur son territoire d’implantation, grâce à la qualité de ses prestations, à la fidélisation de sa clientèle et à une croissance progressive de son activité.",
     storyEyebrow: "Notre histoire",
-    storyTitle: "Une histoire écrite avec soin.",
+    storyTitle: "Notre histoire",
     storyBody:
-      "RENIA SERVICES est née d'un constat simple : un espace bien entretenu change la façon dont on vit et dont on travaille. Nous avons créé RENIA HOME pour les familles qui souhaitent rentrer dans un intérieur serein, et RENIA PRO pour les professionnels qui ont besoin d'un entretien fiable et discret. De la première visite aux suivis réguliers, nous construisons une relation fondée sur la confiance, la précision et le respect de votre espace.",
-    storyNote: "RENIA SERVICES · Yvelines 78",
-    ctaEyebrow: "Faisons connaissance",
-    ctaTitle: "Parlons de votre espace.",
-    ctaText:
-      "Dites-nous ce dont vous avez besoin et nous vous proposerons la prestation adaptée, clairement et sans engagement.",
-    cta: "Nous contacter",
+      "[À écrire par RENIA : pourquoi RENIA a été créée, en quelques phrases sincères et personnelles.]",
+    storyNote: "RENIA SERVICES",
+    brandsEyebrow: "Une marque, deux savoir-faire",
+    brandsTitle: "Une marque, deux savoir-faire",
+    brands: [
+      {
+        title: "RENIA HOME",
+        body: "ménage et services à domicile pour les particuliers.",
+      },
+      {
+        title: "RENIA PRO",
+        body: "nettoyage de bureaux, cabinets, commerces, syndics et locations courte durée.",
+      },
+    ],
+    ctaEyebrow: "Travaillons ensemble",
+    ctaTitle: "Travaillons ensemble.",
+    ctaText: "Obtenir un devis.",
+    cta: "Obtenir un devis",
   },
 
   commitments: {
     eyebrow: "Nos engagements",
     title: "Nos engagements",
-    intro:
-      "Plus qu'une promesse, une façon de travailler. Ces engagements guident chaque intervention, chaque équipe et chaque relation.",
+    intro: "Nos engagements",
     itemsEyebrow: "Ce que vous pouvez attendre",
     itemsTitle: "Cinq engagements, une même exigence.",
     items: [
       {
         title: "Environnement",
-        body: "Nous privilégions un usage mesuré de l'eau et des produits de nettoyage, et proposons des produits écologiques sur demande. Notre objectif : un espace propre sans impact inutile.",
+        body: "des produits d’entretien écologiques proposés en option.",
       },
       {
         title: "Personnes",
-        body: "Nos équipes sont formées, accompagnées et respectées. Nous construisons des relations durables avec les personnes qui travaillent avec nous et pour nous.",
+        body: "le respect de nos clients et de notre équipe. [Formation et développement : à préciser si applicable.]",
       },
       {
         title: "Qualité",
-        body: "Chaque prestation suit une checklist claire et est contrôlée selon la même exigence, qu'il s'agisse d'une première visite ou d'un rendez-vous régulier.",
+        body: "des prestations adaptées à chaque besoin et un suivi après intervention.",
       },
       {
         title: "Fiabilité",
-        body: "Nous arrivons aux horaires annoncés, avec le même soin et la même attention. Si quelque chose change, nous vous prévenons à l'avance.",
+        body: "un service régulier, avec des équipes organisées et encadrées.",
       },
       {
         title: "Engagement local",
-        body: "Installés dans les Yvelines, nous travaillons près de chez nous et soutenons une économie locale et à taille humaine. La proximité fait partie de notre service.",
+        body: "une entreprise implantée dans son territoire.",
       },
     ],
     pledge:
-      "Un espace sain, serein et naturellement accueillant n'est pas un luxe. C'est le résultat d'un soin constant, du souci du détail et du respect des personnes qui y vivent et y travaillent.",
+      "Un espace sain, serein et naturellement accueillant est le résultat d’un soin constant, du souci du détail et du respect des personnes qui y vivent et y travaillent.",
     ctaEyebrow: "Travaillons ensemble",
     ctaTitle: "Prêts à découvrir la différence ?",
     ctaText:
@@ -1246,7 +1385,7 @@ const fr: typeof en = {
       "Une question, une demande de devis ou un besoin particulier ? Écrivez-nous. Nous répondons sous un jour ouvré.",
     detailsEyebrow: "Coordonnées",
     detailsTitle: "Nous sommes proches de vous.",
-    areaLabel: "Zone d'intervention",
+    areaLabel: "Zone d’intervention",
     areaValue: "Yvelines (78)",
     phoneLabel: "Téléphone",
     phoneValue: CONTACT_PHONE_DISPLAY,
@@ -1256,16 +1395,16 @@ const fr: typeof en = {
     hoursValue: "Lundi – Samedi · 8h – 18h",
     whatsappTitle: "Vous préférez WhatsApp ?",
     whatsappText:
-      "Envoyez-nous un message directement. C'est le moyen le plus rapide de nous joindre et de partager des photos de votre espace.",
+      "Envoyez-nous un message directement. C’est le moyen le plus rapide de nous joindre et de partager des photos de votre espace.",
     whatsappButton: "Nous écrire sur WhatsApp",
     whatsappPrefill:
-      "Bonjour Renia Services, je souhaiterais obtenir plus d'informations sur vos prestations de nettoyage.",
+      "Bonjour Renia Services, je souhaiterais obtenir plus d’informations sur vos prestations de nettoyage.",
     floatingWhatsapp: "WhatsApp",
     mapEyebrow: "Notre zone",
     mapTitle: "Au service des Yvelines (78)",
     mapText:
-      "Nous travaillons près de chez vous, dans les Yvelines et les environs. Indiquez votre code postal et nous confirmerons que votre adresse fait partie de notre zone d'intervention.",
-    mapPlaceholder: "Yvelines et alentours",
+      "Indiquez votre code postal et nous confirmerons que votre adresse fait partie de notre zone d’intervention.",
+    mapPlaceholder: "Yvelines (78)",
     socialTitle: "Suivez RENIA",
     socialText:
       "Actualités, photos avant/après et conseils pratiques pour un espace plus serein et plus propre.",
@@ -1286,244 +1425,340 @@ const fr: typeof en = {
       messagePlaceholder:
         "Parlez-nous de votre espace, de sa surface et de la fréquence de vos visites souhaitées.",
       required: "Champs obligatoires",
-      submit: "Envoyer le message",
+      submit: "Envoyer",
       submitHint:
-        "Votre message est enregistré et transmis à notre équipe. Vos coordonnées servent uniquement à vous répondre.",
+        "Votre demande est enregistrée, puis WhatsApp s’ouvre avec votre message prêt à être envoyé. Rien n’est envoyé tant que vous ne confirmez pas dans WhatsApp.",
       opened:
-        "Merci. Nous avons bien reçu votre message et vous répondrons sous un jour ouvré.",
+        "Merci, votre demande est bien reçue. L’équipe RENIA étudie votre besoin et revient vers vous avec une proposition adaptée.",
     },
   },
 
-  reniaHome: {
-    eyebrow: "Nettoyage résidentiel · Yvelines",
-    title: "RENIA HOME – Services à la personne",
+  recruitment: {
+    eyebrow: "Recrutement",
+    title: "Rejoignez l’équipe RENIA.",
     intro:
-      "Ménage régulier, entretien ponctuel et grand nettoyage pour votre maison, avec la possibilité de bénéficier du crédit d'impôt de 50 %.",
-    heroPrimary: "Demander un devis",
+      "Nous recrutons des agents d’entretien, pour des interventions chez des particuliers (RENIA HOME) et dans des locaux professionnels (RENIA PRO).",
+    lookingTitle: "Ce que nous recherchons",
+    looking:
+      "le goût du travail soigné et le souci du détail ; de la ponctualité et de la fiabilité ; un bon relationnel avec les clients ; le respect des consignes et du matériel confié.",
+    cta: "Postuler",
+  },
+
+  forms: {
+    formTitle: "Obtenir un devis gratuit et sans engagement",
+    formIntro:
+      "Dites-nous ce dont vous avez besoin. Nous étudions votre demande et revenons vers vous avec une proposition adaptée.",
+    youAre: "Vous êtes",
+    individual: "Particulier – RENIA HOME",
+    professional: "Professionnel – RENIA PRO",
+    contactDetails: "Vos coordonnées",
+    fullName: "Nom et prénom",
+    phone: "Numéro de téléphone",
+    phoneError:
+      "Veuillez saisir un numéro de téléphone français valide (ex. 06 14 38 36 56 ou +33 6 14 38 36 56)",
+    email: "Email",
+    postalCode: "Code postal",
+    postalCodeError:
+      "Veuillez saisir un code postal français valide à 5 chiffres (ex. 78370)",
+    city: "Commune",
+    propertyDetails: "Quel est le type de votre logement ?",
+    apartment: "Appartement",
+    house: "Maison",
+    surfaceArea: "Quelle est sa superficie ?",
+    bathrooms: "Combien de salles de bains et salles d'eau possède-t-il ?",
+    yourNeeds: "Votre besoins",
+    serviceType: "Type de service",
+    services: [
+      "Ménage régulier",
+      "Ménage ponctuel",
+      "Repassage",
+      "Grand nettoyage",
+      "Autre",
+    ],
+    frequency: "Fréquence",
+    frequencies: [
+      "une seule fois",
+      "chaque semaine",
+      "toutes les deux semaines",
+      "Toutes les trois semaines",
+      "Une fois par mois",
+      "Je ne sais pas encore",
+    ],
+    comments: "Commentaires ou informations complémentaires",
+    commentsPlaceholder:
+      "Taille du logement, jours souhaités, animaux, accès, produits écologiques, tout ce qui peut nous aider…",
+    ackTitle: "Prise de connaissance de la politique de confidentialité",
+    ackText:
+      "J'ai pris connaissance de la politique de confidentialité de RENIA SERVICES relative au traitement de mes données personnelles dans le cadre de ma demande de devis.",
+    submitBtn: "Envoyer ma demande",
+    organisationName: "Nom de l’organisation",
+    sector: "Secteur",
+    sectors: [
+      "Bureaux",
+      "Commerces",
+      "Cabinets",
+      "Syndics",
+      "Airbnb et locations courte durée",
+      "Autre",
+    ],
+    role: "Fonction",
+    address: "Adresse",
+    requiredError: "Veuillez remplir tous les champs obligatoires.",
+    emailError: "Veuillez saisir une adresse email valide.",
+    consentError:
+      "Veuillez confirmer avoir pris connaissance de la politique de confidentialité.",
+    surfaceError: "Veuillez saisir une superficie valide.",
+    bathroomsError: "Veuillez saisir un nombre valide de salles d'eau.",
+    choiceTitle: "Vous êtes :",
+    choiceHome: "Particulier (RENIA HOME)",
+    choicePro: "Professionnel (RENIA PRO)",
+    free: "Le devis est gratuit et sans engagement.",
+    confirmation:
+      "Merci, votre demande est bien reçue. L’équipe RENIA étudie votre besoin et revient vers vous avec une proposition adaptée.",
+    note:
+      "Votre demande est enregistrée, puis WhatsApp s’ouvre avec votre message prêt à être envoyé. Rien n’est envoyé tant que vous ne confirmez pas dans WhatsApp.",
+    send: "Envoyer",
+    sending: "Envoi…",
+    error:
+      "Impossible d’enregistrer votre demande. Veuillez réessayer ou nous contacter directement.",
+  },
+
+  reniaHome: {
+    eyebrow: "RENIA HOME",
+    title: "Ce que comprend notre ménage à domicile",
+    intro: "Une liste claire, pièce par pièce, pour savoir exactement à quoi vous attendre.",
+    heroPrimary: "Obtenir un devis",
     heroSecondary: "Voir ce qui est inclus",
     includedEyebrow: "Pièce par pièce",
     includedTitle: "Ce que comprend notre ménage à domicile",
     includedIntro:
-      "Chaque visite suit une checklist détaillée, adaptée à votre intérieur et à vos priorités. Le résultat : une maison qui se sent entretenue, de la première pièce à la dernière.",
+      "Une liste claire, pièce par pièce, pour savoir exactement à quoi vous attendre.",
     rooms: [
       {
         title: "Cuisine",
-        body: "Plans de travail, évier, plaque de cuisson, crédence, façades de meubles, appareils et zone des poubelles.",
+        body: "plan de travail, évier, extérieur des meubles et de l’électroménager, plaques de cuisson, sols.",
+        image: "/images/home-cleaning.jpg.png",
       },
       {
         title: "Salle de bain et WC",
-        body: "Douche, baignoire, lavabo, WC, carrelage, miroirs et robinetterie.",
+        body: "lavabo, douche ou baignoire, miroirs, sanitaires, carrelage, sols.",
+        image: "/images/home-cleaning.jpg.png",
       },
       {
         title: "Chambres",
-        body: "Dépoussiérage, surfaces, miroirs, plinthes, aspiration et lit fait sur demande.",
+        body: "dépoussiérage, surfaces et meubles, sols, aération du lit si convenu.",
+        image: "/images/hero.jpg.png",
       },
       {
-        title: "Séjour",
-        body: "Dépoussiérage, mobilier, appareils électroniques essuyés avec soin, sols aspirés et lavés.",
+        title: "Séjour et pièces de vie",
+        body: "dépoussiérage, surfaces, canapés et meubles accessibles, sols.",
+        image: "/images/hero.jpg.png",
       },
       {
         title: "Entrée et couloirs",
-        body: "Portes, poignées, interrupteurs, sols du hall et des couloirs, miroirs et zones les plus touchées.",
+        body: "sols, plinthes accessibles, poignées et interrupteurs.",
+        image: "/images/home-cleaning.jpg.png",
       },
       {
         title: "Poubelles",
-        body: "Vidage, nettoyage et désinfection des poubelles, et remplacement des sacs.",
+        body: "vidage des poubelles et remise en place d’un sac propre.",
+        image: "/images/home-cleaning.jpg.png",
       },
     ],
     extrasEyebrow: "Au-delà de la routine",
     extrasTitle: "Grand nettoyage & repassage",
-    deepTitle: "Grand nettoyage",
+    deepTitle: "Pour un grand nettoyage",
     deepBody:
-      "Un nettoyage intensif de haut en bas pour un déménagement, un rafraîchissement saisonnier, une occasion particulière ou une maison qui a besoin d'un nouveau départ. Nous allons plus loin : intérieur des appareils, derrière les meubles, plinthes, cadres de fenêtres et recoins difficiles d'accès.",
+      "un nettoyage plus approfondi adapté à votre logement ; les zones peu accessibles lors d’un entretien courant ; une prestation chiffrée à part, après échange avec vous.",
+    deepImage: "/images/hero.jpg.png",
+    extrasTitleAddition: "Ce que vous pouvez nous demander en plus",
+    extrasBody:
+      "repassage ; produits d’entretien écologiques, proposés en option ; une demande particulière, à préciser dans votre devis.",
     ironTitle: "Repassage",
     ironBody:
-      "Le linge lavé et séché est repassé, plié et rangé. Un service simple et régulier qui vous rend un temps précieux.",
-    ironNote: "Disponible seul ou en complément de votre ménage.",
-    taxEyebrow: "Crédit d'impôt & avance immédiate",
-    taxTitle: "50 % de votre ménage peuvent vous revenir.",
-    taxBody:
-      "En tant que prestataire de services à la personne, RENIA HOME permet aux foyers éligibles de bénéficier d'un crédit d'impôt de 50 % sur les prestations de nettoyage éligibles. Avec l'avance immédiate, vous ne payez que la part restante au moment de la prestation, sans attendre l'année suivante.",
-    taxBullet1:
-      "50 % de crédit d'impôt sur les prestations éligibles, selon la réglementation en vigueur.",
-    taxBullet2: "Avance immédiate pour les clients éligibles.",
-    taxBullet3: "Une facturation claire et une attestation fiscale annuelle.",
-    taxNote:
-      "L'éligibilité dépend de votre situation et de la réglementation en vigueur. Nous serons ravis de vous expliquer la démarche et de vous aider à vérifier.",
-    taxCta: "Vérifier mon éligibilité",
-    faqEyebrow: "Bon à savoir",
-    faqTitle: "Questions fréquentes",
+      "Votre linge repassé avec soin, chez vous. Ajoutez le repassage à votre ménage en cochant la case dans votre demande de devis, et précisez la quantité approximative dans les commentaires.",
+    ironImage: "/images/home-cleaning.jpg.png",
+    faqEyebrow: "FAQ RENIA HOME",
+    faqTitle: "FAQ RENIA HOME",
     faqs: [
       {
-        question: "Que sont les services à la personne (SAP) ?",
+        question: "Comment demander un devis ?",
         answer:
-          "Les services à la personne sont des prestations rendues aux particuliers à leur domicile. Ils comprennent l'entretien du logement, le ménage et le repassage. Faire appel à un prestataire déclaré vous donne accès à des avantages fiscaux spécifiques lorsque vous êtes éligible.",
+          "Remplissez notre formulaire en quelques minutes. Le devis est gratuit. Vous pouvez ajouter dans les commentaires tout ce qui peut nous aider : taille du logement, jours souhaités, animaux, accès…",
       },
       {
-        question: "Comment fonctionne le crédit d'impôt de 50 % ?",
+        question: "Quels services proposez-vous à domicile ?",
         answer:
-          "Les foyers éligibles peuvent récupérer 50 % du coût des prestations de nettoyage éligibles, dans la limite des plafonds annuels fixés par la réglementation en vigueur. Avec l'avance immédiate, la réduction peut être appliquée directement sur votre facture : vous ne payez que la part restante.",
+          "Ménage à domicile, entretien régulier ou ponctuel, grand nettoyage et repassage. Si votre besoin est différent, indiquez-le dans le formulaire : nous étudions chaque demande.",
       },
       {
-        question: "Comment obtenir un devis ?",
+        question: "Proposez-vous des produits écologiques ?",
         answer:
-          "Contactez-nous via le formulaire, WhatsApp ou par téléphone. Parlez-nous de votre logement, de sa surface et de la fréquence souhaitée. Nous vous répondrons avec une proposition claire et sans engagement, généralement sous un jour ouvré.",
+          "Oui, nous proposons des produits d’entretien écologiques en option. Précisez-le dans votre demande de devis.",
       },
       {
-        question: "Utilisez-vous des produits écologiques ?",
+        question: "Dois-je être présent pendant l’intervention ?",
         answer:
-          "Oui, des produits écologiques sont disponibles en option sur demande. Nous faisons également attention aux dosages et à la consommation d'eau, et nous pouvons nous adapter aux produits que vous préférez utiliser chez vous.",
+          "[À compléter : présence du client, remise des clés, accès au logement.]",
       },
       {
-        question: "Dois-je fournir les produits de nettoyage ?",
+        question: "Que se passe-t-il si je dois annuler ou reporter une intervention ?",
         answer:
-          "Pas nécessairement. Nous pouvons apporter notre propre matériel et nos produits, ou utiliser les vôtres si vous le préférez. Nous en convenons avant la première visite pour que tout soit prêt.",
+          "[À compléter selon les CGV : délai de prévenance, conditions d’annulation.]",
       },
       {
-        question: "Puis-je réserver un ménage ponctuel ?",
+        question: "Dans quelles communes intervenez-vous ?",
         answer:
-          "Oui. Nous proposons l'entretien régulier, le ménage ponctuel et le grand nettoyage. Une visite ponctuelle peut être une bonne façon de tester notre service avant de mettre en place un rythme régulier.",
+          "Nous intervenons à Ablis, Rambouillet, Versailles et Saint-Quentin. Votre commune n’est pas citée ? Demandez-nous, nous étudions chaque situation.",
       },
     ],
-    ctaEyebrow: "Un intérieur plus serein commence ici",
-    ctaTitle: "Prêt pour une maison qui se sent entretenue ?",
-    ctaText:
-      "Parlez-nous de votre logement et de la fréquence de vos visites souhaitées. Nous vous enverrons un devis clair et sans engagement.",
-    cta: "Demander mon devis",
+    ctaEyebrow: "Prêts quand vous l’êtes",
+    ctaTitle: "Prêt à demander votre devis ?",
+    ctaText: "Obtenir un devis.",
+    cta: "Obtenir un devis",
   },
 
   reniaPro: {
-    eyebrow: "Nettoyage professionnel · Yvelines",
+    eyebrow: "RENIA PRO",
     title: "RENIA PRO : le nettoyage de vos locaux professionnels.",
     intro:
-      "Un service de nettoyage fiable et discret pour bureaux, cabinets, commerces, biens gérés et locations courte durée dans les Yvelines.",
-    heroPrimary: "Demander un devis",
-    heroSecondary: "Nos secteurs",
-    sectorsEyebrow: "Nos secteurs",
+      "Bureaux, cabinets, commerces, syndics, locations courte durée : une prestation adaptée à chaque lieu.",
+    heroPrimary: "Demander un devis professionnel",
+    heroSecondary: "Prestations professionnelles",
+    sectorsEyebrow: "Prestations professionnelles",
     sectorsTitle: "Une équipe qui comprend votre environnement.",
     sectorsIntro:
-      "Chaque activité a son rythme, ses standards et ses contraintes. Nous adaptons nos méthodes et nos horaires à votre façon de travailler.",
+      "Bureaux, cabinets, commerces, syndics, locations courte durée : une prestation adaptée à chaque lieu.",
     sectors: [
       {
         title: "Bureaux",
-        body: "Entretien quotidien, hebdomadaire ou ponctuel des espaces de travail, salles de réunion, cuisines et parties communes.",
+        body: "entretien régulier de vos espaces de travail, selon vos horaires.",
       },
       {
-        title: "Cabinets médicaux",
-        body: "Un nettoyage soigné et discret, adapté aux exigences et à la confidentialité de votre cabinet.",
+        title: "Cabinets médicaux, juridiques et comptables",
+        body: "une intervention discrète, adaptée aux contraintes de votre activité.",
       },
       {
         title: "Commerces",
-        body: "Surfaces de vente, vitrines, cabines d'essayage, arrière-boutiques et espaces clients, avant ouverture ou après fermeture.",
+        body: "des locaux propres pour accueillir vos clients.",
       },
       {
-        title: "Syndics",
-        body: "Un accompagnement fiable pour les parties communes, les états des lieux de sortie et les biens que vous gérez.",
+        title: "Syndics et copropriétés",
+        body: "entretien des parties communes, selon un rythme convenu avec vous.",
       },
       {
-        title: "Airbnb",
-        body: "Des remises en état rapides et minutieuses entre deux voyageurs, avec vérification du linge, des équipements et de la présentation.",
+        title: "Airbnb et locations courte durée",
+        body: "préparation des logements entre deux séjours (lien vers la page dédiée).",
       },
       {
-        title: "Autres",
-        body: "Restaurants, showrooms, entrepôts, associations… parlez-nous de vos locaux et nous nous adapterons.",
+        title: "Autres locaux professionnels",
+        body: "une solution sur mesure selon votre besoin.",
       },
     ],
+    teamImages: [
+      "/images/pro-cleaning.jpg.png",
+      "/images/pro-cleaning.jpg.png",
+      "/images/pro-cleaning.jpg.png",
+    ],
     tailorEyebrow: "Une solution sur mesure",
-    tailorTitle: "Vos contraintes définissent le cahier des charges.",
+    tailorTitle: "Une solution sur mesure",
     tailorBody:
-      "Deux locaux ne se ressemblent jamais. Nous construisons la prestation autour de vos horaires, de votre fréquentation, de vos surfaces, de vos matériaux et du niveau de finition attendu. Une visite ponctuelle ou un rythme régulier, une équipe ou plusieurs : la solution s'adapte à vous, pas l'inverse.",
-    tailorBullet1: "Des fréquences et des créneaux flexibles",
-    tailorBullet2: "Un interlocuteur dédié et un périmètre clair",
-    tailorBullet3: "Des équipes discrètes, respectueuses de votre activité",
+      "fréquence adaptée (ponctuelle, hebdomadaire, plusieurs fois par semaine) ; horaires adaptés (avant l’ouverture, en journée ou après la fermeture) ; visite sur site pour établir un devis précis ; un interlocuteur identifié pour le suivi.",
+    tailorBullet1: "fréquence adaptée (ponctuelle, hebdomadaire, plusieurs fois par semaine)",
+    tailorBullet2: "horaires adaptés (avant l’ouverture, en journée ou après la fermeture)",
+    tailorBullet3: "visite sur site pour établir un devis précis",
+    tailorBullet4: "un interlocuteur identifié pour le suivi",
     methodEyebrow: "Notre méthode",
-    methodTitle: "Simple, transparent, constant.",
+    methodTitle: "Notre méthode",
     methodSteps: [
-      {
-        title: "Visite",
-        body: "Nous visitons vos locaux pour comprendre l'espace, ses usages et vos exigences.",
-      },
+      { title: "Visite et évaluation", body: "Visite et évaluation." },
       {
         title: "Proposition",
-        body: "Vous recevez une proposition claire et adaptée : périmètre, fréquence, durée et tarif.",
+        body: "un devis adapté, sans engagement.",
       },
       {
         title: "Intervention",
-        body: "Notre équipe prend le relais, en suivant la checklist convenue et vos modalités d'accès.",
+        body: "Intervention selon le planning convenu.",
       },
       {
         title: "Suivi",
-        body: "Nous vérifions la qualité avec vous régulièrement et ajustons la prestation selon vos besoins.",
+        body: "nous restons à votre écoute pour ajuster la prestation.",
       },
     ],
-    airbnbEyebrow: "Airbnb & locations courte durée",
-    airbnbTitle: "Des remises en état qui protègent votre note.",
+    airbnbEyebrow: "Airbnb et locations courte durée",
+    airbnbTitle:
+      "Airbnb et locations courte durée : des logements prêts pour vos prochains voyageurs.",
     airbnbBody:
-      "Entre deux voyageurs, chaque détail compte. Nous prenons en charge le nettoyage, le changement du linge, les équipements, la présentation et une vérification photo finale, pour que votre logement soit prêt pour la prochaine arrivée. Nous pouvons également nous coordonner avec votre conciergerie ou votre planning de ménage.",
-    airbnbBullet1: "Remises en état le jour même",
-    airbnbBullet2: "Gestion du linge et des équipements sur demande",
-    airbnbBullet3: "Reportage photo après chaque prestation",
-    airbnbCta: "Réserver une remise en état",
-    ctaEyebrow: "Visitons vos locaux",
-    ctaTitle: "Un lieu de travail plus propre, sans souci.",
-    ctaText:
-      "Parlez-nous de votre activité, de vos surfaces et de votre fréquence. Nous reviendrons vers vous avec une proposition sur mesure.",
-    cta: "Demander un devis",
+      "RENIA PRO prépare votre logement entre deux séjours, pour que chaque arrivée se passe bien.",
+    airbnbBullet1:
+      "Un logement impeccable : une préparation soignée entre chaque départ et chaque arrivée.",
+    airbnbBullet2:
+      "Des créneaux adaptés : nous nous organisons autour de vos horaires de départ et d’arrivée.",
+    airbnbBullet3:
+      "Un interlocuteur unique : une équipe locale que vous pouvez joindre facilement.",
+    airbnbServicesTitle: "Nos prestations",
+    airbnbServices: [
+      "préparation du logement entre deux séjours",
+      "remise en état avant une première mise en location",
+      "entretien régulier selon votre rythme de réservations",
+      "solution sur mesure selon votre logement",
+    ],
+    airbnbHowTitle: "Comment ça marche",
+    airbnbHow: [
+      "Vous décrivez votre logement.",
+      "Nous étudions votre besoin (une visite peut être proposée).",
+      "Vous recevez une proposition.",
+      "Nous intervenons entre chaque séjour.",
+    ],
+    airbnbCta: "Demander un devis",
+    ctaEyebrow: "Parlons de vos locaux",
+    ctaTitle: "Parlons de vos locaux.",
+    ctaText: "Demander un devis professionnel.",
+    cta: "Demander un devis professionnel",
   },
 
   showcase: {
-    eyebrow: "Deux maisons, une même exigence",
+    eyebrow: "Deux services, une même exigence",
     title: "Le soin de votre maison et de votre entreprise.",
     intro:
-      "RENIA HOME s'occupe des particuliers, RENIA PRO accompagne les professionnels. La même attention au détail, quel que soit l'espace.",
+      "RENIA HOME s’occupe des particuliers, RENIA PRO accompagne les professionnels. La même attention au détail, quel que soit l’espace.",
     homeTitle: "RENIA HOME",
-    homeSubtitle: "Services à la personne",
+    homeSubtitle: "Ménage à domicile",
     homeImageAlt: "Un séjour lumineux et propre",
     homeServicesTitle: "Prestations maison",
     homeServices: [
-      "Ménage régulier",
+      "Ménage à domicile",
+      "Entretien régulier",
+      "Entretien ponctuel",
       "Grand nettoyage",
       "Repassage",
-      "Crédit d'impôt 50 %",
     ],
     homeCta: "Découvrir RENIA HOME",
-    centerEyebrow: "Notre promesse",
-    centerTitle: "Le soin, dans chaque détail.",
+    centerEyebrow: "Pourquoi Renia",
+    centerTitle: "Pourquoi choisir RENIA",
     centerText:
       "Une équipe formée et encadrée qui prend soin de votre espace comme du sien.",
     centerPromise:
-      "Un espace bien entretenu change la façon dont on vit et travaille. C'est la promesse derrière chaque visite.",
-    centerImageAlt: "L'équipe Renia",
-    centerCta: "Rencontrer l'équipe",
+      "Un espace bien entretenu change la façon dont on vit et travaille.",
+    centerImageAlt: "Un intérieur propre et lumineux",
+    centerCta: "Découvrir nos services",
     engagements: [
-      {
-        title: "Éco-responsable",
-        body: "Produits et eau utilisés avec mesure.",
-      },
-      {
-        title: "Qualité",
-        body: "Une checklist claire à chaque visite.",
-      },
-      {
-        title: "Équipe formée",
-        body: "Des professionnels déclarés et assurés.",
-      },
-      {
-        title: "Flexibilité",
-        body: "Des horaires adaptés à votre rythme.",
-      },
+      { title: "Écologique", body: "Des produits proposés en option." },
+      { title: "Qualité", body: "Une checklist claire à chaque visite." },
+      { title: "Équipe formée", body: "Des équipes organisées et encadrées." },
+      { title: "Flexibilité", body: "Des horaires adaptés à votre rythme." },
     ],
     proTitle: "RENIA PRO",
     proSubtitle: "Nettoyage professionnel",
-    proImageAlt: "Un bureau propre et professionnel",
-    proSectorsTitle: "Secteurs pro",
+    proImageAlt: "Un bureau professionnel lumineux et propre",
+    proSectorsTitle: "Prestations professionnelles",
     proSectors: [
       "Bureaux",
-      "Cabinets médicaux",
+      "Cabinets",
       "Commerces",
       "Syndics",
-      "Airbnb",
-      "Autres",
+      "Airbnb et locations courte durée",
+      "Locaux professionnels",
     ],
     proCta: "Découvrir RENIA PRO",
   },
@@ -1537,8 +1772,8 @@ const fr: typeof en = {
     website: "reniaservices.fr",
     qrLabel: "Scannez le QR code pour enregistrer nos coordonnées.",
     qrPlaceholder: "QR code bientôt disponible",
-    tagline: "Des espaces sains, sereins…",
-    signature: "RENIA · Yvelines 78",
+    tagline: "Des espaces sains, sereins et naturellement accueillants.",
+    signature: "RENIA SERVICES",
     cta: "Nous contacter",
   },
 
@@ -1566,7 +1801,7 @@ const fr: typeof en = {
     apple: "Continuer avec Apple",
     noAccount: "Pas encore de compte ?",
     haveAccount: "Vous avez déjà un compte ?",
-    goSignUp: "S'inscrire",
+    goSignUp: "S’inscrire",
     goSignIn: "Se connecter",
     forgot: "Mot de passe oublié ?",
     resetSent:
@@ -1577,11 +1812,11 @@ const fr: typeof en = {
     errorCredentials: "Email ou mot de passe incorrect.",
     errorPassword: "Votre mot de passe doit contenir au moins 8 caractères.",
     setup:
-      "L'authentification n'est pas encore configurée. Ajoutez vos identifiants Supabase dans .env.local et redémarrez le serveur.",
-    backHome: "Retour à l'accueil",
+      "L’authentification n’est pas encore configurée. Ajoutez vos identifiants Supabase dans .env.local et redémarrez le serveur.",
+    backHome: "Retour à l’accueil",
     resetTitle: "Choisissez un nouveau mot de passe.",
     resetIntro:
-      "Saisissez un nouveau mot de passe pour votre compte. Après enregistrement, vous reviendrez à l'écran de connexion.",
+      "Saisissez un nouveau mot de passe pour votre compte. Après enregistrement, vous reviendrez à l’écran de connexion.",
     newPasswordLabel: "Nouveau mot de passe",
     confirmPasswordLabel: "Confirmer le mot de passe",
     resetCta: "Mettre à jour le mot de passe",
@@ -1594,27 +1829,27 @@ const fr: typeof en = {
       "En continuant, vous acceptez nos conditions de vente et notre politique de confidentialité.",
     secure: "Connexion sécurisée avec Supabase",
     chooseUsernameEyebrow: "Dernière étape",
-    chooseUsernameTitle: "Choisissez votre nom d'utilisateur.",
+    chooseUsernameTitle: "Choisissez votre nom d’utilisateur.",
     chooseUsernameIntro:
-      "Bienvenue chez Renia ! Choisissez le nom d'utilisateur qui apparaîtra sur votre compte.",
-    usernameLabel: "Nom d'utilisateur",
+      "Bienvenue chez Renia ! Choisissez le nom d’utilisateur qui apparaîtra sur votre compte.",
+    usernameLabel: "Nom d’utilisateur",
     usernamePlaceholder: "votrenom",
     usernameHint:
       "3 à 20 caractères. Lettres, chiffres et tirets bas uniquement.",
     usernameCta: "Enregistrer",
     usernameSaving: "Enregistrement…",
-    usernameTaken: "Ce nom d'utilisateur est déjà pris. Essayez-en un autre.",
+    usernameTaken: "Ce nom d’utilisateur est déjà pris. Essayez-en un autre.",
     usernameInvalid:
       "Utilisez 3 à 20 caractères : lettres, chiffres ou tirets bas.",
     usernameError:
-      "Impossible d'enregistrer votre nom d'utilisateur. Veuillez réessayer.",
+      "Impossible d’enregistrer votre nom d’utilisateur. Veuillez réessayer.",
     usernameNoSession: "Votre session a expiré. Veuillez vous reconnecter.",
     usernameSkip: "Passer pour le moment",
   },
 
   team: {
     eyebrow: "Les visages du soin",
-    title: "Rencontrez l'équipe.",
+    title: "Rencontrez l’équipe.",
     intro:
       "Une équipe proche, formée et encadrée, qui prend soin de votre espace comme du sien.",
     philosophyEyebrow: "Notre philosophie",
@@ -1624,7 +1859,7 @@ const fr: typeof en = {
     values: [
       {
         title: "Formée",
-        body: "Des professionnels déclarés et assurés, formés à chaque type d'espace.",
+        body: "Des équipes organisées et encadrées, formées à chaque type d’espace.",
       },
       {
         title: "Encadrée",
@@ -1635,7 +1870,7 @@ const fr: typeof en = {
         body: "Des équipes respectueuses qui travaillent en toute discrétion, chez vous ou dans vos locaux.",
       },
     ],
-    rosterEyebrow: "L'équipe",
+    rosterEyebrow: "L’équipe",
     rosterTitle: "Des visages de confiance.",
     rosterIntro:
       "Quelques-unes des personnes qui font Renia. Les profils complets arrivent bientôt.",
@@ -1680,8 +1915,7 @@ const fr: typeof en = {
   gallery: {
     eyebrow: "Nos réalisations",
     title: "Notre galerie.",
-    intro:
-      "Un aperçu des maisons, bureaux et locations dont nous prenons soin dans les Yvelines.",
+    intro: "Un aperçu des maisons, bureaux et locations dont nous prenons soin.",
     recentTitle: "Nos réalisations",
     recentIntro: "Un aperçu des espaces que nous entretenons.",
     viewAll: "Voir toute la galerie",
@@ -1711,7 +1945,7 @@ const fr: typeof en = {
     signInCta: "Aller à la connexion",
     deniedTitle: "Accès restreint",
     deniedText:
-      "Ce compte n'a pas les droits administrateur. Ajoutez votre email dans NEXT_PUBLIC_ADMIN_EMAILS ou attribuez un rôle admin à l'utilisateur dans Supabase.",
+      "Ce compte n’a pas les droits administrateur. Ajoutez votre email dans NEXT_PUBLIC_ADMIN_EMAILS ou attribuez un rôle admin à l’utilisateur dans Supabase.",
     signOut: "Se déconnecter",
     welcome: "Connecté en tant que",
     messagesEyebrow: "Boîte de réception",
@@ -1736,7 +1970,7 @@ const fr: typeof en = {
     uploading: "Envoi…",
     uploadSuccess: "Ajouté à la galerie.",
     uploadError:
-      "Échec de l'envoi. Vérifiez le nom du bucket et ses politiques d'écriture.",
+      "Échec de l’envoi. Vérifiez le nom du bucket et ses politiques d’écriture.",
     uploadTypeError: "Veuillez choisir une image ou une vidéo.",
     uploadSizeError:
       "Ce fichier est trop lourd. Choisissez un fichier de moins de 50 Mo.",
@@ -1750,11 +1984,11 @@ const fr: typeof en = {
     deleting: "Suppression…",
     deleteError: "Impossible de supprimer ce fichier.",
     storageSetup:
-      "Créez un bucket Supabase Storage public nommé renia-gallery (ou définissez NEXT_PUBLIC_SUPABASE_GALLERY_BUCKET) avec un dossier gallery.",
+      "Créez un bucket Supabase Storage public nommé renia-gallery avec un dossier gallery.",
     tabInbox: "Boîte de réception",
-    tabTeam: "Gérer l'équipe",
+    tabTeam: "Gérer l’équipe",
     teamEyebrow: "Équipe",
-    teamTitle: "Gérer l'équipe",
+    teamTitle: "Gérer l’équipe",
     teamIntro:
       "Ajoutez un nouveau membre. Il apparaîtra sur la page /team immédiatement.",
     teamNameLabel: "Nom",
@@ -1764,7 +1998,7 @@ const fr: typeof en = {
     teamSaving: "Enregistrement…",
     teamSaved: "Membre ajouté.",
     teamNameRequired: "Veuillez saisir un nom.",
-    teamError: "Impossible d'enregistrer le membre de l'équipe.",
+    teamError: "Impossible d’enregistrer le membre de l’équipe.",
   },
 };
 

@@ -3,7 +3,11 @@
 import { useState } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { buildWhatsAppUrl } from "@/lib/site";
+import { buildWhatsAppUrl, CONTACT_EMAIL } from "@/lib/site";
+import {
+  getSupabaseBrowserClient,
+  isSupabaseConfigured,
+} from "@/lib/supabase/client";
 
 const initialForm = {
   service: "home",
@@ -45,7 +49,38 @@ export default function BookingForm() {
     setForm((current) => ({ ...current, [field]: value }));
   };
 
-  function handleSend() {
+  function openInNewTab(href: string) {
+    const link = document.createElement("a");
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+  async function saveToDatabase(message: string) {
+    if (!isSupabaseConfigured()) return;
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const { error } = await supabase.from("quote_requests").insert({
+        full_name: form.name.trim(),
+        email: form.email.trim().toLowerCase(),
+        phone: form.phone.trim(),
+        service_type: form.service === "pro" ? "pro" : "home",
+        message,
+      });
+
+      if (error) {
+        console.error("Booking request failed:", error);
+      }
+    } catch (error) {
+      console.error("Booking request failed:", error);
+    }
+  }
+
+  async function handleSend() {
     if (!form.date) {
       alert(alerts.date);
       return;
@@ -89,8 +124,16 @@ export default function BookingForm() {
       `${page.emailLabel}: ${form.email.trim()}`,
     ].join("\n");
 
+    await saveToDatabase(message);
+
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      `${page.eyebrow} — Renia Services`,
+    )}&body=${encodeURIComponent(message)}`;
+
+    openInNewTab(mailtoUrl);
+    openInNewTab(buildWhatsAppUrl(message));
+
     setOpened(true);
-    window.location.href = buildWhatsAppUrl(message);
   }
 
   return (

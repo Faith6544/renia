@@ -5,7 +5,7 @@ import CommitmentsContent from "./CommitmentsContent";
 export const metadata: Metadata = {
   title: "Our commitments — Renia",
   description:
-    "Environment, people, quality, reliability and a local commitment: the principles behind every Renia service in the Yvelines.",
+    "Environment, people, quality, reliability and a local commitment: the principles behind every Renia service.",
 };
 
 export default function CommitmentsPage() {

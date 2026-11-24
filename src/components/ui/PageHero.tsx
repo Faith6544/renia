@@ -24,7 +24,7 @@ export default function PageHero({
   secondary,
 }: PageHeroProps) {
   return (
-    <section className="hero-grain relative flex min-h-[82vh] items-end overflow-hidden rounded-b-[2.5rem] bg-forest text-cream shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
+    <section className="relative flex min-h-[68vh] items-center overflow-hidden rounded-b-[2rem] bg-brand text-white">
       <Image
         src={image}
         alt=""
@@ -34,24 +34,24 @@ export default function PageHero({
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="pointer-events-none absolute inset-0 bg-forest/80" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-forest/10" />
+      <div className="pointer-events-none absolute inset-0 bg-brand/75" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand-deep/90 via-brand/60 to-aqua/20" />
 
-      <div className="shell relative z-10 w-full pb-10 pt-24 sm:pb-24 lg:pb-28">
-        <p className="animate-rise text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
+      <div className="shell relative z-10 w-full py-24 sm:py-28">
+        <p className="animate-rise text-sm font-extrabold uppercase tracking-[0.2em] text-aqua-soft">
           {eyebrow}
         </p>
 
-        <h1 className="animate-rise mt-5 max-w-5xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-normal leading-[1.04] tracking-[-0.02em] [animation-delay:100ms]">
+        <h1 className="animate-rise mt-6 max-w-5xl text-balance text-[clamp(2.4rem,5vw,4.6rem)] font-extrabold leading-[1.03] [animation-delay:100ms]">
           {title}
         </h1>
 
-        <p className="animate-rise mt-5 max-w-2xl text-base leading-relaxed text-cream/75 [animation-delay:180ms] sm:text-lg">
+        <p className="animate-rise mt-6 max-w-2xl text-lg leading-relaxed text-white/90 [animation-delay:180ms]">
           {intro}
         </p>
 
         {primary || secondary ? (
-          <div className="animate-rise mt-8 flex flex-col gap-4 [animation-delay:260ms] sm:flex-row sm:items-center sm:gap-5">
+          <div className="animate-rise mt-9 flex flex-col gap-4 [animation-delay:260ms] sm:flex-row sm:items-center">
             {primary ? (
               <Link href={primary.href} className="btn btn-gold">
                 {primary.label}
@@ -65,14 +65,6 @@ export default function PageHero({
             ) : null}
           </div>
         ) : null}
-      </div>
-
-      <div className="absolute inset-x-0 bottom-0 z-10 bg-forest/30 backdrop-blur-sm">
-        <div className="shell flex items-center justify-between py-4 text-xs uppercase tracking-[0.22em] text-cream/60 sm:text-sm">
-          <span>RENIA HOME — Yvelines</span>
-          <span className="hidden sm:inline">RENIA PRO — Yvelines</span>
-          <span>Yvelines (78)</span>
-        </div>
       </div>
     </section>
   );

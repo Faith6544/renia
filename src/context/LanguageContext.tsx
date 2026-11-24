@@ -36,16 +36,16 @@ function getSnapshot(): Language {
   }
 
   if (typeof window === "undefined") {
-    return "en";
+    return "fr";
   }
 
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  cachedLanguage = stored === "en" || stored === "fr" ? stored : "en";
+  cachedLanguage = stored === "en" || stored === "fr" ? stored : "fr";
   return cachedLanguage;
 }
 
 function getServerSnapshot(): Language {
-  return "en";
+  return "fr";
 }
 
 function subscribe(listener: () => void) {
