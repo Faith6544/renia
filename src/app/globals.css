@@ -2,30 +2,30 @@
 
 @theme inline {
   --color-background: #ffffff;
-  --color-foreground: #0b1a33;
+  --color-foreground: #0f3a20;
 
-  /* Bright, bold Renia palette (O2-inspired: blue, aqua, coral, white). */
-  --color-brand: #1652f0;
-  --color-brand-deep: #0a32b3;
-  --color-brand-soft: #eaf1ff;
-  --color-aqua: #00c2b2;
-  --color-aqua-soft: #d9fbf7;
-  --color-coral: #ff6b4a;
-  --color-coral-soft: #ffe3dc;
+  /* Renia premium palette: forest green and gold. */
+  --color-brand: #0f3a20;
+  --color-brand-deep: #0b2c18;
+  --color-brand-soft: #f9f6f0;
+  --color-aqua: #c5a059;
+  --color-aqua-soft: #efe6d2;
+  --color-coral: #c5a059;
+  --color-coral-soft: #f9f6f0;
 
   /* Legacy token names kept so every existing component stays consistent. */
-  --color-forest: #1652f0;
-  --color-forest-deep: #0a32b3;
-  --color-gold: #ff6b4a;
-  --color-gold-soft: #ffe3dc;
-  --color-cream: #f5f8ff;
-  --color-bone: #eaf1ff;
-  --color-ink: #0b1a33;
-  --color-stone: #4d5f7a;
-  --color-line: #d7e2f5;
+  --color-forest: #0f3a20;
+  --color-forest-deep: #0b2c18;
+  --color-gold: #c5a059;
+  --color-gold-soft: #f9f6f0;
+  --color-cream: #f9f6f0;
+  --color-bone: #fafafa;
+  --color-ink: #14261b;
+  --color-stone: #56655c;
+  --color-line: #e5dfd3;
 
-  --font-sans: var(--font-brand), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: var(--font-brand), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }
 
 @layer base {
@@ -66,7 +66,7 @@
   h2,
   h3,
   h4 {
-    @apply font-sans font-extrabold leading-[1.06] tracking-tight text-ink;
+    @apply font-serif font-semibold leading-[1.06] tracking-tight text-ink;
   }
 
   h1 {
@@ -110,7 +110,7 @@
   }
 
   .field-input {
-    @apply w-full appearance-none rounded-2xl border-2 border-line bg-white px-4 py-3.5 text-base font-medium text-ink shadow-sm transition-all duration-200 placeholder:text-stone/60 hover:border-brand/40 focus:border-brand focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand/15;
+    @apply w-full appearance-none rounded-2xl border border-line bg-white px-4 py-3.5 text-base font-medium text-ink shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-200 placeholder:text-stone/60 hover:border-brand/40 focus:border-brand focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand/15;
   }
 
   .field-input:focus-visible {
@@ -122,31 +122,31 @@
   }
 
   .btn-gold {
-    @apply bg-coral text-white shadow-[0_12px_28px_rgba(255,107,74,0.3)] hover:-translate-y-0.5 hover:bg-[#f25534] hover:shadow-lg;
+    @apply bg-[#c5a059] text-[#0f3a20] shadow-[0_12px_28px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 hover:bg-[#b08d48] hover:shadow-lg;
   }
 
   .btn-dark {
-    @apply bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
+    @apply bg-[#0f3a20] text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
   }
 
   .btn-outline {
-    @apply border-2 border-white/70 bg-white/10 text-white shadow-sm backdrop-blur hover:-translate-y-0.5 hover:bg-white hover:text-brand;
+    @apply border border-white/70 bg-white/10 text-white shadow-sm backdrop-blur hover:-translate-y-0.5 hover:bg-white hover:text-brand;
   }
 
   .pill-link {
-    @apply inline-flex items-center gap-2 rounded-2xl border-2 border-brand/15 bg-white px-6 py-3.5 text-sm font-extrabold text-brand shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft;
+    @apply inline-flex items-center gap-2 rounded-2xl border border-brand/15 bg-white px-6 py-3.5 text-sm font-extrabold text-brand shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft;
   }
 
   .pill-link-dark {
-    @apply inline-flex items-center gap-2 rounded-2xl border-2 border-white/40 bg-white/10 px-6 py-3.5 text-sm font-extrabold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-brand;
+    @apply inline-flex items-center gap-2 rounded-2xl border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-extrabold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-brand;
   }
 
   .card-soft {
-    @apply rounded-[28px] border border-line/70 bg-white shadow-[0_10px_40px_rgba(11,26,51,0.06)] transition-all duration-300;
+    @apply rounded-[28px] border border-line/70 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300;
   }
 
   .card-lift {
-    @apply hover:-translate-y-1 hover:border-brand/30 hover:shadow-[0_20px_50px_rgba(22,82,240,0.14)];
+    @apply hover:-translate-y-1 hover:border-brand/30 hover:shadow-[0_20px_50px_rgba(15,58,32,0.14)];
   }
 
   .photo-frame {
@@ -162,7 +162,7 @@
   }
 
   .btn-primary {
-    @apply bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
+    @apply bg-[#0f3a20] text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
   }
 
   .btn-sm {
@@ -182,7 +182,7 @@
   }
 
   .brand-mark {
-    @apply relative block h-10 w-10 overflow-hidden rounded-xl bg-white ring-1 ring-line;
+    @apply relative block h-10 w-10 overflow-hidden rounded-2xl bg-white ring-1 ring-line;
   }
 
   .brand-mark img {
@@ -206,7 +206,7 @@
   }
 
   .nav-link {
-    @apply rounded-xl px-4 py-3 text-sm font-bold text-ink/70 transition-colors hover:bg-brand-soft hover:text-brand;
+    @apply rounded-2xl px-4 py-3 text-sm font-bold text-ink/70 transition-colors hover:bg-brand-soft hover:text-brand;
   }
 
   .nav-link-active {
@@ -234,7 +234,7 @@
   }
 
   .menu-button {
-    @apply flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-line bg-white lg:hidden;
+    @apply flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-2xl border border-line bg-white lg:hidden;
   }
 
   .menu-button span {

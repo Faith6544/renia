@@ -25,7 +25,7 @@ export default function RecentMediaStrip({
           key={item.path}
           href="/gallery"
           aria-label={item.name}
-          className="group relative z-10 aspect-[4/3] overflow-hidden rounded-xl bg-forest/40 ring-1 ring-cream/10 transition-all duration-300 hover:-translate-y-0.5 hover:ring-gold/50"
+          className="group relative z-10 aspect-[4/3] overflow-hidden rounded-2xl bg-forest/40 ring-1 ring-cream/10 transition-all duration-300 hover:-translate-y-0.5 hover:ring-gold/50"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

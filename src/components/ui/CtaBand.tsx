@@ -22,7 +22,7 @@ export default function CtaBand({
   return (
     <section className="bg-white pb-16 lg:pb-24">
       <div className="shell">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-deep via-brand to-aqua p-8 text-white shadow-[0_24px_60px_rgba(22,82,240,0.24)] sm:p-12 lg:p-16">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-deep via-brand to-aqua p-8 text-white shadow-[0_24px_60px_rgba(15,58,32,0.24)] sm:p-12 lg:p-16">
           <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-aqua-soft">

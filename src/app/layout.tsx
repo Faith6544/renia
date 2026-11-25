@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -7,9 +7,15 @@ import { LanguageProvider } from "@/context/LanguageContext";
 
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-brand",
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -29,7 +35,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${jakarta.variable} scroll-smooth`}>
+    <html
+      lang="fr"
+      className={`${dmSans.variable} ${cormorant.variable} scroll-smooth`}
+    >
       <body className="min-h-screen bg-white font-sans text-ink antialiased">
         <LanguageProvider>
           <Navbar />

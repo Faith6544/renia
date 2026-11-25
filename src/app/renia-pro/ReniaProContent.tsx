@@ -131,7 +131,7 @@ export default function ReniaProContent() {
       {/* Airbnb and short-term rentals */}
       <section className="bg-aqua-soft/50 py-20 lg:py-28">
         <div className="container">
-          <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-brand-deep via-brand to-aqua p-8 text-white shadow-[0_24px_70px_rgba(22,82,240,0.28)] sm:p-12 lg:p-16">
+          <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-brand-deep via-brand to-aqua p-8 text-white shadow-[0_24px_70px_rgba(15,58,32,0.28)] sm:p-12 lg:p-16">
             <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-coral/25 blur-3xl" />
 
             <div className="relative z-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
@@ -166,7 +166,7 @@ export default function ReniaProContent() {
                 <ol className="mt-5 space-y-3">
                   {page.airbnbHow.map((step, index) => (
                     <li key={step} className="flex items-start gap-3 text-base text-white/90">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/15 text-xs font-extrabold">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 text-xs font-extrabold">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       {step}

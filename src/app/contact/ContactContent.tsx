@@ -448,9 +448,9 @@ export default function ContactContent() {
                     type="button"
                     onClick={() => setAudience("home")}
                     aria-pressed={audience === "home"}
-                    className={`min-h-[3.5rem] w-full rounded-2xl border-2 px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
+                    className={`min-h-[3.5rem] w-full rounded-2xl border px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
                       audience === "home"
-                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)]"
+                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)]"
                         : "border-brand/20 bg-white text-brand hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft"
                     }`}
                   >
@@ -460,9 +460,9 @@ export default function ContactContent() {
                     type="button"
                     onClick={() => setAudience("pro")}
                     aria-pressed={audience === "pro"}
-                    className={`min-h-[3.5rem] w-full rounded-2xl border-2 px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
+                    className={`min-h-[3.5rem] w-full rounded-2xl border px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
                       audience === "pro"
-                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(22,82,240,0.28)]"
+                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)]"
                         : "border-brand/20 bg-white text-brand hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft"
                     }`}
                   >

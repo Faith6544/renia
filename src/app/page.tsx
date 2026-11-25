@@ -340,7 +340,7 @@ export default function HomePage() {
       {/* Final CTA */}
       <section id="quote" className="scroll-mt-24 bg-white pb-20 lg:pb-28">
         <div className="container">
-          <div className="flex flex-col gap-10 rounded-[32px] bg-brand p-8 text-white shadow-[0_24px_70px_rgba(22,82,240,0.28)] sm:p-12 lg:flex-row lg:items-end lg:justify-between lg:p-16">
+          <div className="flex flex-col gap-10 rounded-[32px] bg-brand p-8 text-white shadow-[0_24px_70px_rgba(15,58,32,0.28)] sm:p-12 lg:flex-row lg:items-end lg:justify-between lg:p-16">
             <div>
               <p className="text-sm font-extrabold uppercase tracking-[0.28em] text-aqua-soft">
                 RENIA SERVICES
