@@ -203,7 +203,7 @@ export default function ReniaProContent() {
               {page.ctaTitle}
             </h2>
             <p className="mt-6 max-w-md text-lg font-medium leading-relaxed text-stone">
-              {t.forms.note}
+              {page.ctaText}
             </p>
           </div>
 

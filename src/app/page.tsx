@@ -30,7 +30,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-aqua/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-coral/25 blur-3xl" />
 
-        <div className="container relative z-10 py-24 lg:py-28">
+        <div className="container relative z-10 py-16 lg:py-20">
           <div className="max-w-4xl">
             <p className="animate-rise text-sm font-extrabold uppercase tracking-[0.28em] text-aqua-soft sm:text-base">
               RENIA SERVICES
@@ -45,9 +45,6 @@ export default function HomePage() {
               <Link href="/contact#quote" className="btn btn-gold">
                 {t.HeroButtonPrimary}
               </Link>
-              <Link href="/how-it-works" className="btn btn-outline">
-                {t.HeroButtonSecondary}
-              </Link>
             </div>
           </div>
         </div>
@@ -56,7 +53,7 @@ export default function HomePage() {
       {/* You are */}
       <section className="bg-white py-20 lg:py-28">
         <div className="container">
-          <p className="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl lg:text-6xl">
+          <p className="text-5xl font-extrabold tracking-tight text-brand sm:text-6xl lg:text-7xl">
             {t.YouAre}
           </p>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -245,9 +242,6 @@ export default function HomePage() {
               <p className="mt-6 max-w-md text-lg font-medium leading-relaxed text-stone">
                 {t.homeHow.intro}
               </p>
-              <Link href="/how-it-works" className="btn btn-dark mt-8">
-                {t.homeHow.cta}
-              </Link>
             </div>
             <ol className="grid gap-5 sm:grid-cols-2 lg:col-span-8">
               {t.homeHow.steps.map((step, index) => (

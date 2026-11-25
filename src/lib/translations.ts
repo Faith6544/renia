@@ -12,14 +12,14 @@ const en = {
   menuReniaHome: "RENIA HOME",
   menuReniaPro: "RENIA PRO",
   menuAbout: "About",
-  menuCommitments: "Our commitments",
+  menuWhyRenia: "Why Renia",
   menuContact: "Contact",
-  footerDescription: `RENIA SERVICES, residential and professional cleaning. Service area: Yvelines (78). ${CONTACT_PHONE_DISPLAY} · ${CONTACT_EMAIL}.`,
+  footerDescription: `RENIA SERVICES, residential and professional cleaning. Service area: the Paris region. ${CONTACT_PHONE_DISPLAY} · ${CONTACT_EMAIL}.`,
   footerLinks: [
     "RENIA HOME",
     "RENIA PRO",
     "About",
-    "Our commitments",
+    "Why Renia",
     "Contact",
     "Legal notice",
     "Privacy policy",
@@ -33,7 +33,6 @@ const en = {
   HeroText:
     "Professional cleaning services tailored to your needs, for individuals and businesses.",
   HeroButtonPrimary: "Get a free quote",
-  HeroButtonSecondary: "Discover our services →",
   YouAre: "You are:",
   Individual: "Individual: RENIA HOME · Home cleaning",
   Professional: "Professional: RENIA PRO · Premises and offices",
@@ -100,7 +99,7 @@ const en = {
         body: "We review your request and send a clear, tailored quote.",
       },
       {
-        title: "Book your service",
+        title: "Confirm your request",
         body: "Choose your date and time. We confirm the details with you.",
       },
       {
@@ -108,7 +107,6 @@ const en = {
         body: "Our team takes care of everything, then we follow up on quality.",
       },
     ],
-    cta: "See the full process",
   },
 
   reviews: {
@@ -235,7 +233,6 @@ const en = {
     ctaText:
       "Tell us about your space and we will guide you through the next step, clearly and without obligation.",
     cta: "Request a quote",
-    ctaSecondary: "Discover our services",
   },
 
   booking: {
@@ -257,8 +254,6 @@ const en = {
     emailLabel: "Email",
     emailPlaceholder: "you@example.com",
     submit: "Send",
-    submitHint:
-      "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
     required: "Required fields",
     opened:
       "Your request has been saved. WhatsApp and your email app have been opened with your message ready to send.",
@@ -266,7 +261,7 @@ const en = {
     asideText:
       "Send us a message or call us. We will confirm availability and answer any question about your request.",
     whatsappButton: "Message us on WhatsApp",
-    note: "This is a request, not a confirmed booking. We will confirm availability by message.",
+    note: "This is a request, not a confirmed appointment. We will confirm availability by message.",
     stepsTitle: "What happens after your request",
     steps: [
       {
@@ -298,7 +293,7 @@ const en = {
     values: [
       {
         title: "Reliability",
-        body: "We keep our commitments and our schedules.",
+        body: "We keep our promises and our schedules.",
       },
       {
         title: "Professionalism",
@@ -344,43 +339,6 @@ const en = {
     cta: "Get a quote",
   },
 
-  commitments: {
-    eyebrow: "Our commitments",
-    title: "Our commitments",
-    intro: "Our commitments",
-    itemsEyebrow: "What you can expect",
-    itemsTitle: "Five commitments, one standard.",
-    items: [
-      {
-        title: "Environment",
-        body: "eco-friendly cleaning products offered as an option.",
-      },
-      {
-        title: "People",
-        body: "respect for our customers and our team. [Training and development: to specify if applicable.]",
-      },
-      {
-        title: "Quality",
-        body: "services adapted to each need and follow-up after the visit.",
-      },
-      {
-        title: "Reliability",
-        body: "a regular service, with organised, supervised teams.",
-      },
-      {
-        title: "Local commitment",
-        body: "a company rooted in its local area.",
-      },
-    ],
-    pledge:
-      "A healthy, serene and naturally welcoming space is the result of consistent care, attention to detail and respect for the people who live and work there.",
-    ctaEyebrow: "Work with us",
-    ctaTitle: "Ready to experience the difference?",
-    ctaText:
-      "Tell us about your home or premises. We will listen, advise and send you a clear proposal.",
-    cta: "Request a quote",
-  },
-
   contact: {
     eyebrow: "Get in touch",
     title: "Contact",
@@ -389,7 +347,7 @@ const en = {
     detailsEyebrow: "Contact information",
     detailsTitle: "We are close by.",
     areaLabel: "Service area",
-    areaValue: "Yvelines (78)",
+    areaValue: "Paris region",
     phoneLabel: "Phone",
     phoneValue: CONTACT_PHONE_DISPLAY,
     emailLabel: "Email",
@@ -404,14 +362,14 @@ const en = {
       "Hello Renia Services, I would like more information about your cleaning services.",
     floatingWhatsapp: "WhatsApp us",
     mapEyebrow: "Our area",
-    mapTitle: "Serving the Yvelines (78)",
+    mapTitle: "Serving the Paris region",
     mapText:
       "Share your postcode and we will confirm your address is within our service area.",
-    mapPlaceholder: "Yvelines (78)",
+    mapPlaceholder: "Paris region",
     socialTitle: "Follow RENIA",
     socialText:
       "News, before-and-after photos and practical advice for a calmer, cleaner space.",
-    formEyebrow: "Send a message",
+    formEyebrow: "Write us",
     formTitle: "Tell us about your project.",
     formIntro:
       "Fill in the form and send us your message. We reply within one business day.",
@@ -429,10 +387,13 @@ const en = {
         "Tell us about your space, its size and how often you would like us to visit.",
       required: "Required fields",
       submit: "Send",
-      submitHint:
-        "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
-      opened:
-        "Thank you, your request has been received. The RENIA team is looking at your need and will come back with a tailored proposal.",
+      successTitle: "Message sent",
+      successBody:
+        "Thank you — your email has been sent to the RENIA team. We will reply within one business day.",
+      whatsappStep:
+        "We will also notify you on WhatsApp as soon as your request is received.",
+      error:
+        "We could not send your email. Please try again or contact us directly.",
     },
   },
 
@@ -514,8 +475,6 @@ const en = {
     free: "The quote is free and with no commitment.",
     confirmation:
       "Thank you, your request has been received. The RENIA team is looking at your need and will come back with a tailored proposal.",
-    note:
-      "Your request is saved, then WhatsApp opens with your message ready to send. Nothing is sent until you confirm it in WhatsApp.",
     send: "Send",
     sending: "Sending…",
     error:
@@ -741,7 +700,6 @@ const en = {
     centerPromise:
       "A well-cared-for space changes the way you live and work.",
     centerImageAlt: "A clean, bright interior",
-    centerCta: "Discover our services",
     engagements: [
       { title: "Eco-friendly", body: "Products offered as an option." },
       { title: "Quality", body: "A clear checklist on every visit." },
@@ -1006,14 +964,14 @@ const fr: typeof en = {
   menuReniaHome: "RENIA HOME",
   menuReniaPro: "RENIA PRO",
   menuAbout: "À propos",
-  menuCommitments: "Nos engagements",
+  menuWhyRenia: "Pourquoi Renia",
   menuContact: "Contact",
-  footerDescription: `RENIA SERVICES, nettoyage résidentiel et professionnel. Zone d’intervention : Yvelines (78). ${CONTACT_PHONE_DISPLAY} · ${CONTACT_EMAIL}.`,
+  footerDescription: `RENIA SERVICES, nettoyage résidentiel et professionnel. Zone d’intervention : la région parisienne. ${CONTACT_PHONE_DISPLAY} · ${CONTACT_EMAIL}.`,
   footerLinks: [
     "RENIA HOME",
     "RENIA PRO",
     "À propos",
-    "Nos engagements",
+    "Pourquoi Renia",
     "Contact",
     "Mentions légales",
     "Politique de confidentialité",
@@ -1027,7 +985,6 @@ const fr: typeof en = {
   HeroText:
     "Des prestations de nettoyage professionnelles, adaptées à vos besoins, pour les particuliers comme pour les professionnels.",
   HeroButtonPrimary: "Obtenir un devis gratuit",
-  HeroButtonSecondary: "Découvrir nos services →",
   YouAre: "Vous êtes :",
   Individual: "Particulier : RENIA HOME · Ménage à domicile",
   Professional: "Professionnel : RENIA PRO · Locaux et bureaux",
@@ -1096,7 +1053,7 @@ const fr: typeof en = {
         body: "Nous étudions votre demande et vous envoyons un devis clair et adapté.",
       },
       {
-        title: "Réservez votre prestation",
+        title: "Confirmez votre demande",
         body: "Choisissez votre date et votre horaire. Nous confirmons les détails avec vous.",
       },
       {
@@ -1104,7 +1061,6 @@ const fr: typeof en = {
         body: "Notre équipe s’occupe de tout, puis nous faisons un suivi qualité.",
       },
     ],
-    cta: "Voir le processus complet",
   },
 
   reviews: {
@@ -1231,7 +1187,6 @@ const fr: typeof en = {
     ctaText:
       "Parlez-nous de votre espace et nous vous guiderons vers la prochaine étape, clairement et sans engagement.",
     cta: "Demander un devis",
-    ctaSecondary: "Découvrir nos services",
   },
 
   booking: {
@@ -1253,8 +1208,6 @@ const fr: typeof en = {
     emailLabel: "Email",
     emailPlaceholder: "vous@exemple.com",
     submit: "Envoyer",
-    submitHint:
-      "Votre demande est enregistrée, puis WhatsApp s’ouvre avec votre message prêt à être envoyé. Rien n’est envoyé tant que vous ne confirmez pas dans WhatsApp.",
     required: "Champs obligatoires",
     opened:
       "Votre demande a été enregistrée. WhatsApp et votre application email se sont ouverts avec votre message prêt à être envoyé.",
@@ -1262,7 +1215,7 @@ const fr: typeof en = {
     asideText:
       "Envoyez-nous un message ou appelez-nous. Nous confirmerons la disponibilité et répondrons à toutes vos questions.",
     whatsappButton: "Nous écrire sur WhatsApp",
-    note: "Il s’agit d’une demande, pas d’une réservation confirmée. Nous confirmerons la disponibilité par message.",
+    note: "Il s’agit d’une demande, pas d’un rendez-vous confirmé. Nous confirmerons la disponibilité par message.",
     stepsTitle: "Ce qui se passe après votre demande",
     steps: [
       {
@@ -1341,43 +1294,6 @@ const fr: typeof en = {
     cta: "Obtenir un devis",
   },
 
-  commitments: {
-    eyebrow: "Nos engagements",
-    title: "Nos engagements",
-    intro: "Nos engagements",
-    itemsEyebrow: "Ce que vous pouvez attendre",
-    itemsTitle: "Cinq engagements, une même exigence.",
-    items: [
-      {
-        title: "Environnement",
-        body: "des produits d’entretien écologiques proposés en option.",
-      },
-      {
-        title: "Personnes",
-        body: "le respect de nos clients et de notre équipe. [Formation et développement : à préciser si applicable.]",
-      },
-      {
-        title: "Qualité",
-        body: "des prestations adaptées à chaque besoin et un suivi après intervention.",
-      },
-      {
-        title: "Fiabilité",
-        body: "un service régulier, avec des équipes organisées et encadrées.",
-      },
-      {
-        title: "Engagement local",
-        body: "une entreprise implantée dans son territoire.",
-      },
-    ],
-    pledge:
-      "Un espace sain, serein et naturellement accueillant est le résultat d’un soin constant, du souci du détail et du respect des personnes qui y vivent et y travaillent.",
-    ctaEyebrow: "Travaillons ensemble",
-    ctaTitle: "Prêts à découvrir la différence ?",
-    ctaText:
-      "Parlez-nous de votre maison ou de vos locaux. Nous vous écouterons, vous conseillerons et vous enverrons une proposition claire.",
-    cta: "Demander un devis",
-  },
-
   contact: {
     eyebrow: "Nous contacter",
     title: "Contact",
@@ -1386,7 +1302,7 @@ const fr: typeof en = {
     detailsEyebrow: "Coordonnées",
     detailsTitle: "Nous sommes proches de vous.",
     areaLabel: "Zone d’intervention",
-    areaValue: "Yvelines (78)",
+    areaValue: "Région parisienne",
     phoneLabel: "Téléphone",
     phoneValue: CONTACT_PHONE_DISPLAY,
     emailLabel: "Email",
@@ -1401,14 +1317,14 @@ const fr: typeof en = {
       "Bonjour Renia Services, je souhaiterais obtenir plus d’informations sur vos prestations de nettoyage.",
     floatingWhatsapp: "WhatsApp",
     mapEyebrow: "Notre zone",
-    mapTitle: "Au service des Yvelines (78)",
+    mapTitle: "Au service de la région parisienne",
     mapText:
       "Indiquez votre code postal et nous confirmerons que votre adresse fait partie de notre zone d’intervention.",
-    mapPlaceholder: "Yvelines (78)",
+    mapPlaceholder: "Région parisienne",
     socialTitle: "Suivez RENIA",
     socialText:
       "Actualités, photos avant/après et conseils pratiques pour un espace plus serein et plus propre.",
-    formEyebrow: "Envoyer un message",
+    formEyebrow: "Écrivez-nous",
     formTitle: "Parlez-nous de votre projet.",
     formIntro:
       "Remplissez le formulaire et envoyez-nous votre message. Nous répondons sous un jour ouvré.",
@@ -1426,10 +1342,13 @@ const fr: typeof en = {
         "Parlez-nous de votre espace, de sa surface et de la fréquence de vos visites souhaitées.",
       required: "Champs obligatoires",
       submit: "Envoyer",
-      submitHint:
-        "Votre demande est enregistrée, puis WhatsApp s’ouvre avec votre message prêt à être envoyé. Rien n’est envoyé tant que vous ne confirmez pas dans WhatsApp.",
-      opened:
-        "Merci, votre demande est bien reçue. L’équipe RENIA étudie votre besoin et revient vers vous avec une proposition adaptée.",
+      successTitle: "Message envoyé",
+      successBody:
+        "Merci — votre email a bien été transmis à l’équipe RENIA. Nous vous répondons sous un jour ouvré.",
+      whatsappStep:
+        "Nous vous préviendrons également sur WhatsApp dès réception de votre demande.",
+      error:
+        "Impossible d’envoyer votre email. Veuillez réessayer ou nous contacter directement.",
     },
   },
 
@@ -1459,7 +1378,7 @@ const fr: typeof en = {
     email: "Email",
     postalCode: "Code postal",
     postalCodeError:
-      "Veuillez saisir un code postal français valide à 5 chiffres (ex. 78370)",
+      "Veuillez saisir un code postal français valide à 5 chiffres (ex. 75001)",
     city: "Commune",
     propertyDetails: "Quel est le type de votre logement ?",
     apartment: "Appartement",
@@ -1515,8 +1434,6 @@ const fr: typeof en = {
     free: "Le devis est gratuit et sans engagement.",
     confirmation:
       "Merci, votre demande est bien reçue. L’équipe RENIA étudie votre besoin et revient vers vous avec une proposition adaptée.",
-    note:
-      "Votre demande est enregistrée, puis WhatsApp s’ouvre avec votre message prêt à être envoyé. Rien n’est envoyé tant que vous ne confirmez pas dans WhatsApp.",
     send: "Envoyer",
     sending: "Envoi…",
     error:
@@ -1741,7 +1658,6 @@ const fr: typeof en = {
     centerPromise:
       "Un espace bien entretenu change la façon dont on vit et travaille.",
     centerImageAlt: "Un intérieur propre et lumineux",
-    centerCta: "Découvrir nos services",
     engagements: [
       { title: "Écologique", body: "Des produits proposés en option." },
       { title: "Qualité", body: "Une checklist claire à chaque visite." },

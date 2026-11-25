@@ -317,7 +317,7 @@ export default function ProForm() {
                 updateField("postalCode", event.target.value.replace(/\D/g, ""))
               }
               className={`field-input ${INTERACTIVE}`}
-              placeholder="78370"
+              placeholder="75001"
             />
           </div>
 
@@ -438,10 +438,6 @@ export default function ProForm() {
             {t.forms.ackText}
           </span>
         </label>
-
-        <p className="mt-5 text-base font-medium leading-relaxed text-stone">
-          {t.forms.note}
-        </p>
 
         <button
           type="button"

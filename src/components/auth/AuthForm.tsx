@@ -23,7 +23,7 @@ function GoogleIcon() {
       />
       <path
         fill="#34A853"
-        d="M12 24c3.24 0 5.95-1.08 7.93-2.93l-3.86-2.98c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.08A12 12 0 0 0 12 24Z"
+        d="M12 24c3.24 0 5.95-1.08 7.93-2.93l-3.86-2.98c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.8-2.11-6.73-4.96H1.29v3.08A12 12 0 0 0 12 24Z"
       />
       <path
         fill="#FBBC05"
@@ -206,7 +206,7 @@ export default function AuthForm({ mode }: { mode: AuthMode }) {
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-cream px-4 pb-16 pt-28 sm:px-6 lg:pt-32">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(197,160,89,0.18),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_48%_0%,rgba(197,160,89,0.18),transparent_55%)]"
       />
       <div
         aria-hidden="true"

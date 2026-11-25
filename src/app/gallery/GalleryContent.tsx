@@ -18,7 +18,7 @@ export default function GalleryContent() {
         title={gallery.title}
         intro={gallery.intro}
         primary={{ label: gallery.cta, href: "/contact" }}
-        secondary={{ label: t.nav.commitments, href: "/commitments" }}
+        secondary={{ label: t.nav.whyRenia, href: "/#why" }}
       />
 
       <section className="bg-cream py-16 lg:py-32">

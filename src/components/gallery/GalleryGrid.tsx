@@ -189,14 +189,14 @@ export default function GalleryGrid() {
                 autoPlay
                 muted
                 playsInline
-                className="max-h-[78vh] w-full bg-black object-contain"
+                className="max-h-[76vh] w-full bg-black object-contain"
               />
             ) : (
               /* eslint-disable-next-line @next/next/no-img-element */
               <img
                 src={activeItem.url}
                 alt={activeItem.name}
-                className="max-h-[78vh] w-full object-contain"
+                className="max-h-[76vh] w-full object-contain"
               />
             )}
 

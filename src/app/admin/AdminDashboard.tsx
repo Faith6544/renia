@@ -54,7 +54,7 @@ function AccessPanel({
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-cream px-4 pb-16 pt-28 sm:px-6">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(197,160,89,0.18),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_48%_0%,rgba(197,160,89,0.18),transparent_55%)]"
       />
       <div className="relative w-full max-w-lg rounded-[2rem] border border-line/70 bg-white/90 p-8 text-center shadow-[0_30px_80px_rgba(8,35,20,0.12)] sm:p-10">
         <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 bg-forest font-serif text-lg text-gold">

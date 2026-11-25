@@ -48,7 +48,7 @@ export default function Footer() {
         <div className="footer-column">
           <h3>{t.footer.companyTitle}</h3>
           <Link href="/about">{t.footer.about}</Link>
-          <Link href="/commitments">{t.footer.commitments}</Link>
+          <Link href="/#why">{t.footer.whyRenia}</Link>
           <Link href="/faq">{t.footer.faq}</Link>
           <Link href="/contact">{t.footer.contact}</Link>
         </div>

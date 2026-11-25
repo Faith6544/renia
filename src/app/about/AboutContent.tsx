@@ -21,8 +21,8 @@ export default function AboutContent() {
         intro={about.intro}
         primary={{ label: about.cta, href: "/contact" }}
         secondary={{
-          label: t.nav.commitments,
-          href: "/commitments",
+          label: t.nav.whyRenia,
+          href: "/#why",
         }}
       />
 
@@ -147,8 +147,8 @@ export default function AboutContent() {
         text={about.ctaText}
         primaryLabel={about.cta}
         primaryHref="/contact"
-        secondaryLabel={t.nav.commitments}
-        secondaryHref="/commitments"
+        secondaryLabel={t.nav.whyRenia}
+        secondaryHref="/#why"
       />
     </main>
   );

@@ -247,7 +247,7 @@ export default function HomeForm() {
                 updateField("postalCode", event.target.value.replace(/\D/g, ""))
               }
               className={`field-input ${INTERACTIVE}`}
-              placeholder="78370"
+              placeholder="75001"
             />
           </div>
 
@@ -416,10 +416,6 @@ export default function HomeForm() {
             {t.forms.ackText}
           </span>
         </label>
-
-        <p className="mt-5 text-base font-medium leading-relaxed text-stone">
-          {t.forms.note}
-        </p>
 
         <button
           type="button"

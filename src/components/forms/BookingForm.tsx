@@ -250,10 +250,6 @@ export default function BookingForm() {
       </div>
 
       <div className="mt-8 flex flex-col gap-6 rounded-2xl bg-cream p-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-sm text-base leading-relaxed text-stone">
-          {page.submitHint}
-        </p>
-
         <button
           type="button"
           onClick={handleSend}

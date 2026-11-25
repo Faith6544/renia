@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { buildWhatsAppUrl, CONTACT_EMAIL } from "@/lib/site";
 import {
   getSupabaseBrowserClient,
   isSupabaseConfigured,
@@ -19,21 +18,12 @@ const initialForm = {
 
 type FormField = keyof typeof initialForm;
 
-function openInNewTab(href: string) {
-  const link = document.createElement("a");
-  link.href = href;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-}
-
 export default function ContactForm() {
   const { language, t } = useLanguage();
   const copy = t.contact.form;
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState("");
 
   const alerts =
     language === "fr"
@@ -51,6 +41,7 @@ export default function ContactForm() {
         };
 
   const updateField = (field: FormField, value: string) => {
+    setError("");
     setForm((current) => ({ ...current, [field]: value }));
   };
 
@@ -59,19 +50,21 @@ export default function ContactForm() {
 
     try {
       const supabase = getSupabaseBrowserClient();
-      const { error } = await supabase.from("quote_requests").insert({
-        full_name: form.name.trim(),
-        email: form.email.trim().toLowerCase(),
-        phone: form.phone.trim(),
-        service_type: "contact",
-        message,
-      });
+      const { error: databaseError } = await supabase
+        .from("quote_requests")
+        .insert({
+          full_name: form.name.trim(),
+          email: form.email.trim().toLowerCase(),
+          phone: form.phone.trim(),
+          service_type: "contact",
+          message,
+        });
 
-      if (error) {
-        console.error("Contact message failed:", error);
+      if (databaseError) {
+        console.error("Contact message failed:", databaseError);
       }
-    } catch (error) {
-      console.error("Contact message failed:", error);
+    } catch (databaseError) {
+      console.error("Contact message failed:", databaseError);
     }
   };
 
@@ -97,34 +90,36 @@ export default function ContactForm() {
     }
 
     setStatus("sending");
+    setError("");
 
     const message = [
-      `${t.contact.form.name}: ${form.name.trim()}`,
-      `${t.contact.form.email}: ${form.email.trim()}`,
-      form.phone.trim() && `${t.contact.form.phone}: ${form.phone.trim()}`,
-      form.subject.trim() &&
-        `${t.contact.form.subject}: ${form.subject.trim()}`,
+      `${copy.name}: ${form.name.trim()}`,
+      `${copy.email}: ${form.email.trim()}`,
+      form.phone.trim() && `${copy.phone}: ${form.phone.trim()}`,
+      form.subject.trim() && `${copy.subject}: ${form.subject.trim()}`,
       "",
       form.message.trim(),
     ]
       .filter(Boolean)
       .join("\n");
 
-    await saveToDatabase(message);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      form.subject.trim() || "Message from the Renia website",
-    )}&body=${encodeURIComponent(message)}`;
+      if (!response.ok) {
+        throw new Error("Contact request failed");
+      }
 
-    openInNewTab(mailtoUrl);
-    openInNewTab(buildWhatsAppUrl(message));
-
-    setStatus("sent");
-  };
-
-  const reset = () => {
-    setForm(initialForm);
-    setStatus("idle");
+      await saveToDatabase(message);
+      setStatus("sent");
+    } catch {
+      setError(copy.error);
+      setStatus("idle");
+    }
   };
 
   if (status === "sent") {
@@ -144,17 +139,13 @@ export default function ContactForm() {
             <path d="m5 12 4 4L19 6" />
           </svg>
         </span>
-        <h3 className="mt-6 text-3xl font-extrabold">{t.form.successTitle}</h3>
+        <h3 className="mt-6 text-3xl font-extrabold">{copy.successTitle}</h3>
         <p className="mx-auto mt-4 max-w-md text-base font-medium leading-relaxed text-stone">
-          {t.form.successBody}
+          {copy.successBody}
         </p>
-        <button
-          type="button"
-          onClick={reset}
-          className="btn btn-dark mt-8 cursor-pointer"
-        >
-          {t.form.successAgain}
-        </button>
+        <p className="mx-auto mt-3 max-w-md text-sm font-medium leading-relaxed text-brand">
+          {copy.whatsappStep}
+        </p>
       </div>
     );
   }
@@ -240,9 +231,11 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-8 rounded-2xl bg-brand-soft/70 p-6">
-        <p className="mb-6 text-base font-medium leading-relaxed text-stone">
-          {t.forms.note}
-        </p>
+        {error && (
+          <p role="alert" className="mb-5 text-sm font-medium text-brand">
+            {error}
+          </p>
+        )}
 
         <button
           type="button"
@@ -250,7 +243,7 @@ export default function ContactForm() {
           disabled={status === "sending"}
           className="btn btn-primary w-full cursor-pointer justify-center text-center disabled:opacity-50 sm:w-auto"
         >
-          {status === "sending" ? t.forms.sending : t.forms.send}
+          {status === "sending" ? t.forms.sending : copy.submit}
         </button>
       </div>
     </div>
