@@ -10,18 +10,15 @@ export default function SectionHeading({
   intro,
 }: SectionHeadingProps) {
   return (
-    <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
-      <div className="lg:col-span-7">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2 className="mt-4 max-w-3xl text-balance text-[clamp(2.2rem,4.6vw,4rem)] font-extrabold leading-[1.05]">
-          {title}
-        </h2>
-      </div>
-
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2 className="mx-auto mt-4 max-w-3xl text-balance text-[clamp(2.2rem,4.6vw,4rem)] font-extrabold leading-[1.05]">
+        {title}
+      </h2>
       {intro ? (
-        <div className="lg:col-span-5 lg:flex lg:items-end">
-          <p className="max-w-md text-lg leading-relaxed text-stone">{intro}</p>
-        </div>
+        <p className="mx-auto mt-6 max-w-3xl text-lg font-semibold leading-relaxed text-ink">
+          {intro}
+        </p>
       ) : null}
     </div>
   );

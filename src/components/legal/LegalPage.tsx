@@ -1,3 +1,5 @@
+import Container from "@/components/ui/Container";
+import Section from "@/components/ui/Section";
 import Link from "next/link";
 
 type LegalSection = {
@@ -22,30 +24,30 @@ export default function LegalPage({
 }: LegalPageProps) {
   return (
     <main>
-      <section className="hero-grain relative overflow-hidden rounded-b-[2.5rem] bg-forest text-cream shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest via-forest/70 to-forest/95" />
+      <section className="relative overflow-hidden rounded-b-[2.5rem] bg-green-main text-white shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-main via-green-main/70 to-green-main/95" />
 
-        <div className="shell relative z-10 pb-16 pt-32 sm:pb-20 lg:pt-40">
+        <Container className="relative z-10 pb-16 pt-32 sm:pb-20 lg:pt-40">
           <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
             {eyebrow}
           </p>
-          <h1 className="mt-5 max-w-4xl text-balance font-serif text-[clamp(2rem,4.8vw,4.25rem)] font-normal leading-[1.05] tracking-[-0.02em]">
+          <h1 className="mt-5 max-w-4xl text-balance font-serif text-[clamp(2rem,4.8vw,4.25rem)] font-bold leading-[1.05] tracking-[-0.02em]">
             {title}
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-cream/75 sm:text-lg">
+          <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-white sm:text-lg">
             {intro}
           </p>
-          <p className="mt-8 text-xs uppercase tracking-[0.22em] text-cream/45">
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] text-white">
             {updated}
           </p>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-cream py-16 lg:py-24">
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <Section tone="cream">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <aside className="lg:col-span-4">
-            <nav aria-label={title} className="lg:sticky lg:top-28">
-              <p className="text-xs uppercase tracking-[0.24em] text-stone">
+            <nav aria-label={title}>
+              <p className="text-xs uppercase tracking-[0.24em] font-semibold text-ink">
                 {title}
               </p>
               <ul className="mt-5 space-y-3 text-base">
@@ -53,7 +55,7 @@ export default function LegalPage({
                   <li key={section.title}>
                     <a
                       href={`#section-${index + 1}`}
-                      className="inline-flex items-start gap-3 text-stone transition-colors hover:text-forest"
+                      className="inline-flex items-start gap-3 font-semibold text-ink transition-colors hover:text-green-main"
                     >
                       <span className="font-serif text-sm leading-6 text-gold">
                         {String(index + 1).padStart(2, "0")}
@@ -81,7 +83,7 @@ export default function LegalPage({
                     {section.title}
                   </h2>
                 </div>
-                <div className="mt-5 space-y-4 text-base leading-relaxed text-stone">
+                <div className="mt-5 space-y-4 text-base leading-relaxed font-semibold text-ink">
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
@@ -90,11 +92,11 @@ export default function LegalPage({
             ))}
 
             <div className="flex flex-col gap-4 rounded-3xl bg-bone p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9">
-              <p className="max-w-md text-base leading-relaxed text-stone">
+              <p className="max-w-md text-base leading-relaxed font-semibold text-ink">
                 Une question sur ce document ? Écrivez-nous à{" "}
                 <a
                   href="mailto:contact@reniaservices.fr"
-                  className="font-medium text-forest underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
+                  className="font-medium text-green-main underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold"
                 >
                   contact@reniaservices.fr
                 </a>
@@ -106,7 +108,7 @@ export default function LegalPage({
             </div>
           </div>
         </div>
-      </section>
+      </Section>
     </main>
   );
 }

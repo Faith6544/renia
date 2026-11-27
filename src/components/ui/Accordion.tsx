@@ -21,7 +21,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
         return (
           <div
             key={item.question}
-            className={`overflow-hidden rounded-2xl transition-all duration-300 ${
+            className={`overflow-hidden rounded-2xl transition-colors duration-200 ${
               isOpen
                 ? "bg-cream/80 shadow-[0_8px_30px_rgb(0,0,0,0.05)]"
                 : "bg-cream/35 hover:bg-cream/60"
@@ -34,7 +34,7 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="group flex w-full items-start justify-between gap-6 px-6 py-6 text-left transition-colors duration-300 hover:text-forest sm:px-7 sm:py-7"
+                className="group flex w-full items-start justify-between gap-6 px-6 py-6 text-left transition-colors duration-200 hover:text-green-main sm:px-7 sm:py-7"
               >
                 <span className="flex items-start gap-4 sm:gap-6">
                   <span className="mt-1 font-serif text-base leading-none text-gold">
@@ -47,8 +47,8 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
 
                 <span
                   aria-hidden="true"
-                  className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/70 text-forest shadow-[0_4px_14px_rgb(0,0,0,0.06)] transition-all duration-300 ${
-                    isOpen ? "rotate-45 bg-gold text-forest" : "group-hover:bg-white"
+                  className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/70 text-green-main shadow-[0_4px_14px_rgb(0,0,0,0.06)] transition-colors duration-200 ${
+                    isOpen ? "bg-gold text-green-main" : "group-hover:bg-white"
                   }`}
                 >
                   <svg
@@ -69,16 +69,12 @@ export default function Accordion({ items }: { items: AccordionItem[] }) {
               id={panelId}
               role="region"
               aria-labelledby={buttonId}
-              aria-hidden={!isOpen}
-              className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-              }`}
+              hidden={!isOpen}
+              className="px-6 pb-7 sm:pl-[4.25rem] sm:pr-10"
             >
-              <div className="overflow-hidden">
-                <p className="max-w-2xl px-6 pb-7 text-base leading-relaxed text-stone sm:pl-[4.25rem] sm:pr-10 sm:text-[17px]">
-                  {item.answer}
-                </p>
-              </div>
+              <p className="max-w-3xl text-base font-semibold leading-relaxed text-ink sm:text-[17px]">
+                {item.answer}
+              </p>
             </div>
           </div>
         );

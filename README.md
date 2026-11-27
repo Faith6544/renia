@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Plus Jakarta Sans for all copy. The Tailwind v4 font tokens live in the `@theme` block in `src/app/globals.css`.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to optimise DM Sans for copy and Cormorant Garamond for headings. The Tailwind v4 font tokens live in the `@theme` block in `src/app/globals.css`.
 
 The app lives under `src/`: pages and global styles in `src/app`, components in `src/components`, site copy in `src/lib/translations.ts` and `src/data/dictionary.ts`, shared types in `src/types`, and site/Supabase helpers in `src/lib`.
 
@@ -26,14 +26,16 @@ The app lives under `src/`: pages and global styles in `src/app`, components in 
 
 | Route | Page |
 | --- | --- |
-| `/` | Homepage (hero, “You are” cards, two service areas, why RENIA, how it works, reviews, FAQ and quote CTA) |
+| `/` | Homepage (hero, service areas, why RENIA, reviews, FAQ and quote CTA) |
 | `/renia-home` | RENIA HOME: room-by-room cleaning, deep clean, ironing, FAQ and quote form |
-| `/renia-pro` | RENIA PRO: professional services, tailor-made solutions, method, Airbnb and quote form |
-| `/about` | About RENIA SERVICES, mission, values and story placeholder |
-| `/commitments` | Our commitments: environment, people, quality, reliability and local commitment |
-| `/contact` | Contact details, one unified Send button and direct WhatsApp link |
+| `/renia-pro` | RENIA PRO: professional services, tailor-made solutions, Airbnb and quote form |
+| `/about` | About RENIA SERVICES, mission and values |
+| `/gallery` | Recent work and uploaded media |
+| `/faq` | Frequently asked questions |
+| `/contact` | Contact details, unified quote form and direct WhatsApp link |
+| `/mentions-legales`, `/politique-de-confidentialite`, `/cgv` | Legal pages |
 
-The EN | FR toggle lives in the navbar. The selected language is stored in `localStorage` under `renia-language` and is shared across pages by `src/context/LanguageContext.tsx`. Page copy lives in `src/lib/translations.ts`; shared navigation and footer copy lives in `src/data/dictionary.ts`. Both EN and FR objects must be kept in sync.
+The FR | EN toggle lives in the navbar. The selected language is stored in `localStorage` under `renia-language` and is shared across pages by `src/context/LanguageContext.tsx`. Page copy lives in `src/lib/translations.ts`; shared navigation and footer copy lives in `src/data/dictionary.ts`. Both EN and FR objects must be kept in sync.
 
 ## Learn More
 
@@ -52,7 +54,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Environment & Supabase Setup
 
-Every form saves the request to Supabase, opens the visitor’s email app and opens WhatsApp with the message pre-filled. Replace the placeholder number in `src/lib/site.ts` (`WHATSAPP_NUMBER`) before launch. Complete the two steps below before using the saved-request inbox.
+The quote and contact forms save requests to Supabase and can open WhatsApp with the message pre-filled. Replace the placeholder number in `src/lib/site.ts` (`WHATSAPP_NUMBER`) before launch. Complete the two steps below before using the saved requests.
 
 ### 1. Create `.env.local`
 

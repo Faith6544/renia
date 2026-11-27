@@ -183,102 +183,6 @@ const en = {
     stillCta: "Get a quote",
   },
 
-  howItWorksPage: {
-    eyebrow: "How it works",
-    title: "A simple, transparent process.",
-    intro:
-      "From your first message to the moment you walk into a cared-for space, every step is clear, calm and agreed with you.",
-    processEyebrow: "Step by step",
-    processTitle: "What working with RENIA looks like.",
-    steps: [
-      {
-        title: "Request your quote",
-        body: "Describe your need. RENIA reviews your request.",
-        detail: "Takes a few minutes. No commitment.",
-      },
-      {
-        title: "Receive a tailored proposal",
-        body: "You receive a tailored proposal.",
-        detail: "Usually within one business day.",
-      },
-      {
-        title: "Schedule the service",
-        body: "The service is scheduled.",
-        detail: "One named contact from start to finish.",
-      },
-      {
-        title: "The RENIA team comes to you",
-        body: "The RENIA team comes to you, then quality and your satisfaction are followed up.",
-        detail: "Careful follow-up after the visit.",
-      },
-    ],
-    includedEyebrow: "What happens next",
-    includedTitle: "Details that make the difference.",
-    included: [
-      {
-        title: "A named contact",
-        body: "You speak to the same person before, during and after your service.",
-      },
-      {
-        title: "A clear scope",
-        body: "Every visit follows an agreed checklist. You know exactly what is included.",
-      },
-      {
-        title: "Careful follow-up",
-        body: "We check that the result meets your expectations and adjust the service as your needs change.",
-      },
-    ],
-    ctaEyebrow: "Ready when you are",
-    ctaTitle: "Let’s get started.",
-    ctaText:
-      "Tell us about your space and we will guide you through the next step, clearly and without obligation.",
-    cta: "Request a quote",
-  },
-
-  booking: {
-    eyebrow: "Request a service",
-    title: "Choose a date. We take care of the rest.",
-    intro:
-      "Send us your preferred date and time. We will check availability and confirm your request by message.",
-    formEyebrow: "Your request",
-    formTitle: "Tell us when you need us.",
-    serviceLabel: "Service",
-    serviceHome: "RENIA HOME — Home cleaning",
-    servicePro: "RENIA PRO — Business premises",
-    dateLabel: "Preferred date",
-    timeLabel: "Preferred time",
-    nameLabel: "Full name",
-    namePlaceholder: "Your full name",
-    phoneLabel: "Phone",
-    phonePlaceholder: "+33 6 00 00 00 00",
-    emailLabel: "Email",
-    emailPlaceholder: "you@example.com",
-    submit: "Send",
-    required: "Required fields",
-    opened:
-      "Your request has been saved. WhatsApp and your email app have been opened with your message ready to send.",
-    asideTitle: "Prefer to talk?",
-    asideText:
-      "Send us a message or call us. We will confirm availability and answer any question about your request.",
-    whatsappButton: "Message us on WhatsApp",
-    note: "This is a request, not a confirmed appointment. We will confirm availability by message.",
-    stepsTitle: "What happens after your request",
-    steps: [
-      {
-        title: "We confirm availability",
-        body: "We check the date and time you requested and reply with a confirmation.",
-      },
-      {
-        title: "You receive the details",
-        body: "We confirm the scope, the access arrangements and anything you need to prepare.",
-      },
-      {
-        title: "We take care of the rest",
-        body: "Our team arrives on time and follows the agreed checklist.",
-      },
-    ],
-  },
-
   about: {
     eyebrow: "About us",
     title: "About RENIA SERVICES",
@@ -613,7 +517,7 @@ const en = {
         body: "a tailor-made solution according to your need.",
       },
     ],
-    teamImages: [
+    sectorImages: [
       "/images/pro-cleaning.jpg.png",
       "/images/pro-cleaning.jpg.png",
       "/images/pro-cleaning.jpg.png",
@@ -697,8 +601,6 @@ const en = {
     centerTitle: "Why choose RENIA",
     centerText:
       "A trained, supervised team that treats your space as if it were their own.",
-    centerPromise:
-      "A well-cared-for space changes the way you live and work.",
     centerImageAlt: "A clean, bright interior",
     engagements: [
       { title: "Eco-friendly", body: "Products offered as an option." },
@@ -735,138 +637,6 @@ const en = {
     cta: "Contact us",
   },
 
-  auth: {
-    signInEyebrow: "Welcome back",
-    signInTitle: "Sign in to Renia.",
-    signInIntro:
-      "Access your account, follow your requests and manage your services.",
-    signUpEyebrow: "Create an account",
-    signUpTitle: "Join Renia.",
-    signUpIntro:
-      "Create your account to book services, follow your requests and receive your documents.",
-    nameLabel: "Full name",
-    namePlaceholder: "Jane Doe",
-    emailLabel: "Email",
-    emailPlaceholder: "you@example.com",
-    passwordLabel: "Password",
-    passwordPlaceholder: "At least 8 characters",
-    signInCta: "Sign In",
-    signUpCta: "Create account",
-    loading: "Please wait…",
-    or: "Or continue with",
-    google: "Continue with Google",
-    microsoft: "Continue with Microsoft",
-    apple: "Continue with Apple",
-    noAccount: "No account yet?",
-    haveAccount: "Already have an account?",
-    goSignUp: "Sign up",
-    goSignIn: "Sign in",
-    forgot: "Forgot password?",
-    resetSent:
-      "If an account exists for this email, a reset link is on its way.",
-    checkEmail:
-      "Almost there. Check your inbox to confirm your email address, then sign in.",
-    errorGeneric: "Something went wrong. Please try again.",
-    errorCredentials: "Incorrect email or password.",
-    errorPassword: "Your password must be at least 8 characters.",
-    setup:
-      "Authentication is not configured yet. Add your Supabase credentials to .env.local and restart the server.",
-    backHome: "Back to home",
-    resetTitle: "Choose a new password.",
-    resetIntro:
-      "Enter a new password for your account. After saving, you will return to the sign-in screen.",
-    newPasswordLabel: "New password",
-    confirmPasswordLabel: "Confirm password",
-    resetCta: "Update password",
-    resetUpdating: "Updating…",
-    resetSuccess: "Password updated. You can now sign in.",
-    resetMismatch: "The passwords do not match.",
-    resetExpired: "This recovery link has expired. Please request a new one.",
-    resetBackToLogin: "Back to sign in",
-    legal:
-      "By continuing, you agree to our terms of sale and privacy policy.",
-    secure: "Secure sign-in powered by Supabase",
-    chooseUsernameEyebrow: "One last step",
-    chooseUsernameTitle: "Choose your username.",
-    chooseUsernameIntro:
-      "Welcome to Renia! Pick the username that will appear on your account.",
-    usernameLabel: "Username",
-    usernamePlaceholder: "yourname",
-    usernameHint: "3–20 characters. Letters, numbers and underscores only.",
-    usernameCta: "Save username",
-    usernameSaving: "Saving…",
-    usernameTaken: "That username is already taken. Try another one.",
-    usernameInvalid: "Use 3–20 characters: letters, numbers or underscores.",
-    usernameError: "We could not save your username. Please try again.",
-    usernameNoSession: "Your session has expired. Please sign in again.",
-    usernameSkip: "Skip for now",
-  },
-
-  team: {
-    eyebrow: "The people behind the care",
-    title: "Meet the team.",
-    intro:
-      "A close-knit team of trained, supervised professionals who take care of your space as if it were their own.",
-    philosophyEyebrow: "Our philosophy",
-    philosophyTitle: "Care is a craft.",
-    philosophyBody:
-      "Every visit is prepared, checked and followed up. The same team, the same standards and the same attention to detail, so you always know who is looking after your space.",
-    values: [
-      {
-        title: "Trained",
-        body: "Organised, supervised teams who are trained for every type of space.",
-      },
-      {
-        title: "Supervised",
-        body: "Clear checklists and a named contact who follows up after each visit.",
-      },
-      {
-        title: "Discreet",
-        body: "Respectful teams who work quietly around your home or business.",
-      },
-    ],
-    rosterEyebrow: "The team",
-    rosterTitle: "Faces you can trust.",
-    rosterIntro:
-      "A few of the people who make Renia what it is. Full profiles are coming soon.",
-    members: [
-      {
-        name: "Amélie Laurent",
-        role: "Founder & client care",
-        bio: "Amélie sets the standard: careful listening, clear quotes and a genuine eye for detail.",
-        image: "/images/hero.jpg.png",
-      },
-      {
-        name: "Sofia Benali",
-        role: "RENIA HOME lead",
-        bio: "Sofia coordinates the home teams and makes sure every visit follows the agreed checklist.",
-        image: "/images/home-cleaning.jpg.png",
-      },
-      {
-        name: "Marc Dubois",
-        role: "RENIA PRO lead",
-        bio: "Marc looks after offices, shops and short-term rentals with discretion and precision.",
-        image: "/images/pro-cleaning.jpg.png",
-      },
-      {
-        name: "Inès Moreau",
-        role: "Quality & client follow-up",
-        bio: "Inès checks the details, gathers feedback and keeps every promise on track.",
-        image: "/images/flyer-1-layout.jpg.jpg",
-      },
-    ],
-    joinEyebrow: "Join us",
-    joinTitle: "Want to work with us?",
-    joinText:
-      "We are always happy to meet people who care about doing things well. Tell us about your experience and we will get back to you.",
-    joinCta: "Contact us",
-    ctaEyebrow: "Ready to meet?",
-    ctaTitle: "Let’s talk about your space.",
-    ctaText:
-      "Tell us what you need and we will suggest the right service, clearly and without obligation.",
-    cta: "Request a quote",
-  },
-
   gallery: {
     eyebrow: "Recent work",
     title: "Our gallery.",
@@ -886,74 +656,9 @@ const en = {
       "Tell us about your space and we will suggest the right service, clearly and without obligation.",
     cta: "Request a quote",
     setup:
-      "The gallery will appear once media is uploaded to Supabase Storage.",
+      "The gallery will appear once media is uploaded.",
   },
 
-  admin: {
-    eyebrow: "Admin",
-    title: "Dashboard",
-    intro:
-      "Manage incoming requests and publish recent work to the public gallery.",
-    signInTitle: "Admin sign-in required",
-    signInText:
-      "Sign in with your administrator account to access the dashboard.",
-    signInCta: "Go to sign in",
-    deniedTitle: "Access restricted",
-    deniedText:
-      "This account does not have administrator access. Add your email to NEXT_PUBLIC_ADMIN_EMAILS or set an admin role on the Supabase user.",
-    signOut: "Sign out",
-    welcome: "Signed in as",
-    messagesEyebrow: "Inbox",
-    messagesTitle: "Recent messages & quotes",
-    messagesEmpty: "No messages yet.",
-    messagesError:
-      "Unable to load messages. Check the quote_requests table and its row-level security policies.",
-    refresh: "Refresh",
-    name: "Name",
-    service: "Service",
-    date: "Date",
-    phone: "Phone",
-    email: "Email",
-    message: "Message",
-    uploadEyebrow: "Publish",
-    uploadTitle: "Upload recent work",
-    uploadText:
-      "Add a flyer, photo or video to the public gallery. Uploads appear in the footer and on the gallery page.",
-    fileLabel: "File",
-    fileHint: "JPG, PNG, WebP, MP4 or WebM. Maximum 50 MB.",
-    uploadCta: "Upload to gallery",
-    uploading: "Uploading…",
-    uploadSuccess: "Uploaded to the gallery.",
-    uploadError:
-      "Upload failed. Check the storage bucket name and its write policies.",
-    uploadTypeError: "Please choose an image or video file.",
-    uploadSizeError: "This file is too large. Please choose a file under 50 MB.",
-    mediaEyebrow: "Published",
-    mediaTitle: "Gallery media",
-    mediaEmpty: "No media published yet.",
-    mediaError:
-      "Unable to load media. Check the storage bucket and its public read policy.",
-    open: "Open",
-    delete: "Delete",
-    deleting: "Deleting…",
-    deleteError: "Unable to delete this file.",
-    storageSetup:
-      "Create a public Supabase Storage bucket named renia-gallery with a gallery folder.",
-    tabInbox: "Inbox",
-    tabTeam: "Manage Team",
-    teamEyebrow: "Team",
-    teamTitle: "Manage team",
-    teamIntro:
-      "Add a new team member. They will appear on the /team page immediately.",
-    teamNameLabel: "Name",
-    teamRoleLabel: "Role",
-    teamPhotoLabel: "Photo",
-    teamSave: "Add member",
-    teamSaving: "Saving…",
-    teamSaved: "Team member added.",
-    teamNameRequired: "Please enter a name.",
-    teamError: "Could not save the team member.",
-  },
 };
 
 const fr: typeof en = {
@@ -1135,102 +840,6 @@ const fr: typeof en = {
     stillText:
       "Écrivez-la dans le champ « commentaires » de votre demande de devis.",
     stillCta: "Obtenir un devis",
-  },
-
-  howItWorksPage: {
-    eyebrow: "Comment ça marche",
-    title: "Un processus simple et transparent.",
-    intro:
-      "De votre premier message au moment où vous retrouvez un espace soigné, chaque étape est claire, sereine et validée avec vous.",
-    processEyebrow: "Étape par étape",
-    processTitle: "À quoi ressemble une collaboration avec RENIA.",
-    steps: [
-      {
-        title: "Demandez votre devis",
-        body: "Présentez votre besoin. RENIA analyse votre demande.",
-        detail: "Quelques minutes suffisent. Sans engagement.",
-      },
-      {
-        title: "Recevez une proposition adaptée",
-        body: "Vous recevez une proposition adaptée.",
-        detail: "Généralement sous un jour ouvré.",
-      },
-      {
-        title: "Planifiez la prestation",
-        body: "La prestation est programmée.",
-        detail: "Un interlocuteur dédié du début à la fin.",
-      },
-      {
-        title: "L’équipe RENIA intervient",
-        body: "L’équipe RENIA intervient, puis la qualité et votre satisfaction sont suivies.",
-        detail: "Un suivi attentif après la visite.",
-      },
-    ],
-    includedEyebrow: "Et ensuite",
-    includedTitle: "Les détails qui font la différence.",
-    included: [
-      {
-        title: "Un interlocuteur dédié",
-        body: "Vous parlez à la même personne avant, pendant et après votre prestation.",
-      },
-      {
-        title: "Un périmètre clair",
-        body: "Chaque visite suit une checklist convenue. Vous savez exactement ce qui est inclus.",
-      },
-      {
-        title: "Un suivi attentif",
-        body: "Nous vérifions que le résultat correspond à vos attentes et ajustons la prestation selon vos besoins.",
-      },
-    ],
-    ctaEyebrow: "Prêts quand vous l’êtes",
-    ctaTitle: "Commençons.",
-    ctaText:
-      "Parlez-nous de votre espace et nous vous guiderons vers la prochaine étape, clairement et sans engagement.",
-    cta: "Demander un devis",
-  },
-
-  booking: {
-    eyebrow: "Demander une prestation",
-    title: "Choisissez une date. Nous nous occupons du reste.",
-    intro:
-      "Envoyez-nous la date et l’horaire souhaités. Nous vérifierons la disponibilité et confirmerons votre demande par message.",
-    formEyebrow: "Votre demande",
-    formTitle: "Dites-nous quand vous avez besoin de nous.",
-    serviceLabel: "Prestation",
-    serviceHome: "RENIA HOME — Ménage à domicile",
-    servicePro: "RENIA PRO — Locaux professionnels",
-    dateLabel: "Date souhaitée",
-    timeLabel: "Horaire souhaité",
-    nameLabel: "Nom complet",
-    namePlaceholder: "Votre nom complet",
-    phoneLabel: "Téléphone",
-    phonePlaceholder: "+33 6 00 00 00 00",
-    emailLabel: "Email",
-    emailPlaceholder: "vous@exemple.com",
-    submit: "Envoyer",
-    required: "Champs obligatoires",
-    opened:
-      "Votre demande a été enregistrée. WhatsApp et votre application email se sont ouverts avec votre message prêt à être envoyé.",
-    asideTitle: "Vous préférez échanger ?",
-    asideText:
-      "Envoyez-nous un message ou appelez-nous. Nous confirmerons la disponibilité et répondrons à toutes vos questions.",
-    whatsappButton: "Nous écrire sur WhatsApp",
-    note: "Il s’agit d’une demande, pas d’un rendez-vous confirmé. Nous confirmerons la disponibilité par message.",
-    stepsTitle: "Ce qui se passe après votre demande",
-    steps: [
-      {
-        title: "Nous confirmons la disponibilité",
-        body: "Nous vérifions la date et l’horaire demandés et vous répondons avec une confirmation.",
-      },
-      {
-        title: "Vous recevez les détails",
-        body: "Nous confirmons le périmètre, les modalités d’accès et ce que vous devez préparer.",
-      },
-      {
-        title: "Nous nous occupons du reste",
-        body: "Notre équipe arrive à l’heure et suit la checklist convenue.",
-      },
-    ],
   },
 
   about: {
@@ -1572,7 +1181,7 @@ const fr: typeof en = {
         body: "une solution sur mesure selon votre besoin.",
       },
     ],
-    teamImages: [
+    sectorImages: [
       "/images/pro-cleaning.jpg.png",
       "/images/pro-cleaning.jpg.png",
       "/images/pro-cleaning.jpg.png",
@@ -1655,8 +1264,6 @@ const fr: typeof en = {
     centerTitle: "Pourquoi choisir RENIA",
     centerText:
       "Une équipe formée et encadrée qui prend soin de votre espace comme du sien.",
-    centerPromise:
-      "Un espace bien entretenu change la façon dont on vit et travaille.",
     centerImageAlt: "Un intérieur propre et lumineux",
     engagements: [
       { title: "Écologique", body: "Des produits proposés en option." },
@@ -1693,141 +1300,6 @@ const fr: typeof en = {
     cta: "Nous contacter",
   },
 
-  auth: {
-    signInEyebrow: "Bon retour",
-    signInTitle: "Connectez-vous à Renia.",
-    signInIntro:
-      "Accédez à votre compte, suivez vos demandes et gérez vos services.",
-    signUpEyebrow: "Créer un compte",
-    signUpTitle: "Rejoignez Renia.",
-    signUpIntro:
-      "Créez votre compte pour réserver des prestations, suivre vos demandes et recevoir vos documents.",
-    nameLabel: "Nom complet",
-    namePlaceholder: "Marie Dupont",
-    emailLabel: "Email",
-    emailPlaceholder: "vous@exemple.com",
-    passwordLabel: "Mot de passe",
-    passwordPlaceholder: "Au moins 8 caractères",
-    signInCta: "Se connecter",
-    signUpCta: "Créer un compte",
-    loading: "Veuillez patienter…",
-    or: "Ou continuer avec",
-    google: "Continuer avec Google",
-    microsoft: "Continuer avec Microsoft",
-    apple: "Continuer avec Apple",
-    noAccount: "Pas encore de compte ?",
-    haveAccount: "Vous avez déjà un compte ?",
-    goSignUp: "S’inscrire",
-    goSignIn: "Se connecter",
-    forgot: "Mot de passe oublié ?",
-    resetSent:
-      "Si un compte existe pour cet email, un lien de réinitialisation est en route.",
-    checkEmail:
-      "Presque terminé. Vérifiez votre boîte mail pour confirmer votre adresse, puis connectez-vous.",
-    errorGeneric: "Une erreur est survenue. Veuillez réessayer.",
-    errorCredentials: "Email ou mot de passe incorrect.",
-    errorPassword: "Votre mot de passe doit contenir au moins 8 caractères.",
-    setup:
-      "L’authentification n’est pas encore configurée. Ajoutez vos identifiants Supabase dans .env.local et redémarrez le serveur.",
-    backHome: "Retour à l’accueil",
-    resetTitle: "Choisissez un nouveau mot de passe.",
-    resetIntro:
-      "Saisissez un nouveau mot de passe pour votre compte. Après enregistrement, vous reviendrez à l’écran de connexion.",
-    newPasswordLabel: "Nouveau mot de passe",
-    confirmPasswordLabel: "Confirmer le mot de passe",
-    resetCta: "Mettre à jour le mot de passe",
-    resetUpdating: "Mise à jour…",
-    resetSuccess: "Mot de passe mis à jour. Vous pouvez vous connecter.",
-    resetMismatch: "Les mots de passe ne correspondent pas.",
-    resetExpired: "Ce lien de récupération a expiré. Veuillez en demander un nouveau.",
-    resetBackToLogin: "Retour à la connexion",
-    legal:
-      "En continuant, vous acceptez nos conditions de vente et notre politique de confidentialité.",
-    secure: "Connexion sécurisée avec Supabase",
-    chooseUsernameEyebrow: "Dernière étape",
-    chooseUsernameTitle: "Choisissez votre nom d’utilisateur.",
-    chooseUsernameIntro:
-      "Bienvenue chez Renia ! Choisissez le nom d’utilisateur qui apparaîtra sur votre compte.",
-    usernameLabel: "Nom d’utilisateur",
-    usernamePlaceholder: "votrenom",
-    usernameHint:
-      "3 à 20 caractères. Lettres, chiffres et tirets bas uniquement.",
-    usernameCta: "Enregistrer",
-    usernameSaving: "Enregistrement…",
-    usernameTaken: "Ce nom d’utilisateur est déjà pris. Essayez-en un autre.",
-    usernameInvalid:
-      "Utilisez 3 à 20 caractères : lettres, chiffres ou tirets bas.",
-    usernameError:
-      "Impossible d’enregistrer votre nom d’utilisateur. Veuillez réessayer.",
-    usernameNoSession: "Votre session a expiré. Veuillez vous reconnecter.",
-    usernameSkip: "Passer pour le moment",
-  },
-
-  team: {
-    eyebrow: "Les visages du soin",
-    title: "Rencontrez l’équipe.",
-    intro:
-      "Une équipe proche, formée et encadrée, qui prend soin de votre espace comme du sien.",
-    philosophyEyebrow: "Notre philosophie",
-    philosophyTitle: "Le soin est un métier.",
-    philosophyBody:
-      "Chaque visite est préparée, vérifiée et suivie. La même équipe, les mêmes exigences et la même attention au détail, pour que vous sachiez toujours qui prend soin de votre espace.",
-    values: [
-      {
-        title: "Formée",
-        body: "Des équipes organisées et encadrées, formées à chaque type d’espace.",
-      },
-      {
-        title: "Encadrée",
-        body: "Des checklists claires et un contact dédié qui assure le suivi après chaque visite.",
-      },
-      {
-        title: "Discrète",
-        body: "Des équipes respectueuses qui travaillent en toute discrétion, chez vous ou dans vos locaux.",
-      },
-    ],
-    rosterEyebrow: "L’équipe",
-    rosterTitle: "Des visages de confiance.",
-    rosterIntro:
-      "Quelques-unes des personnes qui font Renia. Les profils complets arrivent bientôt.",
-    members: [
-      {
-        name: "Amélie Laurent",
-        role: "Fondatrice & relation client",
-        bio: "Amélie donne le ton : une écoute attentive, des devis clairs et un vrai sens du détail.",
-        image: "/images/hero.jpg.png",
-      },
-      {
-        name: "Sofia Benali",
-        role: "Responsable RENIA HOME",
-        bio: "Sofia coordonne les équipes maison et veille à ce que chaque visite suive la checklist convenue.",
-        image: "/images/home-cleaning.jpg.png",
-      },
-      {
-        name: "Marc Dubois",
-        role: "Responsable RENIA PRO",
-        bio: "Marc accompagne bureaux, commerces et locations courte durée avec discrétion et précision.",
-        image: "/images/pro-cleaning.jpg.png",
-      },
-      {
-        name: "Inès Moreau",
-        role: "Qualité & suivi client",
-        bio: "Inès vérifie les détails, recueille les retours et garde chaque promesse sur les rails.",
-        image: "/images/flyer-1-layout.jpg.jpg",
-      },
-    ],
-    joinEyebrow: "Rejoignez-nous",
-    joinTitle: "Envie de travailler avec nous ?",
-    joinText:
-      "Nous rencontrons toujours avec plaisir des personnes qui aiment le travail bien fait. Parlez-nous de votre expérience et nous reviendrons vers vous.",
-    joinCta: "Nous contacter",
-    ctaEyebrow: "Prêts à nous rencontrer ?",
-    ctaTitle: "Parlons de votre espace.",
-    ctaText:
-      "Dites-nous ce dont vous avez besoin et nous vous proposerons la prestation adaptée, clairement et sans engagement.",
-    cta: "Demander un devis",
-  },
-
   gallery: {
     eyebrow: "Nos réalisations",
     title: "Notre galerie.",
@@ -1847,75 +1319,9 @@ const fr: typeof en = {
       "Parlez-nous de votre espace et nous vous proposerons la prestation adaptée, clairement et sans engagement.",
     cta: "Demander un devis",
     setup:
-      "La galerie apparaîtra dès que des médias seront ajoutés dans Supabase Storage.",
+      "La galerie apparaîtra dès que des médias seront ajoutés.",
   },
 
-  admin: {
-    eyebrow: "Admin",
-    title: "Tableau de bord",
-    intro:
-      "Gérez les demandes reçues et publiez vos réalisations dans la galerie publique.",
-    signInTitle: "Connexion administrateur requise",
-    signInText:
-      "Connectez-vous avec votre compte administrateur pour accéder au tableau de bord.",
-    signInCta: "Aller à la connexion",
-    deniedTitle: "Accès restreint",
-    deniedText:
-      "Ce compte n’a pas les droits administrateur. Ajoutez votre email dans NEXT_PUBLIC_ADMIN_EMAILS ou attribuez un rôle admin à l’utilisateur dans Supabase.",
-    signOut: "Se déconnecter",
-    welcome: "Connecté en tant que",
-    messagesEyebrow: "Boîte de réception",
-    messagesTitle: "Messages et devis récents",
-    messagesEmpty: "Aucun message pour le moment.",
-    messagesError:
-      "Impossible de charger les messages. Vérifiez la table quote_requests et ses politiques de sécurité.",
-    refresh: "Actualiser",
-    name: "Nom",
-    service: "Service",
-    date: "Date",
-    phone: "Téléphone",
-    email: "Email",
-    message: "Message",
-    uploadEyebrow: "Publier",
-    uploadTitle: "Ajouter une réalisation",
-    uploadText:
-      "Ajoutez un flyer, une photo ou une vidéo à la galerie publique. Les fichiers apparaissent dans le pied de page et sur la page galerie.",
-    fileLabel: "Fichier",
-    fileHint: "JPG, PNG, WebP, MP4 ou WebM. 50 Mo maximum.",
-    uploadCta: "Envoyer dans la galerie",
-    uploading: "Envoi…",
-    uploadSuccess: "Ajouté à la galerie.",
-    uploadError:
-      "Échec de l’envoi. Vérifiez le nom du bucket et ses politiques d’écriture.",
-    uploadTypeError: "Veuillez choisir une image ou une vidéo.",
-    uploadSizeError:
-      "Ce fichier est trop lourd. Choisissez un fichier de moins de 50 Mo.",
-    mediaEyebrow: "Publié",
-    mediaTitle: "Médias de la galerie",
-    mediaEmpty: "Aucun média publié pour le moment.",
-    mediaError:
-      "Impossible de charger les médias. Vérifiez le bucket et sa politique de lecture publique.",
-    open: "Ouvrir",
-    delete: "Supprimer",
-    deleting: "Suppression…",
-    deleteError: "Impossible de supprimer ce fichier.",
-    storageSetup:
-      "Créez un bucket Supabase Storage public nommé renia-gallery avec un dossier gallery.",
-    tabInbox: "Boîte de réception",
-    tabTeam: "Gérer l’équipe",
-    teamEyebrow: "Équipe",
-    teamTitle: "Gérer l’équipe",
-    teamIntro:
-      "Ajoutez un nouveau membre. Il apparaîtra sur la page /team immédiatement.",
-    teamNameLabel: "Nom",
-    teamRoleLabel: "Rôle",
-    teamPhotoLabel: "Photo",
-    teamSave: "Ajouter le membre",
-    teamSaving: "Enregistrement…",
-    teamSaved: "Membre ajouté.",
-    teamNameRequired: "Veuillez saisir un nom.",
-    teamError: "Impossible d’enregistrer le membre de l’équipe.",
-  },
 };
 
 export type Translation = typeof en;

@@ -1,15 +1,3 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
-
-export const GALLERY_BUCKET = "renia-gallery";
-
-export const GALLERY_FOLDER = "gallery";
-export const GALLERY_TEAM_FOLDER = "team";
-
-export const MAX_MEDIA_BYTES = 50 * 1024 * 1024;
-
-export const MEDIA_ACCEPT =
-  "image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm,video/quicktime";
-
 export type MediaKind = "image" | "video";
 
 export type MediaItem = {
@@ -40,83 +28,6 @@ export function getMediaKind(
   return null;
 }
 
-export function sanitizeFileName(name: string): string {
-  const cleaned = name
-    .normalize("NFKD")
-    .replace(/[^\w.\-]+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-    .toLowerCase();
-
-  return cleaned || "media";
-}
-
-export function buildStoragePath(fileName: string, folder = GALLERY_FOLDER): string {
-  const unique = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  return `${folder}/${unique}-${sanitizeFileName(fileName)}`;
-}
-
-export async function listRecentMedia(
-  supabase: SupabaseClient,
-  limit = 24,
-): Promise<MediaItem[]> {
-  const { data, error } = await supabase.storage
-    .from(GALLERY_BUCKET)
-    .list(GALLERY_FOLDER, {
-      limit,
-      offset: 0,
-      sortBy: { column: "created_at", order: "desc" },
-    });
-
-  if (error) {
-    throw error;
-  }
-
-  return (data ?? [])
-    .filter((entry) => entry.name && !entry.name.startsWith("."))
-    .map((entry) => {
-      const mimeType =
-        (entry.metadata as { mimetype?: string } | null)?.mimetype ?? null;
-      const kind = getMediaKind(entry.name, mimeType);
-
-      if (!kind) {
-        return null;
-      }
-
-      const path = `${GALLERY_FOLDER}/${entry.name}`;
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from(GALLERY_BUCKET).getPublicUrl(path);
-
-      return {
-        name: entry.name,
-        path,
-        url: publicUrl,
-        kind,
-        createdAt: entry.created_at ?? null,
-        size:
-          typeof entry.metadata?.size === "number"
-            ? entry.metadata.size
-            : null,
-        mimeType,
-      } satisfies MediaItem;
-    })
-    .filter((item): item is MediaItem => item !== null);
-}
-
-export function extractStoragePathFromUrl(
-  url: string | null | undefined,
-): string | null {
-  if (!url) return null;
-  try {
-    const marker = `/storage/v1/object/public/${GALLERY_BUCKET}/`;
-    const idx = url.indexOf(marker);
-    if (idx === -1) return null;
-    return decodeURIComponent(url.slice(idx + marker.length));
-  } catch {
-    return null;
-  }
-}
 export const FALLBACK_MEDIA: MediaItem[] = [
   {
     name: "hero",

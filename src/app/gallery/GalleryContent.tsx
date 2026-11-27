@@ -3,6 +3,7 @@
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import CtaBand from "@/components/ui/CtaBand";
 import PageHero from "@/components/ui/PageHero";
+import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -21,27 +22,23 @@ export default function GalleryContent() {
         secondary={{ label: t.nav.whyRenia, href: "/#why" }}
       />
 
-      <section className="bg-cream py-16 lg:py-32">
-        <div className="shell">
-          <SectionHeading
-            eyebrow={gallery.eyebrow}
-            title={gallery.recentTitle}
-            intro={gallery.recentIntro}
-          />
-          <div className="mt-12 lg:mt-16">
-            <GalleryGrid />
-          </div>
+      <Section tone="cream">
+        <SectionHeading
+          eyebrow={gallery.eyebrow}
+          title={gallery.recentTitle}
+          intro={gallery.recentIntro}
+        />
+        <div className="mt-12 lg:mt-16">
+          <GalleryGrid />
         </div>
-      </section>
+      </Section>
 
       <CtaBand
         eyebrow={gallery.ctaEyebrow}
         title={gallery.ctaTitle}
         text={gallery.ctaText}
         primaryLabel={gallery.cta}
-        primaryHref="/contact"
-        secondaryLabel={t.nav.book}
-        secondaryHref="/book"
+        primaryHref="/contact#quote"
       />
     </main>
   );

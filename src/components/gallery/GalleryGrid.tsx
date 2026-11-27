@@ -63,16 +63,16 @@ export default function GalleryGrid() {
             type="button"
             onClick={() => setActiveIndex(index)}
             aria-label={`${item.kind === "video" ? t.gallery.videoLabel : t.gallery.imageLabel} — ${item.name}`}
-            className="group overflow-hidden rounded-2xl bg-white text-left shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-line/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            className="group overflow-hidden rounded-2xl bg-white text-left shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-line/60 transition-shadow duration-200 hover:shadow-lg"
           >
-            <span className="relative block aspect-[4/3] overflow-hidden bg-forest">
+            <span className="relative block aspect-[4/3] overflow-hidden bg-green-light">
               {item.kind === "video" ? (
                 <video
                   src={item.url}
                   muted
                   playsInline
                   preload="metadata"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
               ) : (
                 /* eslint-disable-next-line @next/next/no-img-element */
@@ -80,15 +80,15 @@ export default function GalleryGrid() {
                   src={item.url}
                   alt=""
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
               )}
 
-              <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest/45 via-transparent to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-40" />
+              <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-main/45 via-transparent to-transparent" />
 
               {item.kind === "video" ? (
                 <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-forest/70 text-cream shadow-lg backdrop-blur-sm">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-green-main text-cream shadow-lg backdrop-blur-sm">
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 24 24"
@@ -102,14 +102,14 @@ export default function GalleryGrid() {
             </span>
 
             <span className="flex items-center justify-between gap-3 px-4 py-3">
-              <span className="truncate text-[11px] uppercase tracking-[0.18em] text-stone">
+              <span className="truncate text-[11px] uppercase tracking-[0.18em] font-semibold text-ink">
                 {item.kind === "video"
                   ? t.gallery.videoLabel
                   : t.gallery.imageLabel}
               </span>
               <span
                 aria-hidden="true"
-                className="text-sm text-gold transition-transform duration-300 group-hover:translate-x-0.5"
+                className="text-sm text-gold"
               >
                 ↗
               </span>
@@ -119,7 +119,7 @@ export default function GalleryGrid() {
       </div>
 
       {error ? (
-        <p className="mt-8 rounded-xl bg-gold/10 px-4 py-3 text-base leading-relaxed text-stone">
+        <p className="mt-8 rounded-xl bg-gold/10 px-4 py-3 text-base leading-relaxed font-semibold text-ink">
           {t.gallery.setup}
         </p>
       ) : null}
@@ -130,7 +130,7 @@ export default function GalleryGrid() {
           aria-modal="true"
           aria-label={activeItem.name}
           onClick={close}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-forest-deep/95 p-4 backdrop-blur-sm sm:p-8"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-green-dark/95 p-4 backdrop-blur-sm sm:p-8"
         >
           <button
             type="button"
@@ -139,7 +139,7 @@ export default function GalleryGrid() {
               close();
             }}
             aria-label={t.gallery.close}
-            className="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 bg-forest/70 text-cream transition-colors hover:border-gold hover:text-gold"
+            className="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 bg-green-main/70 text-cream transition-colors hover:border-gold hover:text-gold"
           >
             <svg
               aria-hidden="true"
@@ -161,7 +161,7 @@ export default function GalleryGrid() {
                 showPrevious();
               }}
               aria-label={t.gallery.previous}
-              className="absolute left-2 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 bg-forest/70 text-cream transition-colors hover:border-gold hover:text-gold sm:left-6"
+              className="absolute left-2 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 bg-green-main/70 text-cream transition-colors hover:border-gold hover:text-gold sm:left-6"
             >
               <svg
                 aria-hidden="true"
@@ -200,7 +200,7 @@ export default function GalleryGrid() {
               />
             )}
 
-            <div className="flex items-center justify-between gap-4 px-5 py-4 text-cream/70">
+            <div className="flex items-center justify-between gap-4 px-5 py-4 text-white font-semibold">
               <span className="truncate text-xs uppercase tracking-[0.2em]">
                 {activeItem.name}
               </span>
@@ -218,7 +218,7 @@ export default function GalleryGrid() {
                 showNext();
               }}
               aria-label={t.gallery.next}
-              className="absolute right-2 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 bg-forest/70 text-cream transition-colors hover:border-gold hover:text-gold sm:right-6"
+              className="absolute right-2 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-cream/25 bg-green-main/70 text-cream transition-colors hover:border-gold hover:text-gold sm:right-6"
             >
               <svg
                 aria-hidden="true"

@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +22,7 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="container footer-grid">
+      <Container className="footer-grid">
         <div className="footer-brand">
           <Link href="/" className="footer-logo" aria-label="Renia Services — Accueil">
             <Image src="/images/logo.png.png" alt="Renia Services" fill sizes="180px" />
@@ -61,9 +62,9 @@ export default function Footer() {
             {t.footer.quote}
           </Link>
         </div>
-      </div>
+      </Container>
 
-      <div className="container footer-bottom">
+      <Container className="footer-bottom">
         <p>
           © {year} Renia Services. {t.footer.rights}
         </p>
@@ -73,7 +74,7 @@ export default function Footer() {
           <Link href="/cgv">{t.footer.terms}</Link>
         </nav>
         <p className="footer-signature">{t.footer.signature}</p>
-      </div>
+      </Container>
     </footer>
   );
 }

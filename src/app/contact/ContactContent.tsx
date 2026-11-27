@@ -6,6 +6,8 @@ import { useState } from "react";
 import HomeForm from "@/components/forms/HomeForm";
 import ProForm from "@/components/forms/ProForm";
 import PageHero from "@/components/ui/PageHero";
+import Section from "@/components/ui/Section";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   buildWhatsAppUrl,
@@ -54,7 +56,7 @@ function SocialIcon({ name }: { name: string }) {
     return (
       <svg
         viewBox="0 0 24 24"
-        fill="currentColor"
+        fill="none"
         aria-hidden="true"
         className="h-4 w-4"
       >
@@ -66,7 +68,7 @@ function SocialIcon({ name }: { name: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="none"
       aria-hidden="true"
       className="h-4 w-4"
     >
@@ -138,10 +140,10 @@ function QrPlaceholder({ label, note }: { label: string; note: string }) {
           />
         ))}
       </svg>
-      <p className="mt-3 max-w-[11rem] text-[10px] uppercase leading-relaxed tracking-[0.14em] text-forest/60">
+      <p className="mt-3 max-w-[11rem] text-[10px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-ink">
         {note}
       </p>
-      <p className="mt-1 max-w-[11rem] text-[10px] leading-snug text-stone">
+      <p className="mt-1 max-w-[11rem] text-[10px] leading-snug font-semibold text-ink">
         {label}
       </p>
     </div>
@@ -164,31 +166,28 @@ export default function ContactContent() {
         intro={page.intro}
         primary={{
           label: page.formEyebrow,
-          href: "#contact-form",
+          href: "#quote",
         }}
       />
 
       {/* Contact details */}
-      <section id="whatsapp" className="scroll-mt-20 bg-cream py-16 lg:py-32">
-        <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <Section id="whatsapp" tone="cream" className="scroll-mt-20">
+        <SectionHeading eyebrow={page.detailsEyebrow} title={page.detailsTitle} />
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <p className="eyebrow">{page.detailsEyebrow}</p>
-            <h2 className="mt-5 max-w-md text-balance font-serif text-[clamp(2rem,4.2vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.02em]">
-              {page.detailsTitle}
-            </h2>
-            <div className="mt-10 rounded-3xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-gold">
+            <div className="h-full rounded-3xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-9">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-ink">
                 {page.whatsappTitle}
               </p>
-              <p className="mt-4 text-base leading-relaxed text-stone">
+              <p className="mt-4 text-base font-semibold leading-relaxed text-ink">
                 {page.whatsappText}
               </p>
-              {/* Fixed Button: Removed w-full, added inline-flex */}
               <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-dark mt-6 inline-flex items-center gap-2 relative z-10 pointer-events-auto"
+                className="btn btn-dark relative z-10 mt-6 inline-flex items-center gap-2 pointer-events-auto"
               >
                 <WhatsAppIcon />
                 {page.whatsappButton}
@@ -198,8 +197,8 @@ export default function ContactContent() {
 
           <div className="lg:col-span-7">
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-xs uppercase tracking-[0.22em] text-stone">
+              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-xl sm:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink">
                   {page.areaLabel}
                 </p>
                 <p className="mt-3 font-serif text-2xl leading-tight">
@@ -207,32 +206,32 @@ export default function ContactContent() {
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-xs uppercase tracking-[0.22em] text-stone">
+              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-xl sm:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink">
                   {page.phoneLabel}
                 </p>
                 <a
                   href={`tel:${CONTACT_PHONE}`}
-                  className="mt-3 block font-serif text-2xl leading-tight transition-colors hover:text-forest"
+                  className="mt-3 block font-serif text-2xl leading-tight transition-colors hover:text-green-main"
                 >
                   {page.phoneValue}
                 </a>
               </div>
 
-              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-xs uppercase tracking-[0.22em] text-stone">
+              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-xl sm:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink">
                   {page.emailLabel}
                 </p>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="mt-3 block break-all font-serif text-2xl leading-tight transition-colors hover:text-forest"
+                  className="mt-3 block break-all font-serif text-2xl leading-tight transition-colors hover:text-green-main"
                 >
                   {page.emailValue}
                 </a>
               </div>
 
-              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
-                <p className="text-xs uppercase tracking-[0.22em] text-stone">
+              <div className="rounded-2xl bg-white p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 hover:shadow-xl sm:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink">
                   {page.hoursLabel}
                 </p>
                 <p className="mt-3 font-serif text-2xl leading-tight">
@@ -241,100 +240,98 @@ export default function ContactContent() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-white/70 px-6 py-5 text-base text-stone shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-white px-6 py-5 text-base font-semibold text-ink shadow-[0_4px_20px_rgb(0,0,0,0.03)] sm:flex-row sm:items-center sm:justify-between">
               <p>{t.footer.areaLabel} — {t.footer.area}</p>
-              <Link href="/contact#contact-form" className="pill-link">
+              <Link href="/contact#quote" className="pill-link">
                 {page.formEyebrow} →
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Flyer 2 — Let's stay in touch */}
-      <section className="bg-cream pb-16 lg:pb-32">
-        <div className="shell">
-          <div className="relative overflow-hidden rounded-3xl bg-forest-deep p-8 text-cream shadow-[0_24px_70px_rgba(8,35,20,0.28)] sm:p-12 lg:p-16">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_15%,rgba(197,160,89,0.16),transparent_55%)]"
-            />
+      <Section tone="cream" spacing="compact">
+        <div className="relative overflow-hidden rounded-3xl bg-green-dark p-8 text-white shadow-[0_24px_70px_rgba(8,35,20,0.28)] sm:p-12 lg:p-16">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_15%,rgba(197,160,89,0.16),transparent_55%)]"
+          />
 
-            <div className="relative grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
-              <div className="lg:col-span-7">
-                <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
-                  {card.eyebrow}
-                </p>
-                <h2 className="mt-5 max-w-xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-normal leading-[1.03] tracking-[-0.02em]">
-                  {card.title}
-                </h2>
+          <div className="relative grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+            <div className="lg:col-span-7">
+              <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
+                {card.eyebrow}
+              </p>
+              <h2 className="mt-5 max-w-2xl text-balance font-serif text-[clamp(2rem,4.4vw,4rem)] font-semibold leading-[1.03] tracking-[-0.02em]">
+                {card.title}
+              </h2>
 
-                <dl className="mt-10 space-y-6">
-                  <div>
-                    <dt className="text-[11px] uppercase tracking-[0.24em] text-cream/45">
-                      {card.phoneLabel}
-                    </dt>
-                    <dd className="mt-2">
-                      <a
-                        href={`tel:${CONTACT_PHONE}`}
-                        className="inline-flex items-center gap-3 font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
-                      >
-                        {CONTACT_PHONE_DISPLAY}
-                      </a>
-                    </dd>
-                  </div>
+              <dl className="mt-10 space-y-6">
+                <div>
+                  <dt className="text-[11px] uppercase tracking-[0.24em] text-white font-semibold">
+                    {card.phoneLabel}
+                  </dt>
+                  <dd className="mt-2">
+                    <a
+                      href={`tel:${CONTACT_PHONE}`}
+                      className="inline-flex items-center gap-3 font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
+                    >
+                      {CONTACT_PHONE_DISPLAY}
+                    </a>
+                  </dd>
+                </div>
 
-                  <div>
-                    <dt className="text-[11px] uppercase tracking-[0.24em] text-cream/45">
-                      {card.emailLabel}
-                    </dt>
-                    <dd className="mt-2">
-                      <a
-                        href={`mailto:${CONTACT_EMAIL}`}
-                        className="inline-flex items-center gap-3 break-all font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
-                      >
-                        {CONTACT_EMAIL}
-                      </a>
-                    </dd>
-                  </div>
+                <div>
+                  <dt className="text-[11px] uppercase tracking-[0.24em] text-white font-semibold">
+                    {card.emailLabel}
+                  </dt>
+                  <dd className="mt-2">
+                    <a
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="inline-flex items-center gap-3 break-all font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
+                    >
+                      {CONTACT_EMAIL}
+                    </a>
+                  </dd>
+                </div>
 
-                  <div>
-                    <dt className="text-[11px] uppercase tracking-[0.24em] text-cream/45">
-                      {card.websiteLabel}
-                    </dt>
-                    <dd className="mt-2">
-                      <a
-                        href={WEBSITE_URL}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-3 font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
-                      >
-                        {WEBSITE_DISPLAY}
-                      </a>
-                    </dd>
-                  </div>
-                </dl>
+                <div>
+                  <dt className="text-[11px] uppercase tracking-[0.24em] text-white font-semibold">
+                    {card.websiteLabel}
+                  </dt>
+                  <dd className="mt-2">
+                    <a
+                      href={WEBSITE_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-3 font-serif text-2xl leading-tight text-cream transition-colors hover:text-gold sm:text-3xl"
+                    >
+                      {WEBSITE_DISPLAY}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
 
-                <p className="mt-10 text-xs uppercase tracking-[0.24em] text-cream/35">
-                  {card.signature}
-                </p>
-              </div>
+              <p className="mt-10 text-xs uppercase tracking-[0.24em] text-white font-semibold">
+                {card.signature}
+              </p>
+            </div>
 
-              <div className="flex flex-col items-center gap-6 lg:col-span-5 lg:items-end">
-                <QrPlaceholder label={card.qrLabel} note={card.qrPlaceholder} />
+            <div className="flex flex-col items-center gap-6 lg:col-span-5 lg:items-end">
+              <QrPlaceholder label={card.qrLabel} note={card.qrPlaceholder} />
 
-                <p className="max-w-xs text-center font-serif text-2xl italic leading-snug text-cream/85 lg:text-right">
-                  {card.tagline}
-                </p>
-              </div>
+              <p className="max-w-sm text-center font-serif text-2xl italic leading-snug text-white font-semibold lg:text-right">
+                {card.tagline}
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Map & social */}
-      <section className="bg-cream pb-16 lg:pb-32">
-        <div className="shell grid gap-6 lg:grid-cols-12">
+      <Section tone="cream" spacing="compact">
+        <div className="grid gap-6 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <div className="relative flex min-h-[360px] flex-col items-center justify-center overflow-hidden rounded-3xl bg-bone p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:min-h-[420px] sm:p-12">
               <div
@@ -342,13 +339,13 @@ export default function ContactContent() {
                 className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(15,58,32,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,58,32,0.06)_1px,transparent_1px)] [background-size:44px_44px]"
               />
               <div className="relative flex flex-col items-center text-center">
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-forest shadow-[0_10px_30px_rgba(15,58,32,0.12)]">
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-green-main shadow-[0_10px_30px_rgba(15,58,32,0.12)]">
                   <MapPinIcon />
                 </span>
                 <p className="mt-6 font-serif text-2xl leading-tight sm:text-3xl">
                   {page.mapPlaceholder}
                 </p>
-                <p className="mt-3 max-w-md text-base leading-relaxed text-stone">
+                <p className="mt-3 max-w-md text-base leading-relaxed font-semibold text-ink">
                   {page.mapText}
                 </p>
               </div>
@@ -361,7 +358,7 @@ export default function ContactContent() {
               <h2 className="mt-4 font-serif text-2xl leading-tight">
                 {page.mapTitle}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-stone">
+              <p className="mt-4 text-base leading-relaxed font-semibold text-ink">
                 {page.mapText}
               </p>
               <a
@@ -374,7 +371,7 @@ export default function ContactContent() {
 
             <div className="rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <p className="eyebrow">{page.socialTitle}</p>
-              <p className="mt-4 text-base leading-relaxed text-stone">
+              <p className="mt-4 text-base leading-relaxed font-semibold text-ink">
                 {page.socialText}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -385,7 +382,7 @@ export default function ContactContent() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full bg-cream text-forest shadow-[0_6px_20px_rgb(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-forest hover:text-gold hover:shadow-lg"
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-cream text-green-main shadow-[0_6px_20px_rgb(0,0,0,0.05)] transition-colors duration-200 hover:bg-green-main hover:text-gold"
                   >
                     <SocialIcon name={social.label} />
                   </a>
@@ -394,26 +391,17 @@ export default function ContactContent() {
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Contact form */}
-      <section
-        id="contact-form"
-        className="relative z-50 scroll-mt-20 bg-white py-16 lg:py-32"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <p className="eyebrow">{page.formEyebrow}</p>
-            <h2 className="mt-5 max-w-sm text-balance font-serif text-[clamp(2rem,4vw,3.5rem)] font-normal leading-[1.04] tracking-[-0.02em]">
-              {t.forms.formTitle}
-            </h2>
-            <p className="mt-6 max-w-sm text-base leading-relaxed text-stone">
-              {t.forms.formIntro}
-            </p>
+      <Section id="quote" tone="white" className="relative z-50 scroll-mt-20">
+        <SectionHeading
+          eyebrow={page.formEyebrow}
+          title={t.forms.formTitle}
+          intro={t.forms.formIntro}
+        />
 
-          </div>
-
-          <div className="relative z-50 lg:col-span-8 pointer-events-auto">
+        <div className="relative z-50 mx-auto mt-12 max-w-4xl pointer-events-auto">
             <div className="relative z-50 rounded-3xl bg-bone p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] pointer-events-auto sm:p-10">
               <div className="mb-10 relative z-50 pointer-events-auto">
                 <p className="field-label">{t.forms.youAre}</p>
@@ -426,11 +414,7 @@ export default function ContactContent() {
                     type="button"
                     onClick={() => setAudience("home")}
                     aria-pressed={audience === "home"}
-                    className={`min-h-[3.5rem] w-full rounded-2xl border px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
-                      audience === "home"
-                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)]"
-                        : "border-brand/20 bg-white text-brand hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft"
-                    }`}
+                    className={`min-h-[3.5rem] w-full rounded-2xl border px-5 py-3.5 text-sm font-extrabold transition-colors duration-200 relative z-50 pointer-events-auto sm:text-base ${audience === "home" ? "border-green-main bg-green-main text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)]" : "border-green-main bg-white text-green-main hover:-translate-y-0.5 hover:border-green-main hover:bg-green-light"}`}
                   >
                     {t.forms.individual}
                   </button>
@@ -438,11 +422,7 @@ export default function ContactContent() {
                     type="button"
                     onClick={() => setAudience("pro")}
                     aria-pressed={audience === "pro"}
-                    className={`min-h-[3.5rem] w-full rounded-2xl border px-5 py-3.5 text-sm font-extrabold transition-all duration-200 active:scale-[0.98] relative z-50 pointer-events-auto sm:text-base ${
-                      audience === "pro"
-                        ? "border-brand bg-brand text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)]"
-                        : "border-brand/20 bg-white text-brand hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft"
-                    }`}
+                    className={`min-h-[3.5rem] w-full rounded-2xl border px-5 py-3.5 text-sm font-extrabold transition-colors duration-200 relative z-50 pointer-events-auto sm:text-base ${audience === "pro" ? "border-green-main bg-green-main text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)]" : "border-green-main bg-white text-green-main hover:-translate-y-0.5 hover:border-green-main hover:bg-green-light"}`}
                   >
                     {t.forms.professional}
                   </button>
@@ -455,10 +435,8 @@ export default function ContactContent() {
                 <ProForm key="pro" />
               )}
             </div>
-          </div>
         </div>
-      </section>
-
+      </Section>
     </main>
   );
 }

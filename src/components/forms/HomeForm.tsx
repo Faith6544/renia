@@ -4,10 +4,6 @@ import { useState } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
 import { buildWhatsAppUrl, CONTACT_EMAIL } from "@/lib/site";
-import {
-  getSupabaseBrowserClient,
-  isSupabaseConfigured,
-} from "@/lib/supabase/client";
 
 const INTERACTIVE = "relative z-50 pointer-events-auto";
 const PHONE_REGEX = /^(?:\+33|0)[1-9](?:[ .-]?\d{2}){4}$/;
@@ -84,27 +80,6 @@ export default function HomeForm() {
     ].join("\n");
   };
 
-  const saveToDatabase = async (message: string) => {
-    if (!isSupabaseConfigured()) return;
-
-    try {
-      const supabase = getSupabaseBrowserClient();
-      const { error } = await supabase.from("quote_requests").insert({
-        full_name: form.fullName.trim(),
-        email: form.email.trim().toLowerCase(),
-        phone: form.phone.trim(),
-        service_type: "renia_home",
-        message,
-      });
-
-      if (error) {
-        console.error("RENIA HOME request failed:", error);
-      }
-    } catch (error) {
-      console.error("RENIA HOME request failed:", error);
-    }
-  };
-
   const handleSend = async () => {
     const requiredFieldsComplete =
       form.fullName.trim() &&
@@ -154,8 +129,6 @@ export default function HomeForm() {
     setStatus("sending");
 
     const message = buildMessage();
-    await saveToDatabase(message);
-
     const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
       t.forms.formTitle,
     )}&body=${encodeURIComponent(message)}`;
@@ -180,7 +153,7 @@ export default function HomeForm() {
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="home-full-name" className="field-label">
-              {t.forms.fullName} <span className="text-stone/50">*</span>
+              {t.forms.fullName} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="home-full-name"
@@ -197,7 +170,7 @@ export default function HomeForm() {
 
           <div>
             <label htmlFor="home-phone" className="field-label">
-              {t.forms.phone} <span className="text-stone/50">*</span>
+              {t.forms.phone} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="home-phone"
@@ -215,7 +188,7 @@ export default function HomeForm() {
 
           <div>
             <label htmlFor="home-email" className="field-label">
-              {t.forms.email} <span className="text-stone/50">*</span>
+              {t.forms.email} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="home-email"
@@ -232,7 +205,7 @@ export default function HomeForm() {
 
           <div>
             <label htmlFor="home-postal-code" className="field-label">
-              {t.forms.postalCode} <span className="text-stone/50">*</span>
+              {t.forms.postalCode} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="home-postal-code"
@@ -250,23 +223,6 @@ export default function HomeForm() {
               placeholder="75001"
             />
           </div>
-
-          <div className="sm:col-span-2">
-            <label htmlFor="home-city" className="field-label">
-              {t.forms.city} <span className="text-stone/50">*</span>
-            </label>
-            <input
-              id="home-city"
-              name="city"
-              type="text"
-              autoComplete="address-level2"
-              required
-              value={form.city}
-              onChange={(event) => updateField("city", event.target.value)}
-              className={`field-input ${INTERACTIVE}`}
-              placeholder={t.forms.city}
-            />
-          </div>
         </div>
       </fieldset>
 
@@ -278,7 +234,7 @@ export default function HomeForm() {
             <label
               key={value}
               className={`card-soft card-lift flex cursor-pointer items-center gap-4 p-5 ${INTERACTIVE} ${
-                form.propertyType === value ? "ring-2 ring-brand" : ""
+                form.propertyType === value ? "ring-2 ring-green-main" : ""
               }`}
             >
               <input
@@ -299,7 +255,7 @@ export default function HomeForm() {
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="home-surface" className="field-label">
-              {t.forms.surfaceArea} <span className="text-stone/50">*</span>
+              {t.forms.surfaceArea} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="home-surface"
@@ -318,7 +274,7 @@ export default function HomeForm() {
 
           <div>
             <label htmlFor="home-bathrooms" className="field-label">
-              {t.forms.bathrooms} <span className="text-stone/50">*</span>
+              {t.forms.bathrooms} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="home-bathrooms"
@@ -343,7 +299,7 @@ export default function HomeForm() {
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="home-service" className="field-label">
-              {t.forms.serviceType} <span className="text-stone/50">*</span>
+              {t.forms.serviceType} <span className="font-semibold text-ink">*</span>
             </label>
             <select
               id="home-service"
@@ -365,7 +321,7 @@ export default function HomeForm() {
 
           <div>
             <label htmlFor="home-frequency" className="field-label">
-              {t.forms.frequency} <span className="text-stone/50">*</span>
+              {t.forms.frequency} <span className="font-semibold text-ink">*</span>
             </label>
             <select
               id="home-frequency"
@@ -402,7 +358,7 @@ export default function HomeForm() {
         </div>
       </fieldset>
 
-      <div className={`mt-10 rounded-2xl bg-brand-soft/70 p-6 ${INTERACTIVE}`}>
+      <div className={`mt-10 rounded-2xl bg-green-light p-6 ${INTERACTIVE}`}>
         <h3 className="text-lg font-extrabold">{t.forms.ackTitle}</h3>
         <label className={`mt-4 flex cursor-pointer items-start gap-4 ${INTERACTIVE}`}>
           <input
@@ -412,7 +368,7 @@ export default function HomeForm() {
             onChange={(event) => updateField("consent", event.target.checked)}
             className={`mt-1 h-5 w-5 shrink-0 accent-brand ${INTERACTIVE}`}
           />
-          <span className="text-base font-medium leading-relaxed text-stone">
+          <span className="text-base font-semibold leading-relaxed text-ink">
             {t.forms.ackText}
           </span>
         </label>
@@ -427,7 +383,7 @@ export default function HomeForm() {
         </button>
 
         {status === "sent" ? (
-          <p role="status" className={`mt-5 text-base font-semibold text-brand ${INTERACTIVE}`}>
+          <p role="status" className={`mt-5 text-base font-semibold text-green-main ${INTERACTIVE}`}>
             {t.forms.confirmation}
           </p>
         ) : null}

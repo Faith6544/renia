@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +42,7 @@ export default function Navbar() {
 
   return (
     <header className="site-header">
-      <div className="container site-header-inner">
+      <Container className="site-header-inner">
         <Link href="/" className="brand" aria-label="Renia Services — Accueil">
           <span className="brand-mark">
             <Image src="/images/logo.png.png" alt="Renia Services" fill sizes="48px" priority />
@@ -94,7 +95,7 @@ export default function Navbar() {
             <span />
           </button>
         </div>
-      </div>
+      </Container>
     </header>
   );
 }

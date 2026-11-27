@@ -1,28 +1,32 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #0f3a20;
+  --color-background: #f9f6f0;
+  --color-foreground: #1a1a1a;
 
-  /* Renia premium palette: forest green and gold. */
-  --color-brand: #0f3a20;
-  --color-brand-deep: #0b2c18;
-  --color-brand-soft: #f9f6f0;
+  /* Renia green shades: light tint for dark text, main and dark for white text. */
+  --color-green-light: #d8ecd9;
+  --color-green-main: #0f3a20;
+  --color-green-dark: #082314;
+
+  /* Semantic aliases keep existing component names consistent. */
+  --color-brand: var(--color-green-main);
+  --color-brand-deep: var(--color-green-dark);
+  --color-brand-soft: var(--color-green-light);
   --color-aqua: #c5a059;
   --color-aqua-soft: #efe6d2;
   --color-coral: #c5a059;
   --color-coral-soft: #f9f6f0;
 
-  /* Legacy token names kept so every existing component stays consistent. */
-  --color-forest: #0f3a20;
-  --color-forest-deep: #0b2c18;
+  --color-forest: var(--color-green-main);
+  --color-forest-deep: var(--color-green-dark);
   --color-gold: #c5a059;
-  --color-gold-soft: #f9f6f0;
+  --color-gold-soft: #d9c08c;
   --color-cream: #f9f6f0;
-  --color-bone: #fafafa;
-  --color-ink: #14261b;
-  --color-stone: #56655c;
-  --color-line: #e5dfd3;
+  --color-bone: #f1ede4;
+  --color-ink: #1a1a1a;
+  --color-stone: #4f5e55;
+  --color-line: #dcd9d2;
 
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
@@ -30,7 +34,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 
   html,
@@ -39,21 +43,20 @@
   }
 
   body {
-    background-color: var(--color-background);
+    background-color: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.95rem;
     line-height: 1.6;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-wrap: break-word;
   }
 
-  @media (max-width: 640px) {
+  @media (min-width: 1024px) {
     body {
-      font-size: 0.98rem;
+      font-size: 1rem;
     }
   }
 
@@ -66,7 +69,7 @@
   h2,
   h3,
   h4 {
-    @apply font-serif font-semibold leading-[1.06] tracking-tight text-ink;
+    @apply font-serif font-semibold leading-tight tracking-tight;
   }
 
   h1 {
@@ -97,12 +100,8 @@
 }
 
 @layer components {
-  .shell {
-    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12 xl:px-16;
-  }
-
   .eyebrow {
-    @apply text-xs font-extrabold uppercase tracking-[0.2em] text-brand sm:text-sm;
+    @apply text-xs font-semibold uppercase tracking-[0.26em] text-green-main sm:text-sm;
   }
 
   .field-label {
@@ -110,7 +109,7 @@
   }
 
   .field-input {
-    @apply w-full appearance-none rounded-2xl border border-line bg-white px-4 py-3.5 text-base font-medium text-ink shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-200 placeholder:text-stone/60 hover:border-brand/40 focus:border-brand focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand/15;
+    @apply w-full appearance-none rounded-2xl border border-line bg-white px-4 py-3.5 text-base font-semibold text-ink shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-colors duration-200 placeholder:text-ink hover:border-green-main/40 focus:border-green-main focus:bg-white focus:outline-none focus:ring-4 focus:ring-green-main/15;
   }
 
   .field-input:focus-visible {
@@ -118,39 +117,39 @@
   }
 
   .btn {
-    @apply inline-flex min-h-[3.5rem] items-center justify-center gap-2 rounded-2xl px-7 py-4 text-base font-extrabold transition-all duration-200 active:scale-[0.98];
+    @apply inline-flex min-h-[3.5rem] items-center justify-center gap-3 rounded-full px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] transition-colors duration-200;
   }
 
   .btn-gold {
-    @apply bg-[#c5a059] text-[#0f3a20] shadow-[0_12px_28px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 hover:bg-[#b08d48] hover:shadow-lg;
+    @apply bg-gold text-green-dark shadow-[0_10px_30px_rgba(197,160,89,0.28)] hover:bg-cream hover:shadow-lg;
   }
 
   .btn-dark {
-    @apply bg-[#0f3a20] text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
+    @apply bg-green-main text-white shadow-[0_10px_30px_rgba(15,58,32,0.18)] hover:bg-green-dark hover:shadow-lg;
   }
 
   .btn-outline {
-    @apply border border-white/70 bg-white/10 text-white shadow-sm backdrop-blur hover:-translate-y-0.5 hover:bg-white hover:text-brand;
+    @apply border border-white/60 text-white shadow-sm hover:border-gold hover:text-gold;
   }
 
   .pill-link {
-    @apply inline-flex items-center gap-2 rounded-2xl border border-brand/15 bg-white px-6 py-3.5 text-sm font-extrabold text-brand shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft;
+    @apply inline-flex items-center gap-2 rounded-full border border-green-main bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-green-main shadow-sm transition-colors duration-200 hover:border-gold hover:bg-green-light;
   }
 
   .pill-link-dark {
-    @apply inline-flex items-center gap-2 rounded-2xl border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-extrabold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-brand;
+    @apply inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold transition-colors duration-200 hover:border-gold hover:text-white;
   }
 
   .card-soft {
-    @apply rounded-[28px] border border-line/70 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300;
+    @apply rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)];
   }
 
   .card-lift {
-    @apply hover:-translate-y-1 hover:border-brand/30 hover:shadow-[0_20px_50px_rgba(15,58,32,0.14)];
+    @apply transition-shadow duration-200 hover:shadow-lg;
   }
 
   .photo-frame {
-    @apply relative overflow-hidden rounded-[28px] bg-brand-soft;
+    @apply relative overflow-hidden rounded-3xl bg-green-light;
   }
 
   .photo-frame img {
@@ -158,15 +157,15 @@
   }
 
   .tag {
-    @apply inline-flex items-center gap-2 rounded-full bg-brand-soft px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand;
+    @apply inline-flex items-center gap-2 rounded-full bg-green-light px-4 py-2 text-xs font-semibold uppercase tracking-wider text-green-main;
   }
 
   .btn-primary {
-    @apply bg-[#0f3a20] text-white shadow-[0_12px_28px_rgba(15,58,32,0.28)] hover:-translate-y-0.5 hover:bg-brand-deep hover:shadow-lg;
+    @apply bg-green-main text-white shadow-[0_10px_30px_rgba(15,58,32,0.18)] hover:bg-green-dark hover:shadow-lg;
   }
 
   .btn-sm {
-    @apply min-h-[2.75rem] rounded-xl px-5 py-2.5 text-sm;
+    @apply min-h-[2.5rem] rounded-full px-5 py-2.5 text-xs tracking-[0.18em];
   }
 
   .site-header {
@@ -190,7 +189,7 @@
   }
 
   .brand-name {
-    @apply text-lg font-extrabold leading-none tracking-tight text-brand sm:text-xl;
+    @apply text-lg font-extrabold leading-none tracking-tight text-green-main sm:text-xl;
   }
 
   .brand-name span {
@@ -206,11 +205,11 @@
   }
 
   .nav-link {
-    @apply rounded-2xl px-4 py-3 text-sm font-bold text-ink/70 transition-colors hover:bg-brand-soft hover:text-brand;
+    @apply rounded-2xl px-4 py-3 text-sm font-bold text-ink transition-colors hover:bg-green-light hover:text-green-main;
   }
 
   .nav-link-active {
-    @apply bg-brand-soft text-brand;
+    @apply bg-green-light text-green-main;
   }
 
   .nav-quote {
@@ -222,15 +221,15 @@
   }
 
   .language-switch {
-    @apply flex items-center gap-1 rounded-full bg-brand-soft px-3 py-1.5 text-xs font-extrabold text-brand;
+    @apply flex items-center gap-1 rounded-full bg-green-light px-3 py-1.5 text-xs font-extrabold text-green-main;
   }
 
   .language-switch button {
-    @apply min-h-0 rounded-full px-1.5 py-0.5 transition-opacity;
+    @apply min-h-0 rounded-full px-2 py-0.5 text-green-main transition-colors hover:text-green-dark;
   }
 
-  .language-switch button:not(.active) {
-    @apply opacity-45;
+  .language-switch button.active {
+    @apply bg-white shadow-sm;
   }
 
   .menu-button {
@@ -238,11 +237,11 @@
   }
 
   .menu-button span {
-    @apply block h-0.5 w-5 rounded-full bg-brand;
+    @apply block h-0.5 w-5 rounded-full bg-green-main;
   }
 
   .site-footer {
-    @apply mt-10 bg-brand-deep text-white;
+    @apply mt-10 bg-green-dark text-white;
   }
 
   .footer-grid {
@@ -258,15 +257,15 @@
   }
 
   .footer-tagline {
-    @apply mt-6 max-w-sm text-lg font-semibold leading-relaxed text-white/80;
+    @apply mt-6 max-w-md text-lg font-semibold leading-relaxed text-white;
   }
 
   .footer-contact {
-    @apply mt-6 flex flex-col gap-2 text-base font-semibold text-white/90;
+    @apply mt-6 flex flex-col gap-2 text-base font-semibold text-white;
   }
 
   .footer-contact a:hover {
-    @apply text-aqua-soft;
+    @apply text-gold;
   }
 
   .footer-area {
@@ -274,7 +273,7 @@
   }
 
   .footer-area span {
-    @apply text-xs font-extrabold uppercase tracking-wider text-aqua-soft;
+    @apply text-xs font-extrabold uppercase tracking-wider text-gold;
   }
 
   .footer-area strong {
@@ -282,11 +281,11 @@
   }
 
   .footer-column {
-    @apply flex flex-col gap-3 text-base font-semibold text-white/80;
+    @apply flex flex-col gap-3 text-base font-semibold text-white;
   }
 
   .footer-column h3 {
-    @apply mb-2 text-sm font-extrabold uppercase tracking-[0.18em] text-aqua-soft;
+    @apply mb-2 text-sm font-extrabold uppercase tracking-[0.18em] text-gold;
   }
 
   .footer-column a:hover {
@@ -298,7 +297,7 @@
   }
 
   .footer-bottom {
-    @apply flex flex-col gap-4 border-t border-white/15 py-7 text-sm text-white/65 md:flex-row md:items-center md:justify-between;
+    @apply flex flex-col gap-4 border-t border-white/15 py-7 text-sm font-semibold text-white md:flex-row md:items-center md:justify-between;
   }
 
   .footer-legal {
@@ -311,31 +310,6 @@
 
   .footer-signature {
     @apply font-extrabold tracking-wider text-white;
-  }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-rise {
-  animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .animate-rise {
-    animation: none;
   }
 }
 

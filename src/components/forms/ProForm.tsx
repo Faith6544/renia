@@ -4,10 +4,6 @@ import { useState } from "react";
 
 import { useLanguage } from "@/context/LanguageContext";
 import { buildWhatsAppUrl, CONTACT_EMAIL } from "@/lib/site";
-import {
-  getSupabaseBrowserClient,
-  isSupabaseConfigured,
-} from "@/lib/supabase/client";
 
 const INTERACTIVE = "relative z-50 pointer-events-auto";
 const PHONE_REGEX = /^(?:\+33|0)[1-9](?:[ .-]?\d{2}){4}$/;
@@ -84,27 +80,6 @@ export default function ProForm() {
     ].join("\n");
   };
 
-  const saveToDatabase = async (message: string) => {
-    if (!isSupabaseConfigured()) return;
-
-    try {
-      const supabase = getSupabaseBrowserClient();
-      const { error } = await supabase.from("quote_requests").insert({
-        full_name: form.contactName.trim(),
-        email: form.email.trim().toLowerCase(),
-        phone: form.phone.trim(),
-        service_type: "renia_pro",
-        message,
-      });
-
-      if (error) {
-        console.error("RENIA PRO request failed:", error);
-      }
-    } catch (error) {
-      console.error("RENIA PRO request failed:", error);
-    }
-  };
-
   const handleSend = async () => {
     const requiredFieldsComplete =
       form.organisationName.trim() &&
@@ -150,8 +125,6 @@ export default function ProForm() {
     setStatus("sending");
 
     const message = buildMessage();
-    await saveToDatabase(message);
-
     const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
       t.forms.formTitle,
     )}&body=${encodeURIComponent(message)}`;
@@ -176,7 +149,7 @@ export default function ProForm() {
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="pro-organisation" className="field-label">
-              {t.forms.organisationName} <span className="text-stone/50">*</span>
+              {t.forms.organisationName} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-organisation"
@@ -195,7 +168,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-sector" className="field-label">
-              {t.forms.sector} <span className="text-stone/50">*</span>
+              {t.forms.sector} <span className="font-semibold text-ink">*</span>
             </label>
             <select
               id="pro-sector"
@@ -217,7 +190,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-contact-name" className="field-label">
-              {t.forms.fullName} <span className="text-stone/50">*</span>
+              {t.forms.fullName} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-contact-name"
@@ -234,7 +207,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-role" className="field-label">
-              {t.forms.role} <span className="text-stone/50">*</span>
+              {t.forms.role} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-role"
@@ -247,10 +220,16 @@ export default function ProForm() {
               placeholder={t.forms.role}
             />
           </div>
+        </div>
+      </fieldset>
 
+      <fieldset className={`mt-10 border-0 p-0 ${INTERACTIVE}`}>
+        <legend className="eyebrow mb-5">{t.forms.contactDetails}</legend>
+
+        <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="pro-phone" className="field-label">
-              {t.forms.phone} <span className="text-stone/50">*</span>
+              {t.forms.phone} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-phone"
@@ -268,7 +247,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-email" className="field-label">
-              {t.forms.email} <span className="text-stone/50">*</span>
+              {t.forms.email} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-email"
@@ -285,7 +264,7 @@ export default function ProForm() {
 
           <div className="sm:col-span-2">
             <label htmlFor="pro-address" className="field-label">
-              {t.forms.address} <span className="text-stone/50">*</span>
+              {t.forms.address} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-address"
@@ -302,7 +281,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-postal-code" className="field-label">
-              {t.forms.postalCode} <span className="text-stone/50">*</span>
+              {t.forms.postalCode} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-postal-code"
@@ -323,7 +302,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-city" className="field-label">
-              {t.forms.city} <span className="text-stone/50">*</span>
+              {t.forms.city} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-city"
@@ -346,7 +325,7 @@ export default function ProForm() {
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="pro-surface" className="field-label">
-              {t.forms.surfaceArea} <span className="text-stone/50">*</span>
+              {t.forms.surfaceArea} <span className="font-semibold text-ink">*</span>
             </label>
             <input
               id="pro-surface"
@@ -365,7 +344,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-service" className="field-label">
-              {t.forms.serviceType} <span className="text-stone/50">*</span>
+              {t.forms.serviceType} <span className="font-semibold text-ink">*</span>
             </label>
             <select
               id="pro-service"
@@ -387,7 +366,7 @@ export default function ProForm() {
 
           <div>
             <label htmlFor="pro-frequency" className="field-label">
-              {t.forms.frequency} <span className="text-stone/50">*</span>
+              {t.forms.frequency} <span className="font-semibold text-ink">*</span>
             </label>
             <select
               id="pro-frequency"
@@ -424,7 +403,7 @@ export default function ProForm() {
         </div>
       </fieldset>
 
-      <div className={`mt-10 rounded-2xl bg-brand-soft/70 p-6 ${INTERACTIVE}`}>
+      <div className={`mt-10 rounded-2xl bg-green-light p-6 ${INTERACTIVE}`}>
         <h3 className="text-lg font-extrabold">{t.forms.ackTitle}</h3>
         <label className={`mt-4 flex cursor-pointer items-start gap-4 ${INTERACTIVE}`}>
           <input
@@ -434,7 +413,7 @@ export default function ProForm() {
             onChange={(event) => updateField("consent", event.target.checked)}
             className={`mt-1 h-5 w-5 shrink-0 accent-brand ${INTERACTIVE}`}
           />
-          <span className="text-base font-medium leading-relaxed text-stone">
+          <span className="text-base font-semibold leading-relaxed text-ink">
             {t.forms.ackText}
           </span>
         </label>
@@ -449,7 +428,7 @@ export default function ProForm() {
         </button>
 
         {status === "sent" ? (
-          <p role="status" className={`mt-5 text-base font-semibold text-brand ${INTERACTIVE}`}>
+          <p role="status" className={`mt-5 text-base font-semibold text-green-main ${INTERACTIVE}`}>
             {t.forms.confirmation}
           </p>
         ) : null}

@@ -1,3 +1,4 @@
+import Container from "@/components/ui/Container";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,7 +25,7 @@ export default function PageHero({
   secondary,
 }: PageHeroProps) {
   return (
-    <section className="relative flex min-h-[68vh] items-center overflow-hidden rounded-b-[2rem] bg-brand text-white">
+    <section className="relative flex min-h-[82vh] items-end overflow-hidden rounded-b-[2.5rem] bg-green-main text-white shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
       <Image
         src={image}
         alt=""
@@ -34,24 +35,24 @@ export default function PageHero({
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="pointer-events-none absolute inset-0 bg-brand/75" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand-deep/90 via-brand/60 to-aqua/20" />
+      <div className="pointer-events-none absolute inset-0 bg-green-main/75" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-dark via-green-main/50 to-green-main/10" />
 
-      <div className="shell relative z-10 w-full py-24 sm:py-28">
-        <p className="animate-rise text-sm font-extrabold uppercase tracking-[0.2em] text-aqua-soft">
+      <Container className="relative z-10 w-full pb-12 pt-24 sm:pb-20 lg:pb-24">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold sm:text-sm">
           {eyebrow}
         </p>
 
-        <h1 className="animate-rise mt-6 max-w-5xl text-balance text-[clamp(2.4rem,5vw,4.6rem)] font-extrabold leading-[1.03] [animation-delay:100ms]">
+        <h1 className="mt-5 max-w-3xl text-balance font-serif text-[clamp(2.25rem,4.6vw,4rem)] font-bold leading-[1.04] tracking-[-0.02em]">
           {title}
         </h1>
 
-        <p className="animate-rise mt-6 max-w-2xl text-lg leading-relaxed text-white/90 [animation-delay:180ms]">
+        <p className="mt-6 max-w-3xl text-base font-semibold leading-relaxed text-white sm:text-lg">
           {intro}
         </p>
 
         {primary || secondary ? (
-          <div className="animate-rise mt-9 flex flex-col gap-4 [animation-delay:260ms] sm:flex-row sm:items-center">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
             {primary ? (
               <Link href={primary.href} className="btn btn-gold">
                 {primary.label}
@@ -65,7 +66,7 @@ export default function PageHero({
             ) : null}
           </div>
         ) : null}
-      </div>
+      </Container>
     </section>
   );
 }

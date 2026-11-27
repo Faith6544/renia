@@ -25,20 +25,20 @@ export default function RecentMediaStrip({
           key={item.path}
           href="/gallery"
           aria-label={item.name}
-          className="group relative z-10 aspect-[4/3] overflow-hidden rounded-2xl bg-forest/40 ring-1 ring-cream/10 transition-all duration-300 hover:-translate-y-0.5 hover:ring-gold/50"
+          className="group relative z-10 aspect-[4/3] overflow-hidden rounded-2xl bg-green-light ring-1 ring-cream/10 transition-shadow duration-200 hover:ring-gold"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={item.url}
             alt=""
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="h-full w-full object-cover"
           />
-          <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest/55 via-transparent to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-40" />
+          <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-light via-transparent to-transparent" />
 
           {item.kind === "video" ? (
             <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-forest/70 text-cream shadow-lg backdrop-blur-sm">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-main text-cream shadow-lg backdrop-blur-sm">
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 24 24"
@@ -50,7 +50,7 @@ export default function RecentMediaStrip({
             </span>
           ) : null}
 
-          <span className="pointer-events-none absolute bottom-2 right-2 text-[10px] uppercase tracking-[0.18em] text-cream/80">
+          <span className="pointer-events-none absolute bottom-2 right-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
             {item.kind === "video" ? "▶" : "◎"}
           </span>
         </Link>

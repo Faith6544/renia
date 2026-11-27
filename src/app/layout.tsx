@@ -35,11 +35,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="fr"
-      className={`${dmSans.variable} ${cormorant.variable} scroll-smooth`}
-    >
-      <body className="min-h-screen bg-white font-sans text-ink antialiased">
+    <html lang="fr" className={`${dmSans.variable} ${cormorant.variable}`}>
+      <body className="min-h-screen bg-cream font-sans text-ink antialiased">
         <LanguageProvider>
           <Navbar />
           {children}
