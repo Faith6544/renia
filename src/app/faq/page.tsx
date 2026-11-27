@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import FaqContent from "./FaqContent";
 
 export const metadata: Metadata = {
-  title: "FAQ — Renia",
+  title: "Questions fréquentes — Renia",
   description:
-    "Answers to common questions about Renia cleaning services, quotes, eco-friendly products and the way we work.",
+    "Réponses aux questions fréquentes sur les prestations Renia, les devis, les produits écologiques et notre façon de travailler.",
 };
 
 export default function FaqPage() {

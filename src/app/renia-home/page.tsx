@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import ReniaHomeContent from "./ReniaHomeContent";
 
 export const metadata: Metadata = {
-  title: "RENIA HOME — Home cleaning | Renia Services",
+  title: "RENIA HOME — Ménage à domicile | Renia Services",
   description:
-    "Home cleaning, regular upkeep, one-off cleaning, deep cleaning and ironing for individuals.",
+    "Ménage à domicile, entretien régulier, entretien ponctuel, grand nettoyage et repassage pour les particuliers.",
 };
 
 export default function ReniaHomePage() {

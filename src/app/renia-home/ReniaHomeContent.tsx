@@ -17,8 +17,10 @@ export default function ReniaHomeContent() {
 
   return (
     <main>
+      {/* Replace /public/images/home-card.png to change this hero photo. */}
       <PageHero
-        image="/images/home-cleaning.jpg.png"
+        image="/images/home-card.png"
+        imageAlt="Intérieur de maison propre et entretenu par Renia Services"
         eyebrow={page.eyebrow}
         title={page.title}
         intro={page.intro}
@@ -38,6 +40,7 @@ export default function ReniaHomeContent() {
           {page.rooms.map((room, index) => (
             <article key={room.title} className="card-soft card-lift overflow-hidden">
               <div className="photo-frame aspect-[16/10]">
+                {/* Replace /public/images/home-card.png or /public/images/about.png to change these photos. */}
                 <Image
                   src={room.image}
                   alt={room.title}
@@ -68,6 +71,7 @@ export default function ReniaHomeContent() {
         <div className="mt-12 grid gap-7 lg:grid-cols-2">
           <article className="card-soft card-lift overflow-hidden">
             <div className="photo-frame aspect-[16/9]">
+              {/* Replace /public/images/about.png to change this photo. */}
               <Image
                 src={page.deepImage}
                 alt={page.deepTitle}
@@ -93,6 +97,7 @@ export default function ReniaHomeContent() {
 
           <article className="card-soft card-lift overflow-hidden">
             <div className="photo-frame aspect-[16/9]">
+              {/* Replace /public/images/home-card.png to change this photo. */}
               <Image
                 src={page.ironImage}
                 alt={page.ironTitle}

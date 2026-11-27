@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import ContactContent from "./ContactContent";
 
 export const metadata: Metadata = {
-  title: "Contact — Renia",
+  title: "Nous contacter — Renia",
   description:
-    "Contact Renia for residential or commercial cleaning. Send us a message or request a free quote.",
+    "Contactez Renia pour le nettoyage résidentiel ou professionnel. Envoyez-nous un message ou demandez un devis gratuit.",
 };
 
 export default function ContactPage() {

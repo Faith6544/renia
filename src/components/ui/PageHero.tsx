@@ -1,4 +1,5 @@
 import Container from "@/components/ui/Container";
+import { HERO_CONTENT_CLASSES, HERO_SECTION_CLASSES } from "@/components/ui/heroStyles";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +10,7 @@ type HeroLink = {
 
 type PageHeroProps = {
   image: string;
+  imageAlt?: string;
   eyebrow: string;
   title: string;
   intro: string;
@@ -18,6 +20,7 @@ type PageHeroProps = {
 
 export default function PageHero({
   image,
+  imageAlt = "Espace propre et lumineux entretenu par Renia Services",
   eyebrow,
   title,
   intro,
@@ -25,10 +28,11 @@ export default function PageHero({
   secondary,
 }: PageHeroProps) {
   return (
-    <section className="relative flex min-h-[82vh] items-end overflow-hidden rounded-b-[2.5rem] bg-green-main text-white shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
+    <section className={`${HERO_SECTION_CLASSES} flex min-h-svh items-start`}>
+      {/* Replace /public/images/<image> to change this hero photo (keep the same path in code). */}
       <Image
         src={image}
-        alt=""
+        alt={imageAlt}
         fill
         priority
         unoptimized
@@ -38,8 +42,8 @@ export default function PageHero({
       <div className="pointer-events-none absolute inset-0 bg-green-main/75" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-dark via-green-main/50 to-green-main/10" />
 
-      <Container className="relative z-10 w-full pb-12 pt-24 sm:pb-20 lg:pb-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold sm:text-sm">
+      <Container className={HERO_CONTENT_CLASSES}>
+        <p className="text-xs font-bold uppercase tracking-[0.28em] text-gold sm:text-sm">
           {eyebrow}
         </p>
 
@@ -47,12 +51,12 @@ export default function PageHero({
           {title}
         </h1>
 
-        <p className="mt-6 max-w-3xl text-base font-semibold leading-relaxed text-white sm:text-lg">
+        <p className="mt-6 max-w-3xl text-base font-bold leading-relaxed text-white sm:text-lg">
           {intro}
         </p>
 
         {primary || secondary ? (
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+          <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
             {primary ? (
               <Link href={primary.href} className="btn btn-gold">
                 {primary.label}

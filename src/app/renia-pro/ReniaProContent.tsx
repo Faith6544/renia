@@ -16,8 +16,10 @@ export default function ReniaProContent() {
 
   return (
     <main>
+      {/* Replace /public/images/hero-pro.png to change this hero photo. */}
       <PageHero
-        image="/images/pro-cleaning.jpg.png"
+        image="/images/hero-pro.png"
+        imageAlt="Bureau professionnel propre et lumineux entretenu par Renia Services"
         eyebrow={page.eyebrow}
         title={page.title}
         intro={page.intro}
@@ -50,6 +52,7 @@ export default function ReniaProContent() {
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {page.sectorImages.map((image, index) => (
             <div key={`${image}-${index}`} className="photo-frame aspect-[4/3]">
+              {/* Replace /public/images/pro-card.png or /public/images/hero-pro.png to change these photos. */}
               <Image
                 src={image}
                 alt={page.sectorsTitle}

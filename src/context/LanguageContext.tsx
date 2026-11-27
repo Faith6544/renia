@@ -30,6 +30,16 @@ const STORAGE_KEY = "renia-language";
 const listeners = new Set<() => void>();
 let cachedLanguage: Language | null = null;
 
+/**
+ * French is the only first-visit locale. We never read navigator.language or
+ * Accept-Language; English appears only after an explicit toggle click.
+ */
+function applyLanguageToDocument(next: Language) {
+  if (typeof document !== "undefined") {
+    document.documentElement.lang = next;
+  }
+}
+
 function getSnapshot(): Language {
   if (cachedLanguage) {
     return cachedLanguage;
@@ -60,6 +70,7 @@ function updateLanguage(next: Language) {
   if (typeof window !== "undefined") {
     window.localStorage.setItem(STORAGE_KEY, next);
   }
+  applyLanguageToDocument(next);
   listeners.forEach((listener) => listener());
 }
 
@@ -77,7 +88,7 @@ export function LanguageProvider({
   );
 
   useEffect(() => {
-    document.documentElement.lang = language;
+    applyLanguageToDocument(language);
   }, [language]);
 
   const setLanguage = useCallback((next: Language) => {

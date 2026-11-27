@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import AboutContent from "./AboutContent";
 
 export const metadata: Metadata = {
-  title: "About RENIA SERVICES — Renia",
+  title: "À propos de RENIA SERVICES — Renia",
   description:
-    "A local cleaning company serving individuals and businesses.",
+    "Une entreprise de nettoyage locale, au service des particuliers et des professionnels.",
 };
 
 export default function AboutPage() {

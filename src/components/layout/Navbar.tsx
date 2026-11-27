@@ -4,7 +4,7 @@ import Container from "@/components/ui/Container";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 function NavLink({
@@ -37,6 +37,20 @@ export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Close the mobile menu on navigation or Escape so it never stays open.
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
+
   const current = language;
   const links = t.nav;
 
@@ -45,14 +59,19 @@ export default function Navbar() {
       <Container className="site-header-inner">
         <Link href="/" className="brand" aria-label="Renia Services — Accueil">
           <span className="brand-mark">
-            <Image src="/images/logo.png.png" alt="Renia Services" fill sizes="48px" priority />
+            {/* Replace /public/images/logo.png to change the logo everywhere. */}
+            <Image src="/images/logo.png" alt="Renia Services" fill sizes="48px" priority />
           </span>
           <span className="brand-name">
             RENIA<span>SERVICES</span>
           </span>
         </Link>
 
-        <nav className={`site-nav ${menuOpen ? "site-nav-open" : ""}`} aria-label="Navigation principale">
+        <nav
+          id="site-nav"
+          className={`site-nav ${menuOpen ? "site-nav-open" : ""}`}
+          aria-label="Navigation principale"
+        >
           <NavLink href="/" label={links.home} pathname={pathname} onClick={() => setMenuOpen(false)} />
           <NavLink href="/renia-home" label={links.reniaHome} pathname={pathname} onClick={() => setMenuOpen(false)} />
           <NavLink href="/renia-pro" label={links.reniaPro} pathname={pathname} onClick={() => setMenuOpen(false)} />
@@ -88,6 +107,7 @@ export default function Navbar() {
             className="menu-button"
             onClick={() => setMenuOpen((value) => !value)}
             aria-expanded={menuOpen}
+            aria-controls="site-nav"
             aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             <span />

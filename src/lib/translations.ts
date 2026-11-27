@@ -399,32 +399,32 @@ const en = {
       {
         title: "Kitchen",
         body: "worktop, sink, outside of cabinets and appliances, hob, floors.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
       {
         title: "Bathroom and toilet",
         body: "basin, shower or bath, mirrors, sanitary ware, tiles, floors.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
       {
         title: "Bedrooms",
         body: "dusting, surfaces and furniture, floors, airing the bed if agreed.",
-        image: "/images/hero.jpg.png",
+        image: "/images/about.png",
       },
       {
         title: "Living room and living areas",
         body: "dusting, surfaces, accessible sofas and furniture, floors.",
-        image: "/images/hero.jpg.png",
+        image: "/images/about.png",
       },
       {
         title: "Entrance and corridors",
         body: "floors, accessible skirting boards, handles and switches.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
       {
         title: "Bins",
         body: "emptying the bins and putting in a clean bag.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
     ],
     extrasEyebrow: "Beyond the routine",
@@ -432,14 +432,14 @@ const en = {
     deepTitle: "For a deep clean",
     deepBody:
       "a more thorough clean adapted to your home; areas that are hard to reach during routine cleaning; a priced service, quoted separately after a conversation with you.",
-    deepImage: "/images/hero.jpg.png",
+    deepImage: "/images/about.png",
     extrasTitleAddition: "What you can ask for in addition",
     extrasBody:
       "ironing; eco-friendly cleaning products, offered as an option; a special request, to be specified in your quote.",
     ironTitle: "Ironing",
     ironBody:
       "Your laundry ironed with care, at your home. Add ironing to your cleaning by ticking the box in your quote request, and give the approximate amount in the comments.",
-    ironImage: "/images/home-cleaning.jpg.png",
+    ironImage: "/images/home-card.png",
     faqEyebrow: "RENIA HOME FAQ",
     faqTitle: "RENIA HOME FAQ",
     faqs: [
@@ -518,9 +518,9 @@ const en = {
       },
     ],
     sectorImages: [
-      "/images/pro-cleaning.jpg.png",
-      "/images/pro-cleaning.jpg.png",
-      "/images/pro-cleaning.jpg.png",
+      "/images/pro-card.png",
+      "/images/pro-card.png",
+      "/images/pro-card.png",
     ],
     tailorEyebrow: "A tailor-made solution",
     tailorTitle: "A tailor-made solution",
@@ -1063,32 +1063,32 @@ const fr: typeof en = {
       {
         title: "Cuisine",
         body: "plan de travail, évier, extérieur des meubles et de l’électroménager, plaques de cuisson, sols.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
       {
         title: "Salle de bain et WC",
         body: "lavabo, douche ou baignoire, miroirs, sanitaires, carrelage, sols.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
       {
         title: "Chambres",
         body: "dépoussiérage, surfaces et meubles, sols, aération du lit si convenu.",
-        image: "/images/hero.jpg.png",
+        image: "/images/about.png",
       },
       {
         title: "Séjour et pièces de vie",
         body: "dépoussiérage, surfaces, canapés et meubles accessibles, sols.",
-        image: "/images/hero.jpg.png",
+        image: "/images/about.png",
       },
       {
         title: "Entrée et couloirs",
         body: "sols, plinthes accessibles, poignées et interrupteurs.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
       {
         title: "Poubelles",
         body: "vidage des poubelles et remise en place d’un sac propre.",
-        image: "/images/home-cleaning.jpg.png",
+        image: "/images/home-card.png",
       },
     ],
     extrasEyebrow: "Au-delà de la routine",
@@ -1096,14 +1096,14 @@ const fr: typeof en = {
     deepTitle: "Pour un grand nettoyage",
     deepBody:
       "un nettoyage plus approfondi adapté à votre logement ; les zones peu accessibles lors d’un entretien courant ; une prestation chiffrée à part, après échange avec vous.",
-    deepImage: "/images/hero.jpg.png",
+    deepImage: "/images/about.png",
     extrasTitleAddition: "Ce que vous pouvez nous demander en plus",
     extrasBody:
       "repassage ; produits d’entretien écologiques, proposés en option ; une demande particulière, à préciser dans votre devis.",
     ironTitle: "Repassage",
     ironBody:
       "Votre linge repassé avec soin, chez vous. Ajoutez le repassage à votre ménage en cochant la case dans votre demande de devis, et précisez la quantité approximative dans les commentaires.",
-    ironImage: "/images/home-cleaning.jpg.png",
+    ironImage: "/images/home-card.png",
     faqEyebrow: "FAQ RENIA HOME",
     faqTitle: "FAQ RENIA HOME",
     faqs: [
@@ -1182,9 +1182,9 @@ const fr: typeof en = {
       },
     ],
     sectorImages: [
-      "/images/pro-cleaning.jpg.png",
-      "/images/pro-cleaning.jpg.png",
-      "/images/pro-cleaning.jpg.png",
+      "/images/pro-card.png",
+      "/images/pro-card.png",
+      "/images/pro-card.png",
     ],
     tailorEyebrow: "Une solution sur mesure",
     tailorTitle: "Une solution sur mesure",

@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import GalleryContent from "./GalleryContent";
 
 export const metadata: Metadata = {
-  title: "Gallery — Renia",
+  title: "Notre galerie — Renia",
   description:
-    "A look at the homes, offices and rentals Renia cares for.",
+    "Un aperçu des maisons, bureaux et locations dont Renia prend soin.",
 };
 
 export default function GalleryPage() {

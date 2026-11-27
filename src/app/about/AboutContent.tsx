@@ -15,8 +15,10 @@ export default function AboutContent() {
 
   return (
     <main>
+      {/* Replace /public/images/hero-home.png to change this hero photo. */}
       <PageHero
-        image="/images/hero.jpg.png"
+        image="/images/hero-home.png"
+        imageAlt="Espace professionnel propre et lumineux entretenu par Renia Services"
         eyebrow={about.eyebrow}
         title={about.title}
         intro={about.intro}
@@ -29,7 +31,7 @@ export default function AboutContent() {
 
       {/* Mission */}
       <Section tone="cream">
-        <div className="mx-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="text-center">
           <p className="eyebrow">{about.missionEyebrow}</p>
           <div className="mx-auto mt-4 h-px w-16 bg-gold" aria-hidden="true" />
           <p className="mt-8 text-balance font-serif text-3xl font-semibold leading-tight tracking-[-0.02em] text-ink md:text-4xl">
@@ -41,23 +43,19 @@ export default function AboutContent() {
         </div>
       </Section>
 
-      {/* Vision */}
+      {/* Vision — dark green background with bold, full-opacity white text. */}
       <Section tone="cream" spacing="compact">
-        <div className="relative overflow-hidden rounded-3xl bg-green-light p-8 text-white shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_15%,rgba(197,160,89,0.18),transparent_55%)]"
-          />
+        <div className="relative overflow-hidden rounded-3xl bg-green-main p-8 text-white shadow-[0_20px_60px_rgba(8,35,20,0.18)] sm:p-12 lg:p-16">
           <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-16">
             <div className="lg:col-span-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold sm:text-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold sm:text-sm">
                 {about.visionEyebrow}
               </p>
-              <h2 className="mt-5 max-w-md text-balance font-serif text-3xl font-semibold leading-tight tracking-[-0.02em] md:text-4xl">
+              <h2 className="mt-5 max-w-md text-balance font-serif text-3xl font-bold leading-tight tracking-[-0.02em] text-white md:text-4xl">
                 {about.visionTitle}
               </h2>
             </div>
-            <p className="max-w-3xl text-base font-semibold leading-relaxed text-white sm:text-lg lg:col-span-7">
+            <p className="max-w-3xl text-base font-bold leading-relaxed text-white sm:text-lg lg:col-span-7">
               {about.visionBody}
             </p>
           </div>
@@ -78,7 +76,7 @@ export default function AboutContent() {
               key={value.title}
               className="flex flex-col rounded-2xl bg-cream p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-200 hover:shadow-lg sm:p-8"
             >
-              <span className="font-serif text-2xl leading-none text-gold">
+              <span className="font-serif text-2xl font-bold leading-none text-green-main">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-8 font-serif text-xl leading-tight tracking-[-0.01em] sm:text-2xl">
@@ -102,15 +100,15 @@ export default function AboutContent() {
             </h2>
 
             <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-3xl bg-green-light shadow-[0_16px_45px_rgba(15,58,32,0.16)]">
+              {/* Replace /public/images/about.png to change this photo. */}
               <Image
-                src="/images/home-cleaning.jpg.png"
-                alt=""
+                src="/images/about.png"
+                alt="Intérieur de maison entretenu par Renia Services"
                 fill
                 unoptimized
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
               />
-              <div className="pointer-events-none absolute inset-0 bg-green-light/15" />
             </div>
           </div>
 

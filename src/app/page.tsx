@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Accordion from "@/components/ui/Accordion";
-import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
+import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Stars from "@/components/ui/Stars";
 import { useLanguage } from "@/context/LanguageContext";
@@ -18,43 +18,19 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Hero */}
-      <section className="relative flex min-h-[82vh] items-end overflow-hidden rounded-b-[2.5rem] bg-green-main text-white shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
-        <Image
-          src="/images/hero.jpg.png"
-          alt=""
-          fill
-          priority
-          unoptimized
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-green-main/75" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-dark via-green-main/50 to-green-main/10" />
-
-        <Container className="relative z-10 w-full pb-12 pt-24 sm:pb-20 lg:pb-24">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold sm:text-sm">
-              RENIA SERVICES
-            </p>
-            <h1 className="mt-5 max-w-3xl text-balance font-serif text-[clamp(2.25rem,5vw,4.25rem)] font-bold leading-[1.04] tracking-[-0.02em]">
-              {t.HeroTitle}
-            </h1>
-            <p className="mt-6 max-w-3xl text-base font-semibold leading-relaxed text-white sm:text-lg">
-              {t.HeroText}
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link href="/contact#quote" className="btn btn-gold">
-                {t.HeroButtonPrimary}
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* Hero — replace /public/images/hero-home.png to change this photo. */}
+      <PageHero
+        image="/images/hero-home.png"
+        imageAlt="Espace de vie propre et lumineux entretenu par Renia Services"
+        eyebrow="RENIA SERVICES"
+        title={t.HeroTitle}
+        intro={t.HeroText}
+        primary={{ label: t.HeroButtonPrimary, href: "/contact#quote" }}
+      />
 
       {/* You are */}
       <Section tone="white">
-        <div className="mx-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="text-center">
           <p className="eyebrow">RENIA SERVICES</p>
           <h2 className="mt-4 text-balance text-4xl font-extrabold sm:text-5xl lg:text-6xl">
             {t.YouAre}
@@ -112,8 +88,9 @@ export default function HomePage() {
         <div className="mt-12 grid gap-7 lg:grid-cols-2">
           <article className="card-soft card-lift overflow-hidden">
             <div className="photo-frame aspect-[4/3]">
+              {/* Replace /public/images/home-card.png to change this photo. */}
               <Image
-                src="/images/home-cleaning.jpg.png"
+                src="/images/home-card.png"
                 alt={showcase.homeImageAlt}
                 fill
                 unoptimized
@@ -151,8 +128,9 @@ export default function HomePage() {
 
           <article className="card-soft card-lift overflow-hidden">
             <div className="photo-frame aspect-[4/3]">
+              {/* Replace /public/images/pro-card.png to change this photo. */}
               <Image
-                src="/images/pro-cleaning.jpg.png"
+                src="/images/pro-card.png"
                 alt={showcase.proImageAlt}
                 fill
                 unoptimized

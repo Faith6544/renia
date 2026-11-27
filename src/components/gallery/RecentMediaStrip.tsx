@@ -27,10 +27,11 @@ export default function RecentMediaStrip({
           aria-label={item.name}
           className="group relative z-10 aspect-[4/3] overflow-hidden rounded-2xl bg-green-light ring-1 ring-cream/10 transition-shadow duration-200 hover:ring-gold"
         >
+          {/* Replace the files in /public/images/ to change these photos. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={item.url}
-            alt=""
+            alt={item.name}
             loading="lazy"
             className="h-full w-full object-cover"
           />

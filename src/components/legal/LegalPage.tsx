@@ -1,5 +1,9 @@
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
+import {
+  HERO_CONTENT_CLASSES,
+  HERO_SECTION_CLASSES,
+} from "@/components/ui/heroStyles";
 import Link from "next/link";
 
 type LegalSection = {
@@ -24,20 +28,20 @@ export default function LegalPage({
 }: LegalPageProps) {
   return (
     <main>
-      <section className="relative overflow-hidden rounded-b-[2.5rem] bg-green-main text-white shadow-[0_24px_70px_rgba(8,35,20,0.18)]">
+      <section className={`${HERO_SECTION_CLASSES} min-h-svh`}>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-main via-green-main/70 to-green-main/95" />
 
-        <Container className="relative z-10 pb-16 pt-32 sm:pb-20 lg:pt-40">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold sm:text-sm">
+        <Container className={HERO_CONTENT_CLASSES}>
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold sm:text-sm">
             {eyebrow}
           </p>
           <h1 className="mt-5 max-w-4xl text-balance font-serif text-[clamp(2rem,4.8vw,4.25rem)] font-bold leading-[1.05] tracking-[-0.02em]">
             {title}
           </h1>
-          <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-white sm:text-lg">
+          <p className="mt-5 max-w-2xl text-base font-bold leading-relaxed text-white sm:text-lg">
             {intro}
           </p>
-          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] text-white">
+          <p className="mt-8 text-xs font-bold uppercase tracking-[0.22em] text-white">
             {updated}
           </p>
         </Container>

@@ -13,8 +13,10 @@ export default function GalleryContent() {
 
   return (
     <main>
+      {/* Replace /public/images/home-card.png to change this hero photo. */}
       <PageHero
-        image="/images/home-cleaning.jpg.png"
+        image="/images/home-card.png"
+        imageAlt="Intérieur propre et lumineux entretenu par Renia Services"
         eyebrow={gallery.eyebrow}
         title={gallery.title}
         intro={gallery.intro}

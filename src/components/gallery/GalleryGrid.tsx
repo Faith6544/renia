@@ -75,10 +75,11 @@ export default function GalleryGrid() {
                   className="h-full w-full object-cover"
                 />
               ) : (
+                /* Replace the files in /public/images/ to change these photos. */
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   src={item.url}
-                  alt=""
+                  alt={item.name}
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
@@ -189,14 +190,14 @@ export default function GalleryGrid() {
                 autoPlay
                 muted
                 playsInline
-                className="max-h-[76vh] w-full bg-black object-contain"
+                className="max-h-[76svh] w-full bg-black object-contain"
               />
             ) : (
               /* eslint-disable-next-line @next/next/no-img-element */
               <img
                 src={activeItem.url}
                 alt={activeItem.name}
-                className="max-h-[76vh] w-full object-contain"
+                className="max-h-[76svh] w-full object-contain"
               />
             )}
 

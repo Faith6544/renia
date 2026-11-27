@@ -159,8 +159,10 @@ export default function ContactContent() {
 
   return (
     <main className="relative">
+      {/* Replace /public/images/hero-home.png to change this hero photo. */}
       <PageHero
-        image="/images/hero.jpg.png"
+        image="/images/hero-home.png"
+        imageAlt="Espace propre et lumineux entretenu par Renia Services"
         eyebrow={page.eyebrow}
         title={page.title}
         intro={page.intro}
