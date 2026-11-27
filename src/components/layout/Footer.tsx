@@ -22,25 +22,52 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <Container className="footer-inner">
-        <div className="footer-main">
+      <Container className="footer-grid">
+        <div className="footer-brand">
           <Link href="/" className="footer-logo" aria-label="Renia Services — Accueil">
             {/* Replace /public/images/logo.png to change the logo everywhere. */}
-            <Image src="/images/logo.png" alt="Renia Services" fill sizes="128px" />
+            <Image
+              src="/images/logo.png"
+              alt="Renia Services"
+              height={48}
+              width={48}
+              className="h-12 w-auto object-contain sm:h-14"
+            />
           </Link>
           <p className="footer-tagline">{t.footer.tagline}</p>
+          <div className="footer-contact">
+            <a href={`tel:${CONTACT_PHONE}`}>{CONTACT_PHONE_DISPLAY}</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          </div>
+          <div className="footer-area">
+            <span>{t.footer.areaLabel}</span>
+            <strong>{t.footer.area}</strong>
+          </div>
         </div>
 
-        <nav className="footer-links" aria-label={t.footer.companyTitle}>
+        <div className="footer-column">
+          <h3>{t.footer.servicesTitle}</h3>
           <Link href="/renia-home">{t.footer.home}</Link>
           <Link href="/renia-pro">{t.footer.pro}</Link>
-          <Link href="/about">{t.footer.about}</Link>
-          <Link href="/contact">{t.footer.contact}</Link>
-        </nav>
+          <Link href="/gallery">{t.footer.gallery}</Link>
+          <Link href="/contact#quote">{t.footer.quote}</Link>
+        </div>
 
-        <div className="footer-contact">
-          <a href={`tel:${CONTACT_PHONE}`}>{CONTACT_PHONE_DISPLAY}</a>
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        <div className="footer-column">
+          <h3>{t.footer.companyTitle}</h3>
+          <Link href="/about">{t.footer.about}</Link>
+          <Link href="/#why">{t.footer.whyRenia}</Link>
+          <Link href="/faq">{t.footer.faq}</Link>
+          <Link href="/contact">{t.footer.contact}</Link>
+        </div>
+
+        <div className="footer-column">
+          <h3>{t.footer.contactTitle}</h3>
+          <p>{t.footer.hours}</p>
+          <p>{t.footer.area}</p>
+          <Link className="btn btn-primary btn-sm" href="/contact#quote">
+            {t.footer.quote}
+          </Link>
         </div>
       </Container>
 
@@ -53,6 +80,7 @@ export default function Footer() {
           <Link href="/politique-de-confidentialite">{t.footer.privacy}</Link>
           <Link href="/cgv">{t.footer.terms}</Link>
         </nav>
+        <p className="footer-signature">{t.footer.signature}</p>
       </Container>
     </footer>
   );

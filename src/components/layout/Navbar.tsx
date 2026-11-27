@@ -60,7 +60,14 @@ export default function Navbar() {
         <Link href="/" className="brand" aria-label="Renia Services — Accueil">
           <span className="brand-mark">
             {/* Replace /public/images/logo.png to change the logo everywhere. */}
-            <Image src="/images/logo.png" alt="Renia Services" fill sizes="48px" priority />
+            <Image
+              src="/images/logo.png"
+              alt="Renia Services"
+              height={40}
+              width={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </span>
           <span className="brand-name">
             RENIA<span>SERVICES</span>
