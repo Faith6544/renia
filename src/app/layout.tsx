@@ -40,15 +40,6 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${dmSans.variable} ${cormorant.variable}`}
     >
-      <head>
-        {/* French is the default for every first-time visitor. A stored EN
-            choice is applied before first paint; no browser locale is read. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var l=localStorage.getItem("renia-language");if(l==="en"||l==="fr")document.documentElement.lang=l}catch(e){}})()`,
-          }}
-        />
-      </head>
       <body className="min-h-svh bg-cream font-sans text-ink antialiased">
         <LanguageProvider>
           <Navbar />

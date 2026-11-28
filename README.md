@@ -35,7 +35,7 @@ The app lives under `src/`: pages and global styles in `src/app`, components in 
 | `/contact` | Contact details, unified quote form and direct WhatsApp link |
 | `/mentions-legales`, `/politique-de-confidentialite`, `/cgv` | Legal pages |
 
-The FR | EN toggle lives in the navbar. The selected language is stored in `localStorage` under `renia-language` and is shared across pages by `src/context/LanguageContext.tsx`. Page copy lives in `src/lib/translations.ts`; shared navigation and footer copy lives in `src/data/dictionary.ts`. Both EN and FR objects must be kept in sync.
+The FR | EN toggle lives in the navbar. The selected language is stored in `localStorage` under `renia-lang-v2` and is shared across pages by `src/context/LanguageContext.tsx`. Page copy lives in `src/lib/translations.ts`; shared navigation and footer copy lives in `src/data/dictionary.ts`. Both EN and FR objects must be kept in sync.
 
 ## Learn More
 

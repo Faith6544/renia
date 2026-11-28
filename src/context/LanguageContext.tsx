@@ -6,7 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useSyncExternalStore,
+  useState,
 } from "react";
 
 import {
@@ -25,53 +25,13 @@ type LanguageContextValue = {
   t: SiteTranslations;
 };
 
-const STORAGE_KEY = "renia-language";
+const STORAGE_KEY = "renia-lang-v2";
+const DEFAULT_LANGUAGE: Language = "fr";
 
-const listeners = new Set<() => void>();
-let cachedLanguage: Language | null = null;
-
-/**
- * French is the only first-visit locale. We never read navigator.language or
- * Accept-Language; English appears only after an explicit toggle click.
- */
 function applyLanguageToDocument(next: Language) {
   if (typeof document !== "undefined") {
     document.documentElement.lang = next;
   }
-}
-
-function getSnapshot(): Language {
-  if (cachedLanguage) {
-    return cachedLanguage;
-  }
-
-  if (typeof window === "undefined") {
-    return "fr";
-  }
-
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  cachedLanguage = stored === "en" || stored === "fr" ? stored : "fr";
-  return cachedLanguage;
-}
-
-function getServerSnapshot(): Language {
-  return "fr";
-}
-
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-  return () => {
-    listeners.delete(listener);
-  };
-}
-
-function updateLanguage(next: Language) {
-  cachedLanguage = next;
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(STORAGE_KEY, next);
-  }
-  applyLanguageToDocument(next);
-  listeners.forEach((listener) => listener());
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -81,35 +41,41 @@ export function LanguageProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const language = useSyncExternalStore(
-    subscribe,
-    getSnapshot,
-    getServerSnapshot,
-  );
+  const [language, setLanguage] = useState<Language>(DEFAULT_LANGUAGE);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "en" || stored === "fr") {
+      setLanguage(stored);
+    }
+  }, []);
 
   useEffect(() => {
     applyLanguageToDocument(language);
   }, [language]);
 
-  const setLanguage = useCallback((next: Language) => {
-    updateLanguage(next);
+  const setLanguageAndPersist = useCallback((next: Language) => {
+    setLanguage(next);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    }
   }, []);
 
   const toggleLanguage = useCallback(() => {
-    updateLanguage(getSnapshot() === "en" ? "fr" : "en");
-  }, []);
+    setLanguageAndPersist(language === "en" ? "fr" : "en");
+  }, [language, setLanguageAndPersist]);
 
   const value = useMemo<LanguageContextValue>(
     () => ({
       language,
-      setLanguage,
+      setLanguage: setLanguageAndPersist,
       toggleLanguage,
       t: {
         ...dictionary[language],
         ...translations[language],
       },
     }),
-    [language, setLanguage, toggleLanguage],
+    [language, setLanguageAndPersist, toggleLanguage],
   );
 
   return (
